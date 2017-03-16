@@ -12,11 +12,14 @@ var core_1 = require('@angular/core');
 var AppComponent = (function () {
     function AppComponent() {
         this.name = 'Angular';
+        this.color = 'accent';
+        this.checked = false;
+        this.disabled = false;
     }
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "<h1>Hello {{name}}</h1>",
+            template: "<button md-icon-button [mdMenuTriggerFor]=\"menu\">\n  <md-icon>more_vert</md-icon>\n</button>\n<md-menu #menu=\"mdMenu\">\n  <button md-menu-item>\n    <md-icon>dialpad</md-icon>\n    <span>Redial</span>\n  </button>\n  <button md-menu-item disabled>\n    <md-icon>voicemail</md-icon>\n    <span>Check voicemail</span>\n  </button>\n  <button md-menu-item>\n    <md-icon>notifications_off</md-icon>\n    <span>Disable alerts</span>\n  </button>\n</md-menu>\n<md-slider></md-slider>\n",
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
