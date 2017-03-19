@@ -1,9 +1,9 @@
 ### REST APIs:
 
 
-    #### request POST 
-    #### url:  /webapi/project/insert/:username
-    #### request
+   #### request POST 
+   #### url:  /webapi/project/insert/:username
+   #### request
 		{
 
 			"title":"Army portal",
@@ -33,7 +33,7 @@
 			"images":["http://pics.com"] 
 
 		}
-	#### response
+   #### response
 		{
 														
 			"matchedCount": "matchedCount=1",  
@@ -46,9 +46,9 @@
 
 ------------------------------------------------------------------------------
 
-  #### request GET 
-  #### url:  /webapi/project/retrieveall/:username 
-  #### response
+   #### request GET 
+   #### url:  /webapi/project/retrieveall/:username 
+   #### response
 	[ 
 		{ 
 			"contributors": [], 
@@ -95,18 +95,18 @@
 ------------------------------------------------------------------------------
 
 
-    #### request POST 
+   #### request POST 
                                              
-    #### url:  /webapi/project/insertcomment/:username/:Googo 
+   #### url:  /webapi/project/insertcomment/:username/:Googo 
 
 
-    #### request
+   #### request
 		{
 			"username":"sjsidjain",
 			"comment":"greeting from postman"
 		} 
 
-    #### response
+   #### response
 		{ 
 			"matchedCount": "matchedCount=1", 
 			"modifiedCount": " modifiedCount=1", 
@@ -129,10 +129,10 @@
     ]
 ------------------------------------------------------------------------------
 
-  #### request GET 
-  #### url:  /webapi/user/profile/:username
+   #### request GET 
+   #### url:  /webapi/user/profile/:username
   
-  #### response
+   #### response
 	{
 		"username": "rahulsingh", 
 		"name": "Rahul Singh", 
@@ -154,10 +154,10 @@
 ------------------------------------------------------------------------------
 
 
-  #### request PUT 
-  #### url:  /webapi/user/updateuser 
+   #### request PUT 
+   #### url:  /webapi/user/updateuser 
 
-  #### request 
+   #### request 
 	{ 
 		"username": "pjain", 
 		"name": "Priyanka Jain", 
