@@ -1,27 +1,44 @@
 <md-toolbar color="accent">
 
-    <button md-icon-button routerLink="/">
-    <md-icon>home</md-icon></button>
+    <!--TODO: Project Logo comes here-->
+    <button md-icon-button routerLink="/"><md-icon>home</md-icon></button>
+
+    <!--search  bar-->
     <md-input-container floatPlaceholder="never" style="width: 25%">
         <input mdInput placeholder="Search Projects, Users, Tags...">
     </md-input-container>
     <button md-icon-button><md-icon>search</md-icon></button>
+
+    <!--Forum, Users, Projects link-->
     <div>
-        <button md-button routerLink="/products">Forum</button>
-        <button md-button routerLink="/dashboard">Users</button>
-        <button md-button routerLink="/dashboard">Projects</button>
+        <button md-button routerLink="/forum">Forum</button>
+        <button md-button routerLink="/top-users">Users</button>
+        <button md-button routerLink="/projects-feed">Projects</button>
     </div>
+
+    <!--fill out the empty space to right align remaining data-->
     <span class="fill-remaining-space"></span>
 
+    <!--profile avatar of the user and user rating-->
+    <!--TODO: make links dynamic-->
     <a md-button href="https://github.com/anubhavshrimal" target="blank">
         <img class="avatar avatar-small" src="https://avatars3.githubusercontent.com/u/17249362?v=3&u=2a1bc326e43e6fdee5102494672de0758c6d083f&s=400" width="32" height="32">
         <span class="counter">245</span>
     </a>
-    <button md-icon-button [md-menu-trigger-for]="menu"><md-icon class="fa fa-trophy fa-2x" aria-hidden="true"></md-icon></button>
-    <button md-icon-button [md-menu-trigger-for]="menu"><md-icon class="fa fa-caret-down fa-2x" aria-hidden="true"></md-icon></button>
+
+    <!--trophy dropdown and main settings drop down-->
+    <button md-icon-button [md-menu-trigger-for]="trophymenu"><md-icon class="fa fa-trophy fa-2x" aria-hidden="true"></md-icon></button>
+    <button md-icon-button [md-menu-trigger-for]="dropmenu"><md-icon class="fa fa-caret-down fa-2x" aria-hidden="true"></md-icon></button>
+
 </md-toolbar>
-<md-menu x-position="before" #menu="mdMenu">
-    <button md-menu-item routerLink="/products">Products</button>
-    <button md-menu-item routerLink="/dashboard">Dashboard</button>
-    <!--<button md-menu-item>Help</button>-->
+
+<!--dropdown menus for trophy button and down arrow-->
+<md-menu #trophymenu="mdMenu">
+    <button md-menu-item routerLink="/products">Noobie</button>
+</md-menu>
+
+<md-menu #dropmenu="mdMenu">
+    <button md-menu-item routerLink="/products">Settings</button>
+    <button md-menu-item routerLink="/help">Help</button>
+    <button md-menu-item routerLink="/dashboard">Logout</button>
 </md-menu>
