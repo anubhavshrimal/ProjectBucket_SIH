@@ -11,15 +11,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var AppComponent = (function () {
     function AppComponent() {
-        this.name = 'Angular';
-        this.color = 'accent';
-        this.checked = false;
-        this.disabled = false;
     }
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "<button md-icon-button [mdMenuTriggerFor]=\"menu\">\n  <md-icon>more_vert</md-icon>\n</button>\n<md-slider></md-slider>\n<button class=\"btn\" type=\"button\">Button button</button>\n<a class=\"btn\" href=\"#\" role=\"button\">Link button</a>\n<button class=\"btn btn-sm btn-primary\" type=\"button\">Small primary button</button>\n<span class=\"tooltipped tooltipped-s border p-2 mb-2 mr-2 left\" aria-label=\"This is the tooltip.\">\n  Tooltip North\n</span>\n\n",
+            template: "\n  <navbar></navbar>\n",
+            moduleId: module.id
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
