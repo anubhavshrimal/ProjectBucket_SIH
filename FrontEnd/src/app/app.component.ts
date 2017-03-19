@@ -5,21 +5,14 @@ import { Component } from '@angular/core';
   template: `<button md-icon-button [mdMenuTriggerFor]="menu">
   <md-icon>more_vert</md-icon>
 </button>
-<md-menu #menu="mdMenu">
-  <button md-menu-item>
-    <md-icon>dialpad</md-icon>
-    <span>Redial</span>
-  </button>
-  <button md-menu-item disabled>
-    <md-icon>voicemail</md-icon>
-    <span>Check voicemail</span>
-  </button>
-  <button md-menu-item>
-    <md-icon>notifications_off</md-icon>
-    <span>Disable alerts</span>
-  </button>
-</md-menu>
 <md-slider></md-slider>
+<button class="btn" type="button">Button button</button>
+<a class="btn" href="#" role="button">Link button</a>
+<button class="btn btn-sm btn-primary" type="button">Small primary button</button>
+<span class="tooltipped tooltipped-s border p-2 mb-2 mr-2 left" aria-label="This is the tooltip.">
+  Tooltip North
+</span>
+
 `,
 })
 export class AppComponent  { name = 'Angular'; 
