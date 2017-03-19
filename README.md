@@ -2,52 +2,52 @@
 
 
     #### request POST 
-    #### url /webapi/project/insert/:username
+    #### url:  /webapi/project/insert/:username
     #### request
-    {
+		{
 
-      "title":"Army portal",
+			"title":"Army portal",
 
-      "description":"all in one army portal",
+			"description":"all in one army portal",
 
-      "project_url":"www.armysocial.com",
+			"project_url":"www.armysocial.com",
 
-      "tags": ["army","Social","java","mongo"],
+			"tags": ["army","Social","java","mongo"],
 
-      "likes": 123,
+			"likes": 123,
 
-      "comments": [],
+			"comments": [],
 
-      "contributors": ["singhsahab"],
+			"contributors": ["singhsahab"],
 
-      "license": "apache",
+			"license": "apache",
 
-      "readme":"welcome",
+			"readme":"welcome",
 
-      "private": "false",
+			"private": "false",
 
-      "video_url":["https://www.youtube.com/watch?v=PEqbPzVQYqU"],
+			"video_url":["https://www.youtube.com/watch?v=PEqbPzVQYqU"],
 
-      "zip_file":[], 
+			"zip_file":[], 
 
-      "images":["http://pics.com"] 
+			"images":["http://pics.com"] 
 
-	}
+		}
 	#### response
-	{
-	                                                
-	"matchedCount": "matchedCount=1",  
+		{
+														
+			"matchedCount": "matchedCount=1",  
 
-	"modifiedCount": " modifiedCount=1",
+			"modifiedCount": " modifiedCount=1",
 
-	"upsertedId": " upsertedId=null"
+			"upsertedId": " upsertedId=null"
 
-	}
+		}
 
 ------------------------------------------------------------------------------
 
   #### request GET 
-  #### url /webapi/project/retrieveall/:username 
+  #### url:  /webapi/project/retrieveall/:username 
   #### response
 	[ 
 		{ 
@@ -97,27 +97,27 @@
 
     #### request POST 
                                              
-    #### url /webapi/project/insertcomment/:username/:Googo 
+    #### url:  /webapi/project/insertcomment/:username/:Googo 
 
 
     #### request
-    {
-	"username":"sjsidjain",
-	"comment":"greeting from postman"
-     } 
+		{
+			"username":"sjsidjain",
+			"comment":"greeting from postman"
+		} 
 
     #### response
-    { 
-      "matchedCount": "matchedCount=1", 
-      "modifiedCount": " modifiedCount=1", 
-      "upsertedId": " upsertedId=null" 
-     }
+		{ 
+			"matchedCount": "matchedCount=1", 
+			"modifiedCount": " modifiedCount=1", 
+			"upsertedId": " upsertedId=null" 
+		}
 
 
 ------------------------------------------------------------------------------
 
    #### request GET 
-   #### url /webapi/project/retrievecomments/:username/Googo 
+   #### url:  /webapi/project/retrievecomments/:username/Googo 
 
    #### response
     [ 
@@ -130,7 +130,7 @@
 ------------------------------------------------------------------------------
 
   #### request GET 
-  #### url /webapi/user/profile/:username
+  #### url:  /webapi/user/profile/:username
   
   #### response
 	{
@@ -155,7 +155,7 @@
 
 
   #### request PUT 
-  #### url /webapi/user/updateuser 
+  #### url:  /webapi/user/updateuser 
 
   #### request 
 	{ 
