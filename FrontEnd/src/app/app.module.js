@@ -12,6 +12,7 @@ var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var material_1 = require('@angular/material');
 var navbar_component_1 = require('./components/navbar/navbar.component');
+var addProject_component_1 = require('./components/addProject/addProject.component');
 var app_component_1 = require('./app.component');
 var AppModule = (function () {
     function AppModule() {
@@ -24,7 +25,8 @@ var AppModule = (function () {
             ],
             declarations: [
                 app_component_1.AppComponent,
-                navbar_component_1.NavbarComponent
+                navbar_component_1.NavbarComponent,
+                addProject_component_1.AddProjectComponent
             ],
             bootstrap: [app_component_1.AppComponent]
         }), 

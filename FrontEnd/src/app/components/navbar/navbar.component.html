@@ -19,6 +19,13 @@
     <!--fill out the empty space to right align remaining data-->
     <span class="fill-remaining-space"></span>
 
+    <!--add new project or question dropdown-->
+    <button md-icon-button [md-menu-trigger-for]="addnewmenu">
+        <md-icon class="fa fa-plus" aria-hidden="true">
+            <md-icon class="fa fa-caret-down" aria-hidden="true"></md-icon
+        ></md-icon>
+    </button>
+
     <!--profile avatar of the user and user rating-->
     <!--TODO: make links dynamic-->
     <a md-button href="https://github.com/anubhavshrimal" target="blank">
@@ -26,13 +33,24 @@
         <span class="counter">245</span>
     </a>
 
-    <!--trophy dropdown and main settings drop down-->
-    <button md-icon-button [md-menu-trigger-for]="trophymenu"><md-icon class="fa fa-trophy fa-2x" aria-hidden="true"></md-icon></button>
-    <button md-icon-button [md-menu-trigger-for]="dropmenu"><md-icon class="fa fa-caret-down fa-2x" aria-hidden="true"></md-icon></button>
+    <!--notifications, trophy dropdown and main settings drop down-->
+    <button md-icon-button [md-menu-trigger-for]="notificationsmenu"><md-icon class="fa fa-bell" aria-hidden="true"></md-icon></button>
+    <button md-icon-button [md-menu-trigger-for]="trophymenu"><md-icon class="fa fa-trophy" aria-hidden="true"></md-icon></button>
+    <button md-icon-button [md-menu-trigger-for]="dropmenu"><md-icon class="fa fa-caret-down" aria-hidden="true"></md-icon></button>
 
 </md-toolbar>
 
-<!--dropdown menus for trophy button and down arrow-->
+<!--dropdown menus for add new, notifications, trophy button and down arrow-->
+<md-menu #addnewmenu="mdMenu">
+    <button md-menu-item routerLink="/products">Add new project</button>
+    <button md-menu-item routerLink="/products">Add new question</button>
+</md-menu>
+
+<md-menu #notificationsmenu="mdMenu">
+    <button md-menu-item routerLink="/products">SIH 2017 is up</button>
+    <button md-menu-item routerLink="/products">Join the new group</button>
+</md-menu>
+
 <md-menu #trophymenu="mdMenu">
     <button md-menu-item routerLink="/products">Noobie</button>
 </md-menu>
