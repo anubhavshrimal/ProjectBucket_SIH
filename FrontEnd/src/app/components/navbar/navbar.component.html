@@ -28,8 +28,8 @@
 
     <!--profile avatar of the user and user rating-->
     <!--TODO: make links dynamic-->
-    <a md-button href="https://github.com/anubhavshrimal" target="blank">
-        <img class="avatar avatar-small" src="https://avatars3.githubusercontent.com/u/17249362?v=3&u=2a1bc326e43e6fdee5102494672de0758c6d083f&s=400" width="32" height="32">
+    <a md-button href="{{user.profile}}">
+        <img class="avatar avatar-small" src="{{user.thumbnail}}" width="32" height="32">
         <span class="counter">{{user.rating}}</span>
     </a>
 
