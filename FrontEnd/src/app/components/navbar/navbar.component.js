@@ -11,6 +11,45 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var NavbarComponent = (function () {
     function NavbarComponent() {
+        this.user = {
+            'rating': 245
+        };
+        this.add_new_menu = [
+            {
+                name: 'Add new project',
+                link: '/addproject'
+            },
+            {
+                name: 'Ask new question',
+                link: '/addquestion'
+            }
+        ];
+        this.notifications_menu = [
+            {
+                name: 'Sign up for SIH 2017',
+                link: '/sih2017'
+            }
+        ];
+        this.trophy_menu = [
+            {
+                name: 'Noobie',
+                link: '/noobielink'
+            }
+        ];
+        this.extras_menu = [
+            {
+                name: 'Settings',
+                link: '/settings'
+            },
+            {
+                name: 'Help',
+                link: '/help'
+            },
+            {
+                name: 'Logout',
+                link: '/logout'
+            }
+        ];
     }
     NavbarComponent = __decorate([
         core_1.Component({

@@ -30,33 +30,29 @@
     <!--TODO: make links dynamic-->
     <a md-button href="https://github.com/anubhavshrimal" target="blank">
         <img class="avatar avatar-small" src="https://avatars3.githubusercontent.com/u/17249362?v=3&u=2a1bc326e43e6fdee5102494672de0758c6d083f&s=400" width="32" height="32">
-        <span class="counter">245</span>
+        <span class="counter">{{user.rating}}</span>
     </a>
 
     <!--notifications, trophy dropdown and main settings drop down-->
     <button md-icon-button [md-menu-trigger-for]="notificationsmenu"><md-icon class="fa fa-bell" aria-hidden="true"></md-icon></button>
     <button md-icon-button [md-menu-trigger-for]="trophymenu"><md-icon class="fa fa-trophy" aria-hidden="true"></md-icon></button>
-    <button md-icon-button [md-menu-trigger-for]="dropmenu"><md-icon class="fa fa-caret-down" aria-hidden="true"></md-icon></button>
+    <button md-icon-button [md-menu-trigger-for]="extras"><md-icon class="fa fa-caret-down" aria-hidden="true"></md-icon></button>
 
 </md-toolbar>
 
 <!--dropdown menus for add new, notifications, trophy button and down arrow-->
 <md-menu #addnewmenu="mdMenu">
-    <button md-menu-item routerLink="/products">Add new project</button>
-    <button md-menu-item routerLink="/products">Add new question</button>
+    <button md-menu-item *ngFor='let items of add_new_menu' routerLink="items.link">{{items.name}}</button>
 </md-menu>
 
 <md-menu #notificationsmenu="mdMenu">
-    <button md-menu-item routerLink="/products">SIH 2017 is up</button>
-    <button md-menu-item routerLink="/products">Join the new group</button>
+    <button md-menu-item *ngFor='let items of notifications_menu' routerLink="items.link">{{items.name}}</button>
 </md-menu>
 
 <md-menu #trophymenu="mdMenu">
-    <button md-menu-item routerLink="/products">Noobie</button>
+    <button md-menu-item *ngFor='let items of trophy_menu' routerLink="items.link">{{items.name}}</button>
 </md-menu>
 
-<md-menu #dropmenu="mdMenu">
-    <button md-menu-item routerLink="/products">Settings</button>
-    <button md-menu-item routerLink="/help">Help</button>
-    <button md-menu-item routerLink="/dashboard">Logout</button>
+<md-menu #extras="mdMenu">
+    <button md-menu-item *ngFor='let items of extras_menu' routerLink="items.link">{{items.name}}</button>
 </md-menu>
