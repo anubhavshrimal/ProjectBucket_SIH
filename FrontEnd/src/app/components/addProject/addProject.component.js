@@ -25,6 +25,7 @@ var AddProjectComponent = (function () {
     };
     AddProjectComponent.prototype.addTag = function () {
         if (this.tag.length != 0) {
+            this.tag = this.tag.toLowerCase();
             for (var i in this.tags) {
                 if (this.tags[i] === this.tag)
                     return;

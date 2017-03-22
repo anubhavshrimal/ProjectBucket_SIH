@@ -27,6 +27,7 @@ export class AddProjectComponent implements OnInit {
 
   addTag (): void {
     if(this.tag.length != 0){
+      this.tag = this.tag.toLowerCase();
       for(let i in this.tags){
         if(this.tags[i] === this.tag)
           return
