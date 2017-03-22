@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
   template: `
   <navbar></navbar>
   <add-project></add-project>
+  <footer></footer>
 `,
   moduleId: module.id
 })
