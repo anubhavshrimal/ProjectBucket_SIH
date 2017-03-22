@@ -14,6 +14,7 @@ var forms_1 = require('@angular/forms');
 var material_1 = require('@angular/material');
 var navbar_component_1 = require('./components/navbar/navbar.component');
 var addProject_component_1 = require('./components/addProject/addProject.component');
+var footer_component_1 = require('./components/footer/footer.component');
 var app_component_1 = require('./app.component');
 var AppModule = (function () {
     function AppModule() {
@@ -28,7 +29,8 @@ var AppModule = (function () {
             declarations: [
                 app_component_1.AppComponent,
                 navbar_component_1.NavbarComponent,
-                addProject_component_1.AddProjectComponent
+                addProject_component_1.AddProjectComponent,
+                footer_component_1.FooterComponent
             ],
             bootstrap: [app_component_1.AppComponent]
         }), 

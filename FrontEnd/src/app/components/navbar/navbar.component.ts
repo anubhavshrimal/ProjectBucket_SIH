@@ -4,11 +4,6 @@ import {Component} from '@angular/core';
     moduleId: module.id,
     selector: 'navbar',
     templateUrl: './navbar.component.html',
-    styles: [
-        `.fill-remaining-space {
-        flex: 1 1 auto;
-        }`
-    ]
 })
 export class NavbarComponent {
     add_new_menu: Array<Object>;
