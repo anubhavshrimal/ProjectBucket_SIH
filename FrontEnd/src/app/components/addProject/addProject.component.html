@@ -1,0 +1,119 @@
+<div class="container">
+    <div class="columns">
+        <div class="four-fifths column centered">
+        <h2>Add a new project or idea</h2>
+            <p class="Subhead-description">It will contain all the files of your project or idea such as zip file, screenshorts and README.md</p>
+        <hr>
+
+        <form>
+            <div class="columns">
+                <div class="one-half column">
+                    <md-input-container class="full-width-input">
+                        <input mdInput placeholder="Project name">
+                        <md-hint align="start">Project name should be unique</md-hint>
+                    </md-input-container>
+                </div>
+            </div>
+            
+            <div class="columns">
+                <div class="one-half column">
+                    <md-input-container class="full-width-input">
+                        <input mdInput [(ngModel)]="tag" (keyup.enter)="addTag()" placeholder="Keywords" name="tag">
+                        <md-hint align="start">Add keywords related to your project. Example algorithms, java, mysql.</md-hint>
+                    </md-input-container>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <md-chip-list>
+                        <md-chip *ngFor="let tag of tags">
+                            {{tag}}
+                            <a class="fa fa-times" (click)="removeTag(tag)"></a>
+                        </md-chip>
+                    </md-chip-list>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="four-fifths column">
+                    <md-input-container class="full-width-input">
+                        <input mdInput placeholder="Description">
+                        <md-hint align="start">Add one or two lines about your awesome project idea</md-hint>
+                    </md-input-container>
+                </div>
+            </div>
+            <hr>
+
+            <div class="columns">
+                <div class="one-half column">
+                    <md-radio-group>
+                        <md-radio-button value="1" checked='true'>
+                            <md-icon class="fa fa-unlock fa-2x" aria-hidden="true"></md-icon>
+                            <label>Public</label>
+                            <p class="note">Anyone can see this project. You choose who can contribute.</p>
+                        </md-radio-button>
+                        <br>
+                        <md-radio-button value="2">
+                            <md-icon class="fa fa-lock fa-2x" aria-hidden="true"></md-icon>
+                            <label>Private</label>
+                            <p class="note">You choose who can see and contribute to this project.</p>
+                        </md-radio-button>
+                    </md-radio-group>
+                </div>
+            </div>
+            <hr>
+
+            <div class="columns">
+                <div class="one-half column">
+                    <md-checkbox>
+                        <label>Initialise the project with a README file</label>
+                    </md-checkbox>
+                    <p class="note mx-5">Enter details of your project in this file</p>
+                </div>
+                <div class="one-half column">
+                    <md-select placeholder="Add a license:" name="license">
+                        <md-option *ngFor="let license of licenses" [value]="license.name">
+                        {{license.name}}
+                        </md-option>
+                    </md-select>  
+                    <p class="note">Confused which one to choose? <a href="https://choosealicense.com/">click here!</a></p>
+                </div>
+            </div>
+            <hr>
+            
+            <div class="columns">
+                <div class="one-half column text-center">
+                    <md-input-container class="full-width-input">
+                        <input mdInput placeholder="Project link">
+                        <md-hint align="start">
+                            Add a link related to your project. Example Github or Google Drive. (Optional)
+                        </md-hint>
+                    </md-input-container>
+                </div>
+            </div>
+            <br>
+            <div class="columns">
+                <div class="one-half column text-center">
+                    <md-icon class="fa fa-file-archive-o fa-3x"></md-icon>
+                    <br>
+                    <button md-raised-button color='primary' type="file">Upload Zip file</button>
+                    <p class="note">Upload your project files in zip format. (Optional)</p>
+                </div>
+                <div class="one-half column text-center">
+                    <md-icon class="fa fa-file-image-o fa-3x"></md-icon>
+                    <br>
+                    <button md-raised-button color='primary' type="file">Upload Images</button>
+                    <p class="note">Upload images or screenshorts of your project or idea. (Optional)</p>
+                </div>
+            </div>
+            <hr>
+            <div class="columns">
+                <div class="one-half column centered text-center">
+                    <button class="btn btn-primary" type="button">Create Project</button>
+                </div>
+            </div>
+        </form>
+        </div>
+    </div>
+<div>
