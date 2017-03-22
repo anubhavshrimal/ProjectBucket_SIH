@@ -9,7 +9,7 @@
             <div class="columns">
                 <div class="one-half column">
                     <md-input-container class="full-width">
-                        <input mdInput placeholder="Project name">
+                        <input mdInput placeholder="Project name:">
                         <md-hint align="start">Project name should be unique</md-hint>
                     </md-input-container>
                 </div>
@@ -18,8 +18,8 @@
             <div class="columns">
                 <div class="one-half column">
                     <md-input-container class="full-width">
-                        <input mdInput [(ngModel)]="tag" (keyup.enter)="addTag()" placeholder="Keywords" name="tag">
-                        <md-hint align="start">Add keywords related to your project. Example algorithms, java, mysql.</md-hint>
+                        <input mdInput [(ngModel)]="tag" (keyup.enter)="addTag()" placeholder="Keywords:" name="tag">
+                        <md-hint align="start">Hit enter! to add keywords related to your project. Example java, mysql.</md-hint>
                     </md-input-container>
                 </div>
             </div>
@@ -38,7 +38,7 @@
             <div class="columns">
                 <div class="four-fifths column">
                     <md-input-container class="full-width">
-                        <input mdInput placeholder="Description">
+                        <input mdInput placeholder="Description:">
                         <md-hint align="start">Add one or two lines about your awesome project idea</md-hint>
                     </md-input-container>
                 </div>
@@ -86,7 +86,7 @@
             <div class="columns">
                 <div class="one-half column text-center">
                     <md-input-container class="full-width">
-                        <input mdInput placeholder="Project link">
+                        <input mdInput placeholder="Project link:">
                         <md-hint align="start">
                             Add a link related to your project. Example Github or Google Drive. (Optional)
                         </md-hint>
