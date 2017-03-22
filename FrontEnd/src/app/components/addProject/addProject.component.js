@@ -9,21 +9,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var licenses_service_1 = require('../../services/licenses/licenses.service');
 var _ = require("lodash");
 var AddProjectComponent = (function () {
-    function AddProjectComponent() {
-        this.licenses = [
-            {
-                name: "None",
-                text: ""
-            },
-            {
-                name: "MIT",
-                text: "MIT open source to all"
-            }
-        ];
+    function AddProjectComponent(licensesService) {
+        this.licensesService = licensesService;
         this.tags = [];
     }
+    AddProjectComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.licensesService.getLicenses().then(function (licenses) {
+            _this.licenses = licenses;
+            _this.licenseSelected = _this.licenses[0];
+        });
+    };
     AddProjectComponent.prototype.addTag = function () {
         if (this.tag.length != 0) {
             for (var i in this.tags) {
@@ -43,9 +42,10 @@ var AddProjectComponent = (function () {
         core_1.Component({
             selector: 'add-project',
             templateUrl: './addProject.component.html',
-            moduleId: module.id
+            moduleId: module.id,
+            providers: [licenses_service_1.LicensesService]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [licenses_service_1.LicensesService])
     ], AddProjectComponent);
     return AddProjectComponent;
 }());

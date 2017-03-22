@@ -15,7 +15,7 @@ var LicensesService = (function () {
     function LicensesService() {
     }
     LicensesService.prototype.getLicenses = function () {
-        console.log(_.map(licenses_1.LICENSES, 'name'));
+        return Promise.resolve(_.map(licenses_1.LICENSES, 'name'));
     };
     LicensesService = __decorate([
         core_1.Injectable(), 

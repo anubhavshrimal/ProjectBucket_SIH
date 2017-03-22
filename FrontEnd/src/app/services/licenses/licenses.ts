@@ -1,5 +1,9 @@
 export const LICENSES = [
     {
+        name: 'None',
+        text: ''
+    },
+    {
         name: 'Apache License 2.0',
         text: `Copyright [yyyy] [name of copyright owner]
 
