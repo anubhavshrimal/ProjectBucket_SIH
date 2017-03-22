@@ -10,3 +10,7 @@
   color: #586069;
   font-size: 75%;
 }
+
+.fill-remaining-space {
+  flex: 1 1 auto;
+}
