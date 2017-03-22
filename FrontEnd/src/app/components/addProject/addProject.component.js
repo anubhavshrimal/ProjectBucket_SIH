@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var _ = require("lodash");
 var AddProjectComponent = (function () {
     function AddProjectComponent() {
         this.licenses = [
@@ -34,10 +35,9 @@ var AddProjectComponent = (function () {
         }
     };
     AddProjectComponent.prototype.removeTag = function (tag) {
-        for (var i in this.tags) {
-            if (this.tags[i] === tag)
-                delete this.tags[i];
-        }
+        _.remove(this.tags, function (n) {
+            return n === tag;
+        });
     };
     AddProjectComponent = __decorate([
         core_1.Component({
