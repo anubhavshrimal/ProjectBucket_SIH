@@ -1,4 +1,5 @@
 <md-toolbar color="accent">
+    <span class="fill-remaining-space"></span>
 
     <!--TODO: Project Logo comes here-->
     <button md-icon-button routerLink="/"><md-icon>home</md-icon></button>
@@ -22,8 +23,8 @@
     <!--add new project or question dropdown-->
     <button md-icon-button [md-menu-trigger-for]="addnewmenu" mdTooltip="Add new..">
         <md-icon class="fa fa-plus" aria-hidden="true">
-            <md-icon class="fa fa-caret-down" aria-hidden="true"></md-icon
-        ></md-icon>
+            <md-icon class="fa fa-caret-down" aria-hidden="true"></md-icon>
+        </md-icon>
     </button>
 
     <!--profile avatar of the user and user rating-->
@@ -43,6 +44,7 @@
     <button md-icon-button [md-menu-trigger-for]="extras" mdTooltip="More">
         <md-icon class="fa fa-caret-down" aria-hidden="true"></md-icon>
     </button>
+    <span class="fill-remaining-space"></span>
 
 </md-toolbar>
 

@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
   selector: 'my-app',
   template: `
   <navbar></navbar>
+  <add-project></add-project>
 `,
   moduleId: module.id
 })

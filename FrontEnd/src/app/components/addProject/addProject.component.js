@@ -11,6 +11,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var AddProjectComponent = (function () {
     function AddProjectComponent() {
+        this.licenses = [
+            {
+                name: "None",
+                text: ""
+            },
+            {
+                name: "MIT",
+                text: "MIT open source to all"
+            }
+        ];
     }
     AddProjectComponent = __decorate([
         core_1.Component({

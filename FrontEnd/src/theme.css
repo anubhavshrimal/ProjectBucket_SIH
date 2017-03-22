@@ -198,7 +198,7 @@
 
 .mat-option.mat-selected {
   background: rgba(0, 0, 0, 0.04);
-  color: #651fff; }
+  color: #ff9100; }
 
 .mat-option.mat-active {
   background: rgba(0, 0, 0, 0.04);
@@ -213,7 +213,7 @@
 .mat-pseudo-checkbox-checked, .mat-pseudo-checkbox-indeterminate {
   border: none; }
   .mat-pseudo-checkbox-checked.mat-primary, .mat-pseudo-checkbox-indeterminate.mat-primary {
-    background: #673ab7; }
+    background: #ff9800; }
   .mat-pseudo-checkbox-checked.mat-accent, .mat-pseudo-checkbox-indeterminate.mat-accent {
     background: #607d8b; }
   .mat-pseudo-checkbox-checked.mat-warn, .mat-pseudo-checkbox-indeterminate.mat-warn {
@@ -232,7 +232,7 @@
     color: rgba(0, 0, 0, 0.87); }
 
 .mat-button.mat-button-focus.mat-primary .mat-button-focus-overlay, .mat-icon-button.mat-button-focus.mat-primary .mat-button-focus-overlay, .mat-raised-button.mat-button-focus.mat-primary .mat-button-focus-overlay, .mat-fab.mat-button-focus.mat-primary .mat-button-focus-overlay, .mat-mini-fab.mat-button-focus.mat-primary .mat-button-focus-overlay {
-  background-color: rgba(101, 31, 255, 0.12); }
+  background-color: rgba(255, 145, 0, 0.12); }
 
 .mat-button.mat-button-focus.mat-accent .mat-button-focus-overlay, .mat-icon-button.mat-button-focus.mat-accent .mat-button-focus-overlay, .mat-raised-button.mat-button-focus.mat-accent .mat-button-focus-overlay, .mat-fab.mat-button-focus.mat-accent .mat-button-focus-overlay, .mat-mini-fab.mat-button-focus.mat-accent .mat-button-focus-overlay {
   background-color: rgba(69, 90, 100, 0.12); }
@@ -243,7 +243,7 @@
 .mat-button, .mat-icon-button {
   background: transparent; }
   .mat-button.mat-primary, .mat-icon-button.mat-primary {
-    color: #651fff; }
+    color: #ff9100; }
   .mat-button.mat-accent, .mat-icon-button.mat-accent {
     color: #455a64; }
   .mat-button.mat-warn, .mat-icon-button.mat-warn {
@@ -251,7 +251,7 @@
   .mat-button.mat-primary[disabled], .mat-button.mat-accent[disabled], .mat-button.mat-warn[disabled], .mat-button[disabled][disabled], .mat-icon-button.mat-primary[disabled], .mat-icon-button.mat-accent[disabled], .mat-icon-button.mat-warn[disabled], .mat-icon-button[disabled][disabled] {
     color: rgba(0, 0, 0, 0.38); }
   .mat-button:hover.mat-primary .mat-button-focus-overlay, .mat-icon-button:hover.mat-primary .mat-button-focus-overlay {
-    background-color: rgba(101, 31, 255, 0.12); }
+    background-color: rgba(255, 145, 0, 0.12); }
   .mat-button:hover.mat-accent .mat-button-focus-overlay, .mat-icon-button:hover.mat-accent .mat-button-focus-overlay {
     background-color: rgba(69, 90, 100, 0.12); }
   .mat-button:hover.mat-warn .mat-button-focus-overlay, .mat-icon-button:hover.mat-warn .mat-button-focus-overlay {
@@ -261,7 +261,7 @@
   color: rgba(0, 0, 0, 0.87);
   background-color: white; }
   .mat-raised-button.mat-primary, .mat-fab.mat-primary, .mat-mini-fab.mat-primary {
-    color: rgba(255, 255, 255, 0.87); }
+    color: rgba(0, 0, 0, 0.87); }
   .mat-raised-button.mat-accent, .mat-fab.mat-accent, .mat-mini-fab.mat-accent {
     color: rgba(255, 255, 255, 0.87); }
   .mat-raised-button.mat-warn, .mat-fab.mat-warn, .mat-mini-fab.mat-warn {
@@ -269,7 +269,7 @@
   .mat-raised-button.mat-primary[disabled], .mat-raised-button.mat-accent[disabled], .mat-raised-button.mat-warn[disabled], .mat-raised-button[disabled][disabled], .mat-fab.mat-primary[disabled], .mat-fab.mat-accent[disabled], .mat-fab.mat-warn[disabled], .mat-fab[disabled][disabled], .mat-mini-fab.mat-primary[disabled], .mat-mini-fab.mat-accent[disabled], .mat-mini-fab.mat-warn[disabled], .mat-mini-fab[disabled][disabled] {
     color: rgba(0, 0, 0, 0.38); }
   .mat-raised-button.mat-primary, .mat-fab.mat-primary, .mat-mini-fab.mat-primary {
-    background-color: #651fff; }
+    background-color: #ff9100; }
   .mat-raised-button.mat-accent, .mat-fab.mat-accent, .mat-mini-fab.mat-accent {
     background-color: #455a64; }
   .mat-raised-button.mat-warn, .mat-fab.mat-warn, .mat-mini-fab.mat-warn {
@@ -314,7 +314,7 @@
   background-color: #fafafa; }
 
 .mat-checkbox-indeterminate.mat-primary .mat-checkbox-background, .mat-checkbox-checked.mat-primary .mat-checkbox-background {
-  background-color: #673ab7; }
+  background-color: #ff9800; }
 
 .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-checkbox-checked.mat-accent .mat-checkbox-background {
   background-color: #607d8b; }
@@ -329,7 +329,7 @@
   border-color: #b0b0b0; }
 
 .mat-checkbox:not(.mat-checkbox-disabled).mat-primary .mat-checkbox-ripple .mat-ripple-element {
-  background-color: rgba(101, 31, 255, 0.26); }
+  background-color: rgba(255, 145, 0, 0.26); }
 
 .mat-checkbox:not(.mat-checkbox-disabled).mat-accent .mat-checkbox-ripple .mat-ripple-element {
   background-color: rgba(69, 90, 100, 0.26); }
@@ -345,8 +345,8 @@
   background-color: #808080;
   color: rgba(255, 255, 255, 0.87); }
   .mat-chip.mat-chip-selected:not(.mat-basic-chip).mat-primary {
-    background-color: #673ab7;
-    color: rgba(255, 255, 255, 0.87); }
+    background-color: #ff9800;
+    color: rgba(0, 0, 0, 0.87); }
   .mat-chip.mat-chip-selected:not(.mat-basic-chip).mat-accent {
     background-color: #607d8b;
     color: white; }
@@ -358,7 +358,7 @@
   background: white; }
 
 .mat-icon.mat-primary {
-  color: #651fff; }
+  color: #ff9100; }
 
 .mat-icon.mat-accent {
   color: #455a64; }
@@ -369,7 +369,7 @@
 .mat-input-placeholder {
   color: rgba(0, 0, 0, 0.38); }
   .mat-input-placeholder.mat-focused {
-    color: #651fff; }
+    color: #ff9100; }
     .mat-input-placeholder.mat-focused.mat-accent {
       color: #455a64; }
     .mat-input-placeholder.mat-focused.mat-warn {
@@ -385,7 +385,7 @@ input.mat-input-element:-webkit-autofill + .mat-input-placeholder .mat-placehold
 .mat-input-underline {
   border-color: rgba(0, 0, 0, 0.12); }
   .mat-input-underline .mat-input-ripple {
-    background-color: #651fff; }
+    background-color: #ff9100; }
     .mat-input-underline .mat-input-ripple.mat-accent {
       background-color: #455a64; }
     .mat-input-underline .mat-input-ripple.mat-warn {
@@ -418,13 +418,13 @@ input.mat-input-element:-webkit-autofill + .mat-input-placeholder .mat-placehold
     background: rgba(0, 0, 0, 0.04); }
 
 .mat-progress-bar-background {
-  background: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20version%3D%271.1%27%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20xmlns%3Axlink%3D%27http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%27%20x%3D%270px%27%20y%3D%270px%27%20enable-background%3D%27new%200%200%205%202%27%20xml%3Aspace%3D%27preserve%27%20viewBox%3D%270%200%205%202%27%20preserveAspectRatio%3D%27none%20slice%27%3E%3Ccircle%20cx%3D%271%27%20cy%3D%271%27%20r%3D%271%27%20fill%3D%27%23d1c4e9%27%2F%3E%3C%2Fsvg%3E"); }
+  background: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20version%3D%271.1%27%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20xmlns%3Axlink%3D%27http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%27%20x%3D%270px%27%20y%3D%270px%27%20enable-background%3D%27new%200%200%205%202%27%20xml%3Aspace%3D%27preserve%27%20viewBox%3D%270%200%205%202%27%20preserveAspectRatio%3D%27none%20slice%27%3E%3Ccircle%20cx%3D%271%27%20cy%3D%271%27%20r%3D%271%27%20fill%3D%27%23ffe0b2%27%2F%3E%3C%2Fsvg%3E"); }
 
 .mat-progress-bar-buffer {
-  background-color: #d1c4e9; }
+  background-color: #ffe0b2; }
 
 .mat-progress-bar-fill::after {
-  background-color: #5e35b1; }
+  background-color: #fb8c00; }
 
 .mat-progress-bar.mat-accent .mat-progress-bar-background {
   background: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20version%3D%271.1%27%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20xmlns%3Axlink%3D%27http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%27%20x%3D%270px%27%20y%3D%270px%27%20enable-background%3D%27new%200%200%205%202%27%20xml%3Aspace%3D%27preserve%27%20viewBox%3D%270%200%205%202%27%20preserveAspectRatio%3D%27none%20slice%27%3E%3Ccircle%20cx%3D%271%27%20cy%3D%271%27%20r%3D%271%27%20fill%3D%27%23cfd8dc%27%2F%3E%3C%2Fsvg%3E"); }
@@ -445,7 +445,7 @@ input.mat-input-element:-webkit-autofill + .mat-input-placeholder .mat-placehold
   background-color: #e53935; }
 
 .mat-progress-spinner path, .mat-progress-circle path, .mat-spinner path {
-  stroke: #5e35b1; }
+  stroke: #fb8c00; }
 
 .mat-progress-spinner.mat-accent path, .mat-progress-circle.mat-accent path, .mat-spinner.mat-accent path {
   stroke: #546e7a; }
@@ -473,21 +473,21 @@ input.mat-input-element:-webkit-autofill + .mat-input-placeholder .mat-placehold
 .mat-select-trigger {
   color: rgba(0, 0, 0, 0.38); }
   .mat-select:focus:not(.mat-select-disabled) .mat-select-trigger {
-    color: #651fff; }
+    color: #ff9100; }
   .mat-select.ng-invalid.ng-touched:not(.mat-select-disabled) .mat-select-trigger {
     color: #f44336; }
 
 .mat-select-underline {
   background-color: rgba(0, 0, 0, 0.12); }
   .mat-select:focus:not(.mat-select-disabled) .mat-select-underline {
-    background-color: #651fff; }
+    background-color: #ff9100; }
   .mat-select.ng-invalid.ng-touched:not(.mat-select-disabled) .mat-select-underline {
     background-color: #f44336; }
 
 .mat-select-arrow {
   color: rgba(0, 0, 0, 0.38); }
   .mat-select:focus:not(.mat-select-disabled) .mat-select-arrow {
-    color: #651fff; }
+    color: #ff9100; }
   .mat-select.ng-invalid.ng-touched:not(.mat-select-disabled) .mat-select-arrow {
     color: #f44336; }
 
@@ -525,16 +525,16 @@ input.mat-input-element:-webkit-autofill + .mat-input-placeholder .mat-placehold
   background-color: rgba(96, 125, 139, 0.26); }
 
 .mat-slide-toggle.mat-primary.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
-  background-color: #673ab7; }
+  background-color: #ff9800; }
 
 .mat-slide-toggle.mat-primary.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
-  background-color: rgba(103, 58, 183, 0.5); }
+  background-color: rgba(255, 152, 0, 0.5); }
 
 .mat-slide-toggle.mat-primary.mat-slide-toggle-focused:not(.mat-checked) .mat-ink-ripple {
   background-color: rgba(0, 0, 0, 0.12); }
 
 .mat-slide-toggle.mat-primary.mat-slide-toggle-focused .mat-ink-ripple {
-  background-color: rgba(103, 58, 183, 0.26); }
+  background-color: rgba(255, 152, 0, 0.26); }
 
 .mat-slide-toggle.mat-warn.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
   background-color: #f44336; }
@@ -614,17 +614,17 @@ input.mat-input-element:-webkit-autofill + .mat-input-placeholder .mat-placehold
     border-bottom: none; }
 
 .mat-tab-label:focus {
-  background-color: rgba(209, 196, 233, 0.3); }
+  background-color: rgba(255, 224, 178, 0.3); }
 
 .mat-ink-bar {
-  background-color: #673ab7; }
+  background-color: #ff9800; }
 
 .mat-toolbar {
   background: whitesmoke;
   color: rgba(0, 0, 0, 0.87); }
   .mat-toolbar.mat-primary {
-    background: #651fff;
-    color: rgba(255, 255, 255, 0.87); }
+    background: #ff9100;
+    color: rgba(0, 0, 0, 0.87); }
   .mat-toolbar.mat-accent {
     background: #455a64;
     color: rgba(255, 255, 255, 0.87); }

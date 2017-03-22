@@ -13,3 +13,7 @@
 
 ------------------------------------------------------------------------------
 
+#### To change theme:
+1. edit src/theme.scss
+2. run: 
+	node_modules/node-sass/bin/node-sass src/theme.scss src/theme.css 
