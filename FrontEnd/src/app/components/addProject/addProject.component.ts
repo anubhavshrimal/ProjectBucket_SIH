@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import * as _ from "lodash";
 
 @Component({
   selector: 'add-project',
@@ -37,9 +37,8 @@ export class AddProjectComponent  {
   }
 
   removeTag (tag: string): void {
-    for(let i in this.tags){
-        if(this.tags[i] === tag)
-          delete this.tags[i];
-      }
+    _.remove(this.tags, function(n) {
+      return n === tag;
+    });
   }
 }
