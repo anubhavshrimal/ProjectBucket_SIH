@@ -14,6 +14,27 @@
                     </md-input-container>
                 </div>
             </div>
+
+            <div class="columns">
+                <div class="one-half column">
+                    <md-input-container class="full-width-input">
+                        <input mdInput [(ngModel)]="tag" (keyup.enter)="addTag()" placeholder="Keywords" name="tag">
+                        <md-hint align="start">Add keywords related to your project. Example algorithms, java, mysql.</md-hint>
+                    </md-input-container>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <md-chip-list>
+                        <md-chip *ngFor="let tag of tags">
+                            {{tag}}
+                            <a class="fa fa-times" (click)="removeTag(tag)"></a>
+                        </md-chip>
+                    </md-chip-list>
+                </div>
+            </div>
+
             <div class="columns">
                 <div class="four-fifths column">
                     <md-input-container class="full-width-input">

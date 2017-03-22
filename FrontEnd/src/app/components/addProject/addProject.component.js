@@ -21,7 +21,24 @@ var AddProjectComponent = (function () {
                 text: "MIT open source to all"
             }
         ];
+        this.tags = [];
     }
+    AddProjectComponent.prototype.addTag = function () {
+        if (this.tag.length != 0) {
+            for (var i in this.tags) {
+                if (this.tags[i] === this.tag)
+                    return;
+            }
+            this.tags.push(this.tag);
+            this.tag = "";
+        }
+    };
+    AddProjectComponent.prototype.removeTag = function (tag) {
+        for (var i in this.tags) {
+            if (this.tags[i] === tag)
+                delete this.tags[i];
+        }
+    };
     AddProjectComponent = __decorate([
         core_1.Component({
             selector: 'add-project',
