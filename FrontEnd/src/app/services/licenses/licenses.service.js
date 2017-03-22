@@ -9,18 +9,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var AppComponent = (function () {
-    function AppComponent() {
+var _ = require('lodash');
+var licenses_1 = require('./licenses');
+var LicensesService = (function () {
+    function LicensesService() {
     }
-    AppComponent = __decorate([
-        core_1.Component({
-            selector: 'my-app',
-            template: "\n  <navbar></navbar>\n  <add-question></add-question>\n  <footer></footer>\n",
-            moduleId: module.id
-        }), 
+    LicensesService.prototype.getLicenses = function () {
+        return Promise.resolve(_.map(licenses_1.LICENSES, 'name'));
+    };
+    LicensesService = __decorate([
+        core_1.Injectable(), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], LicensesService);
+    return LicensesService;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.LicensesService = LicensesService;
+//# sourceMappingURL=licenses.service.js.map

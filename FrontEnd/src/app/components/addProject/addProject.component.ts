@@ -1,32 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { LicensesService } from '../../services/licenses/licenses.service';
 import * as _ from "lodash";
 
 @Component({
   selector: 'add-project',
   templateUrl: './addProject.component.html',
-  moduleId: module.id
+  moduleId: module.id,
+  providers: [LicensesService]
 })
-export class AddProjectComponent  { 
-  licenses: Array<Object>;
+export class AddProjectComponent implements OnInit { 
+  licenses: Object[];
   tags: Array<string>;
   tag: string;
+  licenseSelected: Object;
+  
+  ngOnInit() : void {
+    this.licensesService.getLicenses().then(licenses => {
+      this.licenses = licenses
+      this.licenseSelected = this.licenses[0];
+    });
+  }
 
-  constructor() {
-    this.licenses = [
-      {
-        name: "None",
-        text: ""
-      },
-      {
-        name: "MIT",
-        text: "MIT open source to all"
-      }
-    ];
+  constructor(private licensesService: LicensesService) {
     this.tags = [];
   }
 
   addTag (): void {
     if(this.tag.length != 0){
+      this.tag = this.tag.toLowerCase();
       for(let i in this.tags){
         if(this.tags[i] === this.tag)
           return

@@ -9,21 +9,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var licenses_service_1 = require('../../services/licenses/licenses.service');
 var _ = require("lodash");
-var AddProjectComponent = (function () {
-    function AddProjectComponent(licensesService) {
-        this.licensesService = licensesService;
+var AddQuestionComponent = (function () {
+    function AddQuestionComponent() {
         this.tags = [];
     }
-    AddProjectComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.licensesService.getLicenses().then(function (licenses) {
-            _this.licenses = licenses;
-            _this.licenseSelected = _this.licenses[0];
-        });
-    };
-    AddProjectComponent.prototype.addTag = function () {
+    AddQuestionComponent.prototype.addTag = function () {
         if (this.tag.length != 0) {
             this.tag = this.tag.toLowerCase();
             for (var i in this.tags) {
@@ -34,21 +25,20 @@ var AddProjectComponent = (function () {
             this.tag = "";
         }
     };
-    AddProjectComponent.prototype.removeTag = function (tag) {
+    AddQuestionComponent.prototype.removeTag = function (tag) {
         _.remove(this.tags, function (n) {
             return n === tag;
         });
     };
-    AddProjectComponent = __decorate([
+    AddQuestionComponent = __decorate([
         core_1.Component({
-            selector: 'add-project',
-            templateUrl: './addProject.component.html',
             moduleId: module.id,
-            providers: [licenses_service_1.LicensesService]
+            selector: 'add-question',
+            templateUrl: './addQuestion.component.html',
         }), 
-        __metadata('design:paramtypes', [licenses_service_1.LicensesService])
-    ], AddProjectComponent);
-    return AddProjectComponent;
+        __metadata('design:paramtypes', [])
+    ], AddQuestionComponent);
+    return AddQuestionComponent;
 }());
-exports.AddProjectComponent = AddProjectComponent;
-//# sourceMappingURL=addProject.component.js.map
+exports.AddQuestionComponent = AddQuestionComponent;
+//# sourceMappingURL=addQuestion.component.js.map

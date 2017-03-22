@@ -1,0 +1,61 @@
+<div class="container">
+    <div class="columns">
+        <div class="four-fifths column centered">
+            <h2>Ask a Question!</h2>
+            <p class="Subhead-description">Ask any question and get answers by our awesome community.</p>
+            <hr>
+            <div class="columns">
+                <div class="one-half column">
+                    <md-input-container class="full-width">
+                        <input mdInput placeholder="Question title:">
+                    </md-input-container>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="one-half column">
+                    <md-input-container class="full-width">
+                        <input mdInput [(ngModel)]="tag" (keyup.enter)="addTag()" placeholder="Keywords:" name="tag">
+                        <md-hint align="start">Hit Enter! to add keywords that are related to your question. Example angular.js.</md-hint>
+                    </md-input-container>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <md-chip-list>
+                        <md-chip *ngFor="let tag of tags">
+                            {{tag}}
+                            <a class="fa fa-times" (click)="removeTag(tag)"></a>
+                        </md-chip>
+                    </md-chip-list>
+                </div>
+            </div>
+
+            <md-input-container class="full-width">
+                <textarea mdInput class="border border-bottom-0" placeholder="Question:" style="height: 300px; resize: none"></textarea>
+            </md-input-container>
+
+            <div class="columns">
+                <div class="one-half column centered text-center">
+                    <md-icon class="fa fa-file-image-o fa-3x"></md-icon>
+                    <br>
+                    <button md-raised-button color='primary' type="file">Upload Images</button>
+                    <p class="note">Upload images or screenshorts of related to your question. (Optional)</p>
+                </div>
+            </div>
+            <div class="columns">
+                <div class="one-half column centered text-center">
+                    <button class="btn btn-outline" type="button">Preview Question</button>
+                    <p class="note">See how your question will look to others.</p>
+                </div>
+            </div>
+            <hr>
+            <div class="columns">
+                <div class="one-half column centered text-center">
+                    <button class="btn btn-primary" type="button">Submit Question!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -8,8 +8,8 @@
         <form>
             <div class="columns">
                 <div class="one-half column">
-                    <md-input-container class="full-width-input">
-                        <input mdInput placeholder="Project name">
+                    <md-input-container class="full-width">
+                        <input mdInput placeholder="Project name:">
                         <md-hint align="start">Project name should be unique</md-hint>
                     </md-input-container>
                 </div>
@@ -17,9 +17,9 @@
             
             <div class="columns">
                 <div class="one-half column">
-                    <md-input-container class="full-width-input">
-                        <input mdInput [(ngModel)]="tag" (keyup.enter)="addTag()" placeholder="Keywords" name="tag">
-                        <md-hint align="start">Add keywords related to your project. Example algorithms, java, mysql.</md-hint>
+                    <md-input-container class="full-width">
+                        <input mdInput [(ngModel)]="tag" (keyup.enter)="addTag()" placeholder="Keywords:" name="tag">
+                        <md-hint align="start">Hit enter! to add keywords related to your project. Example java, mysql.</md-hint>
                     </md-input-container>
                 </div>
             </div>
@@ -37,8 +37,8 @@
 
             <div class="columns">
                 <div class="four-fifths column">
-                    <md-input-container class="full-width-input">
-                        <input mdInput placeholder="Description">
+                    <md-input-container class="full-width">
+                        <input mdInput placeholder="Description:">
                         <md-hint align="start">Add one or two lines about your awesome project idea</md-hint>
                     </md-input-container>
                 </div>
@@ -72,9 +72,10 @@
                     <p class="note mx-5">Enter details of your project in this file</p>
                 </div>
                 <div class="one-half column">
-                    <md-select placeholder="Add a license:" name="license">
-                        <md-option *ngFor="let license of licenses" [value]="license.name">
-                        {{license.name}}
+                    <label>Add a license:</label>
+                    <md-select name="license" class="full-width" [(ngModel)]="licenseSelected">
+                        <md-option *ngFor="let license of licenses" [value]="license">
+                        {{license}}
                         </md-option>
                     </md-select>  
                     <p class="note">Confused which one to choose? <a href="https://choosealicense.com/" target="blank">click here!</a></p>
@@ -84,8 +85,8 @@
             
             <div class="columns">
                 <div class="one-half column text-center">
-                    <md-input-container class="full-width-input">
-                        <input mdInput placeholder="Project link">
+                    <md-input-container class="full-width">
+                        <input mdInput placeholder="Project link:">
                         <md-hint align="start">
                             Add a link related to your project. Example Github or Google Drive. (Optional)
                         </md-hint>

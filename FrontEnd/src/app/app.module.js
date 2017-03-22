@@ -15,6 +15,7 @@ var material_1 = require('@angular/material');
 var navbar_component_1 = require('./components/navbar/navbar.component');
 var addProject_component_1 = require('./components/addProject/addProject.component');
 var footer_component_1 = require('./components/footer/footer.component');
+var addQuestion_component_1 = require('./components/addQuestion/addQuestion.component');
 var app_component_1 = require('./app.component');
 var AppModule = (function () {
     function AppModule() {
@@ -30,7 +31,8 @@ var AppModule = (function () {
                 app_component_1.AppComponent,
                 navbar_component_1.NavbarComponent,
                 addProject_component_1.AddProjectComponent,
-                footer_component_1.FooterComponent
+                footer_component_1.FooterComponent,
+                addQuestion_component_1.AddQuestionComponent
             ],
             bootstrap: [app_component_1.AppComponent]
         }), 

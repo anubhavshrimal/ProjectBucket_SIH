@@ -5,6 +5,7 @@ import { MaterialModule } from '@angular/material';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AddProjectComponent } from './components/addProject/addProject.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { AddQuestionComponent } from './components/addQuestion/addQuestion.component';
 import { AppComponent }  from './app.component';
 
 @NgModule({
@@ -17,7 +18,8 @@ import { AppComponent }  from './app.component';
       AppComponent,
       NavbarComponent,
       AddProjectComponent,
-      FooterComponent
+      FooterComponent,
+      AddQuestionComponent
     ],
   bootstrap:    [ AppComponent ]
 })
