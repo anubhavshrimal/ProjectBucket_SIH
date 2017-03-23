@@ -1,20 +1,20 @@
 <br>
 <div class="container">
     <div class="columns">
-        <div class="four-fifths column centered">
+        <div class="one-half column centered">
             <md-tab-group>
                 <md-tab label="Log in">
                     <form>
                         <br>
                         <div class="columns centered">
-                            <div class="two-thirds column">
+                            <div class="four-fifths column">
                                 <md-input-container class="full-width">
                                     <input mdInput placeholder="Login ID">
                                 </md-input-container>
                             </div>
                         </div>
                         <div class="columns centered">
-                            <div class="two-thirds column">
+                            <div class="four-fifths column">
                                 <md-input-container class="full-width">
                                     <input mdInput placeholder="Password">
                                 </md-input-container>
@@ -40,14 +40,14 @@
                     <form class="centered">
                         <br>
                         <div class="columns centered">
-                            <div class="two-thirds column ">
+                            <div class="four-fifths column ">
                                 <md-input-container class="full-width">
                                     <input mdInput placeholder="First Name">
                                 </md-input-container>
                             </div>
                         </div>
                         <div class="columns centered">
-                            <div class="two-thirds column ">
+                            <div class="four-fifths column ">
                                 <md-input-container class="full-width">
                                     <input mdInput placeholder="Last Name">
                                 </md-input-container>
@@ -55,7 +55,7 @@
                         </div>
 
                         <div class="columns centered">
-                            <div class="two-thirds column ">
+                            <div class="four-fifths column ">
                                 <md-input-container class="full-width">
                                     <input mdInput placeholder="User Name">
                                     <md-hint align="start">User name must be unique</md-hint>
@@ -63,14 +63,14 @@
                             </div>
                         </div>
                         <div class="columns centered">
-                            <div class="two-thirds column ">
+                            <div class="four-fifths column ">
                                 <md-input-container class="full-width">
                                     <input mdInput placeholder="Mail ID">
                                 </md-input-container>
                             </div>
                         </div>
                         <div class="columns centered">
-                            <div class="two-thirds column">
+                            <div class="four-fifths column">
                                 <md-input-container class="full-width">
                                     <input mdInput placeholder="Password">
                                 </md-input-container>
@@ -91,11 +91,11 @@
                                 </md-radio-group>
                             </div>
                         </div>
-                        <div class="columns">
-                            <div class="one-half column">
+                        <div class="columns centered">
+                            <div class="two-thirds column">
                                 <md-input-container class="full-width">
                                     <input mdInput [(ngModel)]="interest" (keyup.enter)="addInterests()" placeholder="Interests" name="interest">
-                                    <md-hint align="start">Add the topics, you wanna see in feeds!</md-hint>
+                                    <md-hint align="start">Add the topics you are interested in. Ex. android, angular.js</md-hint>
                                 </md-input-container>
                             </div>
                         </div>
