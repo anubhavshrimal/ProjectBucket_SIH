@@ -4,6 +4,9 @@
 1. Clone the repository into your local computer:
 
 	git clone https://github.com/anubhavshrimal/ProjectBucket_SIH.git
+2. Go into the FrontEnd folder using your terminal:
+
+	cd FrontEnd/
 2. Run the following command to install all the dependencies:
 
 	npm install
