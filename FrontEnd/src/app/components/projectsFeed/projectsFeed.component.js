@@ -9,18 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var AppComponent = (function () {
-    function AppComponent() {
+var ProjectsFeedComponent = (function () {
+    function ProjectsFeedComponent() {
     }
-    AppComponent = __decorate([
+    ProjectsFeedComponent = __decorate([
         core_1.Component({
-            selector: 'my-app',
-            template: "\n  <navbar></navbar>\n  <projects-feed></projects-feed>\n  <footer></footer>\n",
-            moduleId: module.id
+            moduleId: module.id,
+            selector: 'projects-feed',
+            templateUrl: './projectsFeed.component.html',
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], ProjectsFeedComponent);
+    return ProjectsFeedComponent;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.ProjectsFeedComponent = ProjectsFeedComponent;
+//# sourceMappingURL=projectsFeed.component.js.map
