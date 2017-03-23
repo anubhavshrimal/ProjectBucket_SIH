@@ -16,6 +16,7 @@ var navbar_component_1 = require('./components/navbar/navbar.component');
 var addProject_component_1 = require('./components/addProject/addProject.component');
 var footer_component_1 = require('./components/footer/footer.component');
 var addQuestion_component_1 = require('./components/addQuestion/addQuestion.component');
+var projectsFeed_component_1 = require('./components/projectsFeed/projectsFeed.component');
 var app_component_1 = require('./app.component');
 var AppModule = (function () {
     function AppModule() {
@@ -32,7 +33,8 @@ var AppModule = (function () {
                 navbar_component_1.NavbarComponent,
                 addProject_component_1.AddProjectComponent,
                 footer_component_1.FooterComponent,
-                addQuestion_component_1.AddQuestionComponent
+                addQuestion_component_1.AddQuestionComponent,
+                projectsFeed_component_1.ProjectsFeedComponent
             ],
             bootstrap: [app_component_1.AppComponent]
         }), 

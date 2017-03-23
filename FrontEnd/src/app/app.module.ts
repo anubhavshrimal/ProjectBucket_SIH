@@ -6,6 +6,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { AddProjectComponent } from './components/addProject/addProject.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AddQuestionComponent } from './components/addQuestion/addQuestion.component';
+import { ProjectsFeedComponent } from './components/projectsFeed/projectsFeed.component';
 import { AppComponent }  from './app.component';
 
 @NgModule({
@@ -19,7 +20,8 @@ import { AppComponent }  from './app.component';
       NavbarComponent,
       AddProjectComponent,
       FooterComponent,
-      AddQuestionComponent
+      AddQuestionComponent,
+      ProjectsFeedComponent
     ],
   bootstrap:    [ AppComponent ]
 })
