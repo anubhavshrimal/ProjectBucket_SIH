@@ -11,12 +11,35 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var ProjectsFeedComponent = (function () {
     function ProjectsFeedComponent() {
+        this.projects = [
+            { cols: 2, rows: 1 },
+            { cols: 2, rows: 1 },
+            { cols: 2, rows: 1 },
+            { cols: 2, rows: 1 },
+        ];
+        this.tabs = [
+            {
+                tabLabel: 'Interesting',
+                tabIcon: 'fa fa-heart'
+            },
+            {
+                tabLabel: 'Hot',
+                tabIcon: 'fa fa-fire'
+            },
+            {
+                tabLabel: 'Featured',
+                tabIcon: 'fa fa-money'
+            }
+        ];
     }
     ProjectsFeedComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: 'projects-feed',
             templateUrl: './projectsFeed.component.html',
+            styles: [
+                "a {\n            color: teal; \n            text-decoration:none\n        }"
+            ]
         }), 
         __metadata('design:paramtypes', [])
     ], ProjectsFeedComponent);
