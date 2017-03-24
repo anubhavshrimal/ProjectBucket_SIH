@@ -14,3 +14,12 @@
 .fill-remaining-space {
   flex: 1 1 auto;
 }
+
+.example-card {
+  width: 400px;
+}
+
+.avatars {
+  width: 40px;
+  border-radius: 50%;
+}
