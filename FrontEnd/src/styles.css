@@ -23,3 +23,14 @@
   width: 40px;
   border-radius: 50%;
 }
+
+.Anchored:hover{
+    cursor: pointer;
+}
+
+.ProfilePicture{
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+
+}

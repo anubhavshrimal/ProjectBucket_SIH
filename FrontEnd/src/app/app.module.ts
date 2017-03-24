@@ -7,6 +7,7 @@ import { AddProjectComponent } from './components/addProject/addProject.componen
 import { FooterComponent } from './components/footer/footer.component';
 import { AddQuestionComponent } from './components/addQuestion/addQuestion.component';
 import { ProjectsFeedComponent } from './components/projectsFeed/projectsFeed.component';
+import {UserProfile} from './components/userProfile/userProfile.component ';
 import { Signin } from './components/signin/signin.component';
 import { AppComponent }  from './app.component';
 
@@ -23,7 +24,8 @@ import { AppComponent }  from './app.component';
       FooterComponent,
       AddQuestionComponent,
       ProjectsFeedComponent,
-      Signin
+      Signin,
+      UserProfile
     ],
   bootstrap:    [ AppComponent ]
 })

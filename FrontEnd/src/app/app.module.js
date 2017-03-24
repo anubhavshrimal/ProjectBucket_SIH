@@ -17,6 +17,7 @@ var addProject_component_1 = require('./components/addProject/addProject.compone
 var footer_component_1 = require('./components/footer/footer.component');
 var addQuestion_component_1 = require('./components/addQuestion/addQuestion.component');
 var projectsFeed_component_1 = require('./components/projectsFeed/projectsFeed.component');
+var userProfile_component_1 = require('./components/userProfile/userProfile.component ');
 var signin_component_1 = require('./components/signin/signin.component');
 var app_component_1 = require('./app.component');
 var AppModule = (function () {
@@ -36,7 +37,8 @@ var AppModule = (function () {
                 footer_component_1.FooterComponent,
                 addQuestion_component_1.AddQuestionComponent,
                 projectsFeed_component_1.ProjectsFeedComponent,
-                signin_component_1.Signin
+                signin_component_1.Signin,
+                userProfile_component_1.UserProfile
             ],
             bootstrap: [app_component_1.AppComponent]
         }), 
