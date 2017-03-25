@@ -16,17 +16,17 @@ export class NavbarComponent {
         this.user = {
             'rating': 245,
             'thumbnail': 'https://avatars3.githubusercontent.com/u/17249362?v=3&u=2a1bc326e43e6fdee5102494672de0758c6d083f&s=400',
-            'profile': 'https://github.com/anubhavshrimal'
+            'profile': '/user-profile'
         }
         
         this.add_new_menu = [
             {
                 name: 'Add new project',
-                link: '/addproject'
+                link: '/add-project'
             },
             {
                 name: 'Ask new question',
-                link: '/addquestion'
+                link: '/add-question'
             }
         ]
 
