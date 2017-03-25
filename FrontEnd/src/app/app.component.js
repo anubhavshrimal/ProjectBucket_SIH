@@ -11,11 +11,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var AppComponent = (function () {
     function AppComponent() {
+        this.loggedIn = true;
     }
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "\n  <navbar></navbar>\n  <projects-feed></projects-feed>\n  <footer></footer>\n",
+            template: "\n  <div *ngIf=\"!loggedIn\">\n    <signin></signin>\n  </div>\n  <div *ngIf=\"loggedIn\">\n    <router-outlet></router-outlet>\n  </div>\n",
             moduleId: module.id
         }), 
         __metadata('design:paramtypes', [])

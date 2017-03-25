@@ -6,7 +6,7 @@ import * as _ from "lodash";
     templateUrl: './userProfile.component.html',
     moduleId: module.id
 })
-export class UserProfile  {
+export class UserProfileComponent  {
     licenses: Array<Object>;
     interests: Array<string>;
     interest: string;

@@ -10,8 +10,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var _ = require("lodash");
-var UserProfile = (function () {
-    function UserProfile() {
+var UserProfileComponent = (function () {
+    function UserProfileComponent() {
         this.licenses = [
             {
                 name: "None",
@@ -31,7 +31,7 @@ var UserProfile = (function () {
             'bio': 'i\'m Mohit, I\'m the gratest, I\'m the best, I\'m Artistxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxx xxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxx',
         };
     }
-    UserProfile.prototype.addInterests = function () {
+    UserProfileComponent.prototype.addInterests = function () {
         if (this.interest.length != 0) {
             for (var i in this.interests) {
                 if (this.interests[i] === this.interest)
@@ -41,24 +41,24 @@ var UserProfile = (function () {
             this.interest = "";
         }
     };
-    UserProfile.prototype.removeInterests = function (interest) {
+    UserProfileComponent.prototype.removeInterests = function (interest) {
         _.remove(this.interests, function (n) {
             return n === interest;
         });
     };
-    UserProfile.prototype.login = function () {
+    UserProfileComponent.prototype.login = function () {
         this.loggedin = true;
         return this.loggedin;
     };
-    UserProfile = __decorate([
+    UserProfileComponent = __decorate([
         core_1.Component({
             selector: 'user-profile',
             templateUrl: './userProfile.component.html',
             moduleId: module.id
         }), 
         __metadata('design:paramtypes', [])
-    ], UserProfile);
-    return UserProfile;
+    ], UserProfileComponent);
+    return UserProfileComponent;
 }());
-exports.UserProfile = UserProfile;
+exports.UserProfileComponent = UserProfileComponent;
 //# sourceMappingURL=userProfile.component .js.map

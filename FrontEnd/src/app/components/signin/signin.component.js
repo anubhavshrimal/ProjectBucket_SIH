@@ -10,9 +10,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var _ = require("lodash");
-var Signin = (function () {
+var SigninComponent = (function () {
     // sessionVar : boolean = true;
-    function Signin() {
+    function SigninComponent() {
         this.licenses = [
             {
                 name: "None",
@@ -26,7 +26,7 @@ var Signin = (function () {
         this.interests = [];
         this.loggedin = true;
     }
-    Signin.prototype.addInterests = function () {
+    SigninComponent.prototype.addInterests = function () {
         if (this.interest.length != 0) {
             for (var i in this.interests) {
                 if (this.interests[i] === this.interest)
@@ -36,24 +36,24 @@ var Signin = (function () {
             this.interest = "";
         }
     };
-    Signin.prototype.removeInterests = function (interest) {
+    SigninComponent.prototype.removeInterests = function (interest) {
         _.remove(this.interests, function (n) {
             return n === interest;
         });
     };
-    Signin.prototype.login = function () {
+    SigninComponent.prototype.login = function () {
         this.loggedin = true;
         return this.loggedin;
     };
-    Signin = __decorate([
+    SigninComponent = __decorate([
         core_1.Component({
             selector: 'signin',
             templateUrl: './signin.component.html',
             moduleId: module.id
         }), 
         __metadata('design:paramtypes', [])
-    ], Signin);
-    return Signin;
+    ], SigninComponent);
+    return SigninComponent;
 }());
-exports.Signin = Signin;
+exports.SigninComponent = SigninComponent;
 //# sourceMappingURL=signin.component.js.map
