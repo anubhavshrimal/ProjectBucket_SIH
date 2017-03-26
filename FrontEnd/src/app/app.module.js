@@ -22,6 +22,7 @@ var signin_component_1 = require('./components/signin/signin.component');
 var forum_component_1 = require('./components/forum/forum.component');
 var app_component_1 = require('./app.component');
 var app_routing_module_1 = require('./app-routing.module');
+var backendUrl_service_1 = require('./services/backendUrl.service');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -44,7 +45,8 @@ var AppModule = (function () {
                 userProfile_component_1.UserProfileComponent,
                 forum_component_1.ForumComponent
             ],
-            bootstrap: [app_component_1.AppComponent]
+            bootstrap: [app_component_1.AppComponent],
+            providers: [backendUrl_service_1.BackendUrl]
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);

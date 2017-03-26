@@ -13,8 +13,10 @@ import {UserProfileComponent } from './components/userProfile/userProfile.compon
 import { SigninComponent } from './components/signin/signin.component';
 import { ForumComponent } from './components/forum/forum.component';
 import { AppComponent }  from './app.component';
-
 import { AppRoutingModule } from './app-routing.module';
+
+import { BackendUrl } from './services/backendUrl.service';
+
 
 @NgModule({
   imports:      [ 
@@ -34,6 +36,7 @@ import { AppRoutingModule } from './app-routing.module';
       UserProfileComponent,
       ForumComponent
     ],
-  bootstrap:    [ AppComponent ]
+  bootstrap:    [ AppComponent ],
+  providers: [BackendUrl]
 })
 export class AppModule { }
