@@ -2,7 +2,7 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 import { MaterialModule } from '@angular/material';
-import  { RouterModule } from '@angular/router';
+import  { RouterModule, Routes } from '@angular/router';
 
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AddProjectComponent } from './components/addProject/addProject.component';
@@ -14,39 +14,14 @@ import { SigninComponent } from './components/signin/signin.component';
 import { ForumComponent } from './components/forum/forum.component';
 import { AppComponent }  from './app.component';
 
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   imports:      [ 
       BrowserModule, 
       MaterialModule,
       FormsModule,
-      RouterModule.forRoot([
-      {
-        path: '',
-        redirectTo: '/projects-feed',
-        pathMatch: 'full'
-      },
-      {
-        path: 'projects-feed',
-        component: ProjectsFeedComponent
-      },
-      {
-        path: 'add-project',
-        component: AddProjectComponent
-      },
-      {
-        path: 'add-question',
-        component: AddQuestionComponent
-      },
-      {
-        path: 'user-profile',
-        component: UserProfileComponent
-      },
-      {
-        path: 'forum',
-        component: ForumComponent
-      }
-    ])
+      AppRoutingModule
     ],
   declarations: [ 
       AppComponent,
