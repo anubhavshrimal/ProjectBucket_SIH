@@ -10,9 +10,9 @@ import * as _ from "lodash";
 })
 export class AddProjectComponent implements OnInit { 
   licenses: Object[];
-  tags: Array<string>;
   tag: string;
   licenseSelected: Object;
+  Project: ;
   
   ngOnInit() : void {
     this.licensesService.getLicenses().then(licenses => {
@@ -22,23 +22,25 @@ export class AddProjectComponent implements OnInit {
   }
 
   constructor(private licensesService: LicensesService) {
-    this.tags = [];
+    this.Project = {
+      tags: []
+    };
   }
 
   addTag (): void {
     if(this.tag.length != 0){
       this.tag = this.tag.toLowerCase();
-      for(let i in this.tags){
-        if(this.tags[i] === this.tag)
+      for(let i in this.Project.tags){
+        if(this.Project.tags[i] === this.tag)
           return
       }
-      this.tags.push(this.tag);
+      this.Project.tags.push(this.tag);
       this.tag = "";
     }
   }
 
   removeTag (tag: string): void {
-    _.remove(this.tags, function(n) {
+    _.remove(this.Project.tags, function(n) {
       return n === tag;
     });
   }

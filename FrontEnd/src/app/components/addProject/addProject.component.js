@@ -14,7 +14,9 @@ var _ = require("lodash");
 var AddProjectComponent = (function () {
     function AddProjectComponent(licensesService) {
         this.licensesService = licensesService;
-        this.tags = [];
+        this.Project = {
+            tags: []
+        };
     }
     AddProjectComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -26,16 +28,16 @@ var AddProjectComponent = (function () {
     AddProjectComponent.prototype.addTag = function () {
         if (this.tag.length != 0) {
             this.tag = this.tag.toLowerCase();
-            for (var i in this.tags) {
-                if (this.tags[i] === this.tag)
+            for (var i in this.Project.tags) {
+                if (this.Project.tags[i] === this.tag)
                     return;
             }
-            this.tags.push(this.tag);
+            this.Project.tags.push(this.tag);
             this.tag = "";
         }
     };
     AddProjectComponent.prototype.removeTag = function (tag) {
-        _.remove(this.tags, function (n) {
+        _.remove(this.Project.tags, function (n) {
             return n === tag;
         });
     };
