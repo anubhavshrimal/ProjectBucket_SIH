@@ -11,6 +11,7 @@ import { AddQuestionComponent } from './components/addQuestion/addQuestion.compo
 import { ProjectsFeedComponent } from './components/projectsFeed/projectsFeed.component';
 import {UserProfileComponent } from './components/userProfile/userProfile.component ';
 import { SigninComponent } from './components/signin/signin.component';
+import { ForumComponent } from './components/forum/forum.component';
 import { AppComponent }  from './app.component';
 
 
@@ -40,6 +41,10 @@ import { AppComponent }  from './app.component';
       {
         path: 'user-profile',
         component: UserProfileComponent
+      },
+      {
+        path: 'forum',
+        component: ForumComponent
       }
     ])
     ],
@@ -51,7 +56,8 @@ import { AppComponent }  from './app.component';
       AddQuestionComponent,
       ProjectsFeedComponent,
       SigninComponent,
-      UserProfileComponent
+      UserProfileComponent,
+      ForumComponent
     ],
   bootstrap:    [ AppComponent ]
 })

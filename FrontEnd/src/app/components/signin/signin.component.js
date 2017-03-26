@@ -24,7 +24,8 @@ var SigninComponent = (function () {
             }
         ];
         this.interests = [];
-        this.loggedin = true;
+        this.signup1 = true;
+        this.categories = ["Student", "Teacher", "Industry Professional", "Other"];
     }
     SigninComponent.prototype.addInterests = function () {
         if (this.interest.length != 0) {
@@ -41,9 +42,25 @@ var SigninComponent = (function () {
             return n === interest;
         });
     };
-    SigninComponent.prototype.login = function () {
-        this.loggedin = true;
-        return this.loggedin;
+    SigninComponent.prototype.signUp1 = function () {
+        this.signup1 = false;
+        this.signup2 = true;
+        return this.signup1;
+    };
+    SigninComponent.prototype.category1 = function () {
+        if (this.category == 'Student') {
+            this.label = 'Institute';
+        }
+        else if (this.category == 'Teacher') {
+            this.label = 'Institute';
+        }
+        else if (this.category == 'Industry Professional') {
+            this.label = 'Company';
+        }
+        else {
+            this.label = 'Profesion';
+        }
+        this.categorySelected = true;
     };
     SigninComponent = __decorate([
         core_1.Component({

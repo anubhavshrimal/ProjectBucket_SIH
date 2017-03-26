@@ -10,7 +10,12 @@ export class SigninComponent  {
     licenses: Array<Object>;
     interests: Array<string>;
     interest: string;
-    loggedin : boolean;
+    signup1 : boolean;
+    signup2 : boolean;
+    categories : Array<String>;
+    category : String;
+    label : String;
+    categorySelected : boolean;
     // sessionVar : boolean = true;
     constructor() {
         this.licenses = [
@@ -24,9 +29,9 @@ export class SigninComponent  {
             }
         ];
         this.interests = [];
-        this.loggedin = true;
+         this.signup1 = true;
+        this.categories = ["Student", "Teacher", "Industry Professional", "Other"];
     }
-
     addInterests (): void {
         if(this.interest.length != 0){
             for(let i in this.interests){
@@ -37,14 +42,29 @@ export class SigninComponent  {
             this.interest = "";
         }
     }
-
     removeInterests (interest: string): void {
         _.remove(this.interests, function(n) {
             return n === interest;
         });
     }
-    login(){
-        this.loggedin = true;
-        return this.loggedin;
+    signUp1(){
+        this.signup1 = false;
+        this.signup2 = true;
+        return this.signup1;
+    }
+    category1(){
+        if (this.category == 'Student'){
+            this.label = 'Institute'
+        }
+        else if (this.category == 'Teacher'){
+            this.label = 'Institute'
+        }
+        else if (this.category == 'Industry Professional'){
+            this.label = 'Company'
+        }
+        else{
+            this.label = 'Profesion'
+        }
+        this.categorySelected = true;
     }
 }
