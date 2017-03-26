@@ -46,7 +46,7 @@ var AppModule = (function () {
                 forum_component_1.ForumComponent
             ],
             bootstrap: [app_component_1.AppComponent],
-            providers: [backendUrl_service_1.BackendUrl]
+            providers: [backendUrl_service_1.BackendUrlService]
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);

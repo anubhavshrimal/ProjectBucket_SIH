@@ -9,15 +9,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var BackendUrl = (function () {
-    function BackendUrl() {
+var BackendUrlService = (function () {
+    function BackendUrlService() {
     }
-    BackendUrl.url = 'http://codeist.mi43ujva9v.us-west-2.elasticbeanstalk.com/webapi';
-    BackendUrl = __decorate([
+    BackendUrlService.url = 'http://codeist.mi43ujva9v.us-west-2.elasticbeanstalk.com/webapi';
+    BackendUrlService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])
-    ], BackendUrl);
-    return BackendUrl;
+    ], BackendUrlService);
+    return BackendUrlService;
 }());
-exports.BackendUrl = BackendUrl;
+exports.BackendUrlService = BackendUrlService;
 //# sourceMappingURL=backendUrl.service.js.map

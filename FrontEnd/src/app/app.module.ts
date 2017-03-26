@@ -15,7 +15,7 @@ import { ForumComponent } from './components/forum/forum.component';
 import { AppComponent }  from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
-import { BackendUrl } from './services/backendUrl.service';
+import { BackendUrlService } from './services/backendUrl.service';
 
 
 @NgModule({
@@ -37,6 +37,6 @@ import { BackendUrl } from './services/backendUrl.service';
       ForumComponent
     ],
   bootstrap:    [ AppComponent ],
-  providers: [BackendUrl]
+  providers: [BackendUrlService]
 })
 export class AppModule { }
