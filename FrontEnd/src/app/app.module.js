@@ -20,6 +20,7 @@ var addQuestion_component_1 = require('./components/addQuestion/addQuestion.comp
 var projectsFeed_component_1 = require('./components/projectsFeed/projectsFeed.component');
 var userProfile_component_1 = require('./components/userProfile/userProfile.component ');
 var signin_component_1 = require('./components/signin/signin.component');
+var forum_component_1 = require('./components/forum/forum.component');
 var app_component_1 = require('./app.component');
 var AppModule = (function () {
     function AppModule() {
@@ -51,6 +52,10 @@ var AppModule = (function () {
                     {
                         path: 'user-profile',
                         component: userProfile_component_1.UserProfileComponent
+                    },
+                    {
+                        path: 'forum',
+                        component: forum_component_1.ForumComponent
                     }
                 ])
             ],
@@ -62,7 +67,8 @@ var AppModule = (function () {
                 addQuestion_component_1.AddQuestionComponent,
                 projectsFeed_component_1.ProjectsFeedComponent,
                 signin_component_1.SigninComponent,
-                userProfile_component_1.UserProfileComponent
+                userProfile_component_1.UserProfileComponent,
+                forum_component_1.ForumComponent
             ],
             bootstrap: [app_component_1.AppComponent]
         }), 
