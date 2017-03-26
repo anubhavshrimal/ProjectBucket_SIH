@@ -13,7 +13,7 @@ import {Component} from '@angular/core';
 })
 export class ForumComponent {
     tabs: Array<Object>;
-    projects = [
+    questions = [
         {cols: 2, rows: 1},
         {cols: 2, rows: 1},
         {cols: 2, rows: 1},

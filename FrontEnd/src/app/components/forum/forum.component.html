@@ -7,22 +7,21 @@
                     <template md-tab-label>
                         <md-icon class="{{tab.tabIcon}}"></md-icon> {{tab.tabLabel}}
                     </template>
-                    <md-grid-list cols="4" rowHeight="500px">
+                    <md-grid-list cols="1" rowHeight="200px">
                         <md-grid-tile
-                            *ngFor="let project of projects"
-                            [colspan]="2"
+                            *ngFor="let question of questions"
+                            [colspan]="1"
                             [rowspan]="1">
-                        <md-card class="example-card border">
+                        <md-card class="example-que-card border">
                             <md-card-header>
                                 <div md-card-avatar></div>
-                                <img md-card-avatar class="avatars" src="https://material.angular.io/assets/img/examples/shiba2.jpg">
-                                <md-card-title>Project title</md-card-title>
+                                <img md-card-avatar class="avatars" src="app/assets/male_user.png">
+                                <md-card-title>Question title</md-card-title>
                                 <md-card-subtitle>by <a href="">User name</a></md-card-subtitle>
                             </md-card-header>
-                            <img md-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg">
                             <md-card-content>
                                 <p>
-                                Project desctiption
+                                Question desctiption
                                 </p>
                             </md-card-content>
                             <md-card-actions>
@@ -51,6 +50,6 @@
 </div>
 <footer></footer>
 <md-menu #more="mdMenu">
-    <button md-menu-item routerLink="items.link">Show fewer projects like this</button>
+    <button md-menu-item routerLink="items.link">Show fewer questions like this</button>
     <button md-menu-item routerLink="items.link">Report</button>
 </md-menu>

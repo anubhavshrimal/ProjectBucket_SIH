@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var ForumComponent = (function () {
     function ForumComponent() {
-        this.projects = [
+        this.questions = [
             { cols: 2, rows: 1 },
             { cols: 2, rows: 1 },
             { cols: 2, rows: 1 },
