@@ -12,11 +12,13 @@ var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var forms_1 = require('@angular/forms');
 var material_1 = require('@angular/material');
+var router_1 = require('@angular/router');
 var navbar_component_1 = require('./components/navbar/navbar.component');
 var addProject_component_1 = require('./components/addProject/addProject.component');
 var footer_component_1 = require('./components/footer/footer.component');
 var addQuestion_component_1 = require('./components/addQuestion/addQuestion.component');
 var projectsFeed_component_1 = require('./components/projectsFeed/projectsFeed.component');
+var userProfile_component_1 = require('./components/userProfile/userProfile.component ');
 var signin_component_1 = require('./components/signin/signin.component');
 var app_component_1 = require('./app.component');
 var AppModule = (function () {
@@ -27,7 +29,30 @@ var AppModule = (function () {
             imports: [
                 platform_browser_1.BrowserModule,
                 material_1.MaterialModule,
-                forms_1.FormsModule
+                forms_1.FormsModule,
+                router_1.RouterModule.forRoot([
+                    {
+                        path: '',
+                        redirectTo: '/projects-feed',
+                        pathMatch: 'full'
+                    },
+                    {
+                        path: 'projects-feed',
+                        component: projectsFeed_component_1.ProjectsFeedComponent
+                    },
+                    {
+                        path: 'add-project',
+                        component: addProject_component_1.AddProjectComponent
+                    },
+                    {
+                        path: 'add-question',
+                        component: addQuestion_component_1.AddQuestionComponent
+                    },
+                    {
+                        path: 'user-profile',
+                        component: userProfile_component_1.UserProfileComponent
+                    }
+                ])
             ],
             declarations: [
                 app_component_1.AppComponent,
@@ -36,7 +61,8 @@ var AppModule = (function () {
                 footer_component_1.FooterComponent,
                 addQuestion_component_1.AddQuestionComponent,
                 projectsFeed_component_1.ProjectsFeedComponent,
-                signin_component_1.Signin
+                signin_component_1.SigninComponent,
+                userProfile_component_1.UserProfileComponent
             ],
             bootstrap: [app_component_1.AppComponent]
         }), 

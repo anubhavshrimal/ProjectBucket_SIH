@@ -3,10 +3,19 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'my-app',
   template: `
-  <navbar></navbar>
-  <signin></signin>
-  <footer></footer>
+  <div *ngIf="!loggedIn">
+    <signin></signin>
+  </div>
+  <div *ngIf="loggedIn">
+    <router-outlet></router-outlet>
+  </div>
 `,
   moduleId: module.id
 })
-export class AppComponent  { }
+export class AppComponent  {
+  loggedIn: Boolean;
+
+  constructor() {
+    this.loggedIn = true;
+  }
+}

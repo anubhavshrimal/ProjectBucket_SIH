@@ -1,7 +1,56 @@
+<navbar></navbar>
 <div class="container">
-    <md-tab-group>
-        <md-tab label="Interesting">Interesting</md-tab>
-        <md-tab label="Hot">Hot</md-tab>
-        <md-tab label="Featured">Featured</md-tab>
-    </md-tab-group>
+    <div class="columns centered">
+        <div class="four-fifths column centered">
+            <md-tab-group dynamicHeight="true">
+                <md-tab *ngFor="let tab of tabs">
+                    <template md-tab-label>
+                        <md-icon class="{{tab.tabIcon}}"></md-icon> {{tab.tabLabel}}
+                    </template>
+                    <md-grid-list cols="4" rowHeight="500px">
+                        <md-grid-tile
+                            *ngFor="let project of projects"
+                            [colspan]="2"
+                            [rowspan]="1">
+                        <md-card class="example-card border">
+                            <md-card-header>
+                                <div md-card-avatar></div>
+                                <img md-card-avatar class="avatars" src="https://material.angular.io/assets/img/examples/shiba2.jpg">
+                                <md-card-title>Project title</md-card-title>
+                                <md-card-subtitle>by <a href="">User name</a></md-card-subtitle>
+                            </md-card-header>
+                            <img md-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg">
+                            <md-card-content>
+                                <p>
+                                Project desctiption
+                                </p>
+                            </md-card-content>
+                            <md-card-actions>
+                                <div class="columns centered">
+                                    <div class="one-fourth column">
+                                        <button md-raised-button mdTooltip="Upvote"><md-icon class="fa fa-thumbs-o-up"></md-icon>1.5k</button>
+                                    </div>
+                                    <div class="one-fourth column">
+                                        <button md-raised-button mdTooltip="Downvote"><md-icon class="fa fa-thumbs-o-down"></md-icon>100</button>
+                                    </div>
+                                    <div class="one-fourth column">
+                                        <button md-raised-button mdTooltip="Add to favourites"><md-icon class="fa fa-bookmark-o"></md-icon></button>
+                                    </div>
+                                    <div class="one-fourth column">
+                                        <button md-raised-button  mdTooltip="more options" [md-menu-trigger-for]="more"><md-icon class="fa fa-caret-down"></md-icon></button>
+                                    </div>
+                                </div>
+                            </md-card-actions>
+                    </md-card>
+                        </md-grid-tile>
+                    </md-grid-list>
+                </md-tab>
+            </md-tab-group>
+        </div>
+    </div>
 </div>
+<footer></footer>
+<md-menu #more="mdMenu">
+    <button md-menu-item routerLink="items.link">Show fewer projects like this</button>
+    <button md-menu-item routerLink="items.link">Report</button>
+</md-menu>

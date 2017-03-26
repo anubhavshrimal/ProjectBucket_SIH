@@ -2,13 +2,15 @@
     <span class="fill-remaining-space"></span>
 
     <!--TODO: Project Logo comes here-->
-    <button md-icon-button routerLink="/"><md-icon>home</md-icon></button>
+    <button md-button routerLink="/" mdTooltip="Home">
+        <img class="avatars" src="app/assets/project_bucket_logo.png">
+    </button>
 
     <!--search  bar-->
     <md-input-container floatPlaceholder="never" style="width: 25%">
         <input mdInput placeholder="Search Projects, Users, Tags...">
     </md-input-container>
-    <button md-icon-button><md-icon>search</md-icon></button>
+    <button md-icon-button mdTooltip="Search"><md-icon>search</md-icon></button>
 
     <!--Forum, Users, Projects link-->
     <div>
@@ -50,17 +52,17 @@
 
 <!--dropdown menus for add new, notifications, trophy button and down arrow-->
 <md-menu #addnewmenu="mdMenu">
-    <button md-menu-item *ngFor='let items of add_new_menu' routerLink="items.link">{{items.name}}</button>
+    <button md-menu-item *ngFor='let items of add_new_menu' routerLink="{{items.link}}">{{items.name}}</button>
 </md-menu>
 
 <md-menu #notificationsmenu="mdMenu">
-    <button md-menu-item *ngFor='let items of notifications_menu' routerLink="items.link">{{items.name}}</button>
+    <button md-menu-item *ngFor='let items of notifications_menu' routerLink="{{items.link}}">{{items.name}}</button>
 </md-menu>
 
 <md-menu #trophymenu="mdMenu">
-    <button md-menu-item *ngFor='let items of trophy_menu' routerLink="items.link">{{items.name}}</button>
+    <button md-menu-item *ngFor='let items of trophy_menu' routerLink="{{items.link}}">{{items.name}}</button>
 </md-menu>
 
 <md-menu #extras="mdMenu">
-    <button md-menu-item *ngFor='let items of extras_menu' routerLink="items.link">{{items.name}}</button>
+    <button md-menu-item *ngFor='let items of extras_menu' routerLink="{{items.link}}">{{items.name}}</button>
 </md-menu>

@@ -6,7 +6,7 @@ import * as _ from "lodash";
     templateUrl: './signin.component.html',
     moduleId: module.id
 })
-export class Signin  {
+export class SigninComponent  {
     licenses: Array<Object>;
     interests: Array<string>;
     interest: string;
