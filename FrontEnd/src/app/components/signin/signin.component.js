@@ -9,10 +9,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var signin_service_1 = require('../../services/signin/signin.service');
 var _ = require("lodash");
 var SigninComponent = (function () {
     // sessionVar : boolean = true;
-    function SigninComponent() {
+    function SigninComponent(signinService) {
+        this.signinService = signinService;
         this.licenses = [
             {
                 name: "None",
@@ -62,13 +64,18 @@ var SigninComponent = (function () {
         }
         this.categorySelected = true;
     };
+    SigninComponent.prototype.login = function (userName, password) {
+        console.log(userName, password);
+        this.signinService.login(userName, password);
+    };
     SigninComponent = __decorate([
         core_1.Component({
             selector: 'signin',
             templateUrl: './signin.component.html',
-            moduleId: module.id
+            moduleId: module.id,
+            providers: [signin_service_1.SigninService]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [signin_service_1.SigninService])
     ], SigninComponent);
     return SigninComponent;
 }());

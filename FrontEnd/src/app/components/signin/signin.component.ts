@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
+import { SigninService } from '../../services/signin/signin.service';
 import * as _ from "lodash";
 
 @Component({
     selector: 'signin',
     templateUrl: './signin.component.html',
-    moduleId: module.id
+    moduleId: module.id,
+    providers: [SigninService]
 })
-export class SigninComponent  {
+export class SigninComponent {
+
     licenses: Array<Object>;
     interests: Array<string>;
     interest: string;
@@ -16,8 +19,9 @@ export class SigninComponent  {
     category : String;
     label : String;
     categorySelected : boolean;
+
     // sessionVar : boolean = true;
-    constructor() {
+    constructor(private signinService : SigninService) {
         this.licenses = [
             {
                 name: "None",
@@ -31,7 +35,9 @@ export class SigninComponent  {
         this.interests = [];
          this.signup1 = true;
         this.categories = ["Student", "Teacher", "Industry Professional", "Other"];
+
     }
+
     addInterests (): void {
         if(this.interest.length != 0){
             for(let i in this.interests){
@@ -66,5 +72,9 @@ export class SigninComponent  {
             this.label = 'Profesion'
         }
         this.categorySelected = true;
+    }
+    login(userName:String, password:String){
+        console.log(userName, password);
+        this.signinService.login(userName,password);
     }
 }
