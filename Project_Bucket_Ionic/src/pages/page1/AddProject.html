@@ -1,0 +1,85 @@
+<ion-header>
+  <ion-navbar color="primary" >
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>ADD Project </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+        <ion-item>
+        <ion-label floating>Project Name:</ion-label>
+        <ion-input placeholder="Project Name Should be Unique" type="text" value=""></ion-input>
+       </ion-item>
+        
+    
+        <ion-item>
+        <ion-label floating>KeyWords:</ion-label>
+        <ion-input placeholder="KeyWords:Hit Enter to Add " type="text" value="" ></ion-input>
+        </ion-item>
+  
+
+   <ion-item>
+        <ion-label floating>Description:</ion-label>
+        <ion-input placeholder="Description:Add one Line" type="text" value="" ></ion-input>
+        </ion-item>
+    
+    <br>
+  
+
+     <ion-list>
+    <ion-list-header>
+      Add Bio:
+  </ion-list-header>
+   <ion-item>
+      <ion-label>Public<p>Anyone can see this</p></ion-label>
+      <ion-toggle color="secondary" checked="true" value="rust"></ion-toggle>
+    </ion-item>
+
+      <ion-item>
+      <ion-label>Private<p>You Chosse who can see</p></ion-label>
+      <ion-toggle color="danger" checked="false" value="Private"></ion-toggle>
+     </ion-item>
+</ion-list>
+
+
+  <ion-item>
+      <ion-label>Add README File <p>Enter the details of your Project in this File </p></ion-label>
+      <ion-checkbox checked="true"></ion-checkbox>
+    </ion-item>
+  
+<br>
+<ion-list>
+     <ion-item>
+      <ion-label>Licence</ion-label>
+      <ion-select [(ngModel)]="os" submitText="Okay" cancelText="Nah">
+        <ion-option value="dos">DOS</ion-option>
+        <ion-option value="lunix">Linux</ion-option>
+        <ion-option value="mac7">Mac OS 7</ion-option>
+        <ion-option value="mac8">Mac OS 8</ion-option>
+        <ion-option value="win3.1">Windows 3.1</ion-option>
+        <ion-option value="win95">Windows 95</ion-option>
+        <ion-option value="win98">Windows 98</ion-option>
+      </ion-select>
+    </ion-item>
+</ion-list>
+
+        <ion-item>
+        <ion-label floating>Project Link:</ion-label>
+        <ion-input type="text" value="" ></ion-input>
+        <p>Add a link to related to your Project. Example Github or Google Drive</p>
+        </ion-item>
+
+        
+ <p>
+    <button ion-button small>Upload Zip File</button>  <button ion-button small>Upload Image </button>
+  </p>       
+
+    
+     <p right middle>
+ <button ion-button color="secondary" round>Save</button> <button ion-button color="secondary" round>Cancel</button>
+  </p>
+
+
+</ion-content>
