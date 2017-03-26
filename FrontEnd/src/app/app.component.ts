@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   <div *ngIf="!loggedIn">
     <signin></signin>
   </div>
-  <div *ngIf="loggedIn">
+  <div [hidden]="!loggedIn">
     <router-outlet></router-outlet>
   </div>
 `,
