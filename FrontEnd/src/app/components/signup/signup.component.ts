@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { SigninService } from '../../services/signin/signin.service';
+import { SignupService } from '../../services/signup/signup.service';
 import * as _ from "lodash";
 
 @Component({
     selector: 'signup',
     templateUrl: './signup.component.html',
     moduleId: module.id,
-    providers: [SigninService]
+    providers: [SignupService]
 })
 export class SignupComponent {
 
@@ -20,7 +20,7 @@ export class SignupComponent {
     label : string;
     categorySelected : boolean;
 
-    constructor(private signinService : SigninService) {
+    constructor(private signupService : SignupService) {
         this.licenses = [
             {
                 name: "None",
@@ -70,9 +70,6 @@ export class SignupComponent {
     }
     signUp(username:string, category:string, label:string, mobileNo:string, interest:string, country:string, state:string, city:string, bio:string){
         console.log(username, category, label, mobileNo, this.interests, country, state, city, bio);
-    }
-    login(userName:string, password:string){
-        console.log(userName, password);
-        this.signinService.login(userName,password).then(data => console.log(data));
+        this.signupService.signup().then(data => console.log(data));
     }
 }

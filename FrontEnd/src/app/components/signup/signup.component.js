@@ -9,11 +9,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var signin_service_1 = require('../../services/signin/signin.service');
+var signup_service_1 = require('../../services/signup/signup.service');
 var _ = require("lodash");
 var SignupComponent = (function () {
-    function SignupComponent(signinService) {
-        this.signinService = signinService;
+    function SignupComponent(signupService) {
+        this.signupService = signupService;
         this.licenses = [
             {
                 name: "None",
@@ -60,19 +60,16 @@ var SignupComponent = (function () {
     };
     SignupComponent.prototype.signUp = function (username, category, label, mobileNo, interest, country, state, city, bio) {
         console.log(username, category, label, mobileNo, this.interests, country, state, city, bio);
-    };
-    SignupComponent.prototype.login = function (userName, password) {
-        console.log(userName, password);
-        this.signinService.login(userName, password).then(function (data) { return console.log(data); });
+        this.signupService.signup().then(function (data) { return console.log(data); });
     };
     SignupComponent = __decorate([
         core_1.Component({
             selector: 'signup',
             templateUrl: './signup.component.html',
             moduleId: module.id,
-            providers: [signin_service_1.SigninService]
+            providers: [signup_service_1.SignupService]
         }), 
-        __metadata('design:paramtypes', [signin_service_1.SigninService])
+        __metadata('design:paramtypes', [signup_service_1.SignupService])
     ], SignupComponent);
     return SignupComponent;
 }());
