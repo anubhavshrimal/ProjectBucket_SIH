@@ -22,4 +22,6 @@ export class User {
     favourite_tags?: Array<string>;
     following?: Array<string>;
     followers?: Array<string>;
+    question_ask?: Array<string>;
+    question_answer: Array<string>;
 }
