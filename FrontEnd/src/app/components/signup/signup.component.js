@@ -59,7 +59,7 @@ var SignupComponent = (function () {
         this.categorySelected = true;
     };
     SignupComponent.prototype.signUp = function (username, category, label, mobileNo, interest, country, state, city, bio) {
-        console.log(username, category, label, mobileNo, interest, country, state, city, bio);
+        console.log(username, category, label, mobileNo, this.interests, country, state, city, bio);
     };
     SignupComponent.prototype.login = function (userName, password) {
         console.log(userName, password);

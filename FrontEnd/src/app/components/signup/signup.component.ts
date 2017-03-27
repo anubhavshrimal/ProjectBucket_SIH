@@ -69,7 +69,7 @@ export class SignupComponent {
         this.categorySelected = true;
     }
     signUp(username:string, category:string, label:string, mobileNo:string, interest:string, country:string, state:string, city:string, bio:string){
-        console.log(username, category, label, mobileNo, interest, country, state, city, bio);
+        console.log(username, category, label, mobileNo, this.interests, country, state, city, bio);
     }
     login(userName:string, password:string){
         console.log(userName, password);
