@@ -20,6 +20,7 @@ var projectsFeed_component_1 = require('./components/projectsFeed/projectsFeed.c
 var userProfile_component_1 = require('./components/userProfile/userProfile.component ');
 var signin_component_1 = require('./components/signin/signin.component');
 var forum_component_1 = require('./components/forum/forum.component');
+var projectview_component_1 = require('./components/projectView/projectview.component');
 var app_component_1 = require('./app.component');
 var app_routing_module_1 = require('./app-routing.module');
 var backendUrl_service_1 = require('./services/backendUrl.service');
@@ -43,7 +44,8 @@ var AppModule = (function () {
                 projectsFeed_component_1.ProjectsFeedComponent,
                 signin_component_1.SigninComponent,
                 userProfile_component_1.UserProfileComponent,
-                forum_component_1.ForumComponent
+                forum_component_1.ForumComponent,
+                projectview_component_1.ProjectViewComponent
             ],
             bootstrap: [app_component_1.AppComponent],
             providers: [backendUrl_service_1.BackendUrlService]

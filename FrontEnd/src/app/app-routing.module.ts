@@ -6,6 +6,7 @@ import { AddQuestionComponent } from './components/addQuestion/addQuestion.compo
 import { ProjectsFeedComponent } from './components/projectsFeed/projectsFeed.component';
 import {UserProfileComponent } from './components/userProfile/userProfile.component ';
 import { ForumComponent } from './components/forum/forum.component';
+import { ProjectViewComponent } from './components/projectView/projectview.component';
 
 const routes: Routes = [
       {
@@ -32,6 +33,10 @@ const routes: Routes = [
       {
         path: 'forum',
         component: ForumComponent
+      },
+      {
+        path: 'project/:id/:title',
+        component: ProjectViewComponent
       }
 ];
 

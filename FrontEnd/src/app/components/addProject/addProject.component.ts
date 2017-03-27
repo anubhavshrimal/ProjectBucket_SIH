@@ -53,7 +53,7 @@ export class AddProjectComponent implements OnInit {
     });
   }
 
-  initialiseReadme(event: Event) {
+  initialiseReadme(event: MouseEvent) {
     if (event.checked) {
       this.project.readme = "# " + this.project.title;
     }

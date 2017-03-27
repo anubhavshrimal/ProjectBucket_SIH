@@ -16,11 +16,19 @@ var ProjectsService = (function () {
     function ProjectsService(http) {
         this.http = http;
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-        this.url = backendUrl_service_1.BackendUrlService.url + '/project/insert';
+        this.createUrl = backendUrl_service_1.BackendUrlService.url + '/projects/insert';
     }
     ProjectsService.prototype.create = function (project) {
         return this.http
-            .post(this.url, JSON.stringify(project), { headers: this.headers })
+            .post(this.createUrl, JSON.stringify(project), { headers: this.headers })
+            .toPromise()
+            .then(function (res) { return res.json(); })
+            .catch(this.handleError);
+    };
+    ProjectsService.prototype.getProjectById = function (id) {
+        var getUrl = backendUrl_service_1.BackendUrlService.url + '/projects/${id}';
+        return this.http
+            .get(getUrl)
             .toPromise()
             .then(function (res) { return res.json(); })
             .catch(this.handleError);

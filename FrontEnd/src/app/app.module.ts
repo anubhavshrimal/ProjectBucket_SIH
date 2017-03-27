@@ -12,7 +12,9 @@ import { ProjectsFeedComponent } from './components/projectsFeed/projectsFeed.co
 import {UserProfileComponent } from './components/userProfile/userProfile.component ';
 import { SigninComponent } from './components/signin/signin.component';
 import { ForumComponent } from './components/forum/forum.component';
+import { ProjectViewComponent } from './components/projectView/projectview.component';
 import { AppComponent }  from './app.component';
+
 import { AppRoutingModule } from './app-routing.module';
 
 import { BackendUrlService } from './services/backendUrl.service';
@@ -34,9 +36,10 @@ import { BackendUrlService } from './services/backendUrl.service';
       ProjectsFeedComponent,
       SigninComponent,
       UserProfileComponent,
-      ForumComponent
+      ForumComponent,
+      ProjectViewComponent
     ],
   bootstrap:    [ AppComponent ],
-  providers: [BackendUrlService]
+  providers: [ BackendUrlService ]
 })
 export class AppModule { }
