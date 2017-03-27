@@ -54,9 +54,9 @@ export class AddProjectComponent implements OnInit {
   }
 
   initialiseReadme(event: Event) {
-    /*if (event.checked) {
+    if (event.checked) {
       this.project.readme = "# " + this.project.title;
-    }*/
+    }
   }
 
   addProject(): void {

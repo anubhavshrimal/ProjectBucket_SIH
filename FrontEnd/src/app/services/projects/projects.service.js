@@ -11,7 +11,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/toPromise');
-var project_1 = require('../../classTemplates/project/project');
 var backendUrl_service_1 = require('../backendUrl.service');
 var ProjectsService = (function () {
     function ProjectsService(http) {
@@ -21,7 +20,7 @@ var ProjectsService = (function () {
     }
     ProjectsService.prototype.create = function (project) {
         return this.http
-            .post(this.url, JSON.stringify(project_1.Project), { headers: this.headers })
+            .post(this.url, JSON.stringify(project), { headers: this.headers })
             .toPromise()
             .then(function (res) { return res.json(); })
             .catch(this.handleError);
