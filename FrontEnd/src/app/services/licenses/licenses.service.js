@@ -14,7 +14,7 @@ var licenses_1 = require('./licenses');
 var LicensesService = (function () {
     function LicensesService() {
     }
-    LicensesService.prototype.getLicenses = function () {
+    LicensesService.prototype.getLicensesTitles = function () {
         return Promise.resolve(_.map(licenses_1.LICENSES, 'name'));
     };
     LicensesService = __decorate([

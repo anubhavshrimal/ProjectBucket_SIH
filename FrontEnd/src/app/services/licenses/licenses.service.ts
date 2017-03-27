@@ -4,7 +4,7 @@ import { LICENSES } from './licenses';
 
 @Injectable()
 export class LicensesService {
-    getLicenses(): Promise<Object[]> {
+    getLicensesTitles(): Promise<Object[]> {
         return Promise.resolve(_.map(LICENSES, 'name'));
     }
 }

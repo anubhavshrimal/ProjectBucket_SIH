@@ -25,7 +25,7 @@ var AddProjectComponent = (function () {
     }
     AddProjectComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.licensesService.getLicenses().then(function (licenses) {
+        this.licensesService.getLicensesTitles().then(function (licenses) {
             _this.licenses = licenses;
             _this.project.license = String(_this.licenses[0]);
         });

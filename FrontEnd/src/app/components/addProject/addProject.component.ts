@@ -17,7 +17,7 @@ export class AddProjectComponent implements OnInit {
   project: Project;
   
   ngOnInit() : void {
-    this.licensesService.getLicenses().then(licenses => {
+    this.licensesService.getLicensesTitles().then(licenses => {
       this.licenses = licenses;
       this.project.license = String(this.licenses[0]);
     });
