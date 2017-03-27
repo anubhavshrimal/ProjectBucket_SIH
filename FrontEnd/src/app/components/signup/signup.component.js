@@ -43,11 +43,6 @@ var SignupComponent = (function () {
             return n === interest;
         });
     };
-    SignupComponent.prototype.signUp1 = function () {
-        this.signup1 = false;
-        this.signup2 = true;
-        return this.signup1;
-    };
     SignupComponent.prototype.category1 = function () {
         if (this.category == 'Student') {
             this.label = 'Institute';
@@ -62,6 +57,9 @@ var SignupComponent = (function () {
             this.label = 'Profesion';
         }
         this.categorySelected = true;
+    };
+    SignupComponent.prototype.signUp = function (username, category, label, mobileNo, interest, country, state, city, bio) {
+        console.log(username, category, label, mobileNo, interest, country, state, city, bio);
     };
     SignupComponent.prototype.login = function (userName, password) {
         console.log(userName, password);

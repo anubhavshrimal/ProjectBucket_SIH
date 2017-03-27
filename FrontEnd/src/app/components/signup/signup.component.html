@@ -7,7 +7,7 @@
                 <div class="columns centered">
                     <div class="four-fifths column ">
                         <md-input-container class="full-width">
-                            <input mdInput placeholder="User Name">
+                            <input mdInput [(ngModel)]="userName" name="userName" placeholder="User Name">
                             <md-hint align="start">User name must be unique</md-hint>
                         </md-input-container>
                     </div>
@@ -43,14 +43,14 @@
                 <div class="columns centered">
                     <div class="four-fifths column">
                         <md-input-container class="full-width" *ngIf="categorySelected">
-                            <input mdInput placeholder="{{label}}">
+                            <input mdInput [(ngModel)]="label" name="label" placeholder="{{label}}">
                         </md-input-container>
                     </div>
                 </div>
                 <div class="columns centered">
                     <div class="four-fifths column">
                         <md-input-container class="full-width">
-                            <input mdInput placeholder="Mobile">
+                            <input mdInput [(ngModel)]="mobileNo" name="mobileNo" placeholder="Mobile">
                         </md-input-container>
                     </div>
                 </div>
@@ -75,28 +75,28 @@
                 <div class="columns centered">
                     <div class="four-fifths column">
                         <md-input-container class="full-width">
-                            <input mdInput placeholder="City">
+                            <input mdInput [(ngModel)]="country" name="country" placeholder="Country">
                         </md-input-container>
                     </div>
                 </div>
                 <div class="columns centered">
                     <div class="four-fifths column">
                         <md-input-container class="full-width">
-                            <input mdInput placeholder="State">
+                            <input mdInput [(ngModel)]="state" name="state" placeholder="State">
                         </md-input-container>
                     </div>
                 </div>
                 <div class="columns centered">
                     <div class="four-fifths column">
                         <md-input-container class="full-width">
-                            <input mdInput placeholder="Country">
+                            <input mdInput [(ngModel)]="city" name="city" placeholder="City">
                         </md-input-container>
                     </div>
                 </div>
                 <div class="columns centered">
                     <div class="four-fifths column">
                         <md-input-container class="full-width">
-                            <input mdInput placeholder="Bio">
+                            <input mdInput [(ngModel)]="bio" name="bio" placeholder="Bio">
                         </md-input-container>
                     </div>
                 </div>
@@ -104,7 +104,7 @@
 
                 <div class="columns centered">
                     <div class="one-half column centered">
-                        <button class="btn btn-primary" type="button" (click)="signUp2">Sign up</button>
+                        <button class="btn btn-primary" type="button" (click)="signUp(username, category, label, mobileNo, interest, country, state, city, bio)">Sign up</button>
                     </div>
                 </div>
 

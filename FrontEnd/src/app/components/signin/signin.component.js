@@ -25,9 +25,10 @@ var SigninComponent = (function () {
         ];
         this.signup1 = true;
     }
-    SigninComponent.prototype.signUp1 = function () {
+    SigninComponent.prototype.signUp = function (fullName, mailid, password) {
         this.signup1 = false;
         this.signup2 = true;
+        console.log(fullName, mailid, password);
         return this.signup1;
     };
     SigninComponent.prototype.login = function (userName, password) {

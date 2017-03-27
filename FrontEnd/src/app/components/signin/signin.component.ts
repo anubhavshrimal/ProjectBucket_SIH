@@ -27,9 +27,10 @@ export class SigninComponent {
          this.signup1 = true;
     }
 
-    signUp1(){
+    signUp(fullName: string, mailid: string, password:string){
         this.signup1 = false;
         this.signup2 = true;
+        console.log(fullName, mailid, password);
         return this.signup1;
     }
 

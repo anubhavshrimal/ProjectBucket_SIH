@@ -52,11 +52,7 @@ export class SignupComponent {
             return n === interest;
         });
     }
-    signUp1(){
-        this.signup1 = false;
-        this.signup2 = true;
-        return this.signup1;
-    }
+
     category1(){
         if (this.category == 'Student'){
             this.label = 'Institute'
@@ -71,6 +67,9 @@ export class SignupComponent {
             this.label = 'Profesion'
         }
         this.categorySelected = true;
+    }
+    signUp(username:string, category:string, label:string, mobileNo:string, interest:string, country:string, state:string, city:string, bio:string){
+        console.log(username, category, label, mobileNo, interest, country, state, city, bio);
     }
     login(userName:string, password:string){
         console.log(userName, password);

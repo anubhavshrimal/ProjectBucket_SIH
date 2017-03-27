@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'my-app',
   template: `
   <div *ngIf="!loggedIn">
-    <signin></signin>
+    <signup></signup>
   </div>
   <div [hidden]="!loggedIn">
     <router-outlet></router-outlet>

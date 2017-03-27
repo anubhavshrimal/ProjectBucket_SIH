@@ -16,7 +16,7 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "\n  <div *ngIf=\"!loggedIn\">\n    <signin></signin>\n  </div>\n  <div [hidden]=\"!loggedIn\">\n    <router-outlet></router-outlet>\n  </div>\n",
+            template: "\n  <div *ngIf=\"!loggedIn\">\n    <signup></signup>\n  </div>\n  <div [hidden]=\"!loggedIn\">\n    <router-outlet></router-outlet>\n  </div>\n",
             moduleId: module.id
         }), 
         __metadata('design:paramtypes', [])

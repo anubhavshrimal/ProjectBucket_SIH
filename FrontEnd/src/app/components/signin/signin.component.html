@@ -42,28 +42,28 @@
                         <div class="columns centered">
                             <div class="four-fifths column ">
                                 <md-input-container class="full-width">
-                                    <input mdInput placeholder="Full Name">
+                                    <input mdInput [(ngModel)]="fullName" name="fullName" placeholder="Full Name">
                                 </md-input-container>
                             </div>
                         </div>
                         <div class="columns centered">
                             <div class="four-fifths column ">
                                 <md-input-container class="full-width">
-                                    <input mdInput placeholder="Mail ID">
+                                    <input mdInput [(ngModel)]="mailid" name="mailid" placeholder="Mail ID">
                                 </md-input-container>
                             </div>
                         </div>
                         <div class="columns centered">
                             <div class="four-fifths column">
                                 <md-input-container class="full-width">
-                                    <input mdInput placeholder="Password" type="password">
+                                    <input mdInput [(ngModel)]="password" name="password" placeholder="Password" type="password">
                                 </md-input-container>
                             </div>
                         </div>
 
                         <div class="columns centered">
                             <div class="one-half column centered">
-                                <button class="btn btn-primary" type="button" (click)="signUp1()">Next</button>
+                                <button class="btn btn-primary" type="button" (click)="signUp(fullName, mailid, pass )">Next</button>
                             </div>
                         </div>
                     </form>
