@@ -63,6 +63,7 @@ export class AddProjectComponent implements OnInit {
   }
 
   addProject(): void {
+    this.project.username = "pulkit"
     this.projectsService.create(this.project)
       .then(project => console.log(project))
   }

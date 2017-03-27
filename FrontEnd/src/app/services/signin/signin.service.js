@@ -22,7 +22,7 @@ var SigninService = (function () {
         return this.http
             .post(this.url, JSON.stringify({ username: userName, password: password }), { headers: this.headers })
             .toPromise()
-            .then(function (res) { return res.json().body; })
+            .then(function (res) { return res.json()[0]; })
             .catch(this.handleError);
     };
     SigninService.prototype.handleError = function (error) {

@@ -19,6 +19,7 @@ var addQuestion_component_1 = require('./components/addQuestion/addQuestion.comp
 var projectsFeed_component_1 = require('./components/projectsFeed/projectsFeed.component');
 var userProfile_component_1 = require('./components/userProfile/userProfile.component ');
 var signin_component_1 = require('./components/signin/signin.component');
+var signup_component_1 = require('./components/signup/signup.component');
 var forum_component_1 = require('./components/forum/forum.component');
 var projectview_component_1 = require('./components/projectView/projectview.component');
 var app_component_1 = require('./app.component');
@@ -43,6 +44,7 @@ var AppModule = (function () {
                 addQuestion_component_1.AddQuestionComponent,
                 projectsFeed_component_1.ProjectsFeedComponent,
                 signin_component_1.SigninComponent,
+                signup_component_1.SignupComponent,
                 userProfile_component_1.UserProfileComponent,
                 forum_component_1.ForumComponent,
                 projectview_component_1.ProjectViewComponent

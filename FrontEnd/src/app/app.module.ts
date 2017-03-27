@@ -11,6 +11,7 @@ import { AddQuestionComponent } from './components/addQuestion/addQuestion.compo
 import { ProjectsFeedComponent } from './components/projectsFeed/projectsFeed.component';
 import {UserProfileComponent } from './components/userProfile/userProfile.component ';
 import { SigninComponent } from './components/signin/signin.component';
+import { SignupComponent } from './components/signup/signup.component';
 import { ForumComponent } from './components/forum/forum.component';
 import { ProjectViewComponent } from './components/projectView/projectview.component';
 import { AppComponent }  from './app.component';
@@ -35,6 +36,7 @@ import { BackendUrlService } from './services/backendUrl.service';
       AddQuestionComponent,
       ProjectsFeedComponent,
       SigninComponent,
+      SignupComponent,
       UserProfileComponent,
       ForumComponent,
       ProjectViewComponent

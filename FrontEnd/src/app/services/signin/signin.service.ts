@@ -15,7 +15,7 @@ export class SigninService {
         return this.http
             .post(this.url,JSON.stringify({username: userName, password: password}),{headers: this.headers})
             .toPromise()
-            .then(res => res.json().body)
+            .then(res => res.json()[0])
             .catch(this.handleError);
     }
     private handleError(error: any): Promise<any> {

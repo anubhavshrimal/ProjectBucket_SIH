@@ -10,8 +10,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var signin_service_1 = require('../../services/signin/signin.service');
-var SigninComponent = (function () {
-    function SigninComponent(signinService) {
+var _ = require("lodash");
+var SignupComponent = (function () {
+    function SignupComponent(signinService) {
         this.signinService = signinService;
         this.licenses = [
             {
@@ -23,27 +24,59 @@ var SigninComponent = (function () {
                 text: "MIT open source to all"
             }
         ];
+        this.interests = [];
         this.signup1 = true;
+        this.categories = ["Student", "Teacher", "Industry Professional", "Other"];
     }
-    SigninComponent.prototype.signUp1 = function () {
+    SignupComponent.prototype.addInterests = function () {
+        if (this.interest.length != 0) {
+            for (var i in this.interests) {
+                if (this.interests[i] === this.interest)
+                    return;
+            }
+            this.interests.push(this.interest);
+            this.interest = "";
+        }
+    };
+    SignupComponent.prototype.removeInterests = function (interest) {
+        _.remove(this.interests, function (n) {
+            return n === interest;
+        });
+    };
+    SignupComponent.prototype.signUp1 = function () {
         this.signup1 = false;
         this.signup2 = true;
         return this.signup1;
     };
-    SigninComponent.prototype.login = function (userName, password) {
+    SignupComponent.prototype.category1 = function () {
+        if (this.category == 'Student') {
+            this.label = 'Institute';
+        }
+        else if (this.category == 'Teacher') {
+            this.label = 'Institute';
+        }
+        else if (this.category == 'Industry Professional') {
+            this.label = 'Company';
+        }
+        else {
+            this.label = 'Profesion';
+        }
+        this.categorySelected = true;
+    };
+    SignupComponent.prototype.login = function (userName, password) {
         console.log(userName, password);
         this.signinService.login(userName, password).then(function (data) { return console.log(data); });
     };
-    SigninComponent = __decorate([
+    SignupComponent = __decorate([
         core_1.Component({
-            selector: 'signin',
-            templateUrl: './signin.component.html',
+            selector: 'signup',
+            templateUrl: './signup.component.html',
             moduleId: module.id,
             providers: [signin_service_1.SigninService]
         }), 
         __metadata('design:paramtypes', [signin_service_1.SigninService])
-    ], SigninComponent);
-    return SigninComponent;
+    ], SignupComponent);
+    return SignupComponent;
 }());
-exports.SigninComponent = SigninComponent;
-//# sourceMappingURL=signin.component.js.map
+exports.SignupComponent = SignupComponent;
+//# sourceMappingURL=signup.component.js.map
