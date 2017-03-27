@@ -22,6 +22,7 @@ var AddProjectComponent = (function () {
         this.project.zip_file = [];
         this.project.images = [];
         this.project.video_url = [];
+        this.readmeChecked = false;
     }
     AddProjectComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -46,10 +47,11 @@ var AddProjectComponent = (function () {
             return n === tag;
         });
     };
-    AddProjectComponent.prototype.initialiseReadme = function (event) {
-        if (event.checked) {
+    AddProjectComponent.prototype.initialiseReadme = function () {
+        if (this.readmeChecked = !this.readmeChecked) {
             this.project.readme = "# " + this.project.title;
         }
+        console.log(this.readmeChecked);
     };
     AddProjectComponent.prototype.addProject = function () {
         this.projectsService.create(this.project)

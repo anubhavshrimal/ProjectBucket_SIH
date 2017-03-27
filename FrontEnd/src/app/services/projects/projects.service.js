@@ -26,7 +26,7 @@ var ProjectsService = (function () {
             .catch(this.handleError);
     };
     ProjectsService.prototype.getProjectById = function (id) {
-        var getUrl = backendUrl_service_1.BackendUrlService.url + '/projects/${id}';
+        var getUrl = backendUrl_service_1.BackendUrlService.url + '/projects/' + id;
         return this.http
             .get(getUrl)
             .toPromise()

@@ -22,7 +22,7 @@ export class ProjectsService {
     }
 
     getProjectById(id: string): Promise<Project> {
-        const getUrl = BackendUrlService.url + '/projects/${id}';
+        const getUrl = BackendUrlService.url + '/projects/'+id;
 
         return this.http
             .get(getUrl)

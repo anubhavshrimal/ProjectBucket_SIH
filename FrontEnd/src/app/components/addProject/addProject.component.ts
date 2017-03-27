@@ -15,7 +15,8 @@ export class AddProjectComponent implements OnInit {
   licenses: Object[];
   tag: string;
   project: Project;
-  
+  readmeChecked: Boolean;
+
   ngOnInit() : void {
     this.licensesService.getLicensesTitles().then(licenses => {
       this.licenses = licenses;
@@ -33,6 +34,7 @@ export class AddProjectComponent implements OnInit {
     this.project.zip_file = [];
     this.project.images = [];
     this.project.video_url = [];
+    this.readmeChecked = false;
   }
 
   addTag (): void {
@@ -53,10 +55,11 @@ export class AddProjectComponent implements OnInit {
     });
   }
 
-  initialiseReadme(event: MouseEvent) {
-    if (event.checked) {
+  initialiseReadme() {
+    if (this.readmeChecked = !this.readmeChecked) {
       this.project.readme = "# " + this.project.title;
     }
+    console.log(this.readmeChecked)
   }
 
   addProject(): void {
