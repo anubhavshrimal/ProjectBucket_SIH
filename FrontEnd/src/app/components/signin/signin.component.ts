@@ -15,9 +15,9 @@ export class SigninComponent {
     interest: string;
     signup1 : boolean;
     signup2 : boolean;
-    categories : Array<String>;
-    category : String;
-    label : String;
+    categories : Array<string>;
+    category : string;
+    label : string;
     categorySelected : boolean;
 
     // sessionVar : boolean = true;
@@ -73,7 +73,7 @@ export class SigninComponent {
         }
         this.categorySelected = true;
     }
-    login(userName:String, password:String){
+    login(userName:string, password:string){
         console.log(userName, password);
         this.signinService.login(userName,password);
     }

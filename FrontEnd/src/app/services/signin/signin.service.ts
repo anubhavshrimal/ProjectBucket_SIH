@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
+import { BackendUrlService } from '../backendUrl.service';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class SigninService {
-    private Url = 'http://codeist.mi43ujva9v.us-west-2.elasticbeanstalk.com/webapi/user/login';
+    private url = BackendUrlService.url + '/user/login';
     private headers = new Headers({'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'});
 
     constructor(private http: Http){
@@ -12,7 +13,7 @@ export class SigninService {
     }
     login(userName: string, password: string): Promise<Object[]> {
         return this.http
-            .post(this.Url, JSON.stringify({username: userName, password: password}), {headers: this.headers})
+            .post(this.url, JSON.stringify({username: userName, password: password}), {headers: this.headers})
             .toPromise()
             .then(res => console.log(res))
             .catch(this.handleError);

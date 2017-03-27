@@ -18,7 +18,7 @@ export class AddProjectComponent implements OnInit {
   
   ngOnInit() : void {
     this.licensesService.getLicenses().then(licenses => {
-      this.licenses = licenses
+      this.licenses = licenses;
       this.project.license = String(this.licenses[0]);
     });
   }
@@ -27,7 +27,7 @@ export class AddProjectComponent implements OnInit {
     private licensesService: LicensesService,
     private projectsService: ProjectsService
     ) {
-    this.project = {}
+    this.project = {};
     this.project.tags = [];
     this.project._private = "no";
     this.project.zip_file = [];
@@ -54,9 +54,9 @@ export class AddProjectComponent implements OnInit {
   }
 
   initialiseReadme(event: Event) {
-    if (event.checked) {
+    /*if (event.checked) {
       this.project.readme = "# " + this.project.title;
-    }
+    }*/
   }
 
   addProject(): void {

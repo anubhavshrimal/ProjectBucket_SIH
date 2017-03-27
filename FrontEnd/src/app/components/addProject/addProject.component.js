@@ -47,9 +47,9 @@ var AddProjectComponent = (function () {
         });
     };
     AddProjectComponent.prototype.initialiseReadme = function (event) {
-        if (event.checked) {
-            this.project.readme = "# " + this.project.title;
-        }
+        /*if (event.checked) {
+          this.project.readme = "# " + this.project.title;
+        }*/
     };
     AddProjectComponent.prototype.addProject = function () {
         this.projectsService.create(this.project)

@@ -10,16 +10,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
+var backendUrl_service_1 = require('../backendUrl.service');
 require('rxjs/add/operator/toPromise');
 var SigninService = (function () {
     function SigninService(http) {
         this.http = http;
-        this.Url = 'http://codeist.mi43ujva9v.us-west-2.elasticbeanstalk.com/webapi/user/login';
+        this.url = backendUrl_service_1.BackendUrlService.url + '/user/login';
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
     }
     SigninService.prototype.login = function (userName, password) {
         return this.http
-            .post(this.Url, JSON.stringify({ username: userName, password: password }), { headers: this.headers })
+            .post(this.url, JSON.stringify({ username: userName, password: password }), { headers: this.headers })
             .toPromise()
             .then(function (res) { return console.log(res); })
             .catch(this.handleError);
