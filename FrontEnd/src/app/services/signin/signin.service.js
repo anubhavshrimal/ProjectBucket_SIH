@@ -16,13 +16,13 @@ var SigninService = (function () {
     function SigninService(http) {
         this.http = http;
         this.url = backendUrl_service_1.BackendUrlService.url + '/user/login';
-        this.headers = new http_1.Headers({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
+        this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
     }
     SigninService.prototype.login = function (userName, password) {
         return this.http
             .post(this.url, JSON.stringify({ username: userName, password: password }), { headers: this.headers })
             .toPromise()
-            .then(function (res) { return console.log(res); })
+            .then(function (res) { return res.json().body; })
             .catch(this.handleError);
     };
     SigninService.prototype.handleError = function (error) {

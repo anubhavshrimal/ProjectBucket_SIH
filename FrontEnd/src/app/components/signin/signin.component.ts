@@ -75,6 +75,6 @@ export class SigninComponent {
     }
     login(userName:string, password:string){
         console.log(userName, password);
-        this.signinService.login(userName,password);
+        console.log(this.signinService.login(userName,password));
     }
 }

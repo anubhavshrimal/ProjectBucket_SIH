@@ -66,7 +66,7 @@ var SigninComponent = (function () {
     };
     SigninComponent.prototype.login = function (userName, password) {
         console.log(userName, password);
-        this.signinService.login(userName, password);
+        console.log(this.signinService.login(userName, password));
     };
     SigninComponent = __decorate([
         core_1.Component({
