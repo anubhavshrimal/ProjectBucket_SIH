@@ -54,7 +54,6 @@ var AddProjectComponent = (function () {
         console.log(this.readmeChecked);
     };
     AddProjectComponent.prototype.addProject = function () {
-        this.project.username = "pulkit";
         this.projectsService.create(this.project)
             .then(function (project) { return console.log(project); });
     };
