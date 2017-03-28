@@ -3,7 +3,7 @@ import { Headers, Http } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
-import { Project } from '../../classTemplates/project/project';
+import { Project, Comment } from '../../classTemplates/project/project';
 import { BackendUrlService } from '../backendUrl.service';
 
 @Injectable()
@@ -28,6 +28,15 @@ export class ProjectsService {
             .get(getUrl)
             .toPromise()
             .then(res => res.json() as Project)
+            .catch(this.handleError);
+    }
+
+    insertComment(comment: string, projectId: string) {
+        const insertCommentUrl = BackendUrlService.url + '/projects/'+projectId+'/comment';
+        return this.http
+            .post(insertCommentUrl, JSON.stringify({"comment": comment}), {headers: this.headers})
+            .toPromise()
+            .then(res => res.json() as Comment)
             .catch(this.handleError);
     }
 

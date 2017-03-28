@@ -3,7 +3,7 @@ import { ActivatedRoute, Params }   from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 
 import { ProjectsService } from '../../services/projects/projects.service';
-import  { Project } from '../../classTemplates/project/project'
+import  { Project, Comment } from '../../classTemplates/project/project';
 import * as _ from "lodash";
 
 @Component({
@@ -14,9 +14,9 @@ import * as _ from "lodash";
 })
 export class ProjectViewComponent implements OnInit { 
   project: Project;
-  
+  comment: string;
   ngOnInit() : void {
-    // this.getProject()
+    this.getProject()
   }
 
   constructor(
@@ -24,21 +24,24 @@ export class ProjectViewComponent implements OnInit {
     private projectsService: ProjectsService
     ) {
       this.project= {};
-      this.project.title = "NG2"
-      this.project.username = "Anubhav"
-      // this.project.readme = `# Anubhav`;
-      this.project.description = `Angular 2 projects`
-      this.project.tags = [
-                            "army",
-                            "Social",
-                            "java",
-                            "mongo"
-                          ]
     }
 
   getProject(): void {
     this.route.params
         .switchMap((params: Params) => this.projectsService.getProjectById(params['id']))
         .subscribe(project => this.project = project);
+  }
+
+  insertComment() : void {
+    this.projectsService.insertComment(this.comment, this.project.id)
+      .then(comment => {
+        if(comment.comment != 'error' && comment.username) {
+          this.comment = "";
+          this.project.comments.splice(0, 0, comment);
+        }
+        else {
+          
+        }
+      })
   }
 }

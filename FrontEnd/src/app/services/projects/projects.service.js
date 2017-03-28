@@ -33,6 +33,14 @@ var ProjectsService = (function () {
             .then(function (res) { return res.json(); })
             .catch(this.handleError);
     };
+    ProjectsService.prototype.insertComment = function (comment, projectId) {
+        var insertCommentUrl = backendUrl_service_1.BackendUrlService.url + '/projects/' + projectId + '/comment';
+        return this.http
+            .post(insertCommentUrl, JSON.stringify({ "comment": comment }), { headers: this.headers })
+            .toPromise()
+            .then(function (res) { return res.json(); })
+            .catch(this.handleError);
+    };
     ProjectsService.prototype.handleError = function (error) {
         console.error('An error occurred', error);
         return Promise.reject(error.message || error);

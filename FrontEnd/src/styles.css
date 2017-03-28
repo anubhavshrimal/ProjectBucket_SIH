@@ -23,6 +23,10 @@
   width: 700px;
 }
 
+.example-comment-card {
+  width: 100%;
+}
+
 .avatars {
   width: 40px;
   border-radius: 50%;

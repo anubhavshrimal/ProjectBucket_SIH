@@ -18,6 +18,6 @@ export class AppComponent  {
   loggedIn: Boolean;
 
   constructor() {
-    this.loggedIn = false;
+    this.loggedIn = true;
   }
 }

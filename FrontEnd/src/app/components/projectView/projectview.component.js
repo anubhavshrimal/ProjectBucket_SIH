@@ -17,25 +17,27 @@ var ProjectViewComponent = (function () {
         this.route = route;
         this.projectsService = projectsService;
         this.project = {};
-        this.project.title = "NG2";
-        this.project.username = "Anubhav";
-        // this.project.readme = `# Anubhav`;
-        this.project.description = "Angular 2 projects";
-        this.project.tags = [
-            "army",
-            "Social",
-            "java",
-            "mongo"
-        ];
     }
     ProjectViewComponent.prototype.ngOnInit = function () {
-        // this.getProject()
+        this.getProject();
     };
     ProjectViewComponent.prototype.getProject = function () {
         var _this = this;
         this.route.params
             .switchMap(function (params) { return _this.projectsService.getProjectById(params['id']); })
             .subscribe(function (project) { return _this.project = project; });
+    };
+    ProjectViewComponent.prototype.insertComment = function () {
+        var _this = this;
+        this.projectsService.insertComment(this.comment, this.project.id)
+            .then(function (comment) {
+            if (comment.comment != 'error' && comment.username) {
+                _this.comment = "";
+                _this.project.comments.splice(0, 0, comment);
+            }
+            else {
+            }
+        });
     };
     ProjectViewComponent = __decorate([
         core_1.Component({

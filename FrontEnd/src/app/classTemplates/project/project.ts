@@ -12,6 +12,7 @@ export class Comment {
 
 export class Project {
     username?: string;
+    id?: string;
     title?: string;
     date?: Date;
     description?: string;
