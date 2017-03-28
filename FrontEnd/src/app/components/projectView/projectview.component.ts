@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params }   from '@angular/router';
 import 'rxjs/add/operator/switchMap';
+import {MdSnackBar} from '@angular/material';
 
 import { ProjectsService } from '../../services/projects/projects.service';
 import  { Project, Comment } from '../../classTemplates/project/project';
@@ -21,18 +22,30 @@ export class ProjectViewComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private projectsService: ProjectsService
+    private projectsService: ProjectsService,
+    private snackBar: MdSnackBar
     ) {
       this.project= {};
     }
+  
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000,
+    });
+  }
 
   getProject(): void {
     this.route.params
         .switchMap((params: Params) => this.projectsService.getProjectById(params['id']))
-        .subscribe(project => this.project = project);
+        .subscribe(project => {
+          this.project = project;
+          if(this.project.comments) {
+            _.reverse(this.project.comments)
+          }
+        });
   }
 
-  insertComment() : void {
+  insertComment(): void {
     this.projectsService.insertComment(this.comment, this.project.id)
       .then(comment => {
         if(comment.comment != 'error' && comment.username) {
@@ -40,8 +53,22 @@ export class ProjectViewComponent implements OnInit {
           this.project.comments.splice(0, 0, comment);
         }
         else {
-          
+          this.openSnackBar("Comment was not added", "Try Again!");
         }
       })
+  }
+
+  deleteComment(comment: Comment): void {
+    this.projectsService.deleteComment(comment.username, this.project.id, comment.date.getTime())
+      .then(msg => {
+        if(msg == 'success'){
+          _.remove(this.project.comments, function(c){
+            return c == comment;
+          })
+        }
+        else {
+          this.openSnackBar("Comment couldn't be deleted", "Try Again!");
+        }
+      });
   }
 }

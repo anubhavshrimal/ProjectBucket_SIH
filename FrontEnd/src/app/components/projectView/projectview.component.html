@@ -1,10 +1,10 @@
-<!--<div class="container" *ngIf="!project.title">
+<div class="container" *ngIf="!project.title">
     <div class="columns centered">
         <div class="one-fifth column centered text-center">
             <md-spinner></md-spinner>
         </div>
     </div>
-</div>-->
+</div>
 <div class="container" *ngIf="project.title">
     <div class="columns centered">
         <div class="four-fifths column centered">
@@ -14,7 +14,9 @@
                     <h1>{{project.title}}</h1>
                 </div>
                 <div class="one-fifth column">
-                    <button md-raised-button md-icon-button class="bg-blue"><md-icon class="fa fa-pencil fa-2x text-white"></md-icon></button>
+                    <a md-raised-button md-icon-button class="bg-blue" routerLink="/projects/update/{{project.id}}/{{project.url_title}}">
+                        <md-icon class="fa fa-pencil fa-2x text-white"></md-icon>
+                    </a>
                     <button md-raised-button md-icon-button class="bg-red"><md-icon class="fa fa-trash fa-2x text-white"></md-icon></button>
                 </div>
             </div>
@@ -70,7 +72,14 @@
                 </div>
             </div>
             <br>
-            <div class="columns centered">
+            <div class="columns">
+                <div class="column">
+                    <div class="lead">
+                        License: {{project.license}}
+                    </div>
+                </div>
+            </div>
+            <div class="columns">
                 <div class="column">
                     <button md-raised-button><md-icon class="fa fa-thumbs-o-up"></md-icon>1.5K</button>
                     <button md-raised-button><md-icon class="fa fa-thumbs-o-down"></md-icon>100</button>
@@ -83,29 +92,31 @@
             </md-input-container>
             <button md-raised-button class="state state-open" [disabled]="!comment" (click)="insertComment()">Add comment</button>
             <br>
-            <strong>Comments:</strong>
+            <div *ngIf="project.comments">
+                <strong>Comments:</strong>
 
-            <md-card class="example-comment-card border" *ngFor="let comment of project.comments">
-                <md-card-header>
-                    <div md-card-avatar>
-                        <img md-card-avatar class="avatars" src="app/assets/male_user.png">
-                    </div>
-                    <md-card-title><a href="">{{comment.username}}</a></md-card-title>
-                    <md-card-subtitle>{{comment.date | date:'medium'}}</md-card-subtitle>
-                </md-card-header>
-                <md-card-content>
-                    <p>
-                        {{comment.comment}}
-                    </p>
-                </md-card-content>
-                <md-card-actions align="end">
-                    <div class="columns">
-                        <div class="column">
-                            <button md-raised-button class="bg-red" mdTooltip="Delete"><md-icon class="fa fa-trash text-white"></md-icon></button>
+                <md-card class="example-comment-card border" *ngFor="let comment of project.comments">
+                    <md-card-header>
+                        <div md-card-avatar>
+                            <img md-card-avatar class="avatars" src="app/assets/male_user.png">
                         </div>
-                    </div>
-                </md-card-actions>
-            </md-card>
+                        <md-card-title><a routerLink="/user-profile/{{comment.username}}">{{comment.username}}</a></md-card-title>
+                        <md-card-subtitle>{{comment.date | date:'medium'}}</md-card-subtitle>
+                    </md-card-header>
+                    <md-card-content>
+                        <p>
+                            {{comment.comment}}
+                        </p>
+                    </md-card-content>
+                    <md-card-actions align="end">
+                        <div class="columns">
+                            <div class="column">
+                                <button md-raised-button class="bg-red" mdTooltip="Delete"><md-icon class="fa fa-trash text-white"></md-icon></button>
+                            </div>
+                        </div>
+                    </md-card-actions>
+                </md-card>
+            </div>
         </div>
     </div>
 </div>

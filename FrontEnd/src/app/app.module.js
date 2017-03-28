@@ -24,6 +24,7 @@ var signup_component_1 = require('./components/signup/signup.component');
 var editProfile_component_1 = require('./components/editProfile/editProfile.component');
 var forum_component_1 = require('./components/forum/forum.component');
 var projectview_component_1 = require('./components/projectView/projectview.component');
+var editProject_component_1 = require('./components/editProject/editProject.component');
 var app_component_1 = require('./app.component');
 var app_routing_module_1 = require('./app-routing.module');
 var backendUrl_service_1 = require('./services/backendUrl.service');
@@ -51,7 +52,8 @@ var AppModule = (function () {
                 editProfile_component_1.EditProfileComponent,
                 userProfile_component_1.UserProfileComponent,
                 forum_component_1.ForumComponent,
-                projectview_component_1.ProjectViewComponent
+                projectview_component_1.ProjectViewComponent,
+                editProject_component_1.EditProjectComponent
             ],
             bootstrap: [app_component_1.AppComponent],
             providers: [backendUrl_service_1.BackendUrlService]

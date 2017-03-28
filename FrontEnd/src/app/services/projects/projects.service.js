@@ -25,6 +25,14 @@ var ProjectsService = (function () {
             .then(function (res) { return res.json(); })
             .catch(this.handleError);
     };
+    ProjectsService.prototype.update = function (project) {
+        var updateUrl = backendUrl_service_1.BackendUrlService.url + '/projects/' + project.id;
+        return this.http
+            .put(updateUrl, JSON.stringify(project), { headers: this.headers })
+            .toPromise()
+            .then(function (res) { return res.json().message; })
+            .catch(this.handleError);
+    };
     ProjectsService.prototype.getProjectById = function (id) {
         var getUrl = backendUrl_service_1.BackendUrlService.url + '/projects/' + id;
         return this.http
@@ -37,6 +45,14 @@ var ProjectsService = (function () {
         var insertCommentUrl = backendUrl_service_1.BackendUrlService.url + '/projects/' + projectId + '/comment';
         return this.http
             .post(insertCommentUrl, JSON.stringify({ "comment": comment }), { headers: this.headers })
+            .toPromise()
+            .then(function (res) { return res.json(); })
+            .catch(this.handleError);
+    };
+    ProjectsService.prototype.deleteComment = function (username, projectId, date) {
+        var deleteCommentUrl = backendUrl_service_1.BackendUrlService.url + '/projects/' + projectId + '/comment/' + username + '/${date}';
+        return this.http
+            .delete(deleteCommentUrl)
             .toPromise()
             .then(function (res) { return res.json(); })
             .catch(this.handleError);

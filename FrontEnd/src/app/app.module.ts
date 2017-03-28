@@ -16,6 +16,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { EditProfileComponent } from './components/editProfile/editProfile.component';
 import { ForumComponent } from './components/forum/forum.component';
 import { ProjectViewComponent } from './components/projectView/projectview.component';
+import { EditProjectComponent } from './components/editProject/editProject.component';
 import { AppComponent }  from './app.component';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -43,7 +44,8 @@ import { BackendUrlService } from './services/backendUrl.service';
       EditProfileComponent,
       UserProfileComponent,
       ForumComponent,
-      ProjectViewComponent
+      ProjectViewComponent,
+      EditProjectComponent
     ],
   bootstrap:    [ AppComponent ],
   providers: [ BackendUrlService ]

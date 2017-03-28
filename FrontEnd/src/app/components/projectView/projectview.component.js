@@ -11,21 +11,34 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 require('rxjs/add/operator/switchMap');
+var material_1 = require('@angular/material');
 var projects_service_1 = require('../../services/projects/projects.service');
+var _ = require("lodash");
 var ProjectViewComponent = (function () {
-    function ProjectViewComponent(route, projectsService) {
+    function ProjectViewComponent(route, projectsService, snackBar) {
         this.route = route;
         this.projectsService = projectsService;
+        this.snackBar = snackBar;
         this.project = {};
     }
     ProjectViewComponent.prototype.ngOnInit = function () {
         this.getProject();
     };
+    ProjectViewComponent.prototype.openSnackBar = function (message, action) {
+        this.snackBar.open(message, action, {
+            duration: 2000,
+        });
+    };
     ProjectViewComponent.prototype.getProject = function () {
         var _this = this;
         this.route.params
             .switchMap(function (params) { return _this.projectsService.getProjectById(params['id']); })
-            .subscribe(function (project) { return _this.project = project; });
+            .subscribe(function (project) {
+            _this.project = project;
+            if (_this.project.comments) {
+                _.reverse(_this.project.comments);
+            }
+        });
     };
     ProjectViewComponent.prototype.insertComment = function () {
         var _this = this;
@@ -36,6 +49,21 @@ var ProjectViewComponent = (function () {
                 _this.project.comments.splice(0, 0, comment);
             }
             else {
+                _this.openSnackBar("Comment was not added", "Try Again!");
+            }
+        });
+    };
+    ProjectViewComponent.prototype.deleteComment = function (comment) {
+        var _this = this;
+        this.projectsService.deleteComment(comment.username, this.project.id, comment.date.getTime())
+            .then(function (msg) {
+            if (msg == 'success') {
+                _.remove(_this.project.comments, function (c) {
+                    return c == comment;
+                });
+            }
+            else {
+                _this.openSnackBar("Comment couldn't be deleted", "Try Again!");
             }
         });
     };
@@ -46,7 +74,7 @@ var ProjectViewComponent = (function () {
             moduleId: module.id,
             providers: [projects_service_1.ProjectsService]
         }), 
-        __metadata('design:paramtypes', [router_1.ActivatedRoute, projects_service_1.ProjectsService])
+        __metadata('design:paramtypes', [router_1.ActivatedRoute, projects_service_1.ProjectsService, material_1.MdSnackBar])
     ], ProjectViewComponent);
     return ProjectViewComponent;
 }());

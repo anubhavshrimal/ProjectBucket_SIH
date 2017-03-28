@@ -21,6 +21,15 @@ export class ProjectsService {
             .catch(this.handleError);
     }
 
+    update(project: Project): Promise<string> {
+        const updateUrl = BackendUrlService.url + '/projects/'+project.id;
+        return this.http
+            .put(updateUrl, JSON.stringify(project), {headers: this.headers})
+            .toPromise()
+            .then(res => res.json().message)
+            .catch(this.handleError);
+    }
+
     getProjectById(id: string): Promise<Project> {
         const getUrl = BackendUrlService.url + '/projects/'+id;
 
@@ -40,6 +49,14 @@ export class ProjectsService {
             .catch(this.handleError);
     }
 
+    deleteComment(username: string, projectId: string, date: number) {
+        const deleteCommentUrl = BackendUrlService.url + '/projects/'+projectId+'/comment/'+username+'/${date}';
+        return this.http
+            .delete(deleteCommentUrl)
+            .toPromise()
+            .then(res => res.json())
+            .catch(this.handleError);
+    }
     private handleError(error: any): Promise<any> {
     console.error('An error occurred', error);
     return Promise.reject(error.message || error);

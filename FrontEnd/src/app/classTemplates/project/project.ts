@@ -27,4 +27,6 @@ export class Project {
     images?: Array<string>;
     info?: Info;
     comments?: Array<Comment>;
+    project_link?: string;
+    url_title?: string;
 }

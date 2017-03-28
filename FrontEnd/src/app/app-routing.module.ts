@@ -8,6 +8,7 @@ import {UserProfileComponent } from './components/userProfile/userProfile.compon
 import {EditProfileComponent} from './components/editProfile/editProfile.component';
 import { ForumComponent } from './components/forum/forum.component';
 import { ProjectViewComponent } from './components/projectView/projectview.component';
+import { EditProjectComponent } from './components/editProject/editProject.component';
 
 const routes: Routes = [
       {
@@ -36,12 +37,16 @@ const routes: Routes = [
         component: ForumComponent
       },
       {
-        path: 'project/:id/:title',
+        path: 'projects/:id/:title',
         component: ProjectViewComponent
       },
       {
         path: 'edit-profile',
         component: EditProfileComponent
+      },
+      {
+        path: 'projects/update/:id/:title',
+        component: EditProjectComponent
       }
 ];
 
