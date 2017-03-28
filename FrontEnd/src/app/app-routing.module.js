@@ -48,7 +48,7 @@ var routes = [
         component: projectview_component_1.ProjectViewComponent
     },
     {
-        path: 'editProfile',
+        path: 'edit-profile',
         component: editProfile_component_1.EditProfileComponent
     }
 ];

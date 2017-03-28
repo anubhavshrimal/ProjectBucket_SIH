@@ -40,7 +40,7 @@ const routes: Routes = [
         component: ProjectViewComponent
       },
       {
-        path: 'editProfile',
+        path: 'edit-profile',
         component: EditProfileComponent
       }
 ];
