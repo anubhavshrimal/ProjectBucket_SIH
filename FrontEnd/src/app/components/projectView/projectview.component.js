@@ -16,9 +16,12 @@ var ProjectViewComponent = (function () {
     function ProjectViewComponent(route, projectsService) {
         this.route = route;
         this.projectsService = projectsService;
+        this.project = {};
+        this.project.title = "NG2";
+        this.project.username = "Anubhav";
     }
     ProjectViewComponent.prototype.ngOnInit = function () {
-        this.getProject();
+        // this.getProject()
     };
     ProjectViewComponent.prototype.getProject = function () {
         var _this = this;

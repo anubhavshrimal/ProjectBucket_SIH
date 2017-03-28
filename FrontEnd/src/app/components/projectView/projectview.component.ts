@@ -16,13 +16,17 @@ export class ProjectViewComponent implements OnInit {
   project: Project;
   
   ngOnInit() : void {
-    this.getProject()
+    // this.getProject()
   }
 
   constructor(
     private route: ActivatedRoute,
     private projectsService: ProjectsService
-    ) {}
+    ) {
+      this.project= {};
+      this.project.title = "NG2"
+      this.project.username = "Anubhav"
+    }
 
   getProject(): void {
     this.route.params
