@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import * as _ from "lodash";
+import * as _ from 'lodash';
 
 @Component({
     selector: 'user-profile',
@@ -12,6 +12,12 @@ export class UserProfileComponent  {
     interest: string;
     loggedin : boolean;
     user : Object;
+    projects = [
+        {cols: 2, rows: 1},
+        {cols: 2, rows: 1},
+        {cols: 2, rows: 1},
+        {cols: 2, rows: 1},
+    ];
     constructor() {
         this.licenses = [
             {
