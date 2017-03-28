@@ -13,6 +13,7 @@ import { ProjectsFeedComponent } from './components/projectsFeed/projectsFeed.co
 import {UserProfileComponent } from './components/userProfile/userProfile.component ';
 import { SigninComponent } from './components/signin/signin.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { EditProfileComponent } from './components/editProfile/editProfile.component';
 import { ForumComponent } from './components/forum/forum.component';
 import { ProjectViewComponent } from './components/projectView/projectview.component';
 import { AppComponent }  from './app.component';
@@ -39,6 +40,7 @@ import { BackendUrlService } from './services/backendUrl.service';
       ProjectsFeedComponent,
       SigninComponent,
       SignupComponent,
+      EditProfileComponent,
       UserProfileComponent,
       ForumComponent,
       ProjectViewComponent

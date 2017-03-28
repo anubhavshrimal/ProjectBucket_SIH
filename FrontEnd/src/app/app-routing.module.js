@@ -14,6 +14,7 @@ var addProject_component_1 = require('./components/addProject/addProject.compone
 var addQuestion_component_1 = require('./components/addQuestion/addQuestion.component');
 var projectsFeed_component_1 = require('./components/projectsFeed/projectsFeed.component');
 var userProfile_component_1 = require('./components/userProfile/userProfile.component ');
+var editProfile_component_1 = require('./components/editProfile/editProfile.component');
 var forum_component_1 = require('./components/forum/forum.component');
 var projectview_component_1 = require('./components/projectView/projectview.component');
 var routes = [
@@ -45,6 +46,10 @@ var routes = [
     {
         path: 'project/:id/:title',
         component: projectview_component_1.ProjectViewComponent
+    },
+    {
+        path: 'editProfile',
+        component: editProfile_component_1.EditProfileComponent
     }
 ];
 var AppRoutingModule = (function () {

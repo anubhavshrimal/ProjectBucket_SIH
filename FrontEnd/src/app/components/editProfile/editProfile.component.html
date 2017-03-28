@@ -1,0 +1,143 @@
+<div class="container">
+    <div class="columns">
+        <div class="one-third column">
+            <br>
+            <div class="columns text-center">
+                <img class=" avatar" src="app/assets/male_user.png" width="200px" height="200px" />
+            </div>
+            <br>
+            <div class="columns text-center">
+                <button md-raised-button color='primary' type="file"><h5><i class="fa fa-upload" aria-hidden="true"></i> Upload Images</h5></button>
+            </div>
+        </div>
+
+        <div class="two-thirds column">
+            <form class="centered" >
+                <br>
+                <div class="columns centered">
+                    <div class="four-fifths column ">
+                        <md-input-container class="full-width">
+                            <input mdInput [(ngModel)]="fullName" name="fullName" placeholder="Full Name">
+                        </md-input-container>
+                    </div>
+                </div>
+                <div class="columns centered">
+                    <div class="four-fifths column ">
+                        <md-input-container class="full-width">
+                            <input mdInput [(ngModel)]="mailid" name="mailid" placeholder="Mail ID">
+                        </md-input-container>
+                    </div>
+                </div>
+                <div class="columns centered">
+                    <div class="four-fifths column">
+                        <md-input-container class="full-width">
+                            <input mdInput [(ngModel)]="password" name="password" placeholder="Password" type="password">
+                        </md-input-container>
+                    </div>
+                </div>
+                <div class="columns centered">
+                    <div class="four-fifths column ">
+                        <md-input-container class="full-width">
+                            <input mdInput [(ngModel)]="userName" name="userName" placeholder="User Name">
+                            <md-hint align="start">User name must be unique</md-hint>
+                        </md-input-container>
+                    </div>
+                </div>
+                <br>
+                <div class="columns centered">
+                    <div class="one-half column ">
+                        <md-radio-group>
+                            <div class="columns">
+                                <md-radio-button value="Male" checked='true' class="one-half column">
+                                    <i class="fa fa-male" aria-hidden="true"></i>
+                                    <label>Male</label>
+                                </md-radio-button>
+                                <md-radio-button value="female" class="one-half column">
+                                    <i class="fa fa-female" aria-hidden="true"></i>
+                                    <label>Female</label>
+                                </md-radio-button>
+                            </div>
+                        </md-radio-group>
+                    </div>
+                </div>
+                <br>
+                <div class="columns centered">
+                    <div class="four-fifths column ">
+                        <md-select [(ngModel)]="category" (change)="category1()" name="category" placeholder="Category">
+                            <md-option *ngFor="let category of categories" [value]="category">
+                                {{ category}}
+                            </md-option>
+                        </md-select>
+                    </div>
+                </div>
+
+                <div class="columns centered">
+                    <div class="four-fifths column">
+                        <md-input-container class="full-width" *ngIf="categorySelected">
+                            <input mdInput [(ngModel)]="label" name="label" placeholder="{{label}}">
+                        </md-input-container>
+                    </div>
+                </div>
+                <div class="columns centered">
+                    <div class="four-fifths column">
+                        <md-input-container class="full-width">
+                            <input mdInput [(ngModel)]="mobileNo" name="mobileNo" placeholder="Mobile">
+                        </md-input-container>
+                    </div>
+                </div>
+                <div class="columns centered">
+                    <div class="two-thirds column">
+                        <md-input-container class="full-width">
+                            <input mdInput [(ngModel)]="interest" (keyup.enter)="addInterests()" placeholder="Interests" name="interest">
+                            <md-hint align="start">Add the topics you are interested in. Ex. android, angular.js</md-hint>
+                        </md-input-container>
+                    </div>
+                </div>
+                <div class="centered columns">
+                    <div class="column">
+                        <md-chip-list>
+                            <md-chip *ngFor="let interest of interests">
+                                {{interest}}
+                                <a class="fa fa-times" (click)="removeInterests(interest)"></a>
+                            </md-chip>
+                        </md-chip-list>
+                    </div>
+                </div>
+                <div class="columns centered">
+                    <div class="four-fifths column">
+                        <md-input-container class="full-width">
+                            <input mdInput [(ngModel)]="country" name="country" placeholder="Country">
+                        </md-input-container>
+                    </div>
+                </div>
+                <div class="columns centered">
+                    <div class="four-fifths column">
+                        <md-input-container class="full-width">
+                            <input mdInput [(ngModel)]="state" name="state" placeholder="State">
+                        </md-input-container>
+                    </div>
+                </div>
+                <div class="columns centered">
+                    <div class="four-fifths column">
+                        <md-input-container class="full-width">
+                            <input mdInput [(ngModel)]="city" name="city" placeholder="City">
+                        </md-input-container>
+                    </div>
+                </div>
+                <div class="columns centered">
+                    <div class="four-fifths column">
+                        <md-input-container class="full-width">
+                            <input mdInput [(ngModel)]="bio" name="bio" placeholder="Bio">
+                        </md-input-container>
+                    </div>
+                </div>
+
+                <div class="columns centered">
+                    <div class="one-half column centered">
+                        <button class="btn btn-primary" type="button" (click)="update()">Update</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
