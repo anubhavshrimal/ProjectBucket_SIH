@@ -4,16 +4,16 @@ import { BackendUrlService } from '../backendUrl.service';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
-export class SigninService {
-    private url = BackendUrlService.url + '/user/login';
+export class SignupService {
+    private url = BackendUrlService.url + '';
     private headers = new Headers({'Content-Type': 'application/json'});
 
     constructor(private http: Http){
 
     }
-    login(userName: string, password: string): Promise<Object[]> {
+    signup(/*arguements*/): Promise<Object[]> {
         return this.http
-            .post(this.url,JSON.stringify({username: userName, password: password}),{headers: this.headers})
+            .post(this.url,JSON.stringify({/*JSON Data*/}),{headers: this.headers})
             .toPromise()
             .then(res => res.json()[0])
             .catch(this.handleError);

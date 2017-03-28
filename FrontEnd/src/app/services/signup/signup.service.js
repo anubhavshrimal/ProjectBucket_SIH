@@ -12,28 +12,28 @@ var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 var backendUrl_service_1 = require('../backendUrl.service');
 require('rxjs/add/operator/toPromise');
-var SigninService = (function () {
-    function SigninService(http) {
+var SignupService = (function () {
+    function SignupService(http) {
         this.http = http;
-        this.url = backendUrl_service_1.BackendUrlService.url + '/user/login';
+        this.url = backendUrl_service_1.BackendUrlService.url + '';
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
     }
-    SigninService.prototype.login = function (userName, password) {
+    SignupService.prototype.signup = function () {
         return this.http
-            .post(this.url, JSON.stringify({ username: userName, password: password }), { headers: this.headers })
+            .post(this.url, JSON.stringify({}), { headers: this.headers })
             .toPromise()
             .then(function (res) { return res.json()[0]; })
             .catch(this.handleError);
     };
-    SigninService.prototype.handleError = function (error) {
+    SignupService.prototype.handleError = function (error) {
         console.error('An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);
     };
-    SigninService = __decorate([
+    SignupService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])
-    ], SigninService);
-    return SigninService;
+    ], SignupService);
+    return SignupService;
 }());
-exports.SigninService = SigninService;
-//# sourceMappingURL=signin.service.js.map
+exports.SignupService = SignupService;
+//# sourceMappingURL=signup.service.js.map
