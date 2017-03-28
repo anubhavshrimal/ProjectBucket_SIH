@@ -5,7 +5,7 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class SigninService {
-    private url = BackendUrlService.url + '/user/login';
+    private url = BackendUrlService.url + 'user/login';
     private headers = new Headers({'Content-Type': 'application/json'});
 
     constructor(private http: Http){

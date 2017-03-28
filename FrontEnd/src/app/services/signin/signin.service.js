@@ -15,7 +15,7 @@ require('rxjs/add/operator/toPromise');
 var SigninService = (function () {
     function SigninService(http) {
         this.http = http;
-        this.url = backendUrl_service_1.BackendUrlService.url + '/user/login';
+        this.url = backendUrl_service_1.BackendUrlService.url + 'user/login';
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
     }
     SigninService.prototype.login = function (userName, password) {
