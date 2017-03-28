@@ -15,7 +15,7 @@ require('rxjs/add/operator/toPromise');
 var UserProfileService = (function () {
     function UserProfileService(http) {
         this.http = http;
-        this.url = backendUrl_service_1.BackendUrlService.url + 'user/profile';
+        this.url = backendUrl_service_1.BackendUrlService.url + '/user/profile';
     }
     UserProfileService.prototype.userProfile = function () {
         return this.http
