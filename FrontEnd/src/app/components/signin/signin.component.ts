@@ -1,4 +1,4 @@
-import { Component, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
 import { SigninService } from '../../services/signin/signin.service';
 import { Router } from '@angular/router';
 import {ProjectsFeedComponent} from "../projectsFeed/projectsFeed.component";
@@ -7,15 +7,13 @@ import {ProjectsFeedComponent} from "../projectsFeed/projectsFeed.component";
     selector: 'signin',
     templateUrl: './signin.component.html',
     moduleId: module.id,
-    providers: [SigninService],
-    outputs: [`childEvent`]
+    providers: [SigninService]
 })
 export class SigninComponent {
 
     licenses: Array<Object>;
     signup1 : boolean;
     signup2 : boolean;
-    childEvent = new EventEmitter<boolean>();
     constructor(private signinService : SigninService, private router: Router) {
         this.licenses = [
             {
@@ -41,7 +39,6 @@ export class SigninComponent {
         console.log(userName, password);
         this.signinService.login(userName,password).then(data =>{
             if (data){
-                this.childEvent.emit(true);
                 this.router.navigate(['/projects-feed']);
             }
             console.log(data);

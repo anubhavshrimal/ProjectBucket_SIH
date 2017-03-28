@@ -15,7 +15,6 @@ var SigninComponent = (function () {
     function SigninComponent(signinService, router) {
         this.signinService = signinService;
         this.router = router;
-        this.childEvent = new core_1.EventEmitter();
         this.licenses = [
             {
                 name: "None",
@@ -39,7 +38,6 @@ var SigninComponent = (function () {
         console.log(userName, password);
         this.signinService.login(userName, password).then(function (data) {
             if (data) {
-                _this.childEvent.emit(true);
                 _this.router.navigate(['/projects-feed']);
             }
             console.log(data);
@@ -50,8 +48,7 @@ var SigninComponent = (function () {
             selector: 'signin',
             templateUrl: './signin.component.html',
             moduleId: module.id,
-            providers: [signin_service_1.SigninService],
-            outputs: ["childEvent"]
+            providers: [signin_service_1.SigninService]
         }), 
         __metadata('design:paramtypes', [signin_service_1.SigninService, router_1.Router])
     ], SigninComponent);
