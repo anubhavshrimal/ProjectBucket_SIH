@@ -12,7 +12,6 @@ var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var forms_1 = require('@angular/forms');
 var material_1 = require('@angular/material');
-var router_1 = require('@angular/router');
 var navbar_component_1 = require('./components/navbar/navbar.component');
 var addProject_component_1 = require('./components/addProject/addProject.component');
 var footer_component_1 = require('./components/footer/footer.component');
@@ -20,8 +19,12 @@ var addQuestion_component_1 = require('./components/addQuestion/addQuestion.comp
 var projectsFeed_component_1 = require('./components/projectsFeed/projectsFeed.component');
 var userProfile_component_1 = require('./components/userProfile/userProfile.component ');
 var signin_component_1 = require('./components/signin/signin.component');
+var signup_component_1 = require('./components/signup/signup.component');
 var forum_component_1 = require('./components/forum/forum.component');
+var projectview_component_1 = require('./components/projectView/projectview.component');
 var app_component_1 = require('./app.component');
+var app_routing_module_1 = require('./app-routing.module');
+var backendUrl_service_1 = require('./services/backendUrl.service');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -31,33 +34,7 @@ var AppModule = (function () {
                 platform_browser_1.BrowserModule,
                 material_1.MaterialModule,
                 forms_1.FormsModule,
-                router_1.RouterModule.forRoot([
-                    {
-                        path: '',
-                        redirectTo: '/projects-feed',
-                        pathMatch: 'full'
-                    },
-                    {
-                        path: 'projects-feed',
-                        component: projectsFeed_component_1.ProjectsFeedComponent
-                    },
-                    {
-                        path: 'add-project',
-                        component: addProject_component_1.AddProjectComponent
-                    },
-                    {
-                        path: 'add-question',
-                        component: addQuestion_component_1.AddQuestionComponent
-                    },
-                    {
-                        path: 'user-profile',
-                        component: userProfile_component_1.UserProfileComponent
-                    },
-                    {
-                        path: 'forum',
-                        component: forum_component_1.ForumComponent
-                    }
-                ])
+                app_routing_module_1.AppRoutingModule
             ],
             declarations: [
                 app_component_1.AppComponent,
@@ -67,10 +44,13 @@ var AppModule = (function () {
                 addQuestion_component_1.AddQuestionComponent,
                 projectsFeed_component_1.ProjectsFeedComponent,
                 signin_component_1.SigninComponent,
+                signup_component_1.SignupComponent,
                 userProfile_component_1.UserProfileComponent,
-                forum_component_1.ForumComponent
+                forum_component_1.ForumComponent,
+                projectview_component_1.ProjectViewComponent
             ],
-            bootstrap: [app_component_1.AppComponent]
+            bootstrap: [app_component_1.AppComponent],
+            providers: [backendUrl_service_1.BackendUrlService]
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);

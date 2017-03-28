@@ -2,7 +2,7 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 import { MaterialModule } from '@angular/material';
-import  { RouterModule } from '@angular/router';
+import  { RouterModule, Routes } from '@angular/router';
 
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AddProjectComponent } from './components/addProject/addProject.component';
@@ -11,8 +11,14 @@ import { AddQuestionComponent } from './components/addQuestion/addQuestion.compo
 import { ProjectsFeedComponent } from './components/projectsFeed/projectsFeed.component';
 import {UserProfileComponent } from './components/userProfile/userProfile.component ';
 import { SigninComponent } from './components/signin/signin.component';
+import { SignupComponent } from './components/signup/signup.component';
 import { ForumComponent } from './components/forum/forum.component';
+import { ProjectViewComponent } from './components/projectView/projectview.component';
 import { AppComponent }  from './app.component';
+
+import { AppRoutingModule } from './app-routing.module';
+
+import { BackendUrlService } from './services/backendUrl.service';
 
 
 @NgModule({
@@ -20,33 +26,7 @@ import { AppComponent }  from './app.component';
       BrowserModule, 
       MaterialModule,
       FormsModule,
-      RouterModule.forRoot([
-      {
-        path: '',
-        redirectTo: '/projects-feed',
-        pathMatch: 'full'
-      },
-      {
-        path: 'projects-feed',
-        component: ProjectsFeedComponent
-      },
-      {
-        path: 'add-project',
-        component: AddProjectComponent
-      },
-      {
-        path: 'add-question',
-        component: AddQuestionComponent
-      },
-      {
-        path: 'user-profile',
-        component: UserProfileComponent
-      },
-      {
-        path: 'forum',
-        component: ForumComponent
-      }
-    ])
+      AppRoutingModule
     ],
   declarations: [ 
       AppComponent,
@@ -56,9 +36,12 @@ import { AppComponent }  from './app.component';
       AddQuestionComponent,
       ProjectsFeedComponent,
       SigninComponent,
+      SignupComponent,
       UserProfileComponent,
-      ForumComponent
+      ForumComponent,
+      ProjectViewComponent
     ],
-  bootstrap:    [ AppComponent ]
+  bootstrap:    [ AppComponent ],
+  providers: [ BackendUrlService ]
 })
 export class AppModule { }

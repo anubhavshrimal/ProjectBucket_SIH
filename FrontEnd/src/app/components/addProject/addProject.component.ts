@@ -1,45 +1,69 @@
 import { Component, OnInit } from '@angular/core';
+
 import { LicensesService } from '../../services/licenses/licenses.service';
+import { ProjectsService } from '../../services/projects/projects.service';
+import  { Project } from '../../classTemplates/project/project'
 import * as _ from "lodash";
 
 @Component({
   selector: 'add-project',
   templateUrl: './addProject.component.html',
   moduleId: module.id,
-  providers: [LicensesService]
+  providers: [LicensesService, ProjectsService]
 })
 export class AddProjectComponent implements OnInit { 
   licenses: Object[];
-  tags: Array<string>;
   tag: string;
-  licenseSelected: Object;
-  
+  project: Project;
+  readmeChecked: Boolean;
+
   ngOnInit() : void {
-    this.licensesService.getLicenses().then(licenses => {
-      this.licenses = licenses
-      this.licenseSelected = this.licenses[0];
+    this.licensesService.getLicensesTitles().then(licenses => {
+      this.licenses = licenses;
+      this.project.license = String(this.licenses[0]);
     });
   }
 
-  constructor(private licensesService: LicensesService) {
-    this.tags = [];
+  constructor(
+    private licensesService: LicensesService,
+    private projectsService: ProjectsService
+    ) {
+    this.project = {};
+    this.project.tags = [];
+    this.project._private = "no";
+    this.project.zip_file = [];
+    this.project.images = [];
+    this.project.video_url = [];
+    this.readmeChecked = false;
   }
 
   addTag (): void {
     if(this.tag.length != 0){
       this.tag = this.tag.toLowerCase();
-      for(let i in this.tags){
-        if(this.tags[i] === this.tag)
+      for(let i in this.project.tags){
+        if(this.project.tags[i] === this.tag)
           return
       }
-      this.tags.push(this.tag);
+      this.project.tags.push(this.tag);
       this.tag = "";
     }
   }
 
   removeTag (tag: string): void {
-    _.remove(this.tags, function(n) {
+    _.remove(this.project.tags, function(n) {
       return n === tag;
     });
+  }
+
+  initialiseReadme() {
+    if (this.readmeChecked = !this.readmeChecked) {
+      this.project.readme = "# " + this.project.title;
+    }
+    console.log(this.readmeChecked)
+  }
+
+  addProject(): void {
+    this.projectsService.create(this.project)
+      .then(project => console.log(project))
   }
 }

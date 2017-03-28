@@ -9,10 +9,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var _ = require("lodash");
+var signin_service_1 = require('../../services/signin/signin.service');
 var SigninComponent = (function () {
-    // sessionVar : boolean = true;
-    function SigninComponent() {
+    function SigninComponent(signinService) {
+        this.signinService = signinService;
         this.licenses = [
             {
                 name: "None",
@@ -23,52 +23,26 @@ var SigninComponent = (function () {
                 text: "MIT open source to all"
             }
         ];
-        this.interests = [];
         this.signup1 = true;
-        this.categories = ["Student", "Teacher", "Industry Professional", "Other"];
     }
-    SigninComponent.prototype.addInterests = function () {
-        if (this.interest.length != 0) {
-            for (var i in this.interests) {
-                if (this.interests[i] === this.interest)
-                    return;
-            }
-            this.interests.push(this.interest);
-            this.interest = "";
-        }
-    };
-    SigninComponent.prototype.removeInterests = function (interest) {
-        _.remove(this.interests, function (n) {
-            return n === interest;
-        });
-    };
-    SigninComponent.prototype.signUp1 = function () {
+    SigninComponent.prototype.signUp = function (fullName, mailid, password) {
         this.signup1 = false;
         this.signup2 = true;
+        console.log(fullName, mailid, password);
         return this.signup1;
     };
-    SigninComponent.prototype.category1 = function () {
-        if (this.category == 'Student') {
-            this.label = 'Institute';
-        }
-        else if (this.category == 'Teacher') {
-            this.label = 'Institute';
-        }
-        else if (this.category == 'Industry Professional') {
-            this.label = 'Company';
-        }
-        else {
-            this.label = 'Profesion';
-        }
-        this.categorySelected = true;
+    SigninComponent.prototype.login = function (userName, password) {
+        console.log(userName, password);
+        this.signinService.login(userName, password).then(function (data) { return console.log(data); });
     };
     SigninComponent = __decorate([
         core_1.Component({
             selector: 'signin',
             templateUrl: './signin.component.html',
-            moduleId: module.id
+            moduleId: module.id,
+            providers: [signin_service_1.SigninService]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [signin_service_1.SigninService])
     ], SigninComponent);
     return SigninComponent;
 }());

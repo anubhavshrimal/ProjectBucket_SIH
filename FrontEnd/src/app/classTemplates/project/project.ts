@@ -1,0 +1,29 @@
+export class Info {
+    upvotes?: Array<string>;
+    downvotes?:  Array<string>;
+    viewby?:  Array<string>;
+};
+
+export class Comment {
+    username?: string;
+    comment?: string;
+    date?: Date;
+};
+
+export class Project {
+    username?: string;
+    title?: string;
+    date?: Date;
+    description?: string;
+    project_url?: string;
+    tags?: Array<string>;
+    contributors?: Array<string>;
+    readme?: string;
+    license?: string;
+    _private?: string;
+    video_url?: Array<string>;
+    zip_file?: Array<string>;
+    images?: Array<string>;
+    info?: Info;
+    comments?: Array<Comment>;
+}

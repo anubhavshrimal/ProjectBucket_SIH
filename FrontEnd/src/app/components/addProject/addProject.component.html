@@ -1,4 +1,3 @@
-<navbar></navbar>
 <div class="container">
     <div class="columns">
         <div class="four-fifths column centered">
@@ -10,7 +9,7 @@
             <div class="columns">
                 <div class="one-half column">
                     <md-input-container class="full-width">
-                        <input mdInput placeholder="Project name:">
+                        <input mdInput placeholder="Project name:" name="title" [(ngModel)]="project.title">
                         <md-hint align="start">Project name should be unique</md-hint>
                     </md-input-container>
                 </div>
@@ -28,7 +27,7 @@
             <div class="columns">
                 <div class="column">
                     <md-chip-list>
-                        <md-chip *ngFor="let tag of tags">
+                        <md-chip *ngFor="let tag of project.tags">
                             {{tag}}
                             <a class="fa fa-times" (click)="removeTag(tag)"></a>
                         </md-chip>
@@ -39,7 +38,7 @@
             <div class="columns">
                 <div class="four-fifths column">
                     <md-input-container class="full-width">
-                        <input mdInput placeholder="Description:">
+                        <input mdInput placeholder="Description:" name="description" [(ngModel)]="project.description">
                         <md-hint align="start">Add one or two lines about your awesome project idea</md-hint>
                     </md-input-container>
                 </div>
@@ -48,14 +47,14 @@
 
             <div class="columns">
                 <div class="one-half column">
-                    <md-radio-group>
-                        <md-radio-button value="1" checked='true'>
+                    <md-radio-group [(ngModel)]="project._private" name="_private">
+                        <md-radio-button value="no">
                             <md-icon class="fa fa-unlock fa-2x" aria-hidden="true"></md-icon>
                             <label>Public</label>
                             <p class="note">Anyone can see this project. You choose who can contribute.</p>
                         </md-radio-button>
                         <br>
-                        <md-radio-button value="2">
+                        <md-radio-button value="yes">
                             <md-icon class="fa fa-lock fa-2x" aria-hidden="true"></md-icon>
                             <label>Private</label>
                             <p class="note">You choose who can see and contribute to this project.</p>
@@ -67,14 +66,14 @@
 
             <div class="columns">
                 <div class="one-half column">
-                    <md-checkbox>
+                    <md-checkbox (change)="initialiseReadme()">
                         <label>Initialise the project with a README file</label>
                     </md-checkbox>
                     <p class="note mx-5">Enter details of your project in this file</p>
                 </div>
                 <div class="one-half column">
                     <label>Add a license:</label>
-                    <md-select name="license" class="full-width" [(ngModel)]="licenseSelected">
+                    <md-select name="license" class="full-width" [(ngModel)]="project.license">
                         <md-option *ngFor="let license of licenses" [value]="license">
                         {{license}}
                         </md-option>
@@ -87,7 +86,7 @@
             <div class="columns">
                 <div class="one-half column text-center">
                     <md-input-container class="full-width">
-                        <input mdInput placeholder="Project link:">
+                        <input mdInput placeholder="Project link:" name="project_url" [(ngModel)]="project.project_url">
                         <md-hint align="start">
                             Add a link related to your project. Example Github or Google Drive. (Optional)
                         </md-hint>
@@ -112,11 +111,10 @@
             <hr>
             <div class="columns">
                 <div class="one-half column centered text-center">
-                    <button class="btn btn-primary" type="button">Create Project</button>
+                    <button class="btn btn-primary" type="button" (click)="addProject()">Create Project</button>
                 </div>
             </div>
         </form>
         </div>
     </div>
 <div>
-<footer></footer>

@@ -9,19 +9,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var _ = require('lodash');
-var licenses_1 = require('./licenses');
-var LicensesService = (function () {
-    function LicensesService() {
+var BackendUrlService = (function () {
+    function BackendUrlService() {
     }
-    LicensesService.prototype.getLicensesTitles = function () {
-        return Promise.resolve(_.map(licenses_1.LICENSES, 'name'));
-    };
-    LicensesService = __decorate([
+    BackendUrlService.url = 'http://codeist.mi43ujva9v.us-west-2.elasticbeanstalk.com/webapi';
+    BackendUrlService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])
-    ], LicensesService);
-    return LicensesService;
+    ], BackendUrlService);
+    return BackendUrlService;
 }());
-exports.LicensesService = LicensesService;
-//# sourceMappingURL=licenses.service.js.map
+exports.BackendUrlService = BackendUrlService;
+//# sourceMappingURL=backendUrl.service.js.map
