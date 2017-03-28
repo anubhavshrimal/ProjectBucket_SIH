@@ -9,9 +9,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var _ = require("lodash");
+var _ = require('lodash');
 var UserProfileComponent = (function () {
     function UserProfileComponent() {
+        this.projects = [
+            { cols: 2, rows: 1 },
+            { cols: 2, rows: 1 },
+            { cols: 2, rows: 1 },
+            { cols: 2, rows: 1 },
+        ];
         this.licenses = [
             {
                 name: "None",
