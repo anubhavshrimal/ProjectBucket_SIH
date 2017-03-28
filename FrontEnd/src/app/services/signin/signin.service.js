@@ -17,6 +17,8 @@ var SigninService = (function () {
         this.http = http;
         this.url = backendUrl_service_1.BackendUrlService.url + '/user/login';
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        this.loggedIn = false;
+        this.loggedIn = !!localStorage.getItem('auth_token');
     }
     SigninService.prototype.login = function (userName, password) {
         return this.http

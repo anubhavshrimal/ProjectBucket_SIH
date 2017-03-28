@@ -10,9 +10,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var signin_service_1 = require('../../services/signin/signin.service');
+var router_1 = require('@angular/router');
 var SigninComponent = (function () {
-    function SigninComponent(signinService) {
+    function SigninComponent(signinService, router) {
         this.signinService = signinService;
+        this.router = router;
         this.licenses = [
             {
                 name: "None",
@@ -32,8 +34,14 @@ var SigninComponent = (function () {
         return this.signup1;
     };
     SigninComponent.prototype.login = function (userName, password) {
+        var _this = this;
         console.log(userName, password);
-        this.signinService.login(userName, password).then(function (data) { return console.log(data); });
+        this.signinService.login(userName, password).then(function (data) {
+            if (data) {
+                _this.router.navigate(['/projects-feed']);
+            }
+            console.log(data);
+        });
     };
     SigninComponent = __decorate([
         core_1.Component({
@@ -42,7 +50,7 @@ var SigninComponent = (function () {
             moduleId: module.id,
             providers: [signin_service_1.SigninService]
         }), 
-        __metadata('design:paramtypes', [signin_service_1.SigninService])
+        __metadata('design:paramtypes', [signin_service_1.SigninService, router_1.Router])
     ], SigninComponent);
     return SigninComponent;
 }());

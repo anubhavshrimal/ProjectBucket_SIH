@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { SigninService } from '../../services/signin/signin.service';
+import { Router } from '@angular/router';
+import {ProjectsFeedComponent} from "../projectsFeed/projectsFeed.component";
 
 @Component({
     selector: 'signin',
@@ -13,7 +15,7 @@ export class SigninComponent {
     signup1 : boolean;
     signup2 : boolean;
 
-    constructor(private signinService : SigninService) {
+    constructor(private signinService : SigninService, private router: Router) {
         this.licenses = [
             {
                 name: "None",
@@ -36,6 +38,11 @@ export class SigninComponent {
 
     login(userName:string, password:string){
         console.log(userName, password);
-        this.signinService.login(userName,password).then(data => console.log(data));
+        this.signinService.login(userName,password).then(data =>{
+            if (data){
+                this.router.navigate(['/projects-feed']);
+            }
+            console.log(data);
+        });
     }
 }
