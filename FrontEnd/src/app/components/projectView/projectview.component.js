@@ -19,6 +19,14 @@ var ProjectViewComponent = (function () {
         this.project = {};
         this.project.title = "NG2";
         this.project.username = "Anubhav";
+        // this.project.readme = `# Anubhav`;
+        this.project.description = "Angular 2 projects";
+        this.project.tags = [
+            "army",
+            "Social",
+            "java",
+            "mongo"
+        ];
     }
     ProjectViewComponent.prototype.ngOnInit = function () {
         // this.getProject()

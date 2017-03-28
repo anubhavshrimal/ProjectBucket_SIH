@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 import { MaterialModule } from '@angular/material';
 import  { RouterModule, Routes } from '@angular/router';
+import { MarkdownModule } from 'angular2-markdown';
 
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AddProjectComponent } from './components/addProject/addProject.component';
@@ -26,7 +27,8 @@ import { BackendUrlService } from './services/backendUrl.service';
       BrowserModule, 
       MaterialModule,
       FormsModule,
-      AppRoutingModule
+      AppRoutingModule,
+      MarkdownModule.forRoot()
     ],
   declarations: [ 
       AppComponent,

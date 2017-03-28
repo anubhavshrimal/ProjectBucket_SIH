@@ -12,6 +12,7 @@ var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var forms_1 = require('@angular/forms');
 var material_1 = require('@angular/material');
+var angular2_markdown_1 = require('angular2-markdown');
 var navbar_component_1 = require('./components/navbar/navbar.component');
 var addProject_component_1 = require('./components/addProject/addProject.component');
 var footer_component_1 = require('./components/footer/footer.component');
@@ -34,7 +35,8 @@ var AppModule = (function () {
                 platform_browser_1.BrowserModule,
                 material_1.MaterialModule,
                 forms_1.FormsModule,
-                app_routing_module_1.AppRoutingModule
+                app_routing_module_1.AppRoutingModule,
+                angular2_markdown_1.MarkdownModule.forRoot()
             ],
             declarations: [
                 app_component_1.AppComponent,

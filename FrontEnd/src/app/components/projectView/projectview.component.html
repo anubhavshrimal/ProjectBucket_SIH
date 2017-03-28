@@ -6,7 +6,43 @@
                 by <a routerLink="/user-profile/{{project.username}}">{{project.username}}</a>
             </p>
             <hr>
-            
+            <div class="columns centered">
+                <div class="column">
+                    <span class="lead">{{project.description}}</span>
+                    <md-chip-list>
+                        <md-chip *ngFor="let tag of project.tags">
+                            {{tag}}
+                        </md-chip>
+                    </md-chip-list>
+                </div>
+            </div>
+            <br>
+            <div class="columns centered">
+                <div class="column centered text-center">
+                    <button md-raised-button class="state state-merged text-white" type="file">
+                        <md-icon class="fa fa-download"></md-icon>Download Zip file
+                    </button>
+                </div>
+            </div>
+            <br>
+            <div class="columns centered border bg-blue-light">
+                <div class="column">
+                    <div><b>README.md</b></div>
+                </div>
+            </div>
+            <div class="blankslate" *ngIf="!project.readme">
+                <span class="fa fa-file-code-o fa-4x blankslate-icon"></span>
+                <h3>There is no README.md</h3>
+            </div>
+            <div *ngIf="project.readme">
+                <div class="border">
+                    <div class="columns centered bg-gray-light">
+                        <div class="four-fifths column centered">
+                            <markdown [data]="project.readme"></markdown>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
