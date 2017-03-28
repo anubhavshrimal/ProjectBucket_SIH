@@ -55,9 +55,9 @@ var ProjectViewComponent = (function () {
     };
     ProjectViewComponent.prototype.deleteComment = function (comment) {
         var _this = this;
-        this.projectsService.deleteComment(comment.username, this.project.id, comment.date.getTime())
-            .then(function (msg) {
-            if (msg == 'success') {
+        this.projectsService.deleteComment(comment.username, this.project.id, new Date(comment.date).getTime())
+            .then(function (message) {
+            if (message == 'success') {
                 _.remove(_this.project.comments, function (c) {
                     return c == comment;
                 });

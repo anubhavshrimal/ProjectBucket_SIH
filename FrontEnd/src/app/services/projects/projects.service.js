@@ -54,7 +54,7 @@ var ProjectsService = (function () {
         return this.http
             .delete(deleteCommentUrl)
             .toPromise()
-            .then(function (res) { return res.json(); })
+            .then(function (res) { return res.json().message; })
             .catch(this.handleError);
     };
     ProjectsService.prototype.handleError = function (error) {

@@ -40,7 +40,7 @@ export class ProjectsService {
             .catch(this.handleError);
     }
 
-    insertComment(comment: string, projectId: string) {
+    insertComment(comment: string, projectId: string): Promise<Comment> {
         const insertCommentUrl = BackendUrlService.url + '/projects/'+projectId+'/comment';
         return this.http
             .post(insertCommentUrl, JSON.stringify({"comment": comment}), {headers: this.headers})
@@ -49,12 +49,12 @@ export class ProjectsService {
             .catch(this.handleError);
     }
 
-    deleteComment(username: string, projectId: string, date: number) {
+    deleteComment(username: string, projectId: string, date: number): Promise<string> {
         const deleteCommentUrl = BackendUrlService.url + '/projects/'+projectId+'/comment/'+username+'/${date}';
         return this.http
             .delete(deleteCommentUrl)
             .toPromise()
-            .then(res => res.json())
+            .then(res => res.json().message)
             .catch(this.handleError);
     }
     private handleError(error: any): Promise<any> {
