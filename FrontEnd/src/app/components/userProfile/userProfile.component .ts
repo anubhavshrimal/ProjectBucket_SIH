@@ -1,24 +1,25 @@
-import { Component } from '@angular/core';
-import * as _ from 'lodash';
+import { Component, OnInit } from '@angular/core';
+import { User } from '../../classTemplates/user/user';
+import { UserProfileService } from '../../services/userProfile/userProfile.service';
 
 @Component({
     selector: 'user-profile',
     templateUrl: './userProfile.component.html',
-    moduleId: module.id
+    moduleId: module.id,
+    providers: [UserProfileService]
 })
-export class UserProfileComponent  {
+export class UserProfileComponent implements OnInit {
+
     licenses: Array<Object>;
     interests: Array<string>;
-    interest: string;
-    loggedin : boolean;
-    user : Object;
+    user : User;
     projects = [
         {cols: 2, rows: 1},
         {cols: 2, rows: 1},
         {cols: 2, rows: 1},
         {cols: 2, rows: 1},
     ];
-    constructor() {
+    constructor(private userProfileService: UserProfileService) {
         this.licenses = [
             {
                 name: "None",
@@ -29,35 +30,24 @@ export class UserProfileComponent  {
                 text: "MIT open source to all"
             }
         ];
-        this.interests = [];
-        this.loggedin = true;
-        this.user = {
-            'rating': 245,
-            'thumbnail': '',
-            'profile': '',
-            'bio':'i\'m Mohit, I\'m the gratest, I\'m the best, I\'m Artistxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxx xxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxx',
-
-        }
+        /*this.user.name="";
+        this.user.bio = "";
+        this.user.favourite_tags = "";
+        this.user.followers = "";
+        this.user.following = "";
+        this.user.rating = "";
+        this.user.username = "";
+        this.user.password = "";
+        this.user.gender = "";
+        this.user.date = "";
+        this.user.category = "";
+        this.user.institute = "";
+        this.user.contributing = "";
+        this.user.contact_information = "";
+        this.user.question_answer = "";
+        this.user.question_ask = "";*/
     }
-
-    addInterests (): void {
-        if(this.interest.length != 0){
-            for(let i in this.interests){
-                if(this.interests[i] === this.interest)
-                    return
-            }
-            this.interests.push(this.interest);
-            this.interest = "";
-        }
-    }
-
-    removeInterests (interest: string): void {
-        _.remove(this.interests, function(n) {
-            return n === interest;
-        });
-    }
-    login(){
-        this.loggedin = true;
-        return this.loggedin;
+    ngOnInit(): void {
+        this.userProfileService.userProfile().then(data => console.log(data));
     }
 }
