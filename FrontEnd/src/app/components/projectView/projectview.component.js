@@ -24,7 +24,7 @@ var ProjectViewComponent = (function () {
         var _this = this;
         this.route.params
             .switchMap(function (params) { return _this.projectsService.getProjectById(params['id']); })
-            .subscribe(function (project) { return console.log(project); });
+            .subscribe(function (project) { return _this.project = project; });
     };
     ProjectViewComponent = __decorate([
         core_1.Component({

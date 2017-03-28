@@ -27,6 +27,6 @@ export class ProjectViewComponent implements OnInit {
   getProject(): void {
     this.route.params
         .switchMap((params: Params) => this.projectsService.getProjectById(params['id']))
-        .subscribe(project => console.log(project));
+        .subscribe(project => this.project = project);
   }
 }
