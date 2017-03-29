@@ -1,7 +1,6 @@
 export class Info {
     upvotes?: Array<string>;
     downvotes?:  Array<string>;
-    viewby?:  Array<string>;
 };
 
 export class Comment {

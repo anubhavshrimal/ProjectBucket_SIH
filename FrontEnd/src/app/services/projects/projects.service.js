@@ -17,6 +17,7 @@ var ProjectsService = (function () {
         this.http = http;
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         this.createUrl = backendUrl_service_1.BackendUrlService.url + '/projects/insert';
+        this.projectsFeedUrl = backendUrl_service_1.BackendUrlService.url + '/homepage/projects-feed/pulkit';
     }
     ProjectsService.prototype.create = function (project) {
         return this.http
@@ -26,6 +27,7 @@ var ProjectsService = (function () {
             .catch(this.handleError);
     };
     ProjectsService.prototype.update = function (project) {
+        project.username = "pulkit";
         var updateUrl = backendUrl_service_1.BackendUrlService.url + '/projects/' + project.id;
         return this.http
             .put(updateUrl, JSON.stringify(project), { headers: this.headers })
@@ -55,6 +57,29 @@ var ProjectsService = (function () {
             .delete(deleteCommentUrl)
             .toPromise()
             .then(function (res) { return res.json().message; })
+            .catch(this.handleError);
+    };
+    ProjectsService.prototype.getProjectsFeed = function () {
+        return this.http
+            .get(this.projectsFeedUrl)
+            .toPromise()
+            .then(function (res) { return res.json(); })
+            .catch(this.handleError);
+    };
+    ProjectsService.prototype.upvote = function (projectId) {
+        var upvoteUrl = '/projects/' + projectId + '/upvote';
+        return this.http
+            .put(upvoteUrl, JSON.stringify({ user: 1 }), { headers: this.headers })
+            .toPromise()
+            .then(function (res) { return res.json(); })
+            .catch(this.handleError);
+    };
+    ProjectsService.prototype.downvote = function (projectId) {
+        var downvote = '/projects/' + projectId + '/downvote';
+        return this.http
+            .put(downvote, JSON.stringify({ user: 1 }), { headers: this.headers })
+            .toPromise()
+            .then(function (res) { return res.json(); })
             .catch(this.handleError);
     };
     ProjectsService.prototype.handleError = function (error) {

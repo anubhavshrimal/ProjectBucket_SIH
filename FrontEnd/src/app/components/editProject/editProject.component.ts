@@ -67,7 +67,6 @@ export class EditProjectComponent implements OnInit {
     }
 
     updateProject(): void {
-        this.project.username = "pulkit";
         this.projectsService.update(this.project)
             .then(message => {
                 console.log(message);

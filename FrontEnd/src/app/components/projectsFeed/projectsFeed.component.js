@@ -9,21 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var projects_service_1 = require('../../services/projects/projects.service');
 var ProjectsFeedComponent = (function () {
-    function ProjectsFeedComponent() {
-        this.projects = [
-            { cols: 2, rows: 1 },
-            { cols: 2, rows: 1 },
-            { cols: 2, rows: 1 },
-            { cols: 2, rows: 1 },
-        ];
+    function ProjectsFeedComponent(projectsService) {
+        this.projectsService = projectsService;
+        this.projects = [];
         this.tabs = [
             {
                 tabLabel: 'Interesting',
                 tabIcon: 'fa fa-heart'
             },
             {
-                tabLabel: 'Hot',
+                tabLabel: 'Trending',
                 tabIcon: 'fa fa-fire'
             },
             {
@@ -32,6 +29,25 @@ var ProjectsFeedComponent = (function () {
             }
         ];
     }
+    ProjectsFeedComponent.prototype.ngOnInit = function () {
+        this.getProjectsFeed();
+    };
+    ProjectsFeedComponent.prototype.getProjectsFeed = function () {
+        var _this = this;
+        this.projectsService.getProjectsFeed()
+            .then(function (projectsFeed) {
+            console.log(projectsFeed);
+            _this.projects = projectsFeed;
+        });
+    };
+    ProjectsFeedComponent.prototype.upvote = function (project) {
+        this.projectsService.upvote(project.id)
+            .then(function (res) { return console.log(res); });
+    };
+    ProjectsFeedComponent.prototype.downvote = function (project) {
+        this.projectsService.downvote(project.id)
+            .then(function (res) { return console.log(res); });
+    };
     ProjectsFeedComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
@@ -39,9 +55,10 @@ var ProjectsFeedComponent = (function () {
             templateUrl: './projectsFeed.component.html',
             styles: [
                 "a {\n            color: teal; \n            text-decoration:none\n        }"
-            ]
+            ],
+            providers: [projects_service_1.ProjectsService]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [projects_service_1.ProjectsService])
     ], ProjectsFeedComponent);
     return ProjectsFeedComponent;
 }());

@@ -9,16 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var BackendUrlService = (function () {
-    function BackendUrlService() {
+var _ = require('lodash');
+var TabsFilterPipe = (function () {
+    function TabsFilterPipe() {
     }
-    // public static url = 'http://codeist.mi43ujva9v.us-west-2.elasticbeanstalk.com/webapi';
-    BackendUrlService.url = 'http://192.168.43.152:8080/Codeist/webapi';
-    BackendUrlService = __decorate([
-        core_1.Injectable(), 
+    TabsFilterPipe.prototype.transform = function (items, category) {
+        return items.filter(function (item) { return item.source[0] == _.toLower(category); });
+    };
+    TabsFilterPipe = __decorate([
+        core_1.Pipe({ name: 'tabsFilter' }), 
         __metadata('design:paramtypes', [])
-    ], BackendUrlService);
-    return BackendUrlService;
+    ], TabsFilterPipe);
+    return TabsFilterPipe;
 }());
-exports.BackendUrlService = BackendUrlService;
-//# sourceMappingURL=backendUrl.service.js.map
+exports.TabsFilterPipe = TabsFilterPipe;
+//# sourceMappingURL=tabsFilter.pipe.js.map

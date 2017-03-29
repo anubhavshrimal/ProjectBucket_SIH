@@ -22,6 +22,7 @@ import { AppComponent }  from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { BackendUrlService } from './services/backendUrl.service';
+import { TabsFilterPipe } from './pipes/tabsFilter.pipe';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { BackendUrlService } from './services/backendUrl.service';
       UserProfileComponent,
       ForumComponent,
       ProjectViewComponent,
-      EditProjectComponent
+      EditProjectComponent,
+      TabsFilterPipe
     ],
   bootstrap:    [ AppComponent ],
   providers: [ BackendUrlService ]

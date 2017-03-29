@@ -28,6 +28,7 @@ var editProject_component_1 = require('./components/editProject/editProject.comp
 var app_component_1 = require('./app.component');
 var app_routing_module_1 = require('./app-routing.module');
 var backendUrl_service_1 = require('./services/backendUrl.service');
+var tabsFilter_pipe_1 = require('./pipes/tabsFilter.pipe');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -53,7 +54,8 @@ var AppModule = (function () {
                 userProfile_component_1.UserProfileComponent,
                 forum_component_1.ForumComponent,
                 projectview_component_1.ProjectViewComponent,
-                editProject_component_1.EditProjectComponent
+                editProject_component_1.EditProjectComponent,
+                tabsFilter_pipe_1.TabsFilterPipe
             ],
             bootstrap: [app_component_1.AppComponent],
             providers: [backendUrl_service_1.BackendUrlService]

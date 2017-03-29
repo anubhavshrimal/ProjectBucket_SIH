@@ -59,7 +59,6 @@ var EditProjectComponent = (function () {
     };
     EditProjectComponent.prototype.updateProject = function () {
         var _this = this;
-        this.project.username = "pulkit";
         this.projectsService.update(this.project)
             .then(function (message) {
             console.log(message);

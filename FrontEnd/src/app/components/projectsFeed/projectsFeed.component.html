@@ -1,4 +1,11 @@
-<div class="container">
+<div class="container" *ngIf="projects.length < 1">
+    <div class="columns centered">
+        <div class="one-fifth column centered text-center">
+            <md-spinner></md-spinner>
+        </div>
+    </div>
+</div>
+<div class="container" *ngIf="projects.length >= 1">
     <div class="columns centered">
         <div class="four-fifths column centered">
             <md-tab-group dynamicHeight="true">
@@ -6,32 +13,32 @@
                     <template md-tab-label>
                         <md-icon class="{{tab.tabIcon}}"></md-icon> {{tab.tabLabel}}
                     </template>
-                    <md-grid-list cols="4" rowHeight="500px">
+                    <md-grid-list cols="2" rowHeight="500px">
                         <md-grid-tile
-                            *ngFor="let project of projects"
-                            [colspan]="2"
+                            *ngFor="let project of projects | tabsFilter:tab.tabLabel"
+                            [colspan]="1"
                             [rowspan]="1">
                         <md-card class="example-card border">
                             <md-card-header>
                                 <div md-card-avatar>
                                     <img md-card-avatar class="avatars" src="app/assets/male_user.png">
                                 </div>
-                                <md-card-title>Project title</md-card-title>
-                                <md-card-subtitle>by <a href="">User name</a></md-card-subtitle>
+                                <md-card-title>{{project.title}}</md-card-title>
+                                <md-card-subtitle>by <a href="/user-profile/{{project.username}}">{{project.username}}</a></md-card-subtitle>
                             </md-card-header>
                             <img md-card-image src="app/assets/project_bucket_hq_logo.jpg" width="280px" height="280px">
                             <md-card-content>
                                 <p>
-                                Project desctiption
+                                {{project.desctiption}}
                                 </p>
                             </md-card-content>
                             <md-card-actions>
                                 <div class="columns centered">
                                     <div class="one-fourth column">
-                                        <button md-raised-button mdTooltip="Upvote"><md-icon class="fa fa-thumbs-o-up"></md-icon>1.5k</button>
+                                        <button md-raised-button mdTooltip="Upvote" (click)="upvote(project)"><md-icon class="fa fa-thumbs-o-up"></md-icon>{{project.upvotecount}}</button>
                                     </div>
                                     <div class="one-fourth column">
-                                        <button md-raised-button mdTooltip="Downvote"><md-icon class="fa fa-thumbs-o-down"></md-icon>100</button>
+                                        <button md-raised-button mdTooltip="Downvote" (click)="downvote(project)"><md-icon class="fa fa-thumbs-o-down"></md-icon>{{project.downvotecount}}</button>
                                     </div>
                                     <div class="one-fourth column">
                                         <button md-raised-button mdTooltip="Add to favourites"><md-icon class="fa fa-bookmark-o"></md-icon></button>
