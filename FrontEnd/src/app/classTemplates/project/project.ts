@@ -4,6 +4,11 @@ export class Comment {
     date?: Date;
 };
 
+export class Info {
+    upvotes?: Array<string>;
+    downvotes?:  Array<string>;
+}
+
 export class Project {
     username?: string;
     id?: string;

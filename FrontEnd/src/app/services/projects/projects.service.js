@@ -69,7 +69,7 @@ var ProjectsService = (function () {
     ProjectsService.prototype.upvote = function (projectId) {
         var upvoteUrl = '/projects/' + projectId + '/upvote';
         return this.http
-            .put(upvoteUrl, JSON.stringify({ user: 1 }), { headers: this.headers })
+            .put(upvoteUrl, JSON.stringify({}), { headers: this.headers })
             .toPromise()
             .then(function (res) { return res.json(); })
             .catch(this.handleError);
@@ -77,7 +77,7 @@ var ProjectsService = (function () {
     ProjectsService.prototype.downvote = function (projectId) {
         var downvote = '/projects/' + projectId + '/downvote';
         return this.http
-            .put(downvote, JSON.stringify({ user: 1 }), { headers: this.headers })
+            .put(downvote, JSON.stringify({}), { headers: this.headers })
             .toPromise()
             .then(function (res) { return res.json(); })
             .catch(this.handleError);

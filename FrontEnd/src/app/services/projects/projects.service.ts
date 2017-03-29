@@ -71,7 +71,7 @@ export class ProjectsService {
         const upvoteUrl = '/projects/' + projectId + '/upvote';
 
         return this.http
-            .put(upvoteUrl, JSON.stringify({user:1}), {headers: this.headers})
+            .put(upvoteUrl, JSON.stringify({}), {headers: this.headers})
             .toPromise()
             .then(res => res.json() as Info)
             .catch(this.handleError);
@@ -81,7 +81,7 @@ export class ProjectsService {
         const downvote = '/projects/' + projectId + '/downvote';
 
         return this.http
-            .put(downvote, JSON.stringify({user:1}), {headers: this.headers})
+            .put(downvote, JSON.stringify({}), {headers: this.headers})
             .toPromise()
             .then(res => res.json() as Info)
             .catch(this.handleError);

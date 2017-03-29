@@ -1,11 +1,4 @@
 "use strict";
-var Info = (function () {
-    function Info() {
-    }
-    return Info;
-}());
-exports.Info = Info;
-;
 var Comment = (function () {
     function Comment() {
     }
@@ -13,6 +6,12 @@ var Comment = (function () {
 }());
 exports.Comment = Comment;
 ;
+var Info = (function () {
+    function Info() {
+    }
+    return Info;
+}());
+exports.Info = Info;
 var Project = (function () {
     function Project() {
     }
