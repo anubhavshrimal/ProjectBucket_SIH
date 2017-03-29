@@ -17,14 +17,15 @@ var SigninService = (function () {
         this.http = http;
         this.url = backendUrl_service_1.BackendUrlService.url + '/user/login';
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-        this.loggedIn = false;
-        this.loggedIn = !!localStorage.getItem('auth_token');
+        this.isLoggedIn = false;
+        this.isLoggedIn = !!localStorage.getItem('auth_token');
     }
     SigninService.prototype.login = function (userName, password) {
+        var _this = this;
         return this.http
             .post(this.url, JSON.stringify({ username: userName, password: password }), { headers: this.headers })
             .toPromise()
-            .then(function (res) { return res.json(); })
+            .then(function (res) { return _this.isLoggedIn = true; })
             .catch(this.handleError);
     };
     SigninService.prototype.handleError = function (error) {

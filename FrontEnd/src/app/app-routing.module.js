@@ -22,7 +22,8 @@ var routes = [
     {
         path: '',
         redirectTo: '/projects-feed',
-        pathMatch: 'full'
+        pathMatch: 'full',
+        canActivate: [LoggedInGuard]
     },
     {
         path: 'projects-feed',
