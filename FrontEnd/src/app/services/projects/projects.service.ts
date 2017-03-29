@@ -10,7 +10,7 @@ import { BackendUrlService } from '../backendUrl.service';
 export class ProjectsService {
     private headers = new Headers({'Content-Type': 'application/json'});
     private createUrl = BackendUrlService.url + '/projects/insert';
-    private projectsFeedUrl = BackendUrlService.url + '/homepage/projects-feed/pulkit';
+    private projectsFeedUrl = BackendUrlService.url + '/homepage/projects-feed';
     constructor(private http: Http) {}
 
     create(project: Project): Promise<Project> {
@@ -50,10 +50,11 @@ export class ProjectsService {
             .catch(this.handleError);
     }
 
-    deleteComment(username: string, projectId: string, date: number): Promise<string> {
-        const deleteCommentUrl = BackendUrlService.url + '/projects/'+projectId+'/comment/'+username+'/${date}';
+    deleteComment(comment: Comment, projectId: string): Promise<string> {
+        const deleteCommentUrl = BackendUrlService.url + '/projects/'+projectId+'/comment/delete';
+
         return this.http
-            .delete(deleteCommentUrl)
+            .post(deleteCommentUrl, JSON.stringify(comment), {headers: this.headers})
             .toPromise()
             .then(res => res.json().message)
             .catch(this.handleError);

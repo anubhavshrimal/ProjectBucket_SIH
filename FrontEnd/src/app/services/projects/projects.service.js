@@ -17,7 +17,7 @@ var ProjectsService = (function () {
         this.http = http;
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         this.createUrl = backendUrl_service_1.BackendUrlService.url + '/projects/insert';
-        this.projectsFeedUrl = backendUrl_service_1.BackendUrlService.url + '/homepage/projects-feed/pulkit';
+        this.projectsFeedUrl = backendUrl_service_1.BackendUrlService.url + '/homepage/projects-feed';
     }
     ProjectsService.prototype.create = function (project) {
         return this.http
@@ -51,10 +51,10 @@ var ProjectsService = (function () {
             .then(function (res) { return res.json(); })
             .catch(this.handleError);
     };
-    ProjectsService.prototype.deleteComment = function (username, projectId, date) {
-        var deleteCommentUrl = backendUrl_service_1.BackendUrlService.url + '/projects/' + projectId + '/comment/' + username + '/${date}';
+    ProjectsService.prototype.deleteComment = function (comment, projectId) {
+        var deleteCommentUrl = backendUrl_service_1.BackendUrlService.url + '/projects/' + projectId + '/comment/delete';
         return this.http
-            .delete(deleteCommentUrl)
+            .post(deleteCommentUrl, JSON.stringify(comment), { headers: this.headers })
             .toPromise()
             .then(function (res) { return res.json().message; })
             .catch(this.handleError);

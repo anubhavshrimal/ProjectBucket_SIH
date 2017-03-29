@@ -59,7 +59,7 @@ export class ProjectViewComponent implements OnInit {
   }
 
   deleteComment(comment: Comment): void {
-    this.projectsService.deleteComment(comment.username, this.project.id, new Date(comment.date).getTime())
+    this.projectsService.deleteComment(comment, this.project.id)
       .then(message => {
         if(message == 'success'){
           _.remove(this.project.comments, function(c){

@@ -13,7 +13,7 @@ export class User {
     name?: string;
     bio?: string;
 	gender?: string;
-    date?: Date;
+    date?: number;
 	category?: string;
 	institute?: string;
     rating?: number;

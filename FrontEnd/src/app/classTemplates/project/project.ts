@@ -1,7 +1,7 @@
 export class Comment {
     username?: string;
     comment?: string;
-    date?: Date;
+    date?: number;
 };
 
 export class Info {
@@ -13,7 +13,7 @@ export class Project {
     username?: string;
     id?: string;
     title?: string;
-    date?: Date;
+    date?: number;
     description?: string;
     project_url?: string;
     tags?: Array<string>;
