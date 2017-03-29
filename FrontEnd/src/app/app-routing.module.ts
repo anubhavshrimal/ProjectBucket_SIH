@@ -8,13 +8,20 @@ import {UserProfileComponent } from './components/userProfile/userProfile.compon
 import {EditProfileComponent} from './components/editProfile/editProfile.component';
 import { ForumComponent } from './components/forum/forum.component';
 import { ProjectViewComponent } from './components/projectView/projectview.component';
+<<<<<<< Updated upstream
 import { EditProjectComponent } from './components/editProject/editProject.component';
+=======
+import { SigninComponent } from './components/signin/signin.component';
+
+import { LoggedInGuard } from './logged-in.guard';
+>>>>>>> Stashed changes
 
 const routes: Routes = [
       {
         path: '',
         redirectTo: '/projects-feed',
-        pathMatch: 'full'
+        pathMatch: 'full',
+        canActivate: [LoggedInGuard]
       },
       {
         path: 'projects-feed',
@@ -45,8 +52,13 @@ const routes: Routes = [
         component: EditProfileComponent
       },
       {
+<<<<<<< Updated upstream
         path: 'projects/update/:id/:title',
         component: EditProjectComponent
+=======
+        path: 'login',
+        component: SigninComponent
+>>>>>>> Stashed changes
       }
 ];
 
