@@ -1,8 +1,3 @@
-export class Info {
-    upvotes?: Array<string>;
-    downvotes?:  Array<string>;
-};
-
 export class Comment {
     username?: string;
     comment?: string;
@@ -24,7 +19,8 @@ export class Project {
     video_url?: Array<string>;
     zip_file?: Array<string>;
     images?: Array<string>;
-    info?: Info;
+    upvotes?: Array<string>;
+    downvotes?:  Array<string>;
     comments?: Array<Comment>;
     project_link?: string;
     url_title?: string;
