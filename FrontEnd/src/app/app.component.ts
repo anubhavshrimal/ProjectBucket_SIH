@@ -3,10 +3,8 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'my-app',
   template: `
-  <div *ngIf="!loggedIn">
-    <signin></signin>
-  </div>
-  <div [hidden]="!loggedIn">
+
+  <div>
     <navbar></navbar>
     <router-outlet></router-outlet>
     <footer></footer>
@@ -18,6 +16,6 @@ export class AppComponent  {
   loggedIn: Boolean;
 
   constructor() {
-    this.loggedIn = true;
+
   }
 }

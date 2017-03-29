@@ -38,9 +38,10 @@ var SigninComponent = (function () {
         console.log(userName, password);
         this.signinService.login(userName, password).then(function (data) {
             if (data) {
+                console.log(data);
                 _this.router.navigate(['/projects-feed']);
             }
-            console.log(data);
+            console.log("mohit" + data);
         });
     };
     SigninComponent = __decorate([

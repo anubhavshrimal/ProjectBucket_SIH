@@ -18,12 +18,14 @@ var LoggedInGuard = (function () {
     }
     LoggedInGuard.prototype.canActivate = function (route, state) {
         var url = state.url;
+        console.log("guard");
         return this.checkLogin(url);
     };
     LoggedInGuard.prototype.checkLogin = function (url) {
         if (this.signinService.isLoggedIn) {
             return true;
         }
+        console.log("guard");
         // Store the attempted URL for redirecting
         this.signinService.redirectUrl = url;
         // Navigate to the login page with extras

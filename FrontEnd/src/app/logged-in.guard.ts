@@ -9,12 +9,12 @@ export class LoggedInGuard implements CanActivate {
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
         let url: string = state.url;
-
+        console.log("guard");
         return this.checkLogin(url);
     }
     checkLogin(url: string): boolean {
         if (this.signinService.isLoggedIn) { return true; }
-
+        console.log("guard");
         // Store the attempted URL for redirecting
         this.signinService.redirectUrl = url;
 

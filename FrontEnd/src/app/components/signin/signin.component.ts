@@ -40,9 +40,10 @@ export class SigninComponent {
         console.log(userName, password);
         this.signinService.login(userName,password).then(data =>{
             if (data){
+                console.log(data);
                 this.router.navigate(['/projects-feed']);
             }
-            console.log(data);
+            console.log("mohit"+data);
         });
     }
 }
