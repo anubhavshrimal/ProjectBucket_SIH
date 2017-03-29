@@ -25,6 +25,7 @@ var editProfile_component_1 = require('./components/editProfile/editProfile.comp
 var forum_component_1 = require('./components/forum/forum.component');
 var projectview_component_1 = require('./components/projectView/projectview.component');
 var editProject_component_1 = require('./components/editProject/editProject.component');
+var questionview_component_1 = require('./components/questionView/questionview.component');
 var app_component_1 = require('./app.component');
 var app_routing_module_1 = require('./app-routing.module');
 var backendUrl_service_1 = require('./services/backendUrl.service');
@@ -55,7 +56,8 @@ var AppModule = (function () {
                 forum_component_1.ForumComponent,
                 projectview_component_1.ProjectViewComponent,
                 editProject_component_1.EditProjectComponent,
-                tabsFilter_pipe_1.TabsFilterPipe
+                tabsFilter_pipe_1.TabsFilterPipe,
+                questionview_component_1.QuestionViewComponent
             ],
             bootstrap: [app_component_1.AppComponent],
             providers: [backendUrl_service_1.BackendUrlService]

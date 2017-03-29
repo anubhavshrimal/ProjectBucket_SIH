@@ -22,6 +22,7 @@ var ProjectViewComponent = (function () {
         this.project = {};
     }
     ProjectViewComponent.prototype.ngOnInit = function () {
+        console.log("Requesting project...");
         this.getProject();
     };
     ProjectViewComponent.prototype.openSnackBar = function (message, action) {
@@ -34,6 +35,7 @@ var ProjectViewComponent = (function () {
         this.route.params
             .switchMap(function (params) { return _this.projectsService.getProjectById(params['id']); })
             .subscribe(function (project) {
+            console.log(project);
             _this.project = project;
             if (_this.project.comments) {
                 _.reverse(_this.project.comments);
@@ -56,10 +58,11 @@ var ProjectViewComponent = (function () {
     ProjectViewComponent.prototype.deleteComment = function (comment) {
         var _this = this;
         this.projectsService.deleteComment(comment, this.project.id)
-            .then(function (message) {
-            if (message == 'success') {
+            .then(function (comment) {
+            console.log(comment);
+            if (comment.comment != 'error' && comment.username) {
                 _.remove(_this.project.comments, function (c) {
-                    return c == comment;
+                    return (c.comment == comment.comment && c.username == comment.username && c.date == comment.date);
                 });
             }
             else {

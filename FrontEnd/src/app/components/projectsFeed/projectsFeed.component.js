@@ -9,10 +9,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
 var projects_service_1 = require('../../services/projects/projects.service');
 var ProjectsFeedComponent = (function () {
-    function ProjectsFeedComponent(projectsService) {
+    function ProjectsFeedComponent(projectsService, router) {
         this.projectsService = projectsService;
+        this.router = router;
         this.projects = [];
         this.tabs = [
             {
@@ -31,6 +33,12 @@ var ProjectsFeedComponent = (function () {
     }
     ProjectsFeedComponent.prototype.ngOnInit = function () {
         this.getProjectsFeed();
+    };
+    ProjectsFeedComponent.prototype.gotoProject = function (id, url_title) {
+        this.router.navigate(["/projects", id, url_title]);
+    };
+    ProjectsFeedComponent.prototype.gotoUserProfile = function (username) {
+        this.router.navigate(["/user-profile", username]);
     };
     ProjectsFeedComponent.prototype.getProjectsFeed = function () {
         var _this = this;
@@ -58,7 +66,7 @@ var ProjectsFeedComponent = (function () {
             ],
             providers: [projects_service_1.ProjectsService]
         }), 
-        __metadata('design:paramtypes', [projects_service_1.ProjectsService])
+        __metadata('design:paramtypes', [projects_service_1.ProjectsService, router_1.Router])
     ], ProjectsFeedComponent);
     return ProjectsFeedComponent;
 }());

@@ -6,6 +6,7 @@ import { AddQuestionComponent } from './components/addQuestion/addQuestion.compo
 import { ProjectsFeedComponent } from './components/projectsFeed/projectsFeed.component';
 import {UserProfileComponent } from './components/userProfile/userProfile.component ';
 import {EditProfileComponent} from './components/editProfile/editProfile.component';
+import { EditProjectComponent } from './components/editProject/editProject.component';
 import { ForumComponent } from './components/forum/forum.component';
 import { ProjectViewComponent } from './components/projectView/projectview.component';
 import { SigninComponent } from './components/signin/signin.component';
@@ -50,7 +51,11 @@ const routes: Routes = [
       {
         path: 'login',
         component: SigninComponent
-      }
+      }, 
+      { 
+        path: 'projects/update/:id/:title', 
+        component: EditProjectComponent 
+      } 
 ];
 
 @NgModule({

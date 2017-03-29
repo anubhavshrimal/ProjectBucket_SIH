@@ -17,6 +17,7 @@ export class ProjectViewComponent implements OnInit {
   project: Project;
   comment: string;
   ngOnInit() : void {
+    console.log("Requesting project...");
     this.getProject()
   }
 
@@ -38,6 +39,7 @@ export class ProjectViewComponent implements OnInit {
     this.route.params
         .switchMap((params: Params) => this.projectsService.getProjectById(params['id']))
         .subscribe(project => {
+          console.log(project);
           this.project = project;
           if(this.project.comments) {
             _.reverse(this.project.comments)
@@ -60,11 +62,12 @@ export class ProjectViewComponent implements OnInit {
 
   deleteComment(comment: Comment): void {
     this.projectsService.deleteComment(comment, this.project.id)
-      .then(message => {
-        if(message == 'success'){
+      .then(comment => {
+        console.log(comment)
+        if(comment.comment != 'error' && comment.username) {
           _.remove(this.project.comments, function(c){
-            return c == comment;
-          })
+            return (c.comment == comment.comment && c.username == comment.username && c.date == comment.date);
+          });
         }
         else {
           this.openSnackBar("Comment couldn't be deleted", "Try Again!");

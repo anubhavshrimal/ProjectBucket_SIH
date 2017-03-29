@@ -92,7 +92,7 @@
             </md-input-container>
             <button md-raised-button class="state state-open" [disabled]="!comment" (click)="insertComment()">Add comment</button>
             <br>
-            <div *ngIf="project.comments">
+            <div *ngIf="project.comments.length > 0">
                 <strong>Comments:</strong>
 
                 <md-card class="example-comment-card border" *ngFor="let comment of project.comments">

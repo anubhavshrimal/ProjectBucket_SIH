@@ -1,4 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { ProjectsService } from '../../services/projects/projects.service';
 import { Project } from '../../classTemplates/project/project'
@@ -23,7 +24,10 @@ export class ProjectsFeedComponent implements OnInit{
         this.getProjectsFeed();
     }
 
-    constructor(private projectsService: ProjectsService) {
+    constructor(
+        private projectsService: ProjectsService,
+        private router: Router
+        ) {
         this.projects = [];
         this.tabs = [
             {
@@ -39,6 +43,14 @@ export class ProjectsFeedComponent implements OnInit{
                 tabIcon: 'fa fa-money'
             }
         ]
+    }
+
+    gotoProject(id: string, url_title: string): void {
+        this.router.navigate([`/projects`, id, url_title]);
+    }
+
+    gotoUserProfile(username: string): void {
+        this.router.navigate([`/user-profile`, username]);
     }
 
     getProjectsFeed(): void {
