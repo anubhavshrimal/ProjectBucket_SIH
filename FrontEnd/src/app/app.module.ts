@@ -19,6 +19,7 @@ import { ProjectViewComponent } from './components/projectView/projectview.compo
 import { EditProjectComponent } from './components/editProject/editProject.component';
 import { QuestionViewComponent } from './components/questionView/questionview.component';
 import { AppComponent }  from './app.component';
+import { CookieService } from 'angular2-cookie/services/cookies.service';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -52,6 +53,8 @@ import { TabsFilterPipe } from './pipes/tabsFilter.pipe';
       QuestionViewComponent
     ],
   bootstrap:    [ AppComponent ],
-  providers: [ BackendUrlService ]
+  providers: [ BackendUrlService,
+               CookieService
+  ]
 })
 export class AppModule { }
