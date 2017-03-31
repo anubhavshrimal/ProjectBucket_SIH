@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params }   from '@angular/router';
 import { User } from '../../classTemplates/user/user';
 import { UserProfileService } from '../../services/userProfile/userProfile.service';
 
@@ -19,7 +20,7 @@ export class UserProfileComponent implements OnInit {
         {cols: 2, rows: 1},
         {cols: 2, rows: 1},
     ];
-    constructor(private userProfileService: UserProfileService) {
+    constructor(private userProfileService: UserProfileService,     private route: ActivatedRoute) {
         this.licenses = [
             {
                 name: "None",
@@ -48,6 +49,10 @@ export class UserProfileComponent implements OnInit {
         this.user.question_ask = "";*/
     }
     ngOnInit(): void {
-        this.userProfileService.userProfile().then(data => console.log(data));
+        this.route.params
+            .switchMap((params: Params) => this.userProfileService.userProfile(params['username']))
+            .subscribe(user => {
+                console.log(user);
+            });
     }
 }

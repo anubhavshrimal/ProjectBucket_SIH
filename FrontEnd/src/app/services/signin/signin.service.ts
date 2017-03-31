@@ -18,15 +18,17 @@ export class SigninService {
             .post(this.url,JSON.stringify({username: userName, password: password}),{headers: this.headers})
             .toPromise()
             .then(res => res.json() as User)
-            /*.then((res)=>{
-                if (res.success) {
-                    localStorage.setItem('auth_token', res.auth_token);
-                    this.loggedIn = true;
-                }
-                return res.success;
-            })*/
             .catch(this.handleError);
     }
+    /*signup(name: string, mailid: string, password: string): Promise<User> {
+        this.url = BackendUrlService.url + '/user/signup';
+        return this.http
+            .post(this.url,JSON.stringify({name: name, emailid: mailid, password: password}),{headers: this.headers})
+            .toPromise()
+            .then(res => res.json() as User)
+            .catch(this.handleError);
+    }*/
+
     private handleError(error: any): Promise<any> {
         console.error('An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);

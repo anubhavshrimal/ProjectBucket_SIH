@@ -33,6 +33,9 @@ var SigninComponent = (function () {
         this.signup1 = false;
         this.signup2 = true;
         console.log(fullName, mailid, password);
+        /*this.signinService.signup(fullName, mailid, password).then(data=>{
+
+        })*/
         return this.signup1;
     };
     SigninComponent.prototype.login = function (userName, password) {

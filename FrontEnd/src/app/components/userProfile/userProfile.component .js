@@ -9,10 +9,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
 var userProfile_service_1 = require('../../services/userProfile/userProfile.service');
 var UserProfileComponent = (function () {
-    function UserProfileComponent(userProfileService) {
+    function UserProfileComponent(userProfileService, route) {
         this.userProfileService = userProfileService;
+        this.route = route;
         this.projects = [
             { cols: 2, rows: 1 },
             { cols: 2, rows: 1 },
@@ -47,7 +49,12 @@ var UserProfileComponent = (function () {
         this.user.question_ask = "";*/
     }
     UserProfileComponent.prototype.ngOnInit = function () {
-        this.userProfileService.userProfile().then(function (data) { return console.log(data); });
+        var _this = this;
+        this.route.params
+            .switchMap(function (params) { return _this.userProfileService.userProfile(params['username']); })
+            .subscribe(function (user) {
+            console.log(user);
+        });
     };
     UserProfileComponent = __decorate([
         core_1.Component({
@@ -56,7 +63,7 @@ var UserProfileComponent = (function () {
             moduleId: module.id,
             providers: [userProfile_service_1.UserProfileService]
         }), 
-        __metadata('design:paramtypes', [userProfile_service_1.UserProfileService])
+        __metadata('design:paramtypes', [userProfile_service_1.UserProfileService, router_1.ActivatedRoute])
     ], UserProfileComponent);
     return UserProfileComponent;
 }());

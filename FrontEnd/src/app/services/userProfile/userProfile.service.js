@@ -11,15 +11,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 var backendUrl_service_1 = require('../backendUrl.service');
+var cookiesService_service_1 = require('../cookie/cookiesService.service');
 require('rxjs/add/operator/toPromise');
 var UserProfileService = (function () {
-    function UserProfileService(http) {
+    function UserProfileService(http, cookiesService) {
         this.http = http;
-        this.url = backendUrl_service_1.BackendUrlService.url + '/user/profile';
+        this.cookiesService = cookiesService;
+        this.url = backendUrl_service_1.BackendUrlService.url + '/user/profile/';
+        this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        this.headers.append('auth_token', this.cookiesService.getSessionId());
+        console.log(this.cookiesService.getSessionId());
     }
-    UserProfileService.prototype.userProfile = function () {
+    UserProfileService.prototype.userProfile = function (username) {
+        this.url = backendUrl_service_1.BackendUrlService.url + '/user/profile/' + username;
         return this.http
-            .get(this.url)
+            .get(this.url, { headers: this.headers })
             .toPromise()
             .then(function (res) { return res.json(); })
             .catch(this.handleError);
@@ -30,7 +36,7 @@ var UserProfileService = (function () {
     };
     UserProfileService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
+        __metadata('design:paramtypes', [http_1.Http, cookiesService_service_1.CookiesService])
     ], UserProfileService);
     return UserProfileService;
 }());
