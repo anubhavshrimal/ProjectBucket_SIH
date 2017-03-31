@@ -60,17 +60,17 @@ export class QuestionViewComponent implements OnInit {
       })
   }
 
-  deleteAnswer(comment: Comment): void {
-    this.projectsService.deleteComment(comment, this.question.id)
-      .then(message => {
-        if(message == 'success'){
-          _.remove(this.question.comments, function(c){
-            return c == comment;
-          })
-        }
-        else {
-          this.openSnackBar("Comment couldn't be deleted", "Try Again!");
-        }
-      });
-  }
+  // deleteAnswer(comment: Comment): void {
+  //   this.projectsService.deleteComment(comment, this.question.id)
+  //     .then(message => {
+  //       if(message == 'success'){
+  //         _.remove(this.question.comments, function(c){
+  //           return c == comment;
+  //         })
+  //       }
+  //       else {
+  //         this.openSnackBar("Comment couldn't be deleted", "Try Again!");
+  //       }
+  //     });
+  // }
 }
