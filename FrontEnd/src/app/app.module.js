@@ -27,6 +27,7 @@ var projectview_component_1 = require('./components/projectView/projectview.comp
 var editProject_component_1 = require('./components/editProject/editProject.component');
 var questionview_component_1 = require('./components/questionView/questionview.component');
 var app_component_1 = require('./app.component');
+var cookies_service_1 = require('angular2-cookie/services/cookies.service');
 var app_routing_module_1 = require('./app-routing.module');
 var backendUrl_service_1 = require('./services/backendUrl.service');
 var tabsFilter_pipe_1 = require('./pipes/tabsFilter.pipe');
@@ -60,7 +61,9 @@ var AppModule = (function () {
                 questionview_component_1.QuestionViewComponent
             ],
             bootstrap: [app_component_1.AppComponent],
-            providers: [backendUrl_service_1.BackendUrlService]
+            providers: [backendUrl_service_1.BackendUrlService,
+                cookies_service_1.CookieService
+            ]
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);
