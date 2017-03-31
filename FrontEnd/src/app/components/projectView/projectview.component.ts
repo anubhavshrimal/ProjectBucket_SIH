@@ -17,7 +17,6 @@ export class ProjectViewComponent implements OnInit {
   project: Project;
   comment: string;
   ngOnInit() : void {
-    console.log("Requesting project...");
     this.getProject()
   }
 

@@ -22,7 +22,6 @@ var ProjectViewComponent = (function () {
         this.project = {};
     }
     ProjectViewComponent.prototype.ngOnInit = function () {
-        console.log("Requesting project...");
         this.getProject();
     };
     ProjectViewComponent.prototype.openSnackBar = function (message, action) {

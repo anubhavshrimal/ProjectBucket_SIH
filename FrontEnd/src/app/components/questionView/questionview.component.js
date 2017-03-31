@@ -13,6 +13,7 @@ var router_1 = require('@angular/router');
 require('rxjs/add/operator/switchMap');
 var material_1 = require('@angular/material');
 var questions_service_1 = require('../../services/questions/questions.service');
+var _ = require("lodash");
 var QuestionViewComponent = (function () {
     function QuestionViewComponent(route, questionsService, snackBar) {
         this.route = route;
@@ -21,11 +22,50 @@ var QuestionViewComponent = (function () {
         this.question = {};
     }
     QuestionViewComponent.prototype.ngOnInit = function () {
-        // this.getProject()
+        this.getQuestion();
     };
     QuestionViewComponent.prototype.openSnackBar = function (message, action) {
         this.snackBar.open(message, action, {
             duration: 2000,
+        });
+    };
+    QuestionViewComponent.prototype.getQuestion = function () {
+        var _this = this;
+        this.route.params
+            .switchMap(function (params) { return _this.questionsService.getQuestionById(params['id']); })
+            .subscribe(function (question) {
+            _this.question = question;
+            if (_this.question.answers) {
+                _.orderBy(_this.question.answers, ['upvotes.length'], ['desc']);
+            }
+        });
+    };
+    QuestionViewComponent.prototype.insertAnswer = function () {
+        var _this = this;
+        this.questionsService.insertAnswer(this.answer, this.question.id)
+            .then(function (answer) {
+            if (answer.answer != 'error' && answer.username) {
+                _this.answer = "";
+                _this.question.answers.push(answer);
+                _.orderBy(_this.question.answers, ['upvotes.length'], ['desc']);
+            }
+            else {
+                _this.openSnackBar("Comment was not added", "Try Again!");
+            }
+        });
+    };
+    QuestionViewComponent.prototype.deleteAnswer = function (comment) {
+        var _this = this;
+        this.projectsService.deleteComment(comment, this.question.id)
+            .then(function (message) {
+            if (message == 'success') {
+                _.remove(_this.question.comments, function (c) {
+                    return c == comment;
+                });
+            }
+            else {
+                _this.openSnackBar("Comment couldn't be deleted", "Try Again!");
+            }
         });
     };
     QuestionViewComponent = __decorate([

@@ -16,66 +16,82 @@ var QuestionsService = (function () {
     function QuestionsService(http) {
         this.http = http;
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-        this.createUrl = backendUrl_service_1.BackendUrlService.url + '/projects/insert';
-        this.projectsFeedUrl = backendUrl_service_1.BackendUrlService.url + '/homepage/projects-feed/pulkit';
+        this.createUrl = backendUrl_service_1.BackendUrlService.url + '/questions/insert';
+        this.forumUrl = backendUrl_service_1.BackendUrlService.url + '/homepage/forum/pulkit';
     }
-    QuestionsService.prototype.create = function (project) {
+    QuestionsService.prototype.create = function (question) {
         return this.http
-            .post(this.createUrl, JSON.stringify(project), { headers: this.headers })
+            .post(this.createUrl, JSON.stringify(question), { headers: this.headers })
             .toPromise()
             .then(function (res) { return res.json(); })
             .catch(this.handleError);
     };
-    QuestionsService.prototype.update = function (project) {
-        project.username = "pulkit";
-        var updateUrl = backendUrl_service_1.BackendUrlService.url + '/projects/' + project.id;
+    QuestionsService.prototype.update = function (question) {
+        question.username = "pulkit";
+        var updateUrl = backendUrl_service_1.BackendUrlService.url + '/questions/' + question.id;
         return this.http
-            .put(updateUrl, JSON.stringify(project), { headers: this.headers })
+            .put(updateUrl, JSON.stringify(question), { headers: this.headers })
             .toPromise()
             .then(function (res) { return res.json().message; })
             .catch(this.handleError);
     };
-    QuestionsService.prototype.getProjectById = function (id) {
-        var getUrl = backendUrl_service_1.BackendUrlService.url + '/projects/' + id;
+    QuestionsService.prototype.getQuestionById = function (id) {
+        var getUrl = backendUrl_service_1.BackendUrlService.url + '/questions/' + id;
         return this.http
             .get(getUrl)
             .toPromise()
             .then(function (res) { return res.json(); })
             .catch(this.handleError);
     };
-    QuestionsService.prototype.insertComment = function (comment, projectId) {
-        var insertCommentUrl = backendUrl_service_1.BackendUrlService.url + '/projects/' + projectId + '/comment';
+    QuestionsService.prototype.insertAnswer = function (answer, questionId) {
+        var insertAnswerUrl = backendUrl_service_1.BackendUrlService.url + '/questions/' + questionId + '/answer';
         return this.http
-            .post(insertCommentUrl, JSON.stringify({ "comment": comment }), { headers: this.headers })
+            .post(insertAnswerUrl, JSON.stringify({ "answer": answer }), { headers: this.headers })
             .toPromise()
             .then(function (res) { return res.json(); })
             .catch(this.handleError);
     };
-    QuestionsService.prototype.deleteComment = function (comment, projectId) {
-        var deleteCommentUrl = backendUrl_service_1.BackendUrlService.url + '/projects/' + projectId + '/comment/delete';
+    QuestionsService.prototype.deleteAnswer = function (answer, questionId) {
+        var deleteAnswerUrl = backendUrl_service_1.BackendUrlService.url + '/questions/' + questionId + '/answer/delete';
         return this.http
-            .post(deleteCommentUrl, JSON.stringify(comment), { headers: this.headers })
+            .post(deleteAnswerUrl, JSON.stringify(answer), { headers: this.headers })
             .toPromise()
             .then(function (res) { return res.json().message; })
             .catch(this.handleError);
     };
-    QuestionsService.prototype.getProjectsFeed = function () {
+    QuestionsService.prototype.getForumFeed = function () {
         return this.http
-            .get(this.projectsFeedUrl)
+            .get(this.forumUrl)
             .toPromise()
             .then(function (res) { return res.json(); })
             .catch(this.handleError);
     };
-    QuestionsService.prototype.upvote = function (projectId) {
-        var upvoteUrl = '/projects/' + projectId + '/upvote';
+    QuestionsService.prototype.upvote = function (questionId) {
+        var upvoteUrl = '/questions/' + questionId + '/upvote';
         return this.http
             .put(upvoteUrl, JSON.stringify({}), { headers: this.headers })
             .toPromise()
             .then(function (res) { return res.json(); })
             .catch(this.handleError);
     };
-    QuestionsService.prototype.downvote = function (projectId) {
-        var downvote = '/projects/' + projectId + '/downvote';
+    QuestionsService.prototype.downvote = function (questionId) {
+        var downvote = '/questions/' + questionId + '/downvote';
+        return this.http
+            .put(downvote, JSON.stringify({}), { headers: this.headers })
+            .toPromise()
+            .then(function (res) { return res.json(); })
+            .catch(this.handleError);
+    };
+    QuestionsService.prototype.upvoteAnswer = function (questionId, username) {
+        var upvoteUrl = '/questions/' + questionId + '/' + username + '/upvote';
+        return this.http
+            .put(upvoteUrl, JSON.stringify({}), { headers: this.headers })
+            .toPromise()
+            .then(function (res) { return res.json(); })
+            .catch(this.handleError);
+    };
+    QuestionsService.prototype.downvoteAnswer = function (questionId, username) {
+        var downvote = '/questions/' + questionId + '/' + username + '/downvote';
         return this.http
             .put(downvote, JSON.stringify({}), { headers: this.headers })
             .toPromise()

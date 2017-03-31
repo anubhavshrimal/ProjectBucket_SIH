@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params }   from '@angular/router';
 import 'rxjs/add/operator/switchMap';
-import {MdSnackBar} from '@angular/material';
+import { MdSnackBar } from '@angular/material';
 
 import { QuestionsService } from '../../services/questions/questions.service';
 import  { Question, Answer } from '../../classTemplates/question/question';
@@ -11,15 +11,14 @@ import * as _ from "lodash";
   selector: 'question-view',
   templateUrl: './questionview.component.html',
   moduleId: module.id,
-  providers: [QuestionsService]
+  providers: [ QuestionsService ]
 })
 export class QuestionViewComponent implements OnInit { 
-  // project: Project;
-  // comment: string;
   question: Question;
   answer: string;
+
   ngOnInit() : void {
-    // this.getProject()
+    this.getQuestion()
   }
 
   constructor(
@@ -36,42 +35,42 @@ export class QuestionViewComponent implements OnInit {
     });
   }
 
-  // getQuestion(): void {
-  //   this.route.params
-  //       .switchMap((params: Params) => this.questionsService.getQuestionById(params['id']))
-  //       .subscribe(project => {
-  //         this.question = question;
-  //         if(this.question.answers) {
-  //           _.orderBy(this.question.answers, ['upvotes.length'], ['desc']);
-  //         }
-  //       });
-  // }
+  getQuestion(): void {
+    this.route.params
+        .switchMap((params: Params) => this.questionsService.getQuestionById(params['id']))
+        .subscribe(question => {
+          this.question = question;
+          if(this.question.answers) {
+            _.orderBy(this.question.answers, ['upvotes.length'], ['desc']);
+          }
+        });
+  }
 
-  // insertAnswer(): void {
-  //   this.questionsService.insertAnswer(this.answer, this.question.id)
-  //     .then(answer => {
-  //       if(answer.answer != 'error' && answer.username) {
-  //         this.answer = "";
-  //         this.question.answers.push(answer);
-  //         _.orderBy(this.question.answers, ['upvotes.length'], ['desc']);
-  //       }
-  //       else {
-  //         this.openSnackBar("Comment was not added", "Try Again!");
-  //       }
-  //     })
-  // }
+  insertAnswer(): void {
+    this.questionsService.insertAnswer(this.answer, this.question.id)
+      .then(answer => {
+        if(answer.answer != 'error' && answer.username) {
+          this.answer = "";
+          this.question.answers.push(answer);
+          _.orderBy(this.question.answers, ['upvotes.length'], ['desc']);
+        }
+        else {
+          this.openSnackBar("Comment was not added", "Try Again!");
+        }
+      })
+  }
 
-  // deleteComment(comment: Comment): void {
-  //   this.projectsService.deleteComment(comment, this.project.id)
-  //     .then(message => {
-  //       if(message == 'success'){
-  //         _.remove(this.project.comments, function(c){
-  //           return c == comment;
-  //         })
-  //       }
-  //       else {
-  //         this.openSnackBar("Comment couldn't be deleted", "Try Again!");
-  //       }
-  //     });
-  // }
+  deleteAnswer(comment: Comment): void {
+    this.projectsService.deleteComment(comment, this.question.id)
+      .then(message => {
+        if(message == 'success'){
+          _.remove(this.question.comments, function(c){
+            return c == comment;
+          })
+        }
+        else {
+          this.openSnackBar("Comment couldn't be deleted", "Try Again!");
+        }
+      });
+  }
 }
