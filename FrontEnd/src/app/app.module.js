@@ -26,6 +26,7 @@ var forum_component_1 = require('./components/forum/forum.component');
 var projectview_component_1 = require('./components/projectView/projectview.component');
 var editProject_component_1 = require('./components/editProject/editProject.component');
 var questionview_component_1 = require('./components/questionView/questionview.component');
+var editQuestion_component_1 = require('./components/editQuestion/editQuestion.component');
 var app_component_1 = require('./app.component');
 var cookies_service_1 = require('angular2-cookie/services/cookies.service');
 var cookiesService_service_1 = require('./services/cookie/cookiesService.service');
@@ -59,7 +60,8 @@ var AppModule = (function () {
                 projectview_component_1.ProjectViewComponent,
                 editProject_component_1.EditProjectComponent,
                 tabsFilter_pipe_1.TabsFilterPipe,
-                questionview_component_1.QuestionViewComponent
+                questionview_component_1.QuestionViewComponent,
+                editQuestion_component_1.EditQuestionComponent
             ],
             bootstrap: [app_component_1.AppComponent],
             providers: [backendUrl_service_1.BackendUrlService,
