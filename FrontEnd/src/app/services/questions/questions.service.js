@@ -51,10 +51,10 @@ var QuestionsService = (function () {
             .then(function (res) { return res.json(); })
             .catch(this.handleError);
     };
-    QuestionsService.prototype.deleteAnswer = function (answer, questionId) {
+    QuestionsService.prototype.deleteAnswer = function (username, questionId) {
         var deleteAnswerUrl = backendUrl_service_1.BackendUrlService.url + '/questions/' + questionId + '/answer/delete';
         return this.http
-            .post(deleteAnswerUrl, JSON.stringify(answer), { headers: this.headers })
+            .post(deleteAnswerUrl, JSON.stringify({ 'username': username }), { headers: this.headers })
             .toPromise()
             .then(function (res) { return res.json().message; })
             .catch(this.handleError);

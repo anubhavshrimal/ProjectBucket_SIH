@@ -51,11 +51,11 @@ export class QuestionsService {
             .catch(this.handleError);
     }
 
-    deleteAnswer(answer: Answer, questionId: string): Promise<string> {
+    deleteAnswer(username: string, questionId: string): Promise<string> {
         const deleteAnswerUrl = BackendUrlService.url + '/questions/'+questionId+'/answer/delete';
 
         return this.http
-            .post(deleteAnswerUrl, JSON.stringify(answer), {headers: this.headers})
+            .post(deleteAnswerUrl, JSON.stringify({'username': username}), {headers: this.headers})
             .toPromise()
             .then(res => res.json().message)
             .catch(this.handleError);

@@ -10,6 +10,7 @@ import { EditProjectComponent } from './components/editProject/editProject.compo
 import { ForumComponent } from './components/forum/forum.component';
 import { ProjectViewComponent } from './components/projectView/projectview.component';
 import { SigninComponent } from './components/signin/signin.component';
+import { QuestionViewComponent } from './components/questionView/questionview.component';
 import { LoggedInGuard } from './logged-in.guard';
 
 
@@ -55,6 +56,10 @@ const routes: Routes = [
       { 
         path: 'projects/update/:id/:title', 
         component: EditProjectComponent 
+      }, 
+      { 
+        path: 'questions/:id/:title', 
+        component: QuestionViewComponent 
       } 
 ];
 
