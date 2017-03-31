@@ -49,6 +49,7 @@ export class UserProfileComponent implements OnInit {
         this.user.question_ask = "";*/
     }
     ngOnInit(): void {
+        console.log("ddddddddddddddddd");
         this.route.params
             .switchMap((params: Params) => this.userProfileService.userProfile(params['username']))
             .subscribe(user => {

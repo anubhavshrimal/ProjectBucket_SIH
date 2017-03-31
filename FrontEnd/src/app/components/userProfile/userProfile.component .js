@@ -50,6 +50,7 @@ var UserProfileComponent = (function () {
     }
     UserProfileComponent.prototype.ngOnInit = function () {
         var _this = this;
+        console.log("ddddddddddddddddd");
         this.route.params
             .switchMap(function (params) { return _this.userProfileService.userProfile(params['username']); })
             .subscribe(function (user) {
