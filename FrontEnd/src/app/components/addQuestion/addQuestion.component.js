@@ -9,28 +9,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var questions_service_1 = require('../../services/questions/questions.service');
 var _ = require("lodash");
 var AddQuestionComponent = (function () {
-    function AddQuestionComponent() {
-        this.tags = [];
+    function AddQuestionComponent(questionsService) {
+        this.questionsService = questionsService;
+        this.question = {};
     }
-    // addQuestion(): void {
-    //     this.projectsService.create(this.project)
-    //     .then(project => console.log(project))
-    // }
+    AddQuestionComponent.prototype.addQuestion = function () {
+        this.questionsService.create(this.question)
+            .then(function (question) {
+        });
+    };
     AddQuestionComponent.prototype.addTag = function () {
         if (this.tag.length != 0) {
             this.tag = this.tag.toLowerCase();
-            for (var i in this.tags) {
-                if (this.tags[i] === this.tag)
+            for (var i in this.question.tags) {
+                if (this.question.tags[i] === this.tag)
                     return;
             }
-            this.tags.push(this.tag);
+            this.question.tags.push(this.tag);
             this.tag = "";
         }
     };
     AddQuestionComponent.prototype.removeTag = function (tag) {
-        _.remove(this.tags, function (n) {
+        _.remove(this.question.tags, function (n) {
             return n === tag;
         });
     };
@@ -40,7 +43,7 @@ var AddQuestionComponent = (function () {
             selector: 'add-question',
             templateUrl: './addQuestion.component.html',
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [questions_service_1.QuestionsService])
     ], AddQuestionComponent);
     return AddQuestionComponent;
 }());

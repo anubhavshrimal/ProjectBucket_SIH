@@ -7,7 +7,7 @@
             <div class="columns">
                 <div class="one-half column">
                     <md-input-container class="full-width">
-                        <input mdInput placeholder="Question title:">
+                        <input mdInput placeholder="Question title:" name="title" [(ngModel)]="question.title">
                     </md-input-container>
                 </div>
             </div>
@@ -24,7 +24,7 @@
             <div class="columns">
                 <div class="column">
                     <md-chip-list>
-                        <md-chip *ngFor="let tag of tags">
+                        <md-chip *ngFor="let tag of question.tags">
                             {{tag}}
                             <a class="fa fa-times" (click)="removeTag(tag)"></a>
                         </md-chip>
@@ -33,7 +33,7 @@
             </div>
 
             <md-input-container class="full-width">
-                <textarea mdInput class="border border-bottom-0" placeholder="Question details:" style="height: 300px; resize: none"></textarea>
+                <textarea mdInput class="border border-bottom-0" placeholder="Question details:" name="description" [(ngModel)]="question.description" style="height: 300px; resize: none"></textarea>
             </md-input-container>
 
             <div class="columns">
@@ -44,16 +44,16 @@
                     <p class="note">Upload images or screenshorts of related to your question. (Optional)</p>
                 </div>
             </div>
-            <div class="columns">
+            <!--<div class="columns">
                 <div class="one-half column centered text-center">
                     <button class="btn btn-outline" type="button">Preview Question</button>
                     <p class="note">See how your question will look to others.</p>
                 </div>
-            </div>
+            </div>-->
             <hr>
             <div class="columns">
                 <div class="one-half column centered text-center">
-                    <button class="btn btn-primary" type="button">Submit Question!</button>
+                    <button class="btn btn-primary" type="button" (click)="addQuestion()">Submit Question!</button>
                 </div>
             </div>
         </div>

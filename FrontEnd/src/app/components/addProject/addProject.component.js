@@ -55,7 +55,8 @@ var AddProjectComponent = (function () {
     };
     AddProjectComponent.prototype.addProject = function () {
         this.projectsService.create(this.project)
-            .then(function (project) { return console.log(project); });
+            .then(function (project) {
+        });
     };
     AddProjectComponent = __decorate([
         core_1.Component({

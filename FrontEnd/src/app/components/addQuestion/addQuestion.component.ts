@@ -10,33 +10,36 @@ import * as _ from "lodash";
     templateUrl: './addQuestion.component.html',
 })
 export class AddQuestionComponent {
-    tags: Array<string>;
+    question: Question;
     tag: string;
 
-    constructor() {
-        this.tags = [];
+
+    constructor(private questionsService: QuestionsService) {
+        this.question= {};
     }
 
-    // addQuestion(): void {
-    //     this.projectsService.create(this.project)
-    //     .then(project => console.log(project))
-    // }
+    addQuestion(): void {
+        this.questionsService.create(this.question)
+        .then(question => {
+            
+        })
+    }
 
     addTag (): void {
-        if(this.tag.length != 0){
-            this.tag = this.tag.toLowerCase();
-            for(let i in this.tags){
-                if(this.tags[i] === this.tag)
-                return
-            }
-            this.tags.push(this.tag);
-            this.tag = "";
-        }
+    if(this.tag.length != 0){
+      this.tag = this.tag.toLowerCase();
+      for(let i in this.question.tags){
+        if(this.question.tags[i] === this.tag)
+          return
+      }
+      this.question.tags.push(this.tag);
+      this.tag = "";
     }
+  }
 
-    removeTag (tag: string): void {
-        _.remove(this.tags, function(n) {
-        return n === tag;
-        });
-    }
+  removeTag (tag: string): void {
+    _.remove(this.question.tags, function(n) {
+      return n === tag;
+    });
+  }
 }
