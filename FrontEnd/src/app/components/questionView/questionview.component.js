@@ -54,20 +54,6 @@ var QuestionViewComponent = (function () {
             }
         });
     };
-    QuestionViewComponent.prototype.deleteAnswer = function (comment) {
-        var _this = this;
-        this.projectsService.deleteComment(comment, this.question.id)
-            .then(function (message) {
-            if (message == 'success') {
-                _.remove(_this.question.comments, function (c) {
-                    return c == comment;
-                });
-            }
-            else {
-                _this.openSnackBar("Comment couldn't be deleted", "Try Again!");
-            }
-        });
-    };
     QuestionViewComponent = __decorate([
         core_1.Component({
             selector: 'question-view',

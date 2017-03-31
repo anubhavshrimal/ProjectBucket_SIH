@@ -11,13 +11,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var signin_service_1 = require('../../services/signin/signin.service');
 var router_1 = require('@angular/router');
-var core_2 = require('angular2-cookie/core');
+var cookiesService_service_1 = require('../../services/cookie/cookiesService.service');
 var SigninComponent = (function () {
-    function SigninComponent(signinService, router, cookieService) {
+    function SigninComponent(signinService, router, cookiesService) {
         this.signinService = signinService;
         this.router = router;
-        this.cookieService = cookieService;
-        this.usernameCookie = 'username';
+        this.cookiesService = cookiesService;
         this.licenses = [
             {
                 name: "None",
@@ -39,13 +38,15 @@ var SigninComponent = (function () {
     SigninComponent.prototype.login = function (userName, password) {
         var _this = this;
         this.signinService.login(userName, password).then(function (data) {
+            console.log(data);
             if (data.username) {
                 _this.userName = data.username;
+                _this.isLoggedin = data.is_valid;
+                _this.sessionid = data.session_id;
                 _this.router.navigate(['/projects-feed']);
-                _this.cookieService.put(_this.usernameCookie, userName);
+                _this.cookiesService.setSessionId(_this.sessionid);
             }
         });
-        console.log("cookie    ", this.cookieService.get(this.usernameCookie));
     };
     SigninComponent = __decorate([
         core_1.Component({
@@ -54,7 +55,7 @@ var SigninComponent = (function () {
             moduleId: module.id,
             providers: [signin_service_1.SigninService]
         }), 
-        __metadata('design:paramtypes', [signin_service_1.SigninService, router_1.Router, core_2.CookieService])
+        __metadata('design:paramtypes', [signin_service_1.SigninService, router_1.Router, cookiesService_service_1.CookiesService])
     ], SigninComponent);
     return SigninComponent;
 }());
