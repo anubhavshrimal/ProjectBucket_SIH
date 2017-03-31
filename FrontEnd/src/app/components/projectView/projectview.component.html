@@ -80,10 +80,14 @@
                 </div>
             </div>
             <div class="columns">
-                <div class="column">
-                    <button md-raised-button><md-icon class="fa fa-thumbs-o-up"></md-icon>{{project.upvotes.length}}</button>
-                    <button md-raised-button><md-icon class="fa fa-thumbs-o-down"></md-icon>{{project.downvotes.length}}</button>
-                    <button md-raised-button><md-icon class="fa fa-bookmark-o"></md-icon></button>
+                <div class="one-third column">
+                    <button md-raised-button class="full-width" mdTooltip="Upvote" (click)="upvote()"><md-icon class="fa fa-thumbs-o-up"></md-icon>{{project.upvotes.length}}</button>
+                </div>
+                <div class="one-third column">
+                    <button md-raised-button class="full-width" mdTooltip="Downvote" (click)="downvote()"><md-icon class="fa fa-thumbs-o-down"></md-icon>{{project.downvotes.length}}</button>
+                </div>
+                <div class="one-third column">
+                    <button md-raised-button class="full-width" mdTooltip="Bookmark"><md-icon class="fa fa-bookmark-o"></md-icon></button>
                 </div>
             </div>
             <br>

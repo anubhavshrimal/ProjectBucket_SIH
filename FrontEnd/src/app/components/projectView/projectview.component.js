@@ -69,6 +69,14 @@ var ProjectViewComponent = (function () {
             }
         });
     };
+    ProjectViewComponent.prototype.upvote = function () {
+        this.projectsService.upvote(this.project.id)
+            .then(function (res) { return console.log(res); });
+    };
+    ProjectViewComponent.prototype.downvote = function () {
+        this.projectsService.downvote(this.project.id)
+            .then(function (res) { return console.log(res); });
+    };
     ProjectViewComponent = __decorate([
         core_1.Component({
             selector: 'project-view',

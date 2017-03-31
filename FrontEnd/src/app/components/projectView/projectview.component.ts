@@ -73,4 +73,14 @@ export class ProjectViewComponent implements OnInit {
         }
       });
   }
+
+  upvote(): void {
+    this.projectsService.upvote(this.project.id)
+        .then(res => console.log(res));
+  }
+
+  downvote(): void {
+    this.projectsService.downvote(this.project.id)
+        .then(res => console.log(res));
+  }
 }
