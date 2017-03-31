@@ -9,8 +9,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
 var NavbarComponent = (function () {
-    function NavbarComponent() {
+    function NavbarComponent(router) {
+        this.router = router;
         this.user = {
             'rating': 245,
             'thumbnail': 'app/assets/male_user.png',
@@ -53,13 +55,17 @@ var NavbarComponent = (function () {
             }
         ];
     }
+    NavbarComponent.prototype.gotoUserProfile = function () {
+        this.user.username = 'hsharma';
+        this.router.navigate(['/user-profile', this.user.username]);
+    };
     NavbarComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: 'navbar',
             templateUrl: './navbar.component.html',
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [router_1.Router])
     ], NavbarComponent);
     return NavbarComponent;
 }());

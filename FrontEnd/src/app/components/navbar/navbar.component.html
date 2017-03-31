@@ -31,7 +31,7 @@
 
     <!--profile avatar of the user and user rating-->
     <!--TODO: make links dynamic-->
-    <a md-button href="/user-profile/{{username}}" mdTooltip="View profile and more">
+    <a md-button (click)="gotoUserProfile()" mdTooltip="View profile and more">
         <img class="avatar avatar-small" style="background-color: white;" src="{{user.thumbnail}}" width="32" height="32">
         <span class="counter">{{user.rating}}</span>
     </a>
