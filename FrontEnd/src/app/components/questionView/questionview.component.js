@@ -50,21 +50,21 @@ var QuestionViewComponent = (function () {
                 _.orderBy(_this.question.answers, ['upvotes.length'], ['desc']);
             }
             else {
-                _this.openSnackBar("Comment was not added", "Try Again!");
+                _this.openSnackBar("Answer was not added", "Try Again!");
             }
         });
     };
-    QuestionViewComponent.prototype.deleteAnswer = function (comment) {
+    QuestionViewComponent.prototype.deleteAnswer = function (username) {
         var _this = this;
-        this.projectsService.deleteComment(comment, this.question.id)
+        this.questionsService.deleteAnswer(username, this.question.id)
             .then(function (message) {
             if (message == 'success') {
-                _.remove(_this.question.comments, function (c) {
-                    return c == comment;
+                _.remove(_this.question.answers, function (c) {
+                    return c.username == username;
                 });
             }
             else {
-                _this.openSnackBar("Comment couldn't be deleted", "Try Again!");
+                _this.openSnackBar("Answer couldn't be deleted", "Try Again!");
             }
         });
     };

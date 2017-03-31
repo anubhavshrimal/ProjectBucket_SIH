@@ -19,6 +19,7 @@ var editProject_component_1 = require('./components/editProject/editProject.comp
 var forum_component_1 = require('./components/forum/forum.component');
 var projectview_component_1 = require('./components/projectView/projectview.component');
 var signin_component_1 = require('./components/signin/signin.component');
+var questionview_component_1 = require('./components/questionView/questionview.component');
 var logged_in_guard_1 = require('./logged-in.guard');
 var routes = [
     {
@@ -62,6 +63,10 @@ var routes = [
     {
         path: 'projects/update/:id/:title',
         component: editProject_component_1.EditProjectComponent
+    },
+    {
+        path: 'questions/:id/:title',
+        component: questionview_component_1.QuestionViewComponent
     }
 ];
 var AppRoutingModule = (function () {

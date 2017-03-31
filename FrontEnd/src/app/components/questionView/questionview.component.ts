@@ -55,22 +55,22 @@ export class QuestionViewComponent implements OnInit {
           _.orderBy(this.question.answers, ['upvotes.length'], ['desc']);
         }
         else {
-          this.openSnackBar("Comment was not added", "Try Again!");
+          this.openSnackBar("Answer was not added", "Try Again!");
         }
       })
   }
 
-  // deleteAnswer(comment: Comment): void {
-  //   this.projectsService.deleteComment(comment, this.question.id)
-  //     .then(message => {
-  //       if(message == 'success'){
-  //         _.remove(this.question.comments, function(c){
-  //           return c == comment;
-  //         })
-  //       }
-  //       else {
-  //         this.openSnackBar("Comment couldn't be deleted", "Try Again!");
-  //       }
-  //     });
-  // }
+  deleteAnswer(username: string): void {
+    this.questionsService.deleteAnswer(username, this.question.id)
+      .then(message => {
+        if(message == 'success'){
+          _.remove(this.question.answers, function(c){
+            return c.username == username;
+          })
+        }
+        else {
+          this.openSnackBar("Answer couldn't be deleted", "Try Again!");
+        }
+      });
+  }
 }
