@@ -7,7 +7,7 @@ import { Project, Comment, Info } from '../../classTemplates/project/project';
 import { BackendUrlService } from '../backendUrl.service';
 
 @Injectable()
-export class ProjectsService {
+export class QuestionsService {
     private headers = new Headers({'Content-Type': 'application/json'});
     private createUrl = BackendUrlService.url + '/projects/insert';
     private projectsFeedUrl = BackendUrlService.url + '/homepage/projects-feed/pulkit';
@@ -50,13 +50,13 @@ export class ProjectsService {
             .catch(this.handleError);
     }
 
-    deleteComment(comment: Comment, projectId: string): Promise<Comment> {
+    deleteComment(comment: Comment, projectId: string): Promise<string> {
         const deleteCommentUrl = BackendUrlService.url + '/projects/'+projectId+'/comment/delete';
 
         return this.http
             .post(deleteCommentUrl, JSON.stringify(comment), {headers: this.headers})
             .toPromise()
-            .then(res => res.json() as Comment)
+            .then(res => res.json().message)
             .catch(this.handleError);
     }
 

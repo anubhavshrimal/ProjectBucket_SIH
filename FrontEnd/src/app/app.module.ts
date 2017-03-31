@@ -17,6 +17,7 @@ import { EditProfileComponent } from './components/editProfile/editProfile.compo
 import { ForumComponent } from './components/forum/forum.component';
 import { ProjectViewComponent } from './components/projectView/projectview.component';
 import { EditProjectComponent } from './components/editProject/editProject.component';
+import { QuestionViewComponent } from './components/questionView/questionview.component';
 import { AppComponent }  from './app.component';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -47,7 +48,8 @@ import { TabsFilterPipe } from './pipes/tabsFilter.pipe';
       ForumComponent,
       ProjectViewComponent,
       EditProjectComponent,
-      TabsFilterPipe
+      TabsFilterPipe,
+      QuestionViewComponent
     ],
   bootstrap:    [ AppComponent ],
   providers: [ BackendUrlService ]

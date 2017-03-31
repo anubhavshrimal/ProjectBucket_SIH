@@ -12,21 +12,21 @@ var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/toPromise');
 var backendUrl_service_1 = require('../backendUrl.service');
-var ProjectsService = (function () {
-    function ProjectsService(http) {
+var QuestionsService = (function () {
+    function QuestionsService(http) {
         this.http = http;
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         this.createUrl = backendUrl_service_1.BackendUrlService.url + '/projects/insert';
         this.projectsFeedUrl = backendUrl_service_1.BackendUrlService.url + '/homepage/projects-feed/pulkit';
     }
-    ProjectsService.prototype.create = function (project) {
+    QuestionsService.prototype.create = function (project) {
         return this.http
             .post(this.createUrl, JSON.stringify(project), { headers: this.headers })
             .toPromise()
             .then(function (res) { return res.json(); })
             .catch(this.handleError);
     };
-    ProjectsService.prototype.update = function (project) {
+    QuestionsService.prototype.update = function (project) {
         project.username = "pulkit";
         var updateUrl = backendUrl_service_1.BackendUrlService.url + '/projects/' + project.id;
         return this.http
@@ -35,7 +35,7 @@ var ProjectsService = (function () {
             .then(function (res) { return res.json().message; })
             .catch(this.handleError);
     };
-    ProjectsService.prototype.getProjectById = function (id) {
+    QuestionsService.prototype.getProjectById = function (id) {
         var getUrl = backendUrl_service_1.BackendUrlService.url + '/projects/' + id;
         return this.http
             .get(getUrl)
@@ -43,7 +43,7 @@ var ProjectsService = (function () {
             .then(function (res) { return res.json(); })
             .catch(this.handleError);
     };
-    ProjectsService.prototype.insertComment = function (comment, projectId) {
+    QuestionsService.prototype.insertComment = function (comment, projectId) {
         var insertCommentUrl = backendUrl_service_1.BackendUrlService.url + '/projects/' + projectId + '/comment';
         return this.http
             .post(insertCommentUrl, JSON.stringify({ "comment": comment }), { headers: this.headers })
@@ -51,22 +51,22 @@ var ProjectsService = (function () {
             .then(function (res) { return res.json(); })
             .catch(this.handleError);
     };
-    ProjectsService.prototype.deleteComment = function (comment, projectId) {
+    QuestionsService.prototype.deleteComment = function (comment, projectId) {
         var deleteCommentUrl = backendUrl_service_1.BackendUrlService.url + '/projects/' + projectId + '/comment/delete';
         return this.http
             .post(deleteCommentUrl, JSON.stringify(comment), { headers: this.headers })
             .toPromise()
-            .then(function (res) { return res.json(); })
+            .then(function (res) { return res.json().message; })
             .catch(this.handleError);
     };
-    ProjectsService.prototype.getProjectsFeed = function () {
+    QuestionsService.prototype.getProjectsFeed = function () {
         return this.http
             .get(this.projectsFeedUrl)
             .toPromise()
             .then(function (res) { return res.json(); })
             .catch(this.handleError);
     };
-    ProjectsService.prototype.upvote = function (projectId) {
+    QuestionsService.prototype.upvote = function (projectId) {
         var upvoteUrl = '/projects/' + projectId + '/upvote';
         return this.http
             .put(upvoteUrl, JSON.stringify({}), { headers: this.headers })
@@ -74,7 +74,7 @@ var ProjectsService = (function () {
             .then(function (res) { return res.json(); })
             .catch(this.handleError);
     };
-    ProjectsService.prototype.downvote = function (projectId) {
+    QuestionsService.prototype.downvote = function (projectId) {
         var downvote = '/projects/' + projectId + '/downvote';
         return this.http
             .put(downvote, JSON.stringify({}), { headers: this.headers })
@@ -82,15 +82,15 @@ var ProjectsService = (function () {
             .then(function (res) { return res.json(); })
             .catch(this.handleError);
     };
-    ProjectsService.prototype.handleError = function (error) {
+    QuestionsService.prototype.handleError = function (error) {
         console.error('An error occurred', error);
         return Promise.reject(error.message || error);
     };
-    ProjectsService = __decorate([
+    QuestionsService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])
-    ], ProjectsService);
-    return ProjectsService;
+    ], QuestionsService);
+    return QuestionsService;
 }());
-exports.ProjectsService = ProjectsService;
-//# sourceMappingURL=projects.service.js.map
+exports.QuestionsService = QuestionsService;
+//# sourceMappingURL=questions.service.js.map

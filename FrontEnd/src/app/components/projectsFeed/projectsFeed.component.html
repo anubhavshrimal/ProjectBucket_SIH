@@ -20,14 +20,14 @@
                             [rowspan]="1">
                         <md-card class="example-card border">
                             <md-card-header>
-                                <div md-card-avatar>
+                                <div md-card-avatar (click)="gotoUserProfile(project.username)">
                                     <img md-card-avatar class="avatars" src="app/assets/male_user.png">
                                 </div>
-                                <md-card-title>{{project.title}}</md-card-title>
+                                <md-card-title (click)="gotoProject(project.id, project.url_title)">{{project.title}}</md-card-title>
                                 <md-card-subtitle>by <a href="/user-profile/{{project.username}}">{{project.username}}</a></md-card-subtitle>
                             </md-card-header>
-                            <img md-card-image src="app/assets/project_bucket_hq_logo.jpg" width="280px" height="280px">
-                            <md-card-content>
+                            <img md-card-image (click)="gotoProject(project.id, project.url_title)" src="app/assets/project_bucket_hq_logo.jpg" width="280px" height="280px">
+                            <md-card-content (click)="gotoProject(project.id, project.title)">
                                 <p>
                                 {{project.desctiption}}
                                 </p>
@@ -35,10 +35,10 @@
                             <md-card-actions>
                                 <div class="columns centered">
                                     <div class="one-fourth column">
-                                        <button md-raised-button mdTooltip="Upvote" (click)="upvote(project)"><md-icon class="fa fa-thumbs-o-up"></md-icon>{{project.upvotecount}}</button>
+                                        <button md-raised-button mdTooltip="Upvote" (click)="upvote(project)"><md-icon class="fa fa-thumbs-o-up"></md-icon>{{project.upvotes.length}}</button>
                                     </div>
                                     <div class="one-fourth column">
-                                        <button md-raised-button mdTooltip="Downvote" (click)="downvote(project)"><md-icon class="fa fa-thumbs-o-down"></md-icon>{{project.downvotecount}}</button>
+                                        <button md-raised-button mdTooltip="Downvote" (click)="downvote(project)"><md-icon class="fa fa-thumbs-o-down"></md-icon>{{project.downvotes.length}}</button>
                                     </div>
                                     <div class="one-fourth column">
                                         <button md-raised-button mdTooltip="Add to favourites"><md-icon class="fa fa-bookmark-o"></md-icon></button>
