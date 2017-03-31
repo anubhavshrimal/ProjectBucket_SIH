@@ -50,11 +50,17 @@ var ProjectsFeedComponent = (function () {
     };
     ProjectsFeedComponent.prototype.upvote = function (project) {
         this.projectsService.upvote(project.id)
-            .then(function (res) { return console.log(res); });
+            .then(function (res) {
+            project.upvotes = res.upvotes;
+            project.downvotes = res.downvotes;
+        });
     };
     ProjectsFeedComponent.prototype.downvote = function (project) {
         this.projectsService.downvote(project.id)
-            .then(function (res) { return console.log(res); });
+            .then(function (res) {
+            project.upvotes = res.upvotes;
+            project.downvotes = res.downvotes;
+        });
     };
     ProjectsFeedComponent = __decorate([
         core_1.Component({

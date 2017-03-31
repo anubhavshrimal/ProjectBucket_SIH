@@ -76,11 +76,17 @@ export class ProjectViewComponent implements OnInit {
 
   upvote(): void {
     this.projectsService.upvote(this.project.id)
-        .then(res => console.log(res));
+        .then(res => {
+                this.project.upvotes = res.upvotes
+                this.project.downvotes = res.downvotes
+            });
   }
 
   downvote(): void {
     this.projectsService.downvote(this.project.id)
-        .then(res => console.log(res));
+        .then(res => {
+                this.project.upvotes = res.upvotes
+                this.project.downvotes = res.downvotes
+            });
   }
 }

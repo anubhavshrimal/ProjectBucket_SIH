@@ -63,11 +63,17 @@ export class ProjectsFeedComponent implements OnInit{
 
     upvote(project: Project): void {
         this.projectsService.upvote(project.id)
-            .then(res => console.log(res));
+            .then(res => {
+                project.upvotes = res.upvotes
+                project.downvotes = res.downvotes
+            });
     }
 
     downvote(project: Project): void {
         this.projectsService.downvote(project.id)
-            .then(res => console.log(res));
+            .then(res => {
+                project.upvotes = res.upvotes
+                project.downvotes = res.downvotes
+            });
     }
 }

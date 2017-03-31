@@ -70,12 +70,20 @@ var ProjectViewComponent = (function () {
         });
     };
     ProjectViewComponent.prototype.upvote = function () {
+        var _this = this;
         this.projectsService.upvote(this.project.id)
-            .then(function (res) { return console.log(res); });
+            .then(function (res) {
+            _this.project.upvotes = res.upvotes;
+            _this.project.downvotes = res.downvotes;
+        });
     };
     ProjectViewComponent.prototype.downvote = function () {
+        var _this = this;
         this.projectsService.downvote(this.project.id)
-            .then(function (res) { return console.log(res); });
+            .then(function (res) {
+            _this.project.upvotes = res.upvotes;
+            _this.project.downvotes = res.downvotes;
+        });
     };
     ProjectViewComponent = __decorate([
         core_1.Component({

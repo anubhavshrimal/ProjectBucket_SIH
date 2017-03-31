@@ -13,7 +13,7 @@ var BackendUrlService = (function () {
     function BackendUrlService() {
     }
     // public static url = 'http://codeist.mi43ujva9v.us-west-2.elasticbeanstalk.com/webapi';
-    BackendUrlService.url = 'http://192.168.1.80:8080/Codeist/webapi';
+    BackendUrlService.url = 'http://192.168.1.66:8080/Codeist/webapi';
     BackendUrlService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])
