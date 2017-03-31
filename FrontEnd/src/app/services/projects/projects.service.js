@@ -69,7 +69,7 @@ var ProjectsService = (function () {
     ProjectsService.prototype.upvote = function (projectId) {
         var upvoteUrl = backendUrl_service_1.BackendUrlService.url + '/projects/' + projectId + '/upvote';
         return this.http
-            .get(upvoteUrl)
+            .put(upvoteUrl, JSON.stringify({}), { headers: this.headers })
             .toPromise()
             .then(function (res) { return res.json(); })
             .catch(this.handleError);

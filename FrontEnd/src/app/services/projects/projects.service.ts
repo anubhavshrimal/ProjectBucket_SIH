@@ -71,7 +71,7 @@ export class ProjectsService {
     upvote(projectId: string): Promise<Info> {
         const upvoteUrl = BackendUrlService.url + '/projects/' + projectId + '/upvote';
         return this.http
-            .get(upvoteUrl)
+            .put(upvoteUrl, JSON.stringify({}), {headers: this.headers})
             .toPromise()
             .then(res => res.json() as Info)
             .catch(this.handleError);
