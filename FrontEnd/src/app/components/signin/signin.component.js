@@ -17,6 +17,7 @@ var SigninComponent = (function () {
         this.signinService = signinService;
         this.router = router;
         this.cookieService = cookieService;
+        this.usernameCookie = 'username';
         this.licenses = [
             {
                 name: "None",
@@ -37,16 +38,14 @@ var SigninComponent = (function () {
     };
     SigninComponent.prototype.login = function (userName, password) {
         var _this = this;
-        console.log(userName, password);
         this.signinService.login(userName, password).then(function (data) {
-            if (data) {
-                console.log(data);
+            if (data.username) {
+                _this.userName = data.username;
                 _this.router.navigate(['/projects-feed']);
-                _this.cookieService.put('test', 'test');
+                _this.cookieService.put(_this.usernameCookie, userName);
             }
         });
-        this.cookieService.put('test', 'mohitsharma');
-        console.log(this.cookieService.get('test'));
+        console.log("cookie    ", this.cookieService.get(this.usernameCookie));
     };
     SigninComponent = __decorate([
         core_1.Component({

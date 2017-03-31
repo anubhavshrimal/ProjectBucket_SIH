@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import { BackendUrlService } from '../backendUrl.service';
 import 'rxjs/add/operator/toPromise';
+import {User} from "../../classTemplates/user/user";
 
 @Injectable()
 export class SigninService {
@@ -12,11 +13,11 @@ export class SigninService {
     constructor(private http: Http){
         this.isLoggedIn = !!localStorage.getItem('auth_token');
     }
-    login(userName: string, password: string): Promise<Object[]> {
+    login(userName: string, password: string): Promise<User> {
         return this.http
             .post(this.url,JSON.stringify({username: userName, password: password}),{headers: this.headers})
             .toPromise()
-            .then(res => this.isLoggedIn=true)
+            .then(res => res.json() as User)
             /*.then((res)=>{
                 if (res.success) {
                     localStorage.setItem('auth_token', res.auth_token);

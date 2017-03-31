@@ -14,7 +14,8 @@ export class SigninComponent {
     licenses: Array<Object>;
     signup1 : boolean;
     signup2 : boolean;
-
+    userName : string;
+    usernameCookie: string = 'username';
     constructor(private signinService : SigninService, private router: Router, private cookieService:CookieService) {
         this.licenses = [
             {
@@ -37,15 +38,13 @@ export class SigninComponent {
     }
 
     login(userName:string, password:string){
-        console.log(userName, password);
         this.signinService.login(userName,password).then(data =>{
-            if (data){
-                console.log(data);
+            if (data.username ){
+                this.userName = data.username;
                 this.router.navigate(['/projects-feed']);
-                this.cookieService.put('test', 'test');
+                this.cookieService.put(this.usernameCookie, userName);
             }
         });
-        this.cookieService.put('test', 'mohitsharma');
-        console.log(this.cookieService.get('test'));
+        console.log("cookie    ",this.cookieService.get(this.usernameCookie));
     }
 }

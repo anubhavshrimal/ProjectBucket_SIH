@@ -21,11 +21,10 @@ var SigninService = (function () {
         this.isLoggedIn = !!localStorage.getItem('auth_token');
     }
     SigninService.prototype.login = function (userName, password) {
-        var _this = this;
         return this.http
             .post(this.url, JSON.stringify({ username: userName, password: password }), { headers: this.headers })
             .toPromise()
-            .then(function (res) { return _this.isLoggedIn = true; })
+            .then(function (res) { return res.json(); })
             .catch(this.handleError);
     };
     SigninService.prototype.handleError = function (error) {
