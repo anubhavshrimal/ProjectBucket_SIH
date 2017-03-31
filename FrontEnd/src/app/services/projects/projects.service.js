@@ -67,15 +67,15 @@ var ProjectsService = (function () {
             .catch(this.handleError);
     };
     ProjectsService.prototype.upvote = function (projectId) {
-        var upvoteUrl = '/projects/' + projectId + '/upvote';
+        var upvoteUrl = backendUrl_service_1.BackendUrlService.url + '/projects/' + projectId + '/upvote';
         return this.http
-            .put(upvoteUrl, JSON.stringify({}), { headers: this.headers })
+            .get(upvoteUrl)
             .toPromise()
             .then(function (res) { return res.json(); })
             .catch(this.handleError);
     };
     ProjectsService.prototype.downvote = function (projectId) {
-        var downvote = '/projects/' + projectId + '/downvote';
+        var downvote = backendUrl_service_1.BackendUrlService.url + '/projects/' + projectId + '/downvote';
         return this.http
             .put(downvote, JSON.stringify({}), { headers: this.headers })
             .toPromise()

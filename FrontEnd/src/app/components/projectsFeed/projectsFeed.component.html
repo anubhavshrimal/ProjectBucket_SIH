@@ -14,41 +14,39 @@
                         <md-icon class="{{tab.tabIcon}}"></md-icon> {{tab.tabLabel}}
                     </template>
                     <md-grid-list cols="2" rowHeight="500px">
-                        <md-grid-tile
-                            *ngFor="let project of projects | tabsFilter:tab.tabLabel"
-                            [colspan]="1"
-                            [rowspan]="1">
-                        <md-card class="example-card border">
-                            <md-card-header>
-                                <div md-card-avatar (click)="gotoUserProfile(project.username)">
-                                    <img md-card-avatar class="avatars" src="app/assets/male_user.png">
-                                </div>
-                                <md-card-title (click)="gotoProject(project.id, project.url_title)">{{project.title}}</md-card-title>
-                                <md-card-subtitle>by <a href="/user-profile/{{project.username}}">{{project.username}}</a></md-card-subtitle>
-                            </md-card-header>
-                            <img md-card-image (click)="gotoProject(project.id, project.url_title)" src="app/assets/project_bucket_hq_logo.jpg" width="280px" height="280px">
-                            <md-card-content (click)="gotoProject(project.id, project.title)">
-                                <p>
-                                {{project.desctiption}}
-                                </p>
-                            </md-card-content>
-                            <md-card-actions>
-                                <div class="columns centered">
-                                    <div class="one-fourth column">
-                                        <button md-raised-button mdTooltip="Upvote" (click)="upvote(project)"><md-icon class="fa fa-thumbs-o-up"></md-icon>{{project.upvotes.length}}</button>
+                        <md-grid-tile *ngFor="let project of projects | tabsFilter:tab.tabLabel" [colspan]="1" [rowspan]="1">
+                            <md-card class="example-card border">
+                                <md-card-header>
+                                    <div md-card-avatar (click)="gotoUserProfile(project.username)">
+                                        <img md-card-avatar class="avatars" src="app/assets/male_user.png">
                                     </div>
-                                    <div class="one-fourth column">
-                                        <button md-raised-button mdTooltip="Downvote" (click)="downvote(project)"><md-icon class="fa fa-thumbs-o-down"></md-icon>{{project.downvotes.length}}</button>
+                                    <md-card-title (click)="gotoProject(project.id, project.url_title)">{{project.title}}</md-card-title>
+                                    <md-card-subtitle>by <a href="/user-profile/{{project.username}}">{{project.username}}</a></md-card-subtitle>
+                                    <div>
+                                        <button md-button mdTooltip="more options" [md-menu-trigger-for]="more"><md-icon class="fa fa-caret-down"></md-icon></button>
                                     </div>
-                                    <div class="one-fourth column">
-                                        <button md-raised-button mdTooltip="Add to favourites"><md-icon class="fa fa-bookmark-o"></md-icon></button>
+                                </md-card-header>
+                                <img md-card-image (click)="gotoProject(project.id, project.url_title)" src="app/assets/project_bucket_hq_logo.jpg" width="280px"
+                                    height="280px">
+                                <md-card-content (click)="gotoProject(project.id, project.title)">
+                                    <p>
+                                        {{project.desctiption}}
+                                    </p>
+                                </md-card-content>
+                                <md-card-actions>
+                                    <div class="columns centered">
+                                        <div class="one-third column">
+                                            <button md-button mdTooltip="Upvote" (click)="upvote(project)"><md-icon class="fa fa-thumbs-o-up"></md-icon>{{project.upvotes.length}}</button>
+                                        </div>
+                                        <div class="one-third column">
+                                            <button md-button mdTooltip="Downvote" (click)="downvote(project)"><md-icon class="fa fa-thumbs-o-down"></md-icon>{{project.downvotes.length}}</button>
+                                        </div>
+                                        <div class="one-third column">
+                                            <button md-button mdTooltip="Add to favourites"><md-icon class="fa fa-bookmark-o"></md-icon></button>
+                                        </div>
                                     </div>
-                                    <div class="one-fourth column">
-                                        <button md-raised-button  mdTooltip="more options" [md-menu-trigger-for]="more"><md-icon class="fa fa-caret-down"></md-icon></button>
-                                    </div>
-                                </div>
-                            </md-card-actions>
-                    </md-card>
+                                </md-card-actions>
+                            </md-card>
                         </md-grid-tile>
                     </md-grid-list>
                 </md-tab>

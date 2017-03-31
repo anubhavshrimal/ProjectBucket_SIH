@@ -69,17 +69,16 @@ export class ProjectsService {
     }
 
     upvote(projectId: string): Promise<Info> {
-        const upvoteUrl = '/projects/' + projectId + '/upvote';
-
+        const upvoteUrl = BackendUrlService.url + '/projects/' + projectId + '/upvote';
         return this.http
-            .put(upvoteUrl, JSON.stringify({}), {headers: this.headers})
+            .get(upvoteUrl)
             .toPromise()
             .then(res => res.json() as Info)
             .catch(this.handleError);
     }
 
     downvote(projectId: string): Promise<Info> {
-        const downvote = '/projects/' + projectId + '/downvote';
+        const downvote =  BackendUrlService.url + '/projects/' + projectId + '/downvote';
 
         return this.http
             .put(downvote, JSON.stringify({}), {headers: this.headers})
