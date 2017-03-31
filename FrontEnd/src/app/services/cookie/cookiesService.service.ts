@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { BackendUrlService } from '../backendUrl.service';
 import {CookieService} from 'angular2-cookie/core';
 
 import 'rxjs/add/operator/toPromise';
