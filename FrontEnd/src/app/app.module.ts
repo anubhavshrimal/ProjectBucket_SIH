@@ -20,7 +20,7 @@ import { EditProjectComponent } from './components/editProject/editProject.compo
 import { QuestionViewComponent } from './components/questionView/questionview.component';
 import { AppComponent }  from './app.component';
 import { CookieService } from 'angular2-cookie/services/cookies.service';
-
+import{ CookiesService } from './services/cookie/cookiesService.service'
 import { AppRoutingModule } from './app-routing.module';
 
 import { BackendUrlService } from './services/backendUrl.service';
@@ -54,7 +54,8 @@ import { TabsFilterPipe } from './pipes/tabsFilter.pipe';
     ],
   bootstrap:    [ AppComponent ],
   providers: [ BackendUrlService,
-               CookieService
+               CookieService,
+               CookiesService
   ]
 })
 export class AppModule { }

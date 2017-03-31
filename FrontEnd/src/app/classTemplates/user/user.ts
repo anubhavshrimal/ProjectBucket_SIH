@@ -9,6 +9,8 @@ export class ContactInfo {
 
 export class User {
     username?: string;
+    is_valid: string;
+    session_id: string;
     password?: string;
     name?: string;
     bio?: string;

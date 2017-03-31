@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { SigninService } from '../../services/signin/signin.service';
 import { Router } from '@angular/router';
 import {ProjectsFeedComponent} from "../projectsFeed/projectsFeed.component";
-import {CookieService} from 'angular2-cookie/core';
+import { CookiesService } from '../../services/cookie/cookiesService.service';
 @Component({
     selector: 'signin',
     templateUrl: './signin.component.html',
@@ -15,8 +15,10 @@ export class SigninComponent {
     signup1 : boolean;
     signup2 : boolean;
     userName : string;
-    usernameCookie: string = 'username';
-    constructor(private signinService : SigninService, private router: Router, private cookieService:CookieService) {
+    isLoggedin: string;
+    sessionid: string;
+
+    constructor(private signinService : SigninService, private router: Router, private cookiesService: CookiesService) {
         this.licenses = [
             {
                 name: "None",
@@ -39,12 +41,15 @@ export class SigninComponent {
 
     login(userName:string, password:string){
         this.signinService.login(userName,password).then(data =>{
+            console.log(data);
             if (data.username ){
                 this.userName = data.username;
+                this.isLoggedin = data.is_valid;
+                this.sessionid = data.session_id;
                 this.router.navigate(['/projects-feed']);
-                this.cookieService.put(this.usernameCookie, userName);
+                this.cookiesService.setSessionId(this.sessionid);
             }
         });
-        console.log("cookie    ",this.cookieService.get(this.usernameCookie));
     }
 }
+
