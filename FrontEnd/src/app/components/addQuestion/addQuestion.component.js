@@ -9,16 +9,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
+var material_1 = require('@angular/material');
 var questions_service_1 = require('../../services/questions/questions.service');
 var _ = require("lodash");
 var AddQuestionComponent = (function () {
-    function AddQuestionComponent(questionsService) {
+    function AddQuestionComponent(questionsService, router, snackBar) {
         this.questionsService = questionsService;
+        this.router = router;
+        this.snackBar = snackBar;
         this.question = {};
+        this.question.tags = [];
+        this.question.images = [];
     }
     AddQuestionComponent.prototype.addQuestion = function () {
+        var _this = this;
         this.questionsService.create(this.question)
             .then(function (question) {
+            if (question.upsertedId) {
+                // this.router.navigate([`/questions`, question.upsertedId, question.message]);
+                console.log('added question');
+            }
+            else {
+                _this.openSnackBar("Question couldn't be added!", "Try Again!");
+            }
         });
     };
     AddQuestionComponent.prototype.addTag = function () {
@@ -37,13 +51,19 @@ var AddQuestionComponent = (function () {
             return n === tag;
         });
     };
+    AddQuestionComponent.prototype.openSnackBar = function (message, action) {
+        this.snackBar.open(message, action, {
+            duration: 2000,
+        });
+    };
     AddQuestionComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: 'add-question',
             templateUrl: './addQuestion.component.html',
+            providers: [questions_service_1.QuestionsService]
         }), 
-        __metadata('design:paramtypes', [questions_service_1.QuestionsService])
+        __metadata('design:paramtypes', [questions_service_1.QuestionsService, router_1.Router, material_1.MdSnackBar])
     ], AddQuestionComponent);
     return AddQuestionComponent;
 }());

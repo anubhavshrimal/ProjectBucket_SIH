@@ -4,6 +4,7 @@ import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 import { Project, Comment, Info } from '../../classTemplates/project/project';
+import  { Response } from '../../classTemplates/assertionResponse/response';
 import { BackendUrlService } from '../backendUrl.service';
 
 @Injectable()
@@ -13,11 +14,11 @@ export class ProjectsService {
     private projectsFeedUrl = BackendUrlService.url + '/homepage/projects-feed/pulkit';
     constructor(private http: Http) {}
 
-    create(project: Project): Promise<Project> {
+    create(project: Project): Promise<Response> {
         return this.http
             .post(this.createUrl, JSON.stringify(project), {headers: this.headers})
             .toPromise()
-            .then(res => res.json() as Project)
+            .then(res => res.json() as Response)
             .catch(this.handleError);
     }
 

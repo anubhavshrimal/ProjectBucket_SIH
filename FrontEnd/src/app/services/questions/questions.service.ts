@@ -6,6 +6,7 @@ import 'rxjs/add/operator/toPromise';
 import { Question, Answer } from '../../classTemplates/question/question';
 import { Info } from '../../classTemplates/project/project';
 import { BackendUrlService } from '../backendUrl.service';
+import  { Response } from '../../classTemplates/assertionResponse/response';
 
 @Injectable()
 export class QuestionsService {
@@ -14,11 +15,11 @@ export class QuestionsService {
     private forumUrl = BackendUrlService.url + '/homepage/forum/pulkit';
     constructor(private http: Http) {}
 
-    create(question: Question): Promise<Question> {
+    create(question: Question): Promise<Response> {
         return this.http
             .post(this.createUrl, JSON.stringify(question), {headers: this.headers})
             .toPromise()
-            .then(res => res.json() as Question)
+            .then(res => res.json() as Response)
             .catch(this.handleError);
     }
 
