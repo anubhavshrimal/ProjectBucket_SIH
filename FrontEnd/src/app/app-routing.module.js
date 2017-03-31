@@ -41,7 +41,7 @@ var routes = [
         component: addQuestion_component_1.AddQuestionComponent
     },
     {
-        path: 'user-profile',
+        path: 'user-profile/:username',
         component: userProfile_component_1.UserProfileComponent
     },
     {

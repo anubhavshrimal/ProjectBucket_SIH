@@ -1,11 +1,11 @@
-<div class="container" *ngIf="projects.length < 1">
+<div class="container" *ngIf="projects && projects.length < 1">
     <div class="columns centered">
         <div class="one-fifth column centered text-center">
             <md-spinner></md-spinner>
         </div>
     </div>
 </div>
-<div class="container" *ngIf="projects.length >= 1">
+<div class="container" *ngIf="projects && projects.length >= 1">
     <div class="columns centered">
         <div class="four-fifths column centered">
             <md-tab-group dynamicHeight="true">

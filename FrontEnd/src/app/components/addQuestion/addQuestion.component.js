@@ -14,6 +14,10 @@ var AddQuestionComponent = (function () {
     function AddQuestionComponent() {
         this.tags = [];
     }
+    // addQuestion(): void {
+    //     this.projectsService.create(this.project)
+    //     .then(project => console.log(project))
+    // }
     AddQuestionComponent.prototype.addTag = function () {
         if (this.tag.length != 0) {
             this.tag = this.tag.toLowerCase();

@@ -1,4 +1,7 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
+import { QuestionsService } from '../../services/questions/questions.service';
+import { Question } from '../../classTemplates/question/question';
+
 import * as _ from "lodash";
 
 @Component({
@@ -13,6 +16,11 @@ export class AddQuestionComponent {
     constructor() {
         this.tags = [];
     }
+
+    // addQuestion(): void {
+    //     this.projectsService.create(this.project)
+    //     .then(project => console.log(project))
+    // }
 
     addTag (): void {
         if(this.tag.length != 0){

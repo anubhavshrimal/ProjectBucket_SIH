@@ -10,7 +10,7 @@ export class Answer {
 export class Question {
     id?: string;
     username?: string;
-    question?: string;
+    title?: string;
     description?: string;
     tags?: Array<string>;
     date?: number;

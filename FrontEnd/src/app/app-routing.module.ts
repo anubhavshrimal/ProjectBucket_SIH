@@ -34,7 +34,7 @@ const routes: Routes = [
         component: AddQuestionComponent
       },
       {
-        path: 'user-profile',
+        path: 'user-profile/:username',
         component: UserProfileComponent
       },
       {
