@@ -73,4 +73,20 @@ export class QuestionViewComponent implements OnInit {
         }
       });
   }
+
+  upvoteAnswer(answer: Answer) {
+    this.questionsService.upvoteAnswer(this.question.id, answer.username)
+      .then(res => {
+                  answer.upvotes = res.upvotes
+                  answer.downvotes = res.downvotes
+              });
+  }
+
+  downvoteAnswer(answer: Answer) {
+    this.questionsService.downvoteAnswer(this.question.id, answer.username)
+      .then(res => {
+                  answer.upvotes = res.upvotes
+                  answer.downvotes = res.downvotes
+              });
+  }
 }

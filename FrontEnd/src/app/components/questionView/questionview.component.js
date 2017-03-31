@@ -68,6 +68,20 @@ var QuestionViewComponent = (function () {
             }
         });
     };
+    QuestionViewComponent.prototype.upvoteAnswer = function (answer) {
+        this.questionsService.upvoteAnswer(this.question.id, answer.username)
+            .then(function (res) {
+            answer.upvotes = res.upvotes;
+            answer.downvotes = res.downvotes;
+        });
+    };
+    QuestionViewComponent.prototype.downvoteAnswer = function (answer) {
+        this.questionsService.downvoteAnswer(this.question.id, answer.username)
+            .then(function (res) {
+            answer.upvotes = res.upvotes;
+            answer.downvotes = res.downvotes;
+        });
+    };
     QuestionViewComponent = __decorate([
         core_1.Component({
             selector: 'question-view',

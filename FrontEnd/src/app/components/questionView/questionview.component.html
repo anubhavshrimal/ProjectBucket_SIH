@@ -1,20 +1,20 @@
-<div class="container" *ngIf="!project.title">
+<div class="container" *ngIf="!question && !question.title">
     <div class="columns centered">
         <div class="one-fifth column centered text-center">
             <md-spinner></md-spinner>
         </div>
     </div>
 </div>
-<div class="container" *ngIf="project.title">
+<div class="container" *ngIf="question && question.title">
     <div class="columns centered">
         <div class="four-fifths column centered">
             <div class="columns">
                 <br>
                 <div class="four-fifths column">
-                    <h1>{{project.title}}</h1>
+                    <h1>{{question.title}}</h1>
                 </div>
                 <div class="one-fifth column">
-                    <a md-raised-button md-icon-button class="bg-blue" routerLink="/projects/update/{{project.id}}/{{project.url_title}}">
+                    <a md-raised-button md-icon-button class="bg-blue" routerLink="/questions/update/{{question.id}}/{{question.url_title}}">
                         <md-icon class="fa fa-pencil fa-2x text-white"></md-icon>
                     </a>
                     <button md-raised-button md-icon-button class="bg-red"><md-icon class="fa fa-trash fa-2x text-white"></md-icon></button>
@@ -23,95 +23,89 @@
             <div class="columns">
                 <div class="three-fourths column">
                     <p class="Subhead-description">
-                        by <a routerLink="/user-profile/{{project.username}}">{{project.username}}</a>
+                        by <a routerLink="/user-profile/{{question.username}}">{{question.username}}</a>
                     </p>
-                    <span><a (click)="openContibutors()" *ngIf="project.contributors">Contributed by: {{project.contributors.length}}</a></span>
-                </div>
-                <div class="one-fourth column">
-                    <button md-raised-button class="state state-merged text-white" type="file">
-                        <md-icon class="fa fa-download"></md-icon>Download Zip file
-                    </button>
                 </div>
             </div>
             <hr>
             <div class="columns centered">
                 <div class="column">
-                    <span class="lead">{{project.description}}</span>
                     <md-chip-list>
-                        <md-chip *ngFor="let tag of project.tags">
+                        <md-chip *ngFor="let tag of question.tags">
                             {{tag}}
                         </md-chip>
                     </md-chip-list>
                 </div>
             </div>
             <br>
-            <md-grid-list cols="2" rowHeight="200px">
-                <md-grid-tile *ngFor="let image of project.images" [colspan]="1" [rowspan]="1">
-                    <div class="border text-center" style="width: 400px; height: 200px">
-                        <img src="{{image}}" width="300px" height="200px">
-                    </div>
-                </md-grid-tile>
-            </md-grid-list>
-            <br>
             <div class="columns centered border bg-blue-light">
                 <div class="column">
-                    <div><b>README.md</b></div>
+                    <div><b>Question:</b></div>
                 </div>
             </div>
-            <div class="blankslate" *ngIf="!project.readme">
+            <div class="blankslate" *ngIf="!question.description">
                 <span class="fa fa-file-code-o fa-4x blankslate-icon"></span>
-                <h3>There is no README.md</h3>
+                <h3>There is no Question desctiption</h3>
             </div>
-            <div *ngIf="project.readme">
+            <div *ngIf="question.description">
                 <div class="border">
                     <div class="columns centered bg-gray-light">
                         <div class="four-fifths column centered">
-                            <markdown [data]="project.readme"></markdown>
+                            <markdown [data]="question.description"></markdown>
                         </div>
                     </div>
                 </div>
             </div>
-            <br>
             <div class="columns">
-                <div class="column">
-                    <div class="lead">
-                        License: {{project.license}}
-                    </div>
+                <div class="one-third column">
+                    <button md-raised-button class="full-width" mdTooltip="Upvote" (click)="upvote()"><md-icon class="fa fa-thumbs-o-up"></md-icon>{{question.upvotes.length}}</button>
                 </div>
-            </div>
-            <div class="columns">
-                <div class="column">
-                    <button md-raised-button><md-icon class="fa fa-thumbs-o-up"></md-icon>1.5K</button>
-                    <button md-raised-button><md-icon class="fa fa-thumbs-o-down"></md-icon>100</button>
-                    <button md-raised-button><md-icon class="fa fa-bookmark-o"></md-icon></button>
+                <div class="one-third column">
+                    <button md-raised-button class="full-width" mdTooltip="Downvote" (click)="downvote()"><md-icon class="fa fa-thumbs-o-down"></md-icon>{{question.downvotes.length}}</button>
+                </div>
+                <div class="one-third column">
+                    <button md-raised-button class="full-width" mdTooltip="Bookmark"><md-icon class="fa fa-bookmark-o"></md-icon></button>
                 </div>
             </div>
             <br>
             <md-input-container class="full-width">
-                <textarea mdInput class="border border-bottom-0" placeholder="Enter your comment:" name="comment" [(ngModel)]="comment" style="height: 50px; resize: none"></textarea>
+                <textarea mdInput class="border border-bottom-0" placeholder="Enter your answer:" name="answer" [(ngModel)]="answer" style="height: 50px; resize: none"></textarea>
             </md-input-container>
-            <button md-raised-button class="state state-open" [disabled]="!comment" (click)="insertComment()">Add comment</button>
+            <button md-raised-button class="state state-open" [disabled]="!answer" (click)="insertAnswer()">Add answer</button>
             <br>
-            <div *ngIf="project.comments">
-                <strong>Comments:</strong>
+            <div *ngIf="question.answers.length > 0">
+                <strong>Answers:</strong>
 
-                <md-card class="example-comment-card border" *ngFor="let comment of project.comments">
+                <md-card class="example-comment-card border" *ngFor="let answer of question.answers">
                     <md-card-header>
                         <div md-card-avatar>
                             <img md-card-avatar class="avatars" src="app/assets/male_user.png">
                         </div>
-                        <md-card-title><a routerLink="/user-profile/{{comment.username}}">{{comment.username}}</a></md-card-title>
-                        <md-card-subtitle>{{comment.date | date:'medium'}}</md-card-subtitle>
+                        <md-card-title><a routerLink="/user-profile/{{answer.username}}">{{answer.username}}</a></md-card-title>
+                        <md-card-subtitle>{{answer.date | date:'medium'}}</md-card-subtitle>
+                        <md-card-actions align="end">
+                            <div class="columns">
+                                <div class="column">
+                                    <button md-raised-button class="bg-red" mdTooltip="Delete" (click)="deleteAnswer(comment)"><md-icon class="fa fa-trash text-white"></md-icon></button>
+                                </div>
+                            </div>
+                        </md-card-actions>
                     </md-card-header>
                     <md-card-content>
                         <p>
-                            {{comment.comment}}
+                            {{answer.answer}}
                         </p>
                     </md-card-content>
                     <md-card-actions align="end">
                         <div class="columns">
-                            <div class="column">
-                                <button md-raised-button class="bg-red" mdTooltip="Delete" (click)="deleteComment(answer.username)"><md-icon class="fa fa-trash text-white"></md-icon></button>
+                            <div class="one-third column">
+                                <button md-raised-button class="full-width" mdTooltip="Upvote" (click)="upvoteAnswer(answer)"><md-icon class="fa fa-thumbs-o-up"></md-icon>{{answer.upvotes.length}}</button>
+                            </div>
+                            <div class="one-third column">
+                                <button md-raised-button class="full-width" mdTooltip="Downvote" (click)="downvote(answer)"><md-icon class="fa fa-thumbs-o-down"></md-icon>{{answer.downvotes.length}}</button>
+                            </div>
+                            <div class="one-third column">
+                                <button md-raised-button class="full-width" mdTooltip="Bookmark"><md-icon class="fa fa-bookmark-o"></md-icon></button>
                             </div>
                         </div>
                     </md-card-actions>
