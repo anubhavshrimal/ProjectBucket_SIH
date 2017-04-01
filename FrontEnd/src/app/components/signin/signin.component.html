@@ -71,8 +71,21 @@
 
                     <div class="centered" *ngIf="signup2">
                         <br>
-                        <h3>Please check your email for confirmation link.</h3>
+                        <md-card class="example-card border">
+                            <md-card-header>
+                                <h2>Congrats!!</h2>
+                            </md-card-header>
+                                Check your mail ID to proceed
+                            <md-card-content>
+                                <h3></h3>
+                            </md-card-content>
+                        </md-card>
                     </div>
+                    <div class="centered" *ngIf="signup2Error">
+                        <br>
+                        <h3>User already exist!!</h3>
+                    </div>
+
                 </md-tab>
             </md-tab-group>
         </div>

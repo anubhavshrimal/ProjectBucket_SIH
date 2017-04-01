@@ -32,12 +32,12 @@ export class SigninComponent {
          this.signup1 = true;
     }
 
-    signUp(fullName: string, mailid: string, password:string){
+    signUp(userName: string, mailid: string, password:string){
         this.signup1 = false;
         this.signup2 = true;
-        console.log(fullName, mailid, password);
-        this.signinService.signup(fullName, mailid, password).then(data=>{
-            console.log(data);
+        console.log(userName, mailid, password);
+        this.signinService.signup(userName, mailid, password).then(data=>{
+
             return this.signup1;
         })
 
@@ -52,6 +52,7 @@ export class SigninComponent {
                 this.sessionid = data.session_id;
                 this.router.navigate(['/projects-feed']);
                 this.cookiesService.setSessionId(this.sessionid);
+                console.log(this.sessionid);
             }
         });
     }
