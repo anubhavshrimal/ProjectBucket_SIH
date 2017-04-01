@@ -17,7 +17,7 @@ var ProjectsService = (function () {
         this.http = http;
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         this.createUrl = backendUrl_service_1.BackendUrlService.url + '/projects/insert';
-        this.projectsFeedUrl = backendUrl_service_1.BackendUrlService.url + '/homepage/projects-feed/pulkit';
+        this.projectsFeedUrl = backendUrl_service_1.BackendUrlService.url + '/homepage/projects-feed';
     }
     ProjectsService.prototype.create = function (project) {
         return this.http
@@ -27,7 +27,7 @@ var ProjectsService = (function () {
             .catch(this.handleError);
     };
     ProjectsService.prototype.update = function (project) {
-        project.username = "pulkit";
+        project.username = "hsharma";
         var updateUrl = backendUrl_service_1.BackendUrlService.url + '/projects/' + project.id;
         return this.http
             .put(updateUrl, JSON.stringify(project), { headers: this.headers })

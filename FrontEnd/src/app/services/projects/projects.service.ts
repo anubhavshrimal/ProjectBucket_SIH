@@ -11,7 +11,7 @@ import { BackendUrlService } from '../backendUrl.service';
 export class ProjectsService {
     private headers = new Headers({'Content-Type': 'application/json'});
     private createUrl = BackendUrlService.url + '/projects/insert';
-    private projectsFeedUrl = BackendUrlService.url + '/homepage/projects-feed/pulkit';
+    private projectsFeedUrl = BackendUrlService.url + '/homepage/projects-feed';
     constructor(private http: Http) {}
 
     create(project: Project): Promise<Response> {
@@ -23,7 +23,7 @@ export class ProjectsService {
     }
 
     update(project: Project): Promise<string> {
-        project.username = "pulkit";
+        project.username = "hsharma";
         const updateUrl = BackendUrlService.url + '/projects/'+project.id;
         return this.http
             .put(updateUrl, JSON.stringify(project), {headers: this.headers})
