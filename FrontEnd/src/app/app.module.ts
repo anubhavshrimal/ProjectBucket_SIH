@@ -18,7 +18,9 @@ import { ForumComponent } from './components/forum/forum.component';
 import { ProjectViewComponent } from './components/projectView/projectview.component';
 import { EditProjectComponent } from './components/editProject/editProject.component';
 import { QuestionViewComponent } from './components/questionView/questionview.component';
+import { EditQuestionComponent } from './components/editQuestion/editQuestion.component';
 import { AppComponent }  from './app.component';
+
 import { CookieService } from 'angular2-cookie/services/cookies.service';
 import{ CookiesService } from './services/cookie/cookiesService.service'
 import { AppRoutingModule } from './app-routing.module';
@@ -50,7 +52,8 @@ import { TabsFilterPipe } from './pipes/tabsFilter.pipe';
       ProjectViewComponent,
       EditProjectComponent,
       TabsFilterPipe,
-      QuestionViewComponent
+      QuestionViewComponent,
+      EditQuestionComponent
     ],
   bootstrap:    [ AppComponent ],
   providers: [ BackendUrlService,
