@@ -5,7 +5,8 @@ import { Component } from '@angular/core';
   template: `
 
   <div>
-    <navbar></navbar>
+    <navbar *ngIf="false"></navbar>
+    <admin-navbar *ngIf="false"></admin-navbar>
     <router-outlet></router-outlet>
     <footer></footer>
   </div>
@@ -14,7 +15,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent  {
   loggedIn: Boolean;
-
   constructor() {
 
   }

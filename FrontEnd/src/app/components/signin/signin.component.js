@@ -29,13 +29,12 @@ var SigninComponent = (function () {
         ];
         this.signup1 = true;
     }
-    SigninComponent.prototype.signUp = function (fullName, mailid, password) {
+    SigninComponent.prototype.signUp = function (userName, mailid, password) {
         var _this = this;
         this.signup1 = false;
         this.signup2 = true;
-        console.log(fullName, mailid, password);
-        this.signinService.signup(fullName, mailid, password).then(function (data) {
-            console.log(data);
+        console.log(userName, mailid, password);
+        this.signinService.signup(userName, mailid, password).then(function (data) {
             return _this.signup1;
         });
     };
@@ -49,6 +48,7 @@ var SigninComponent = (function () {
                 _this.sessionid = data.session_id;
                 _this.router.navigate(['/projects-feed']);
                 _this.cookiesService.setSessionId(_this.sessionid);
+                console.log(_this.sessionid);
             }
         });
     };

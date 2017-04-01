@@ -9,18 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var AppComponent = (function () {
-    function AppComponent() {
+var AdminNavbarComponent = (function () {
+    function AdminNavbarComponent() {
     }
-    AppComponent = __decorate([
+    AdminNavbarComponent = __decorate([
         core_1.Component({
-            selector: 'my-app',
-            template: "\n\n  <div>\n    <navbar *ngIf=\"false\"></navbar>\n    <admin-navbar *ngIf=\"false\"></admin-navbar>\n    <router-outlet></router-outlet>\n    <footer></footer>\n  </div>\n",
-            moduleId: module.id
+            moduleId: module.id,
+            selector: 'admin-navbar',
+            templateUrl: './adminNavbar.component.html'
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], AdminNavbarComponent);
+    return AdminNavbarComponent;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.AdminNavbarComponent = AdminNavbarComponent;
+//# sourceMappingURL=adminNavbar.component.js.map
