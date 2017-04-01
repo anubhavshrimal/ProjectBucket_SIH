@@ -12,6 +12,8 @@ var core_1 = require('@angular/core');
 var AdminPanelComponent = (function () {
     function AdminPanelComponent(myElement) {
     }
+    AdminPanelComponent.prototype.addInstitute = function () {
+    };
     AdminPanelComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
