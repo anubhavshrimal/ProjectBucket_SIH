@@ -36,10 +36,11 @@ export class SigninComponent {
         this.signup1 = false;
         this.signup2 = true;
         console.log(fullName, mailid, password);
-        /*this.signinService.signup(fullName, mailid, password).then(data=>{
+        this.signinService.signup(fullName, mailid, password).then(data=>{
+            console.log(data);
+            return this.signup1;
+        })
 
-        })*/
-        return this.signup1;
     }
 
     login(userName:string, password:string){

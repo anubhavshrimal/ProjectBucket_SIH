@@ -27,14 +27,14 @@ var SigninService = (function () {
             .then(function (res) { return res.json(); })
             .catch(this.handleError);
     };
-    /*signup(name: string, mailid: string, password: string): Promise<User> {
-        this.url = BackendUrlService.url + '/user/signup';
+    SigninService.prototype.signup = function (name, mailid, password) {
+        this.url = backendUrl_service_1.BackendUrlService.url + '/user/signup';
         return this.http
-            .post(this.url,JSON.stringify({name: name, emailid: mailid, password: password}),{headers: this.headers})
+            .post(this.url, JSON.stringify({ name: name, emailid: mailid, password: password }), { headers: this.headers })
             .toPromise()
-            .then(res => res.json() as User)
+            .then(function (res) { return res.json(); })
             .catch(this.handleError);
-    }*/
+    };
     SigninService.prototype.handleError = function (error) {
         console.error('An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);

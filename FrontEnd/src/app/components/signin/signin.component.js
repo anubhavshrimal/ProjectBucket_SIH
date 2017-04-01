@@ -30,13 +30,14 @@ var SigninComponent = (function () {
         this.signup1 = true;
     }
     SigninComponent.prototype.signUp = function (fullName, mailid, password) {
+        var _this = this;
         this.signup1 = false;
         this.signup2 = true;
         console.log(fullName, mailid, password);
-        /*this.signinService.signup(fullName, mailid, password).then(data=>{
-
-        })*/
-        return this.signup1;
+        this.signinService.signup(fullName, mailid, password).then(function (data) {
+            console.log(data);
+            return _this.signup1;
+        });
     };
     SigninComponent.prototype.login = function (userName, password) {
         var _this = this;
