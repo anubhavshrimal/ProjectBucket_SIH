@@ -21,6 +21,8 @@ const routes: Routes = [
         pathMatch: 'full',
         canActivate: [LoggedInGuard]
       },
+
+    // old Routings
       {
         path: 'projects-feed',
         component: ProjectsFeedComponent

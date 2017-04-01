@@ -28,6 +28,7 @@ var routes = [
         pathMatch: 'full',
         canActivate: [logged_in_guard_1.LoggedInGuard]
     },
+    // old Routings
     {
         path: 'projects-feed',
         component: projectsFeed_component_1.ProjectsFeedComponent
