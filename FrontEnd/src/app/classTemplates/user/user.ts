@@ -26,4 +26,5 @@ export class User {
     followers?: Array<string>;
     question_ask?: Array<string>;
     question_answer?: Array<string>;
+    profile_url?: string;
 }

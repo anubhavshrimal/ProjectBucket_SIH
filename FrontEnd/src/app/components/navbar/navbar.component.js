@@ -15,8 +15,7 @@ var NavbarComponent = (function () {
         this.router = router;
         this.user = {
             'rating': 245,
-            'thumbnail': 'app/assets/male_user.png',
-            'profile': '/user-profile'
+            'profile_url': 'app/assets/male_user.png',
         };
         this.add_new_menu = [
             {
