@@ -7,15 +7,20 @@ import { Question, Answer } from '../../classTemplates/question/question';
 import { Info } from '../../classTemplates/project/project';
 import { BackendUrlService } from '../backendUrl.service';
 import  { Response } from '../../classTemplates/assertionResponse/response';
+import { CookiesService } from '../cookie/cookiesService.service';
 
 @Injectable()
 export class QuestionsService {
     private headers = new Headers({'Content-Type': 'application/json'});
     private createUrl = BackendUrlService.url + '/questions/insert';
     private forumUrl = BackendUrlService.url + '/homepage/forum/pulkit';
-    constructor(private http: Http) {}
+    constructor(
+        private http: Http,
+        private cookiesService: CookiesService
+        ) {}
 
     create(question: Question): Promise<Response> {
+        this.headers.append('auth_token', this.cookiesService.getSessionId());
         return this.http
             .post(this.createUrl, JSON.stringify(question), {headers: this.headers})
             .toPromise()
