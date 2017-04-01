@@ -12,17 +12,14 @@ var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/toPromise');
 var backendUrl_service_1 = require('../backendUrl.service');
-var cookiesService_service_1 = require('../cookie/cookiesService.service');
 var QuestionsService = (function () {
-    function QuestionsService(http, cookiesService) {
+    function QuestionsService(http) {
         this.http = http;
-        this.cookiesService = cookiesService;
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         this.createUrl = backendUrl_service_1.BackendUrlService.url + '/questions/insert';
         this.forumUrl = backendUrl_service_1.BackendUrlService.url + '/homepage/forum/pulkit';
     }
     QuestionsService.prototype.create = function (question) {
-        this.headers.append('auth_token', this.cookiesService.getSessionId());
         return this.http
             .post(this.createUrl, JSON.stringify(question), { headers: this.headers })
             .toPromise()
@@ -107,7 +104,7 @@ var QuestionsService = (function () {
     };
     QuestionsService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http, cookiesService_service_1.CookiesService])
+        __metadata('design:paramtypes', [http_1.Http])
     ], QuestionsService);
     return QuestionsService;
 }());

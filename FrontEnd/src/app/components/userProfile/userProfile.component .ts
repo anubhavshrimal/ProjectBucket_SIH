@@ -2,12 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params }   from '@angular/router';
 import { User } from '../../classTemplates/user/user';
 import { UserProfileService } from '../../services/userProfile/userProfile.service';
+import { MdSnackBar } from '@angular/material';
+import { QuestionsService } from '../../services/questions/questions.service';
+import  { Question, Answer } from '../../classTemplates/question/question';
+import 'rxjs/add/operator/switchMap';
 
 @Component({
     selector: 'user-profile',
     templateUrl: './userProfile.component.html',
     moduleId: module.id,
-    providers: [UserProfileService]
+    providers: [UserProfileService, QuestionsService]
 })
 export class UserProfileComponent implements OnInit {
 

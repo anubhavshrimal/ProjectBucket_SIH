@@ -11,6 +11,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var userProfile_service_1 = require('../../services/userProfile/userProfile.service');
+var questions_service_1 = require('../../services/questions/questions.service');
+require('rxjs/add/operator/switchMap');
 var UserProfileComponent = (function () {
     function UserProfileComponent(userProfileService, route) {
         this.userProfileService = userProfileService;
@@ -62,7 +64,7 @@ var UserProfileComponent = (function () {
             selector: 'user-profile',
             templateUrl: './userProfile.component.html',
             moduleId: module.id,
-            providers: [userProfile_service_1.UserProfileService]
+            providers: [userProfile_service_1.UserProfileService, questions_service_1.QuestionsService]
         }), 
         __metadata('design:paramtypes', [userProfile_service_1.UserProfileService, router_1.ActivatedRoute])
     ], UserProfileComponent);
