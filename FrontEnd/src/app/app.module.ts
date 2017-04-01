@@ -32,7 +32,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BackendUrlService } from './services/backendUrl.service';
 import { TabsFilterPipe } from './pipes/tabsFilter.pipe';
 import { CheckboxFilterPipe } from './pipes/checkbox.pipe';
-import {DataTableModule} from "angular2-datatable";
+import { DataTableModule } from "angular2-datatable";
 
 
 @NgModule({
@@ -41,7 +41,8 @@ import {DataTableModule} from "angular2-datatable";
       MaterialModule,
       FormsModule,
       AppRoutingModule,
-      MarkdownModule.forRoot()
+      MarkdownModule.forRoot(),
+      DataTableModule
     ],
   declarations: [ 
       AppComponent,
@@ -63,8 +64,7 @@ import {DataTableModule} from "angular2-datatable";
       AdminPanelComponent,
       AdminNavbarComponent,
       InstituteHomePageComponent,
-      CheckboxFilterPipe,
-      DataTableModule
+      CheckboxFilterPipe
     ],
   bootstrap:    [ AppComponent ],
   providers: [ BackendUrlService,

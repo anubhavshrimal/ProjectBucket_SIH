@@ -29,7 +29,8 @@
       'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
       'lodash': 'npm:lodash',
       'angular2-markdown': 'npm:angular2-markdown/bundles/angular2-markdown.umd.js',
-      'angular2-cookie': 'npm:angular2-cookie'
+      'angular2-cookie': 'npm:angular2-cookie',
+      'angular2-datatable': 'npm:angular2-datatable'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
@@ -49,6 +50,10 @@
       },
       'angular2-cookie': {
         main: './core.js',
+        defaultExtension: 'js'
+      },
+      'angular2-datatable': {
+        main: './index.js',
         defaultExtension: 'js'
       }
     }

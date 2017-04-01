@@ -9,12 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var _ = require('lodash');
 var CheckboxFilterPipe = (function () {
     function CheckboxFilterPipe() {
     }
     CheckboxFilterPipe.prototype.transform = function (items, category) {
-        console.log(category);
-        return items;
+        var keys = _.keys(category);
+        var res = [];
+        _.forEach(keys, function (k) {
+            if (category[k]) {
+                _.forEach(items, function (o) {
+                    if (o.department == k)
+                        res.push(o);
+                });
+            }
+        });
+        console.log(res);
+        return res;
     };
     CheckboxFilterPipe = __decorate([
         core_1.Pipe({ name: 'checkboxFilter' }), 

@@ -48,7 +48,8 @@ var AppModule = (function () {
                 material_1.MaterialModule,
                 forms_1.FormsModule,
                 app_routing_module_1.AppRoutingModule,
-                angular2_markdown_1.MarkdownModule.forRoot()
+                angular2_markdown_1.MarkdownModule.forRoot(),
+                angular2_datatable_1.DataTableModule
             ],
             declarations: [
                 app_component_1.AppComponent,
@@ -70,8 +71,7 @@ var AppModule = (function () {
                 adminPanel_component_1.AdminPanelComponent,
                 adminNavbar_component_1.AdminNavbarComponent,
                 homePage_component_1.InstituteHomePageComponent,
-                checkbox_pipe_1.CheckboxFilterPipe,
-                angular2_datatable_1.DataTableModule
+                checkbox_pipe_1.CheckboxFilterPipe
             ],
             bootstrap: [app_component_1.AppComponent],
             providers: [backendUrl_service_1.BackendUrlService,
