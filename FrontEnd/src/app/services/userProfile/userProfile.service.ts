@@ -7,11 +7,11 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class UserProfileService {
-    private url = BackendUrlService.url + '/user/profile/';
+    private url : string;
     private headers = new Headers({'Content-Type': 'application/json'});
 
     constructor(private http: Http, private cookiesService: CookiesService){
-        this.headers.append('auth_token', 'this.cookiesService.getSessionId');
+        this.headers.append('auth_token', this.cookiesService.getSessionId());
         console.log(this.headers);
     }
     userProfile(username:string): Promise<User> {

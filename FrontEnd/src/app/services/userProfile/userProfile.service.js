@@ -17,9 +17,8 @@ var UserProfileService = (function () {
     function UserProfileService(http, cookiesService) {
         this.http = http;
         this.cookiesService = cookiesService;
-        this.url = backendUrl_service_1.BackendUrlService.url + '/user/profile/';
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-        this.headers.append('auth_token', 'this.cookiesService.getSessionId');
+        this.headers.append('auth_token', this.cookiesService.getSessionId());
         console.log(this.headers);
     }
     UserProfileService.prototype.userProfile = function (username) {
