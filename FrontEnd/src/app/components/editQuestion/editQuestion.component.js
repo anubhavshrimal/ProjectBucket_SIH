@@ -26,12 +26,7 @@ var EditQuestionComponent = (function () {
         this.readmeChecked = false;
     }
     EditQuestionComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.licensesService.getLicensesTitles().then(function (licenses) {
-            _this.licenses = licenses;
-            _this.project.license = String(_this.licenses[0]);
-        });
-        this.getProject();
+        // this.getProject();
     };
     EditQuestionComponent.prototype.addTag = function () {
         if (this.tag.length != 0) {
@@ -70,21 +65,20 @@ var EditQuestionComponent = (function () {
             }
         });
     };
-    EditQuestionComponent.prototype.getProject = function () {
-        var _this = this;
-        this.route.params
-            .switchMap(function (params) { return _this.questionsService.getProjectById(params['id']); })
-            .subscribe(function (project) {
-            console.log(project);
-            _this.project = project;
-            if (_this.project.readme) {
-                _this.readmeChecked = true;
-            }
-            if (_this.project.comments) {
-                _.reverse(_this.project.comments);
-            }
-        });
-    };
+    // getProject(): void {
+    //     this.route.params
+    //         .switchMap((params: Params) => this.questionsService.getProjectById(params['id']))
+    //         .subscribe(project => {
+    //             console.log(project)
+    //             this.project = project;
+    //             if (this.project.readme) {
+    //                 this.readmeChecked = true;
+    //             }
+    //             if (this.project.comments) {
+    //                 _.reverse(this.project.comments)
+    //             }
+    //         });
+    // }
     EditQuestionComponent.prototype.openSnackBar = function (message, action) {
         this.snackBar.open(message, action, {
             duration: 2000,

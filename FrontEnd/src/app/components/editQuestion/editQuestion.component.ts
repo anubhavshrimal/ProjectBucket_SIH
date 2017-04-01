@@ -21,11 +21,7 @@ export class EditQuestionComponent implements OnInit {
     readmeChecked: Boolean;
 
     ngOnInit(): void {
-        this.licensesService.getLicensesTitles().then(licenses => {
-            this.licenses = licenses;
-            this.project.license = String(this.licenses[0]);
-        });
-        this.getProject();
+        // this.getProject();
     }
 
     constructor(
@@ -78,20 +74,20 @@ export class EditQuestionComponent implements OnInit {
             })
     }
 
-    getProject(): void {
-        this.route.params
-            .switchMap((params: Params) => this.questionsService.getProjectById(params['id']))
-            .subscribe(project => {
-                console.log(project)
-                this.project = project;
-                if (this.project.readme) {
-                    this.readmeChecked = true;
-                }
-                if (this.project.comments) {
-                    _.reverse(this.project.comments)
-                }
-            });
-    }
+    // getProject(): void {
+    //     this.route.params
+    //         .switchMap((params: Params) => this.questionsService.getProjectById(params['id']))
+    //         .subscribe(project => {
+    //             console.log(project)
+    //             this.project = project;
+    //             if (this.project.readme) {
+    //                 this.readmeChecked = true;
+    //             }
+    //             if (this.project.comments) {
+    //                 _.reverse(this.project.comments)
+    //             }
+    //         });
+    // }
 
     openSnackBar(message: string, action: string) {
         this.snackBar.open(message, action, {
