@@ -1,0 +1,51 @@
+<div class="container" *ngIf="!questions || questions.length < 1">
+    <div class="columns centered">
+        <div class="one-fifth column centered text-center">
+            <md-spinner></md-spinner>
+        </div>
+    </div>
+</div>
+<div class="container" *ngIf="questions && questions.length >= 1">
+    <div class="columns centered">
+        <div class="four-fifths column centered">
+            <md-grid-list cols="1" rowHeight="200px">
+                <md-grid-tile *ngFor="let question of questions | tabsFilter:tab.tabLabel" [colspan]="1" [rowspan]="1">
+                    <md-card class="example-que-card border">
+                        <md-card-header>
+                            <div md-card-avatar></div>
+                            <img md-card-avatar class="avatars" src="app/assets/male_user.png">
+                            <md-card-title>{{question.title}}</md-card-title>
+                            <md-card-subtitle>by <a href="">{{question.username}}</a></md-card-subtitle>
+                            <div class="one-fourth column">
+                                <button md-button mdTooltip="more options" [md-menu-trigger-for]="more"><md-icon class="fa fa-caret-down"></md-icon></button>
+                            </div>
+                        </md-card-header>
+                        <md-card-content>
+                            <p>
+                                {{question.description}}
+                            </p>
+                        </md-card-content>
+                        <md-card-actions>
+                            <div class="columns centered">
+                                <div class="one-third column">
+                                    <button md-button class="full-width" mdTooltip="Upvote"><md-icon class="fa fa-thumbs-o-up"></md-icon>{{question.upvotes.length}}</button>
+                                </div>
+                                <div class="one-third column">
+                                    <button md-button class="full-width" mdTooltip="Downvote"><md-icon class="fa fa-thumbs-o-down"></md-icon>{{question.downvotes.length}}</button>
+                                </div>
+                                <div class="one-third column">
+                                    <button md-button class="full-width" mdTooltip="Add to favourites"><md-icon class="fa fa-bookmark-o"></md-icon></button>
+                                </div>
+                            </div>
+                        </md-card-actions>
+                    </md-card>
+                </md-grid-tile>
+            </md-grid-list>
+        </div>
+    </div>
+</div>
+
+<md-menu #more="mdMenu">
+    <button md-menu-item routerLink="items.link">Show fewer questions like this</button>
+    <button md-menu-item routerLink="items.link">Report</button>
+</md-menu>

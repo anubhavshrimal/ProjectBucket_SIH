@@ -20,6 +20,7 @@ var forum_component_1 = require('./components/forum/forum.component');
 var projectview_component_1 = require('./components/projectView/projectview.component');
 var signin_component_1 = require('./components/signin/signin.component');
 var questionview_component_1 = require('./components/questionView/questionview.component');
+var homePage_component_1 = require('./components/institute/homePage/homePage.component');
 var logged_in_guard_1 = require('./logged-in.guard');
 var routes = [
     {
@@ -27,6 +28,10 @@ var routes = [
         redirectTo: '/login',
         pathMatch: 'full',
         canActivate: [logged_in_guard_1.LoggedInGuard]
+    },
+    {
+        path: 'home',
+        component: homePage_component_1.InstituteHomePageComponent
     },
     // old Routings
     {
