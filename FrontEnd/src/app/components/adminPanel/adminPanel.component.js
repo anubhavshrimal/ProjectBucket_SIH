@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var AdminPanelComponent = (function () {
-    function AdminPanelComponent() {
+    function AdminPanelComponent(myElement) {
     }
     AdminPanelComponent = __decorate([
         core_1.Component({
@@ -18,7 +18,7 @@ var AdminPanelComponent = (function () {
             selector: 'admin-panel',
             templateUrl: './adminPanel.component.html'
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [core_1.ElementRef])
     ], AdminPanelComponent);
     return AdminPanelComponent;
 }());

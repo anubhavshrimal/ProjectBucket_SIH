@@ -21,6 +21,7 @@ var projectview_component_1 = require('./components/projectView/projectview.comp
 var signin_component_1 = require('./components/signin/signin.component');
 var questionview_component_1 = require('./components/questionView/questionview.component');
 var homePage_component_1 = require('./components/institute/homePage/homePage.component');
+var adminPanel_component_1 = require('./components/adminPanel/adminPanel.component');
 var logged_in_guard_1 = require('./logged-in.guard');
 var routes = [
     {
@@ -73,6 +74,10 @@ var routes = [
     {
         path: 'questions/:id/:title',
         component: questionview_component_1.QuestionViewComponent
+    },
+    {
+        path: 'admin-panel',
+        component: adminPanel_component_1.AdminPanelComponent
     }
 ];
 var AppRoutingModule = (function () {

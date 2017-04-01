@@ -12,6 +12,7 @@ import { ProjectViewComponent } from './components/projectView/projectview.compo
 import { SigninComponent } from './components/signin/signin.component';
 import { QuestionViewComponent } from './components/questionView/questionview.component';
 import { InstituteHomePageComponent } from './components/institute/homePage/homePage.component';
+import { AdminPanelComponent} from './components/adminPanel/adminPanel.component';
 import { LoggedInGuard } from './logged-in.guard';
 
 const routes: Routes = [
@@ -65,6 +66,10 @@ const routes: Routes = [
   {
     path: 'questions/:id/:title',
     component: QuestionViewComponent
+  },
+  {
+    path: 'admin-panel',
+    component: AdminPanelComponent
   }
 ];
 
