@@ -1,4 +1,4 @@
-import {Component, ElementRef, ViewChild} from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
     moduleId: module.id,
@@ -6,7 +6,7 @@ import {Component, ElementRef, ViewChild} from '@angular/core';
     templateUrl: './adminPanel.component.html'
 })
 export class AdminPanelComponent {
-    constructor(myElement: ElementRef) {
+    constructor() {
     }
     addInstitute(){
 

@@ -7,12 +7,64 @@
                 <button md-button class="full-width" (click)="addInstitute()">Add Institute</button>
             </div>
         </div>
-        <div class="four-fifths column">
+        <div class="four-fifths column" *ngIf="false">
             <h1 class="text-center">Top User</h1>
             <md-card>
                 <md-card-title>1. SKIT, Jaipur</md-card-title>
                 <md-card-content></md-card-content>
             </md-card>
+        </div>
+        <div class="" *ngIf="true">
+            <div class="columns centered">
+                <div class="four-fifths column">
+                    <md-input-container class="full-width">
+                        <input mdInput [(ngModel)]="login" name="login" placeholder="Login ID">
+                    </md-input-container>
+                </div>
+            </div>
+            <div class="columns centered">
+                <div class="four-fifths column">
+                    <md-input-container class="full-width">
+                        <input mdInput [(ngModel)]="password" type="password" name="password" placeholder="Password">
+                    </md-input-container>
+                </div>
+            </div>
+            <div class="columns centered">
+                <div class="four-fifths column">
+                    <md-input-container class="full-width">
+                        <input mdInput [(ngModel)]="university" name="university" placeholder="University">
+                    </md-input-container>
+                </div>
+            </div>
+            <div class="columns centered">
+                <div class="four-fifths column">
+                    <md-input-container class="full-width">
+                        <input mdInput [(ngModel)]="college" name="college" placeholder="College">
+                    </md-input-container>
+                </div>
+            </div>
+            <div class="columns centered">
+                <div class="four-fifths column">
+                    <md-input-container class="full-width">
+                        <input mdInput [(ngModel)]="state" name="state" placeholder="State">
+                    </md-input-container>
+                </div>
+            </div>
+            <div class="columns centered">
+                <div class="four-fifths column">
+                    <md-input-container class="full-width">
+                        <input mdInput [(ngModel)]="city" name="city" placeholder="City">
+                    </md-input-container>
+                </div>
+            </div>
+            <div class="columns centered">
+                <div class="four-fifths column">
+                    <md-input-container class="full-width">
+                        <input mdInput [(ngModel)]="college" name="college" placeholder="College">
+                    </md-input-container>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>

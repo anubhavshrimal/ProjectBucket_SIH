@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var AdminPanelComponent = (function () {
-    function AdminPanelComponent(myElement) {
+    function AdminPanelComponent() {
     }
     AdminPanelComponent.prototype.addInstitute = function () {
     };
@@ -20,7 +20,7 @@ var AdminPanelComponent = (function () {
             selector: 'admin-panel',
             templateUrl: './adminPanel.component.html'
         }), 
-        __metadata('design:paramtypes', [core_1.ElementRef])
+        __metadata('design:paramtypes', [])
     ], AdminPanelComponent);
     return AdminPanelComponent;
 }());
