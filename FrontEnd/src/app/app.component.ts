@@ -5,7 +5,8 @@ import { Component } from '@angular/core';
   template: `
 
   <div>
-    <navbar></navbar>
+    <navbar *ngIf="false"></navbar>
+    <admin-navbar *ngIf="true"></admin-navbar>
     <router-outlet></router-outlet>
     <footer></footer>
   </div>

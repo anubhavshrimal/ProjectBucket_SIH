@@ -11,13 +11,14 @@ import { ForumComponent } from './components/forum/forum.component';
 import { ProjectViewComponent } from './components/projectView/projectview.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { QuestionViewComponent } from './components/questionView/questionview.component';
-import { LoggedInGuard } from './logged-in.guard';
+import { AdminPanelComponent } from './components/adminPanel/adminPanel.component';
 
+import { LoggedInGuard } from './logged-in.guard';
 
 const routes: Routes = [
       {
         path: '',
-        redirectTo: '/login',
+        redirectTo: '/projects-feed',
         pathMatch: 'full',
         canActivate: [LoggedInGuard]
       },
@@ -56,11 +57,16 @@ const routes: Routes = [
       { 
         path: 'projects/update/:id/:title', 
         component: EditProjectComponent 
-      }, 
-      { 
-        path: 'questions/:id/:title', 
-        component: QuestionViewComponent 
-      } 
+      },
+    {
+        path: 'questions/:id/:title',
+        component: QuestionViewComponent
+    },
+    {
+        path: 'admin-panel',
+        component: AdminPanelComponent
+    }
+
 ];
 
 @NgModule({
