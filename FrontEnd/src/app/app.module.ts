@@ -32,6 +32,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BackendUrlService } from './services/backendUrl.service';
 import { TabsFilterPipe } from './pipes/tabsFilter.pipe';
 import { CheckboxFilterPipe } from './pipes/checkbox.pipe';
+import {DataTableModule} from "angular2-datatable";
 
 
 @NgModule({
@@ -62,7 +63,8 @@ import { CheckboxFilterPipe } from './pipes/checkbox.pipe';
       AdminPanelComponent,
       AdminNavbarComponent,
       InstituteHomePageComponent,
-      CheckboxFilterPipe
+      CheckboxFilterPipe,
+      DataTableModule
     ],
   bootstrap:    [ AppComponent ],
   providers: [ BackendUrlService,
