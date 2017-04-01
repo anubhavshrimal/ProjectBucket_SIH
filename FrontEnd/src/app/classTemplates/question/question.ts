@@ -21,4 +21,5 @@ export class Question {
     url_title?: string;
     answers?: Array<Answer>;
     images?: Array<string>;
+    department?: string;
 }
