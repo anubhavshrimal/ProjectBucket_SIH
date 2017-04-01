@@ -15,6 +15,29 @@ var InstituteHomePageComponent = (function () {
     function InstituteHomePageComponent(questionsService, router) {
         this.questionsService = questionsService;
         this.router = router;
+        this.checkboxes = { 1: true };
+        this.labelList = [
+            {
+                id: 1,
+                name: 'All'
+            },
+            {
+                id: 2,
+                name: 'Dept. of CS'
+            },
+            {
+                id: 3,
+                name: 'Dept. of EC'
+            },
+            {
+                id: 4,
+                name: 'Dept. of EE'
+            },
+            {
+                id: 5,
+                name: 'Dept. of Civil'
+            },
+        ];
         this.questions = [
             {
                 id: "dfdhfvkdvksdb324235233",
@@ -23,6 +46,7 @@ var InstituteHomePageComponent = (function () {
                 description: "We have huge scarcity of water in jaipur",
                 tags: ["Array<string>"],
                 date: 23423423423423,
+                department: "Dept. of CS",
                 upvotes: ["anubhav", "pulkit"],
                 downvotes: ["anubhav", "pulkit"],
                 url: "string",
@@ -42,6 +66,7 @@ var InstituteHomePageComponent = (function () {
                 description: "We have huge scarcity of water in jaipur",
                 tags: ["Array<string>"],
                 date: 23423423423423,
+                department: "Dept. of EC",
                 upvotes: ["anubhav", "pulkit"],
                 downvotes: ["anubhav", "pulkit"],
                 url: "string",
