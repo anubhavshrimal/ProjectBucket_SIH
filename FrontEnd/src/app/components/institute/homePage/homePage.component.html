@@ -7,10 +7,13 @@
 </div>
 <div class="container" *ngIf="questions && questions.length >= 1">
     <div class="columns centered">
+        <h2>Recommended Questions:</h2>
+        <p class="Subhead-description">These are the questions that our algorithms found relevant for your institute.</p>
+        <hr>
         <div class="one-fifth column">
             <div class="columns"><b>Filter questions by:</b></div>
-            <div class="columns">
-                <md-checkbox color="primary">All Depratments</md-checkbox>
+            <!--<div class="columns">
+                <md-checkbox color="primary" >All Depratments</md-checkbox>
             </div>
             <div class="columns">
                 <md-checkbox color="primary">Dept. of CS</md-checkbox>
@@ -26,11 +29,19 @@
             </div>
             <div class="columns">
                 <md-checkbox color="primary">Dept. of IT</md-checkbox>
+            </div>-->
+            <div class="checkbox" *ngFor="let label of labelList">
+                <div>
+                    <label>
+                        <input type="checkbox" value="{{label.id}}" (change)="checkboxes[$event.target.getAttribute('value')]=$event.target.checked">
+                            {{ label.name }}
+                    </label>
+                </div>
             </div>
         </div>
         <div class="two-thirds column">
             <md-grid-list cols="1" rowHeight="200px">
-                <md-grid-tile *ngFor="let question of questions" [colspan]="1" [rowspan]="1">
+                <md-grid-tile *ngFor="let question of questions | checkboxFilter: checkboxes" [colspan]="1" [rowspan]="1">
                     <md-card class="example-que-card border">
                         <md-card-header>
                             <div md-card-avatar></div>

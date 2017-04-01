@@ -19,7 +19,8 @@ import { Question } from '../../../classTemplates/question/question';
 export class InstituteHomePageComponent implements OnInit {
     tabs: Array<Object>;
     questions: Array<Question>;
-
+    labelList: Array<Object>;
+    checkboxes = {1: true};
     ngOnInit(): void {
         // this.getForumFeed();
     }
@@ -28,6 +29,28 @@ export class InstituteHomePageComponent implements OnInit {
         private questionsService: QuestionsService,
         private router: Router
     ) {
+        this.labelList = [
+            {
+                id: 1,
+                name: 'All'
+            },
+            {
+                id: 2,
+                name: 'Dept. of CS'
+            },
+            {
+                id: 3,
+                name: 'Dept. of EC'
+            },
+            {
+                id: 4,
+                name: 'Dept. of EE'
+            },
+            {
+                id: 5,
+                name: 'Dept. of Civil'
+            },
+        ];
         this.questions = [
             {
                 id: "dfdhfvkdvksdb324235233",
@@ -36,6 +59,7 @@ export class InstituteHomePageComponent implements OnInit {
                 description: "We have huge scarcity of water in jaipur",
                 tags: ["Array<string>"],
                 date: 23423423423423,
+                department: "Dept. of CS",
                 upvotes: ["anubhav", "pulkit"],
                 downvotes: ["anubhav", "pulkit"],
                 url: "string",
@@ -55,6 +79,7 @@ export class InstituteHomePageComponent implements OnInit {
                 description: "We have huge scarcity of water in jaipur",
                 tags: ["Array<string>"],
                 date: 23423423423423,
+                department: "Dept. of EC",
                 upvotes: ["anubhav", "pulkit"],
                 downvotes: ["anubhav", "pulkit"],
                 url: "string",
