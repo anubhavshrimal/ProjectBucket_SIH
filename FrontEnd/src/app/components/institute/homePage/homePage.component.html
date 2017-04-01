@@ -7,9 +7,30 @@
 </div>
 <div class="container" *ngIf="questions && questions.length >= 1">
     <div class="columns centered">
-        <div class="four-fifths column centered">
+        <div class="one-fifth column">
+            <div class="columns"><b>Filter questions by:</b></div>
+            <div class="columns">
+                <md-checkbox color="primary">All Depratments</md-checkbox>
+            </div>
+            <div class="columns">
+                <md-checkbox color="primary">Dept. of CS</md-checkbox>
+            </div>
+            <div class="columns">
+                <md-checkbox color="primary">Dept. of EC</md-checkbox>
+            </div>
+            <div class="columns">
+                <md-checkbox color="primary">Dept. of EE</md-checkbox>
+            </div>
+            <div class="columns">
+                <md-checkbox color="primary">Dept. of Civil</md-checkbox>
+            </div>
+            <div class="columns">
+                <md-checkbox color="primary">Dept. of IT</md-checkbox>
+            </div>
+        </div>
+        <div class="two-thirds column">
             <md-grid-list cols="1" rowHeight="200px">
-                <md-grid-tile *ngFor="let question of questions | tabsFilter:tab.tabLabel" [colspan]="1" [rowspan]="1">
+                <md-grid-tile *ngFor="let question of questions" [colspan]="1" [rowspan]="1">
                     <md-card class="example-que-card border">
                         <md-card-header>
                             <div md-card-avatar></div>

@@ -14,35 +14,60 @@ import { Question } from '../../../classTemplates/question/question';
             text-decoration:none
         }`
     ],
-    providers: [ QuestionsService ]
+    providers: [QuestionsService]
 })
 export class InstituteHomePageComponent implements OnInit {
     tabs: Array<Object>;
     questions: Array<Question>;
 
     ngOnInit(): void {
-        this.getForumFeed();
+        // this.getForumFeed();
     }
 
     constructor(
         private questionsService: QuestionsService,
         private router: Router
-        ) {
-        this.questions = [];
-        this.tabs = [
+    ) {
+        this.questions = [
             {
-                tabLabel: 'Interesting',
-                tabIcon: 'fa fa-heart'
+                id: "dfdhfvkdvksdb324235233",
+                username: "anubhav",
+                title: "How to solve water scarcity problems in jaipur",
+                description: "We have huge scarcity of water in jaipur",
+                tags: ["Array<string>"],
+                date: 23423423423423,
+                upvotes: ["anubhav", "pulkit"],
+                downvotes: ["anubhav", "pulkit"],
+                url: "string",
+                url_title: "string",
+                answers: [{
+                    username: "anubhav",
+                    answer: "hello tesitng ans",
+                    date: 23423423423423,
+                    upvotes: ["anubhav", "pulkit"],
+                    downvotes: ["anubhav", "pulkit"]
+                }],
             },
             {
-                tabLabel: 'Trending',
-                tabIcon: 'fa fa-fire'
-            },
-            {
-                tabLabel: 'Featured',
-                tabIcon: 'fa fa-money'
+                id: "dfdhfvkdvksdb324235233",
+                username: "anubhav",
+                title: "How to solve water scarcity problems in jaipur",
+                description: "We have huge scarcity of water in jaipur",
+                tags: ["Array<string>"],
+                date: 23423423423423,
+                upvotes: ["anubhav", "pulkit"],
+                downvotes: ["anubhav", "pulkit"],
+                url: "string",
+                url_title: "string",
+                answers: [{
+                    username: "anubhav",
+                    answer: "hello tesitng ans",
+                    date: 23423423423423,
+                    upvotes: ["anubhav", "pulkit"],
+                    downvotes: ["anubhav", "pulkit"]
+                }],
             }
-        ]
+        ];
     }
 
     gotoQuestion(id: string, url_title: string): void {

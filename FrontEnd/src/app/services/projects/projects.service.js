@@ -17,7 +17,7 @@ var ProjectsService = (function () {
         this.http = http;
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         this.createUrl = backendUrl_service_1.BackendUrlService.url + '/projects/insert';
-        this.projectsFeedUrl = backendUrl_service_1.BackendUrlService.url + '/homepage/projects-feed';
+        this.projectsFeedUrl = backendUrl_service_1.BackendUrlService.url + '/homepage/projects-feed/pulkit';
     }
     ProjectsService.prototype.create = function (project) {
         return this.http
