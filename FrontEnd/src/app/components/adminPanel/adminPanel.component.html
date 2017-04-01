@@ -13,29 +13,39 @@
                 <md-card-title>1. SKIT, Jaipur</md-card-title>
                 <md-card-content></md-card-content>
             </md-card>
-            <table id="table_id" class="display">
-                <thead>
-                <tr>
-                    <th>Column 1</th>
-                    <th>Column 2</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>Row 1 Data 1</td>
-                    <td>Row 1 Data 2</td>
-                </tr>
-                <tr>
-                    <td>Row 2 Data 1</td>
-                    <td>Row 2 Data 2</td>
-                </tr>
-                </tbody>
-            </table>
-            <script>
-                $(document).ready( function () {
-                    $('#table_id').DataTable();
-                } );
-            </script>
+            <table class="table table-striped" [mfData]="data" #mf="mfDataTable" [mfRowsOnPage]="5">
+			    <thead>
+			    <tr>
+			        <th style="width: 20%">
+			            <mfDefaultSorter by="name">Name</mfDefaultSorter>
+			        </th>
+			        <th style="width: 50%">
+			            <mfDefaultSorter by="email">Email</mfDefaultSorter>
+			        </th>
+			        <th style="width: 10%">
+			            <mfDefaultSorter by="age">Age</mfDefaultSorter>
+			        </th>
+			        <th style="width: 20%">
+			            <mfDefaultSorter by="city">City</mfDefaultSorter>
+			        </th>
+			    </tr>
+			    </thead>
+			    <tbody>
+			    <tr *ngFor="let item of mf.data">
+			        <td>{{item.name}}</td>
+			        <td>{{item.email}}</td>
+			        <td class="text-right">{{item.age}}</td>
+			        <td>{{item.city | uppercase}}</td>
+			    </tr>
+			    </tbody>
+			    <tfoot>
+			    <tr>
+			        <td colspan="4">
+			            <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+			        </td>
+			    </tr>
+			    </tfoot>
+			</table>
         </div>
     </div>
 </div>
