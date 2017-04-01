@@ -11,7 +11,7 @@ import { BackendUrlService } from '../backendUrl.service';
 export class ProjectsService {
     private headers = new Headers({'Content-Type': 'application/json'});
     private createUrl = BackendUrlService.url + '/projects/insert';
-    private projectsFeedUrl = BackendUrlService.url + '/homepage/projects-feed';
+    private projectsFeedUrl = BackendUrlService.url + '/homepage/projects-feed/pulkit';
     constructor(private http: Http) {}
 
     create(project: Project): Promise<Response> {

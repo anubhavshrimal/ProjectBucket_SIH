@@ -19,9 +19,13 @@ import { ProjectViewComponent } from './components/projectView/projectview.compo
 import { EditProjectComponent } from './components/editProject/editProject.component';
 import { QuestionViewComponent } from './components/questionView/questionview.component';
 import { EditQuestionComponent } from './components/editQuestion/editQuestion.component';
+<<<<<<< HEAD
 import { AdminPanelComponent } from './components/adminPanel/adminPanel.component';
 import { AdminNavbarComponent} from './components/adminPanel/adminNavbar/adminNavbar.component';
 
+=======
+import { InstituteHomePageComponent } from './components/institute/homePage/homePage.component';
+>>>>>>> UGC
 import { AppComponent }  from './app.component';
 
 import { CookieService } from 'angular2-cookie/services/cookies.service';
@@ -57,8 +61,12 @@ import { TabsFilterPipe } from './pipes/tabsFilter.pipe';
       TabsFilterPipe,
       QuestionViewComponent,
       EditQuestionComponent,
+<<<<<<< HEAD
       AdminPanelComponent,
       AdminNavbarComponent
+=======
+      InstituteHomePageComponent
+>>>>>>> UGC
     ],
   bootstrap:    [ AppComponent ],
   providers: [ BackendUrlService,
