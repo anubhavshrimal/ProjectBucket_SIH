@@ -61,8 +61,6 @@ import { CheckboxFilterPipe } from './pipes/checkbox.pipe';
       EditQuestionComponent,
       AdminPanelComponent,
       AdminNavbarComponent,
-      InstituteHomePageComponent
-
       InstituteHomePageComponent,
       CheckboxFilterPipe
     ],

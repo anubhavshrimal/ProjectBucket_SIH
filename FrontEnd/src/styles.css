@@ -43,7 +43,5 @@
 }
 
 .sidebar{
-    background-color: #455A64;
-    color: white;
-    /*height: 99vh;*/
+    height: 99vh;
 }

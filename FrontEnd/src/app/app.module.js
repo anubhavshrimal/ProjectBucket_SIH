@@ -69,7 +69,6 @@ var AppModule = (function () {
                 adminPanel_component_1.AdminPanelComponent,
                 adminNavbar_component_1.AdminNavbarComponent,
                 homePage_component_1.InstituteHomePageComponent,
-                homePage_component_1.InstituteHomePageComponent,
                 checkbox_pipe_1.CheckboxFilterPipe
             ],
             bootstrap: [app_component_1.AppComponent],
