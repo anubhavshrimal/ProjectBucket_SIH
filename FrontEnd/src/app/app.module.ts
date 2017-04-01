@@ -28,6 +28,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { BackendUrlService } from './services/backendUrl.service';
 import { TabsFilterPipe } from './pipes/tabsFilter.pipe';
+import { CheckboxFilterPipe } from './pipes/checkbox.pipe';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { TabsFilterPipe } from './pipes/tabsFilter.pipe';
       TabsFilterPipe,
       QuestionViewComponent,
       EditQuestionComponent,
-      InstituteHomePageComponent
+      InstituteHomePageComponent,
+      CheckboxFilterPipe
     ],
   bootstrap:    [ AppComponent ],
   providers: [ BackendUrlService,
