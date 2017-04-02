@@ -1,51 +1,60 @@
+<md-toolbar color="accent">
+    <h2 class="text-center centered">Welcome Admin</h2>
+</md-toolbar>
 <div class="container full-width">
     <div class="columns full-width">
         <div class="one-fifth column full-width">
+            <md-card style="border-left: none">
             <div class="sidebar" #sidebar>
                 <br>
-                <button md-button class="full-width">Top Colleges</button>
+                <button md-button class="full-width" (click)="toggel()">Top Colleges</button>
                 <button md-button class="full-width" (click)="addInstitute()">Add Institute</button>
             </div>
+            </md-card>
         </div>
-        <div class="four-fifths column" *ngIf="true">
-            <h1 class="text-center">Top User</h1>
-
-            <table  [mfData]="data" #mf="mfDataTable" [mfRowsOnPage]="50">
-			    <thead>
-			    <tr>
-                    <th style="width: 40%">
-                        <mfDefaultSorter by="university">University</mfDefaultSorter>
-                    </th>
-			        <th style="width: 40%">
-			            <mfDefaultSorter by="Institute">College</mfDefaultSorter>
-			        </th>
-			        <th style="width: 20%">
-			            <mfDefaultSorter by="rating">College Rating</mfDefaultSorter>
-			        </th>
-			        <th style="width: 20%">
-			            <mfDefaultSorter by="solutions">No. of solutions</mfDefaultSorter>
-			        </th>
-			    </tr>
-			    </thead>
-			    <tbody>
-			    <tr *ngFor="let item of mf.data">
-                    <td class="text-center">{{item.university}}</td>
-                    <td class="text-center">{{item.Institute}}</td>
-			        <td class="text-center">{{item.rating}}</td>
-			        <td class="text-center">{{item.solutions}}</td>
-			    </tr>
-			    </tbody>
-			   <!-- <tfoot>
-			    <tr>
-			        <td colspan="4">
-			            <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
-			        </td>
-			    </tr>
-			    </tfoot>-->
-			</table>
+        <div class="four-fifths column" *ngIf="topuser">
+            <md-card>
+                <md-card-header>
+                    <h2 class="text-center">Top User</h2>
+                </md-card-header>
+                <hr>
+                <table  [mfData]="data" #mf="mfDataTable" [mfRowsOnPage]="50">
+                    <thead>
+                    <tr>
+                        <th style="width: 30%">
+                            <mfDefaultSorter by="university">University</mfDefaultSorter>
+                        </th>
+                        <th style="width: 40%">
+                            <mfDefaultSorter by="Institute">College</mfDefaultSorter>
+                        </th>
+                        <th style="width: 20%">
+                            <mfDefaultSorter by="rating">College Rating</mfDefaultSorter>
+                        </th>
+                        <th style="width: 20%">
+                            <mfDefaultSorter by="solutions">No. of solutions</mfDefaultSorter>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let item of mf.data">
+                        <td class="text-center">{{item.university}}</td>
+                        <td class="text-center">{{item.Institute}}</td>
+                        <td class="text-center">{{item.rating}}</td>
+                        <td class="text-center">{{item.solutions}}</td>
+                    </tr>
+                    </tbody>
+                   <!-- <tfoot>
+                    <tr>
+                        <td colspan="4">
+                            <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+                        </td>
+                    </tr>
+                    </tfoot>-->
+                </table>
+            </md-card>
         </div>
 
-        <div class="four-fifths column" *ngIf="false">
+        <div class="four-fifths column" *ngIf="register">
             <br>
             <div class="columns centered">
                 <div class="four-fifths column">
