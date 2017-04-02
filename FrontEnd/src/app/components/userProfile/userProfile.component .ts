@@ -17,7 +17,7 @@ export class UserProfileComponent implements OnInit {
 
     licenses: Array<Object>;
     interests: Array<string>;
-    user : User;
+    public user : User;
     projects = [
         {cols: 2, rows: 1},
         {cols: 2, rows: 1},
@@ -35,6 +35,7 @@ export class UserProfileComponent implements OnInit {
                 text: "MIT open source to all"
             }
         ];
+        this.user = {};
         /*this.user.name="";
         this.user.bio = "";
         this.user.favourite_tags = "";
@@ -58,6 +59,7 @@ export class UserProfileComponent implements OnInit {
             .switchMap((params: Params) => this.userProfileService.userProfile(params['username']))
             .subscribe(user => {
                 console.log(user);
+                this.user=user;
             });
     }
 }
