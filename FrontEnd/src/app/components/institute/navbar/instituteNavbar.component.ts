@@ -7,7 +7,7 @@ import { User } from '../../../classTemplates/user/user';
     selector: 'institute-navbar',
     templateUrl: './instituteNavbar.component.html',
 })
-export class NavbarComponent {
+export class InstituteNavbarComponent {
     add_new_menu: Array<Object>;
     notifications_menu: Array<Object>;
     trophy_menu: Array<Object>;

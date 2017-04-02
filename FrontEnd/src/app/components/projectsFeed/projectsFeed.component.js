@@ -49,14 +49,14 @@ var ProjectsFeedComponent = (function () {
         });
     };
     ProjectsFeedComponent.prototype.upvote = function (project) {
-        this.projectsService.upvote(project.id)
+        this.projectsService.upvote(project.id, "hsharma")
             .then(function (res) {
             project.upvotes = res.upvotes;
             project.downvotes = res.downvotes;
         });
     };
     ProjectsFeedComponent.prototype.downvote = function (project) {
-        this.projectsService.downvote(project.id)
+        this.projectsService.downvote(project.id, "hsharma")
             .then(function (res) {
             project.upvotes = res.upvotes;
             project.downvotes = res.downvotes;
