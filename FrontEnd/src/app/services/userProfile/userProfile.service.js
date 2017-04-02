@@ -29,6 +29,14 @@ var UserProfileService = (function () {
             .then(function (res) { return res.json(); })
             .catch(this.handleError);
     };
+    UserProfileService.prototype.getQuestions = function (username) {
+        this.url = backendUrl_service_1.BackendUrlService.url + '/user/profile/' + username;
+        return this.http
+            .get(this.url, { headers: this.headers })
+            .toPromise()
+            .then(function (res) { return res.json(); })
+            .catch(this.handleError);
+    };
     UserProfileService.prototype.handleError = function (error) {
         console.error('An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);
@@ -40,4 +48,5 @@ var UserProfileService = (function () {
     return UserProfileService;
 }());
 exports.UserProfileService = UserProfileService;
+"";
 //# sourceMappingURL=userProfile.service.js.map

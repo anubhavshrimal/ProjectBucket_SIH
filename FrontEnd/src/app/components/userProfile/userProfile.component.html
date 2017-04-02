@@ -9,7 +9,7 @@
     <div class="columns">
         <div class="one-third column text-center">
             <img class=" avatar" src="app/assets/male_user.png" width="200px" height="200px" />
-            <h2 class="centered ">Mohit Sharma</h2>
+            <h2 class="centered ">{{user.name}}</h2>
             <a routerLink="/editProfile">
                 <h4 class="centered column Anchored"><i class="fa fa-link" aria-hidden="true"></i>edit profile</h4>
             </a>
@@ -19,15 +19,15 @@
         <div class="two-thirds column">
             <div class="columns">
                 <div class="one-fifth column">
-                    <h3>Bio:</h3>{{user.bio}}
+                    <h3>Bio:</h3>
                 </div>
-                <div class="four-fifths column"></div>
+                <div class="four-fifths column">{{user.bio}}</div>
             </div>
             <div class="columns">
                 <div class="one-fifth column">
                     <h3>Rating:</h3>
                 </div>
-                <div class="four-fifths column"></div>
+                <div class="four-fifths column">{{user.rating}}</div>
             </div>
             <div class="columns">
                 <div class="one-fifth column">
@@ -36,12 +36,10 @@
                 <div class="four-fifths column">
                     <div class="columns">
                         <div class="column">
-                            <md-chip-list>
-                                <md-chip>abc</md-chip>
-                                <md-chip>pqr</md-chip>
-                                <md-chip>aqaq</md-chip>
-                                <md-chip>xyz</md-chip>
-                                <md-chip>lplp</md-chip>
+                            <md-chip-list >
+                                <md-chip *ngFor="let fav of user.favourite_tag">
+                                    {{fav}}
+                                </md-chip>
                             </md-chip-list>
                         </div>
                     </div>
@@ -211,27 +209,6 @@
 
                     </md-card-actions>
                 </md-card>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         </md-tab>
-        <md-tab label="Contributing">Contributing</md-tab>
-
     </md-tab-group>
 </div>

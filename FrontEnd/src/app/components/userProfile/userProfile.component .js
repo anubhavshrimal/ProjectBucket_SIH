@@ -34,32 +34,31 @@ var UserProfileComponent = (function () {
             }
         ];
         this.user = {};
-        /*this.user.name="";
-        this.user.bio = "";
-        this.user.favourite_tags = "";
-        this.user.followers = "";
-        this.user.following = "";
-        this.user.rating = "";
-        this.user.username = "";
-        this.user.password = "";
-        this.user.gender = "";
-        this.user.date = "";
-        this.user.category = "";
-        this.user.institute = "";
-        this.user.contributing = "";
-        this.user.contact_information = "";
-        this.user.question_answer = "";
-        this.user.question_ask = "";*/
     }
     UserProfileComponent.prototype.ngOnInit = function () {
         var _this = this;
-        console.log("ddddddddddddddddd");
         this.route.params
             .switchMap(function (params) { return _this.userProfileService.userProfile(params['username']); })
             .subscribe(function (user) {
             console.log(user);
             _this.user = user;
+            console.log(user.favourite_tag);
         });
+        this.route.params
+            .switchMap(function (params) { return _this.userProfileService.getQuestions(params['username']); })
+            .subscribe(function (user) {
+            console.log(user);
+            _this.user = user;
+        });
+        this.route.params
+            .switchMap(function (params) { return _this.userProfileService.getProjects(params['username']); })
+            .subscribe(function (user) {
+            console.log(user);
+            _this.user = user;
+        });
+    };
+    UserProfileComponent.prototype.getProjects = function () {
+        console.log("mohit");
     };
     UserProfileComponent = __decorate([
         core_1.Component({
