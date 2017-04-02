@@ -21,8 +21,8 @@ import { QuestionViewComponent } from './components/questionView/questionview.co
 import { EditQuestionComponent } from './components/editQuestion/editQuestion.component';
 import { AdminPanelComponent } from './components/adminPanel/adminPanel.component';
 import { AdminNavbarComponent} from './components/adminPanel/adminNavbar/adminNavbar.component';
-
 import { InstituteHomePageComponent } from './components/institute/homePage/homePage.component';
+import { InstituteNavbarComponent } from './components/institute/navbar/instituteNavbar.component';
 import { AppComponent }  from './app.component';
 
 import { CookieService } from 'angular2-cookie/services/cookies.service';
@@ -62,7 +62,8 @@ import { DataTableModule } from "angular2-datatable";
       EditQuestionComponent,
       AdminPanelComponent,
       AdminNavbarComponent,
-      InstituteHomePageComponent
+      InstituteHomePageComponent,
+      InstituteNavbarComponent
     ],
   bootstrap:    [ AppComponent ],
   providers: [ BackendUrlService,

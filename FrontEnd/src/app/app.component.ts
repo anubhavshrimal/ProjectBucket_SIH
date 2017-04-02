@@ -5,7 +5,8 @@ import { Component } from '@angular/core';
   template: `
 
   <div>
-    <navbar *ngIf="true"></navbar>
+    <navbar *ngIf="userHonor=='c'"></navbar>
+    <institute-navbar *ngIf="userHonor=='i'"></institute-navbar>
     <router-outlet></router-outlet>
     <footer></footer>
   </div>
@@ -14,7 +15,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent  {
   loggedIn: Boolean;
+  userHonor: string;
   constructor() {
-
+    this.userHonor = "i";
   }
 }

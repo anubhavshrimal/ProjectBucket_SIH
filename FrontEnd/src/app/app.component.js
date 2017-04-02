@@ -11,11 +11,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var AppComponent = (function () {
     function AppComponent() {
+        this.userHonor = "i";
     }
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "\n\n  <div>\n    <navbar *ngIf=\"true\"></navbar>\n    <router-outlet></router-outlet>\n    <footer></footer>\n  </div>\n",
+            template: "\n\n  <div>\n    <navbar *ngIf=\"userHonor=='c'\"></navbar>\n    <institute-navbar *ngIf=\"userHonor=='i'\"></institute-navbar>\n    <router-outlet></router-outlet>\n    <footer></footer>\n  </div>\n",
             moduleId: module.id
         }), 
         __metadata('design:paramtypes', [])
