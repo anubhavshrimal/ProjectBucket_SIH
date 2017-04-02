@@ -67,7 +67,7 @@ export class EditProjectComponent implements OnInit {
     }
 
     updateProject(): void {
-        this.projectsService.update(this.project)
+        this.projectsService.update(this.project, "hsharma")
             .then(message => {
                 console.log(message);
                 if (message == "success") {

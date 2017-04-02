@@ -62,7 +62,7 @@ export class ForumComponent implements OnInit {
     }
 
     upvote(project: Question): void {
-        this.questionsService.upvote(project.id)
+        this.questionsService.upvote(project.id, "pulkit")
             .then(res => {
                 project.upvotes = res.upvotes
                 project.downvotes = res.downvotes
@@ -70,7 +70,7 @@ export class ForumComponent implements OnInit {
     }
 
     downvote(project: Question): void {
-        this.questionsService.downvote(project.id)
+        this.questionsService.downvote(project.id, "pulkit")
             .then(res => {
                 project.upvotes = res.upvotes
                 project.downvotes = res.downvotes

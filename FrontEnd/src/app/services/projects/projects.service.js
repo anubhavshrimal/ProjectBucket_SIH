@@ -16,18 +16,18 @@ var ProjectsService = (function () {
     function ProjectsService(http) {
         this.http = http;
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-        this.createUrl = backendUrl_service_1.BackendUrlService.url + '/projects/insert';
         this.projectsFeedUrl = backendUrl_service_1.BackendUrlService.url + '/homepage/projects-feed/pulkit';
     }
-    ProjectsService.prototype.create = function (project) {
+    ProjectsService.prototype.create = function (project, username) {
+        var createUrl = backendUrl_service_1.BackendUrlService.url + '/projects/insert/' + username;
         return this.http
-            .post(this.createUrl, JSON.stringify(project), { headers: this.headers })
+            .post(createUrl, JSON.stringify(project), { headers: this.headers })
             .toPromise()
             .then(function (res) { return res.json(); })
             .catch(this.handleError);
     };
-    ProjectsService.prototype.update = function (project) {
-        project.username = "hsharma";
+    ProjectsService.prototype.update = function (project, username) {
+        project.username = username;
         var updateUrl = backendUrl_service_1.BackendUrlService.url + '/projects/' + project.id;
         return this.http
             .put(updateUrl, JSON.stringify(project), { headers: this.headers })
@@ -66,16 +66,16 @@ var ProjectsService = (function () {
             .then(function (res) { return res.json(); })
             .catch(this.handleError);
     };
-    ProjectsService.prototype.upvote = function (projectId) {
-        var upvoteUrl = backendUrl_service_1.BackendUrlService.url + '/projects/' + projectId + '/upvote';
+    ProjectsService.prototype.upvote = function (projectId, username) {
+        var upvoteUrl = backendUrl_service_1.BackendUrlService.url + '/projects/' + projectId + '/upvote/' + username;
         return this.http
             .put(upvoteUrl, JSON.stringify({}), { headers: this.headers })
             .toPromise()
             .then(function (res) { return res.json(); })
             .catch(this.handleError);
     };
-    ProjectsService.prototype.downvote = function (projectId) {
-        var downvote = backendUrl_service_1.BackendUrlService.url + '/projects/' + projectId + '/downvote';
+    ProjectsService.prototype.downvote = function (projectId, username) {
+        var downvote = backendUrl_service_1.BackendUrlService.url + '/projects/' + projectId + '/downvote/' + username;
         return this.http
             .put(downvote, JSON.stringify({}), { headers: this.headers })
             .toPromise()

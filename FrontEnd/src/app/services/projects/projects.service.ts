@@ -10,20 +10,20 @@ import { BackendUrlService } from '../backendUrl.service';
 @Injectable()
 export class ProjectsService {
     private headers = new Headers({'Content-Type': 'application/json'});
-    private createUrl = BackendUrlService.url + '/projects/insert';
     private projectsFeedUrl = BackendUrlService.url + '/homepage/projects-feed/pulkit';
     constructor(private http: Http) {}
 
-    create(project: Project): Promise<Response> {
+    create(project: Project, username: string): Promise<Response> {
+        const createUrl = BackendUrlService.url + '/projects/insert/'+username;
         return this.http
-            .post(this.createUrl, JSON.stringify(project), {headers: this.headers})
+            .post(createUrl, JSON.stringify(project), {headers: this.headers})
             .toPromise()
             .then(res => res.json() as Response)
             .catch(this.handleError);
     }
 
-    update(project: Project): Promise<string> {
-        project.username = "hsharma";
+    update(project: Project, username: string): Promise<string> {
+        project.username = username;
         const updateUrl = BackendUrlService.url + '/projects/'+project.id;
         return this.http
             .put(updateUrl, JSON.stringify(project), {headers: this.headers})
@@ -69,8 +69,8 @@ export class ProjectsService {
             .catch(this.handleError);
     }
 
-    upvote(projectId: string): Promise<Info> {
-        const upvoteUrl = BackendUrlService.url + '/projects/' + projectId + '/upvote';
+    upvote(projectId: string, username: string): Promise<Info> {
+        const upvoteUrl = BackendUrlService.url + '/projects/' + projectId + '/upvote/'+username;
         return this.http
             .put(upvoteUrl, JSON.stringify({}), {headers: this.headers})
             .toPromise()
@@ -78,8 +78,8 @@ export class ProjectsService {
             .catch(this.handleError);
     }
 
-    downvote(projectId: string): Promise<Info> {
-        const downvote =  BackendUrlService.url + '/projects/' + projectId + '/downvote';
+    downvote(projectId: string, username: string): Promise<Info> {
+        const downvote =  BackendUrlService.url + '/projects/' + projectId + '/downvote/'+username;
 
         return this.http
             .put(downvote, JSON.stringify({}), {headers: this.headers})

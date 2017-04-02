@@ -62,7 +62,7 @@ export class ProjectsFeedComponent implements OnInit{
     }
 
     upvote(project: Project): void {
-        this.projectsService.upvote(project.id)
+        this.projectsService.upvote(project.id, "hsharma")
             .then(res => {
                 project.upvotes = res.upvotes
                 project.downvotes = res.downvotes
@@ -70,7 +70,7 @@ export class ProjectsFeedComponent implements OnInit{
     }
 
     downvote(project: Project): void {
-        this.projectsService.downvote(project.id)
+        this.projectsService.downvote(project.id, "hsharma")
             .then(res => {
                 project.upvotes = res.upvotes
                 project.downvotes = res.downvotes

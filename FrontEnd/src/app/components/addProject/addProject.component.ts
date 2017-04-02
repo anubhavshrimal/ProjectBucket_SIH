@@ -68,7 +68,7 @@ export class AddProjectComponent implements OnInit {
   }
 
   addProject(): void {
-    this.projectsService.create(this.project)
+    this.projectsService.create(this.project, "pulkit")
       .then(project => {
           if(project.upsertedId){
             this.router.navigate([`/projects`, project.upsertedId, project.message]);

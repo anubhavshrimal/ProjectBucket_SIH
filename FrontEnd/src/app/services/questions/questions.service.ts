@@ -11,15 +11,15 @@ import  { Response } from '../../classTemplates/assertionResponse/response';
 @Injectable()
 export class QuestionsService {
     private headers = new Headers({'Content-Type': 'application/json'});
-    private createUrl = BackendUrlService.url + '/questions/insert';
     private forumUrl = BackendUrlService.url + '/homepage/forum/pulkit';
     constructor(
         private http: Http,
         ) {}
 
-    create(question: Question): Promise<Response> {
+    create(question: Question, username: string): Promise<Response> {
+        const createUrl = BackendUrlService.url + '/questions/insert/'+username;
         return this.http
-            .post(this.createUrl, JSON.stringify(question), {headers: this.headers})
+            .post(createUrl, JSON.stringify(question), {headers: this.headers})
             .toPromise()
             .then(res => res.json() as Response)
             .catch(this.handleError);
@@ -72,8 +72,8 @@ export class QuestionsService {
             .catch(this.handleError);
     }
 
-    upvote(questionId: string): Promise<Info> {
-        const upvoteUrl = '/questions/' + questionId + '/upvote';
+    upvote(questionId: string, username: string): Promise<Info> {
+        const upvoteUrl = '/questions/' + questionId + '/upvote/'+username;
 
         return this.http
             .put(upvoteUrl, JSON.stringify({}), {headers: this.headers})
@@ -82,8 +82,8 @@ export class QuestionsService {
             .catch(this.handleError);
     }
 
-    downvote(questionId: string): Promise<Info> {
-        const downvote = '/questions/' + questionId + '/downvote';
+    downvote(questionId: string, username: string): Promise<Info> {
+        const downvote = '/questions/' + questionId + '/downvote/'+username;
 
         return this.http
             .put(downvote, JSON.stringify({}), {headers: this.headers})

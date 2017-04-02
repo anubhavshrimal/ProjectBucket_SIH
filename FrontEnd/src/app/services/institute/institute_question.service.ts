@@ -11,58 +11,12 @@ import  { Response } from '../../classTemplates/assertionResponse/response';
 @Injectable()
 export class InstituteQuestionsService {
     private headers = new Headers({'Content-Type': 'application/json'});
-    // private createUrl = BackendUrlService.url + '/questions/insert/mit';
     private forumUrl = BackendUrlService.url + '/institute/question/mit';
+    private departmentsUrl = BackendUrlService.url + '/institute/mit/departments';
+
     constructor(
         private http: Http,
         ) {}
-
-    // create(question: Question): Promise<Response> {
-    //     return this.http
-    //         .post(this.createUrl, JSON.stringify(question), {headers: this.headers})
-    //         .toPromise()
-    //         .then(res => res.json() as Response)
-    //         .catch(this.handleError);
-    // }
-
-    // update(question: Question): Promise<string> {
-    //     question.username = "pulkit";
-    //     const updateUrl = BackendUrlService.url + '/questions/'+question.id;
-    //     return this.http
-    //         .put(updateUrl, JSON.stringify(question), {headers: this.headers})
-    //         .toPromise()
-    //         .then(res => res.json().message)
-    //         .catch(this.handleError);
-    // }
-
-    // getQuestionById(id: string): Promise<Question> {
-    //     const getUrl = BackendUrlService.url + '/questions/'+id;
-
-    //     return this.http
-    //         .get(getUrl)
-    //         .toPromise()
-    //         .then(res => res.json() as Question)
-    //         .catch(this.handleError);
-    // }
-
-    // insertAnswer(answer: string, questionId: string): Promise<Answer> {
-    //     const insertAnswerUrl = BackendUrlService.url + '/questions/'+questionId+'/answer';
-    //     return this.http
-    //         .post(insertAnswerUrl, JSON.stringify({"answer": answer}), {headers: this.headers})
-    //         .toPromise()
-    //         .then(res => res.json() as Answer)
-    //         .catch(this.handleError);
-    // }
-
-    // deleteAnswer(username: string, questionId: string): Promise<string> {
-    //     const deleteAnswerUrl = BackendUrlService.url + '/questions/'+questionId+'/answer/delete';
-
-    //     return this.http
-    //         .post(deleteAnswerUrl, JSON.stringify({'username': username}), {headers: this.headers})
-    //         .toPromise()
-    //         .then(res => res.json().message)
-    //         .catch(this.handleError);
-    // }
 
     getForumFeed(): Promise<Array<Question>> {
         return this.http
@@ -72,48 +26,16 @@ export class InstituteQuestionsService {
             .catch(this.handleError);
     }
 
-    // upvote(questionId: string): Promise<Info> {
-    //     const upvoteUrl = '/questions/' + questionId + '/upvote';
-
-    //     return this.http
-    //         .put(upvoteUrl, JSON.stringify({}), {headers: this.headers})
-    //         .toPromise()
-    //         .then(res => res.json() as Info)
-    //         .catch(this.handleError);
-    // }
-
-    // downvote(questionId: string): Promise<Info> {
-    //     const downvote = '/questions/' + questionId + '/downvote';
-
-    //     return this.http
-    //         .put(downvote, JSON.stringify({}), {headers: this.headers})
-    //         .toPromise()
-    //         .then(res => res.json() as Info)
-    //         .catch(this.handleError);
-    // }
-
-    // upvoteAnswer(questionId: string, username: string): Promise<Info> {
-    //     const upvoteUrl = '/questions/' + questionId + '/' + username + '/upvote';
-
-    //     return this.http
-    //         .put(upvoteUrl, JSON.stringify({}), {headers: this.headers})
-    //         .toPromise()
-    //         .then(res => res.json() as Info)
-    //         .catch(this.handleError);
-    // }
-
-    // downvoteAnswer(questionId: string, username: string): Promise<Info> {
-    //     const downvote = '/questions/' + questionId + '/' + username + '/downvote';
-
-    //     return this.http
-    //         .put(downvote, JSON.stringify({}), {headers: this.headers})
-    //         .toPromise()
-    //         .then(res => res.json() as Info)
-    //         .catch(this.handleError);
-    // }
-
+    getDepartments(): Promise<Array<string>> {
+        return this.http
+            .get(this.departmentsUrl)
+            .toPromise()
+            .then(res => res.json().departments as Array<string>)
+            .catch(this.handleError);
+    }
+    
     private handleError(error: any): Promise<any> {
-    console.error('An error occurred', error);
-    return Promise.reject(error.message || error);
-  }
+        console.error('An error occurred', error);
+        return Promise.reject(error.message || error);
+    }
 }
