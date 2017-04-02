@@ -32,7 +32,7 @@ export class AddQuestionComponent {
         this.questionsService.create(this.question, "pulkit")
             .then(question => {
                 if (question.upsertedId) {
-                    // this.router.navigate([`/questions`, question.upsertedId, question.message]);
+                    this.router.navigate([`/questions`, question.upsertedId, question.message]);
                     console.log('added question')
                 }
                 else {

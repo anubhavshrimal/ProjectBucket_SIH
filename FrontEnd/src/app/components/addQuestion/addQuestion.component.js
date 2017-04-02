@@ -27,7 +27,7 @@ var AddQuestionComponent = (function () {
         this.questionsService.create(this.question, "pulkit")
             .then(function (question) {
             if (question.upsertedId) {
-                // this.router.navigate([`/questions`, question.upsertedId, question.message]);
+                _this.router.navigate(["/questions", question.upsertedId, question.message]);
                 console.log('added question');
             }
             else {

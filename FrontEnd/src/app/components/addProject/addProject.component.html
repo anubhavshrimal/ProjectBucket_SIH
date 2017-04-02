@@ -36,6 +36,24 @@
             </div>
 
             <div class="columns">
+                <div class="one-half column">
+                    <md-input-container class="full-width">
+                        <input mdInput placeholder="City:" name="city" [(ngModel)]="project.city">
+                        <md-hint align="start">Mention city where your project is being used or can be used.</md-hint>
+                    </md-input-container>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="one-half column">
+                    <md-input-container class="full-width">
+                        <input mdInput placeholder="State:" name="state" [(ngModel)]="project.state">
+                        <md-hint align="start">Mention state where your project is being used or can be used.</md-hint>
+                    </md-input-container>
+                </div>
+            </div>
+
+            <div class="columns">
                 <div class="four-fifths column">
                     <md-input-container class="full-width">
                         <input mdInput placeholder="Description:" name="description" [(ngModel)]="project.description">

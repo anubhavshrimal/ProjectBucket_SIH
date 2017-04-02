@@ -1,17 +1,17 @@
-<div class="container" *ngIf="!question || !question.title">
+<div class="container" *ngIf="!question || !question.question">
     <div class="columns centered">
         <div class="one-fifth column centered text-center">
             <md-spinner></md-spinner>
         </div>
     </div>
 </div>
-<div class="container" *ngIf="question && question.title">
+<div class="container" *ngIf="question && question.question">
     <div class="columns centered">
         <div class="four-fifths column centered">
             <div class="columns">
                 <br>
                 <div class="four-fifths column">
-                    <h1>{{question.title}}</h1>
+                    <h1>{{question.question}}</h1>
                 </div>
                 <div class="one-fifth column">
                     <a md-raised-button md-icon-button class="bg-blue" routerLink="/questions/update/{{question.id}}/{{question.question_url}}">

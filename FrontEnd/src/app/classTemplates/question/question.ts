@@ -22,4 +22,6 @@ export class Question {
     answers?: Array<Answer>;
     images?: Array<string>;
     department?: string;
+    state?: string;
+    city?: string;
 }

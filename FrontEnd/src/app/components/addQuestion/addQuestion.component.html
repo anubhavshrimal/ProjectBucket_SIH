@@ -32,6 +32,24 @@
                 </div>
             </div>
 
+            <div class="columns">
+                <div class="one-half column">
+                    <md-input-container class="full-width">
+                        <input mdInput placeholder="City:" name="city" [(ngModel)]="question.city">
+                        <md-hint align="start">Mention city where your project is being used or can be used.</md-hint>
+                    </md-input-container>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="one-half column">
+                    <md-input-container class="full-width">
+                        <input mdInput placeholder="State:" name="state" [(ngModel)]="question.state">
+                        <md-hint align="start">Mention state where your project is being used or can be used.</md-hint>
+                    </md-input-container>
+                </div>
+            </div>
+
             <md-input-container class="full-width">
                 <textarea mdInput class="border border-bottom-0" placeholder="Problem details:" name="description" [(ngModel)]="question.description" style="height: 300px; resize: none"></textarea>
             </md-input-container>
