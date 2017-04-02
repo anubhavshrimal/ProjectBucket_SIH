@@ -29,4 +29,6 @@ export class Project {
     comments?: Array<Comment>;
     project_link?: string;
     url_title?: string;
+    state?: string;
+    city?: string;
 }
