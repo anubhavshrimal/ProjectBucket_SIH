@@ -28,9 +28,9 @@ var QuestionsService = (function () {
     };
     QuestionsService.prototype.update = function (question) {
         question.username = "pulkit";
-        var updateUrl = backendUrl_service_1.BackendUrlService.url + '/questions/' + question.id;
+        var updateUrl = backendUrl_service_1.BackendUrlService.url + '/questions/' + question.id + '/updatequestion';
         return this.http
-            .put(updateUrl, JSON.stringify(question), { headers: this.headers })
+            .post(updateUrl, JSON.stringify(question), { headers: this.headers })
             .toPromise()
             .then(function (res) { return res.json().message; })
             .catch(this.handleError);
@@ -83,7 +83,7 @@ var QuestionsService = (function () {
             .catch(this.handleError);
     };
     QuestionsService.prototype.upvoteAnswer = function (questionId, username) {
-        var upvoteUrl = '/questions/' + questionId + '/' + username + '/upvote';
+        var upvoteUrl = backendUrl_service_1.BackendUrlService.url + '/questions/' + questionId + '/' + username + '/upvote';
         return this.http
             .put(upvoteUrl, JSON.stringify({}), { headers: this.headers })
             .toPromise()
@@ -91,7 +91,7 @@ var QuestionsService = (function () {
             .catch(this.handleError);
     };
     QuestionsService.prototype.downvoteAnswer = function (questionId, username) {
-        var downvote = '/questions/' + questionId + '/' + username + '/downvote';
+        var downvote = backendUrl_service_1.BackendUrlService.url + '/questions/' + questionId + '/' + username + '/downvote';
         return this.http
             .put(downvote, JSON.stringify({}), { headers: this.headers })
             .toPromise()

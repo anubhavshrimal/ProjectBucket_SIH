@@ -27,9 +27,9 @@ export class QuestionsService {
 
     update(question: Question): Promise<string> {
         question.username = "pulkit";
-        const updateUrl = BackendUrlService.url + '/questions/'+question.id;
+        const updateUrl = BackendUrlService.url + '/questions/'+question.id+'/updatequestion';
         return this.http
-            .put(updateUrl, JSON.stringify(question), {headers: this.headers})
+            .post(updateUrl, JSON.stringify(question), {headers: this.headers})
             .toPromise()
             .then(res => res.json().message)
             .catch(this.handleError);
@@ -93,7 +93,7 @@ export class QuestionsService {
     }
 
     upvoteAnswer(questionId: string, username: string): Promise<Info> {
-        const upvoteUrl = '/questions/' + questionId + '/' + username + '/upvote';
+        const upvoteUrl = BackendUrlService.url + '/questions/' + questionId + '/' + username + '/upvote';
 
         return this.http
             .put(upvoteUrl, JSON.stringify({}), {headers: this.headers})
@@ -103,7 +103,7 @@ export class QuestionsService {
     }
 
     downvoteAnswer(questionId: string, username: string): Promise<Info> {
-        const downvote = '/questions/' + questionId + '/' + username + '/downvote';
+        const downvote = BackendUrlService.url + '/questions/' + questionId + '/' + username + '/downvote';
 
         return this.http
             .put(downvote, JSON.stringify({}), {headers: this.headers})
