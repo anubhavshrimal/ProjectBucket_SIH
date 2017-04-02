@@ -25,13 +25,21 @@ export class UserProfileService {
             .catch(this.handleError);
     }
     getQuestions(username: string):Promise<Question>{
-        this.url = BackendUrlService.url + '/user/profile/'+username;
+        this.url = BackendUrlService.url + '/questions/allquestions/'+username;
         return this.http
             .get(this.url, {headers: this.headers})
             .toPromise()
             .then(res => res.json() as User)
             .catch(this.handleError);
     }
+    getProjects(username: string):Promise<Question>{
+    this.url = BackendUrlService.url + '/projects/user/'+username;
+    return this.http
+        .get(this.url, {headers: this.headers})
+        .toPromise()
+        .then(res => res.json() as User)
+        .catch(this.handleError);
+}
     private handleError(error: any): Promise<any> {
         console.error('An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);
