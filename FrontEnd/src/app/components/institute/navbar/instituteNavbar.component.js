@@ -10,8 +10,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
-var NavbarComponent = (function () {
-    function NavbarComponent(router) {
+var InstituteNavbarComponent = (function () {
+    function InstituteNavbarComponent(router) {
         this.router = router;
         this.user = {
             'rating': 245,
@@ -54,19 +54,19 @@ var NavbarComponent = (function () {
             }
         ];
     }
-    NavbarComponent.prototype.gotoUserProfile = function () {
+    InstituteNavbarComponent.prototype.gotoUserProfile = function () {
         this.user.username = 'mit';
         this.router.navigate(['/institute-profile', this.user.username]);
     };
-    NavbarComponent = __decorate([
+    InstituteNavbarComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: 'institute-navbar',
             templateUrl: './instituteNavbar.component.html',
         }), 
         __metadata('design:paramtypes', [router_1.Router])
-    ], NavbarComponent);
-    return NavbarComponent;
+    ], InstituteNavbarComponent);
+    return InstituteNavbarComponent;
 }());
-exports.NavbarComponent = NavbarComponent;
+exports.InstituteNavbarComponent = InstituteNavbarComponent;
 //# sourceMappingURL=instituteNavbar.component.js.map
