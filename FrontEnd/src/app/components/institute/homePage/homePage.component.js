@@ -11,63 +11,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var _ = require('lodash');
+var institute_question_service_1 = require('../../../services/institute/institute_question.service');
 var questions_service_1 = require('../../../services/questions/questions.service');
 var InstituteHomePageComponent = (function () {
-    function InstituteHomePageComponent(questionsService, router) {
+    function InstituteHomePageComponent(questionsService, instituteQuestionsService, router) {
         this.questionsService = questionsService;
+        this.instituteQuestionsService = instituteQuestionsService;
         this.router = router;
-        this.labelList = [
-            'All', 'Dept. of CS', 'Dept. of EC', 'Dept. of EE', 'Dept. of Civil'
-        ];
+        this.labelList = ['All'];
         this.checkboxes = { 'All': true };
-        this.questions = [
-            {
-                id: "dfdhfvkdvksdb324235233",
-                username: "anubhav",
-                title: "How to solve water scarcity problems in jaipur",
-                description: "We have huge scarcity of water in jaipur",
-                tags: ["Array<string>"],
-                date: 23423423423423,
-                department: "Dept. of CS",
-                upvotes: ["anubhav", "pulkit"],
-                downvotes: ["anubhav", "pulkit"],
-                url: "string",
-                url_title: "string",
-                answers: [{
-                        username: "anubhav",
-                        answer: "hello tesitng ans",
-                        date: 23423423423423,
-                        upvotes: ["anubhav", "pulkit"],
-                        downvotes: ["anubhav", "pulkit"]
-                    }],
-            },
-            {
-                id: "dfdhfvkdvksdb324235233",
-                username: "anubhav",
-                title: "How to solve water scarcity problems in jaipur",
-                description: "We have huge scarcity of water in jaipur",
-                tags: ["Array<string>"],
-                date: 23423423423423,
-                department: "Dept. of EC",
-                upvotes: ["anubhav", "pulkit"],
-                downvotes: ["anubhav", "pulkit"],
-                url: "string",
-                url_title: "string",
-                answers: [{
-                        username: "anubhav",
-                        answer: "hello tesitng ans",
-                        date: 23423423423423,
-                        upvotes: ["anubhav", "pulkit"],
-                        downvotes: ["anubhav", "pulkit"]
-                    }],
-            }
-        ];
+        this.questions = [];
     }
     InstituteHomePageComponent.prototype.ngOnInit = function () {
-        // this.getForumFeed();
-        this.quesGroup = _.groupBy(this.questions, 'department');
-        this.filter(this.checkboxes);
-        this.checkboxes = {};
+        this.getDepartments();
     };
     InstituteHomePageComponent.prototype.filter = function (checkboxes) {
         var filteredQue = [];
@@ -87,6 +43,16 @@ var InstituteHomePageComponent = (function () {
         console.log(filteredQue);
         this.filteredQue = filteredQue;
     };
+    InstituteHomePageComponent.prototype.getDepartments = function () {
+        var _this = this;
+        this.instituteQuestionsService.getDepartments()
+            .then(function (departments) {
+            console.log(departments);
+            var labelList = _this.labelList;
+            _this.labelList = _.concat(labelList, departments);
+            _this.getForumFeed();
+        });
+    };
     InstituteHomePageComponent.prototype.gotoQuestion = function (id, url_title) {
         this.router.navigate(["/questions", id, url_title]);
     };
@@ -95,21 +61,24 @@ var InstituteHomePageComponent = (function () {
     };
     InstituteHomePageComponent.prototype.getForumFeed = function () {
         var _this = this;
-        this.questionsService.getForumFeed()
+        this.instituteQuestionsService.getForumFeed()
             .then(function (forumFeed) {
             console.log(forumFeed);
             _this.questions = forumFeed;
+            _this.quesGroup = _.groupBy(_this.questions, 'department[0]');
+            _this.filter(_this.checkboxes);
+            _this.checkboxes = {};
         });
     };
     InstituteHomePageComponent.prototype.upvote = function (project) {
-        this.questionsService.upvote(project.id)
+        this.questionsService.upvote(project.id, "mit")
             .then(function (res) {
             project.upvotes = res.upvotes;
             project.downvotes = res.downvotes;
         });
     };
     InstituteHomePageComponent.prototype.downvote = function (project) {
-        this.questionsService.downvote(project.id)
+        this.questionsService.downvote(project.id, "mit")
             .then(function (res) {
             project.upvotes = res.upvotes;
             project.downvotes = res.downvotes;
@@ -123,9 +92,9 @@ var InstituteHomePageComponent = (function () {
             styles: [
                 "a {\n            color: teal; \n            text-decoration:none\n        }"
             ],
-            providers: [questions_service_1.QuestionsService]
+            providers: [questions_service_1.QuestionsService, institute_question_service_1.InstituteQuestionsService]
         }), 
-        __metadata('design:paramtypes', [questions_service_1.QuestionsService, router_1.Router])
+        __metadata('design:paramtypes', [questions_service_1.QuestionsService, institute_question_service_1.InstituteQuestionsService, router_1.Router])
     ], InstituteHomePageComponent);
     return InstituteHomePageComponent;
 }());
