@@ -30,7 +30,15 @@ var UserProfileService = (function () {
             .catch(this.handleError);
     };
     UserProfileService.prototype.getQuestions = function (username) {
-        this.url = backendUrl_service_1.BackendUrlService.url + '/user/profile/' + username;
+        this.url = backendUrl_service_1.BackendUrlService.url + '/questions/allquestions/' + username;
+        return this.http
+            .get(this.url, { headers: this.headers })
+            .toPromise()
+            .then(function (res) { return res.json(); })
+            .catch(this.handleError);
+    };
+    UserProfileService.prototype.getProjects = function (username) {
+        this.url = backendUrl_service_1.BackendUrlService.url + '/projects/user/' + username;
         return this.http
             .get(this.url, { headers: this.headers })
             .toPromise()

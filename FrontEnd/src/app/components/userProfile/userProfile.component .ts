@@ -41,6 +41,7 @@ export class UserProfileComponent implements OnInit {
         this.route.params
             .switchMap((params: Params) => this.userProfileService.userProfile(params['username']))
             .subscribe(user => {
+                console.log("1");
                 console.log(user);
                 this.user=user;
                 console.log(user.favourite_tag);
@@ -49,12 +50,14 @@ export class UserProfileComponent implements OnInit {
         this.route.params
             .switchMap((params: Params) => this.userProfileService.getQuestions(params['username']))
             .subscribe(user => {
+                console.log("2");
                 console.log(user);
                 this.user=user;
             });
         this.route.params
             .switchMap((params: Params) => this.userProfileService.getProjects(params['username']))
             .subscribe(user => {
+                console.log("3");
                 console.log(user);
                 this.user=user;
             });
