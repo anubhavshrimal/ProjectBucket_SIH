@@ -5,14 +5,23 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class AdminPanelService {
-    private url = BackendUrlService.url + '';
-    private headers = new Headers({'Content-Type': 'application/json', 'Auth-token': ''});
-    isLoggedIn: boolean = false;
+    private url = BackendUrlService.url + '/adminpanel/name';
+    private headers = new Headers({'Content-Type': 'application/json'});
     constructor(private http: Http){
     }
-    adminPanel(login:string, password: string, university: string, college: string, state: string, city: string, email: string, mobile: string, address: string): Promise<Object> {
+    addInstitute(login:string, password: string, university: string, college: string, state: string, city: string, email: string, mobile: string, address: string): Promise<Object> {
+        // this.url = BackendUrlService.url + '/adminpanel/';
         return this.http
             .post(this.url,JSON.stringify({login:login, password: password, university: university, college: college, state: status, city: city, email: email, mobile: mobile, address: address}),{headers: this.headers})
+            .toPromise()
+            .then(res => res.json())
+
+            .catch(this.handleError);
+    }
+    getInstitutes(){
+        this.url = BackendUrlService.url + '/adminpanel/name';
+        return this.http
+            .get(this.url, {headers: this.headers})
             .toPromise()
             .then(res => res.json())
 

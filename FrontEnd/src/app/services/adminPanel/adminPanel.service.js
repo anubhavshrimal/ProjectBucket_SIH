@@ -15,13 +15,21 @@ require('rxjs/add/operator/toPromise');
 var AdminPanelService = (function () {
     function AdminPanelService(http) {
         this.http = http;
-        this.url = backendUrl_service_1.BackendUrlService.url + '';
-        this.headers = new http_1.Headers({ 'Content-Type': 'application/json', 'Auth-token': '' });
-        this.isLoggedIn = false;
+        this.url = backendUrl_service_1.BackendUrlService.url + '/adminpanel/name';
+        this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
     }
-    AdminPanelService.prototype.adminPanel = function (login, password, university, college, state, city, email, mobile, address) {
+    AdminPanelService.prototype.addInstitute = function (login, password, university, college, state, city, email, mobile, address) {
+        // this.url = BackendUrlService.url + '/adminpanel/';
         return this.http
             .post(this.url, JSON.stringify({ login: login, password: password, university: university, college: college, state: status, city: city, email: email, mobile: mobile, address: address }), { headers: this.headers })
+            .toPromise()
+            .then(function (res) { return res.json(); })
+            .catch(this.handleError);
+    };
+    AdminPanelService.prototype.getInstitutes = function () {
+        this.url = backendUrl_service_1.BackendUrlService.url + '/adminpanel/name';
+        return this.http
+            .get(this.url, { headers: this.headers })
             .toPromise()
             .then(function (res) { return res.json(); })
             .catch(this.handleError);
