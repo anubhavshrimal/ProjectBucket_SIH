@@ -1,13 +1,13 @@
 <div class="container">
     <div class="columns">
         <div class="four-fifths column centered">
-            <h2>Ask a Question!</h2>
-            <p class="Subhead-description">Ask any question and get answers by our awesome community.</p>
+            <h2>Post a Problem!</h2>
+            <p class="Subhead-description">Post your queries and get answers by our awesome community and institutes.</p>
             <hr>
             <div class="columns">
                 <div class="one-half column">
                     <md-input-container class="full-width">
-                        <input mdInput placeholder="Question title:" name="title" [(ngModel)]="question.title">
+                        <input mdInput placeholder="Problem title:" name="title" [(ngModel)]="question.title">
                     </md-input-container>
                 </div>
             </div>
@@ -16,7 +16,7 @@
                 <div class="one-half column">
                     <md-input-container class="full-width">
                         <input mdInput [(ngModel)]="tag" (keyup.enter)="addTag()" placeholder="Keywords:" name="tag">
-                        <md-hint align="start">Hit Enter! to add keywords that are related to your question. Example angular.js.</md-hint>
+                        <md-hint align="start">Hit Enter! to add keywords that are related to your problem. Example roadways.</md-hint>
                     </md-input-container>
                 </div>
             </div>
@@ -33,7 +33,7 @@
             </div>
 
             <md-input-container class="full-width">
-                <textarea mdInput class="border border-bottom-0" placeholder="Question details:" name="description" [(ngModel)]="question.description" style="height: 300px; resize: none"></textarea>
+                <textarea mdInput class="border border-bottom-0" placeholder="Problem details:" name="description" [(ngModel)]="question.description" style="height: 300px; resize: none"></textarea>
             </md-input-container>
 
             <div class="columns">
@@ -41,19 +41,19 @@
                     <md-icon class="fa fa-file-image-o fa-3x"></md-icon>
                     <br>
                     <button md-raised-button color='primary' type="file">Upload Images</button>
-                    <p class="note">Upload images or screenshorts of related to your question. (Optional)</p>
+                    <p class="note">Upload images or screenshorts of related to your problem. (Optional)</p>
                 </div>
             </div>
             <!--<div class="columns">
                 <div class="one-half column centered text-center">
-                    <button class="btn btn-outline" type="button">Preview Question</button>
+                    <button class="btn btn-outline" type="button">Preview Problem</button>
                     <p class="note">See how your question will look to others.</p>
                 </div>
             </div>-->
             <hr>
             <div class="columns">
                 <div class="one-half column centered text-center">
-                    <button class="btn btn-primary" type="button" (click)="addQuestion()">Submit Question!</button>
+                    <button class="btn btn-primary" type="button" (click)="addQuestion()">Post Problem!</button>
                 </div>
             </div>
         </div>

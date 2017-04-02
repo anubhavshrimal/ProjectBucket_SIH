@@ -22,11 +22,11 @@ export class InstituteNavbarComponent {
         
         this.add_new_menu = [
             {
-                name: 'Add new project',
+                name: 'Add new Project or Idea',
                 link: '/add-project'
             },
             {
-                name: 'Ask new question',
+                name: 'Post a new Problem',
                 link: '/add-question'
             }
         ]
