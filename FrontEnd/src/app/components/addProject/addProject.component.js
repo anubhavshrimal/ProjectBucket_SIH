@@ -59,7 +59,7 @@ var AddProjectComponent = (function () {
     };
     AddProjectComponent.prototype.addProject = function () {
         var _this = this;
-        this.projectsService.create(this.project, "pulkit")
+        this.projectsService.create(this.project)
             .then(function (project) {
             if (project.upsertedId) {
                 _this.router.navigate(["/projects", project.upsertedId, project.message]);

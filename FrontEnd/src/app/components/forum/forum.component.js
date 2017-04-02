@@ -49,14 +49,14 @@ var ForumComponent = (function () {
         });
     };
     ForumComponent.prototype.upvote = function (project) {
-        this.questionsService.upvote(project.id, "pulkit")
+        this.questionsService.upvote(project.id)
             .then(function (res) {
             project.upvotes = res.upvotes;
             project.downvotes = res.downvotes;
         });
     };
     ForumComponent.prototype.downvote = function (project) {
-        this.questionsService.downvote(project.id, "pulkit")
+        this.questionsService.downvote(project.id)
             .then(function (res) {
             project.upvotes = res.upvotes;
             project.downvotes = res.downvotes;

@@ -59,7 +59,7 @@ var EditProjectComponent = (function () {
     };
     EditProjectComponent.prototype.updateProject = function () {
         var _this = this;
-        this.projectsService.update(this.project, "hsharma")
+        this.projectsService.update(this.project)
             .then(function (message) {
             console.log(message);
             if (message == "success") {
