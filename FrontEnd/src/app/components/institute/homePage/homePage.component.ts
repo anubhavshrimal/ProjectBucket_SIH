@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import * as _ from 'lodash';
 
 import { QuestionsService } from '../../../services/questions/questions.service';
 import { Question } from '../../../classTemplates/question/question';
@@ -20,9 +21,14 @@ export class InstituteHomePageComponent implements OnInit {
     tabs: Array<Object>;
     questions: Array<Question>;
     labelList: Array<Object>;
-    checkboxes = {1: true};
+    checkboxes: Object;
+    filteredQue: Array<Question>;
+    quesGroup: Object;
     ngOnInit(): void {
         // this.getForumFeed();
+        this.quesGroup = _.groupBy(this.questions, 'department')
+        this.filter(this.checkboxes);
+        this.checkboxes = {};
     }
 
     constructor(
@@ -30,27 +36,9 @@ export class InstituteHomePageComponent implements OnInit {
         private router: Router
     ) {
         this.labelList = [
-            {
-                id: 1,
-                name: 'All'
-            },
-            {
-                id: 2,
-                name: 'Dept. of CS'
-            },
-            {
-                id: 3,
-                name: 'Dept. of EC'
-            },
-            {
-                id: 4,
-                name: 'Dept. of EE'
-            },
-            {
-                id: 5,
-                name: 'Dept. of Civil'
-            },
+            'All', 'Dept. of CS', 'Dept. of EC', 'Dept. of EE', 'Dept. of Civil'
         ];
+        this.checkboxes = {'All': true};
         this.questions = [
             {
                 id: "dfdhfvkdvksdb324235233",
@@ -93,6 +81,25 @@ export class InstituteHomePageComponent implements OnInit {
                 }],
             }
         ];
+    }
+
+    filter(checkboxes: Object) {
+        let filteredQue: Array<Question> = [];
+        let quesGroup = this.quesGroup;
+        let questions = this.questions;
+        let keys = _.keys(checkboxes)
+        _.forEach(keys, function (k) {
+            if (k=='All' && checkboxes[k]) {
+                filteredQue = questions;
+                return false;
+            }
+            if (checkboxes[k]) {
+                if (quesGroup[k])
+                    filteredQue = _.concat(filteredQue, quesGroup[k])
+            }
+        })
+        console.log(filteredQue)
+        this.filteredQue = filteredQue;
     }
 
     gotoQuestion(id: string, url_title: string): void {

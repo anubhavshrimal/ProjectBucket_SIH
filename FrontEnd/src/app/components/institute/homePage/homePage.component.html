@@ -12,36 +12,18 @@
         <hr>
         <div class="one-fifth column">
             <div class="columns"><b>Filter by department:</b></div>
-            <!--<div class="columns">
-                <md-checkbox color="primary" >All Depratments</md-checkbox>
-            </div>
-            <div class="columns">
-                <md-checkbox color="primary">Dept. of CS</md-checkbox>
-            </div>
-            <div class="columns">
-                <md-checkbox color="primary">Dept. of EC</md-checkbox>
-            </div>
-            <div class="columns">
-                <md-checkbox color="primary">Dept. of EE</md-checkbox>
-            </div>
-            <div class="columns">
-                <md-checkbox color="primary">Dept. of Civil</md-checkbox>
-            </div>
-            <div class="columns">
-                <md-checkbox color="primary">Dept. of IT</md-checkbox>
-            </div>-->
             <div class="checkbox" *ngFor="let label of labelList">
                 <div>
                     <label>
-                        <input type="checkbox" value="{{label.id}}" (change)="checkboxes[$event.target.getAttribute('value')]=$event.target.checked">
-                            {{ label.name }}
+                        <input type="checkbox" value="{{label}}" (change)="checkboxes[$event.target.getAttribute('value')]=$event.target.checked; filter(checkboxes)">
+                            {{ label }}
                     </label>
                 </div>
             </div>
         </div>
         <div class="two-thirds column">
-            <md-grid-list cols="1" rowHeight="200px">
-                <md-grid-tile *ngFor="let question of questions | checkboxFilter: checkboxes" [colspan]="1" [rowspan]="1">
+            <md-grid-list cols="1" rowHeight="200px" *ngIf="filteredQue.length >= 1">
+                <md-grid-tile *ngFor="let question of filteredQue" [colspan]="1" [rowspan]="1">
                     <md-card class="example-que-card border">
                         <md-card-header>
                             <div md-card-avatar></div>
@@ -73,6 +55,10 @@
                     </md-card>
                 </md-grid-tile>
             </md-grid-list>
+            <div class="blankslate" *ngIf="!filteredQue || filteredQue.length < 1">
+                <span class="fa fa-file-code-o fa-4x blankslate-icon"></span>
+                <h3>There are no recommended questions for this department</h3>
+            </div>
         </div>
     </div>
 </div>

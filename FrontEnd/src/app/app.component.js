@@ -15,7 +15,7 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "\n\n  <div>\n    <navbar *ngIf=\"false\"></navbar>\n    <admin-navbar *ngIf=\"false\"></admin-navbar>\n    <router-outlet></router-outlet>\n    <footer></footer>\n  </div>\n",
+            template: "\n\n  <div>\n    <navbar *ngIf=\"true\"></navbar>\n    <router-outlet></router-outlet>\n    <footer></footer>\n  </div>\n",
             moduleId: module.id
         }), 
         __metadata('design:paramtypes', [])
