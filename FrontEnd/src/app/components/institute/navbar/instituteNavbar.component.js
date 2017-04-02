@@ -13,29 +13,29 @@ var router_1 = require('@angular/router');
 var InstituteNavbarComponent = (function () {
     function InstituteNavbarComponent(router) {
         this.router = router;
-        this.user = {
+        this.institute = {
             'rating': 245,
             'profile_url': 'app/assets/male_user.png',
         };
         this.add_new_menu = [
             {
-                name: 'Add new project',
+                name: 'Add new Project or Idea',
                 link: '/add-project'
             },
             {
-                name: 'Ask new question',
+                name: 'Post a new Problem',
                 link: '/add-question'
             }
         ];
         this.notifications_menu = [
             {
-                name: 'Sign up for SIH 2017',
+                name: 'Mohit Sharma liked you project',
                 link: '/sih2017'
             }
         ];
         this.trophy_menu = [
             {
-                name: 'Noobie',
+                name: 'Newbie',
                 link: '/noobielink'
             }
         ];
@@ -54,9 +54,9 @@ var InstituteNavbarComponent = (function () {
             }
         ];
     }
-    InstituteNavbarComponent.prototype.gotoUserProfile = function () {
-        this.user.username = 'mit';
-        this.router.navigate(['/institute-profile', this.user.username]);
+    InstituteNavbarComponent.prototype.gotoInstituteProfile = function () {
+        this.institute.username = 'mit';
+        this.router.navigate(['/institute-profile', this.institute.username]);
     };
     InstituteNavbarComponent = __decorate([
         core_1.Component({

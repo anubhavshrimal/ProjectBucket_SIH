@@ -21,7 +21,7 @@
                                         <img md-card-avatar class="avatars" src="app/assets/male_user.png">
                                     </div>
                                     <md-card-title (click)="gotoProject(project.id, project.url_title)">{{project.title}}</md-card-title>
-                                    <md-card-subtitle>by <a href="/user-profile/{{project.username}}">{{project.username}}</a></md-card-subtitle>
+                                    <md-card-subtitle>by <a routerLink="/user-profile/{{project.username}}">{{project.username}}</a></md-card-subtitle>
                                     <div>
                                         <button md-button mdTooltip="more options" [md-menu-trigger-for]="more"><md-icon class="fa fa-caret-down"></md-icon></button>
                                     </div>

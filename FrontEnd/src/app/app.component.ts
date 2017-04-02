@@ -17,6 +17,6 @@ export class AppComponent  {
   loggedIn: Boolean;
   userHonor: string;
   constructor() {
-    this.userHonor = "i";
+    this.userHonor = "c";
   }
 }

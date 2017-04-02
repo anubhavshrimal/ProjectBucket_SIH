@@ -19,23 +19,23 @@ var NavbarComponent = (function () {
         };
         this.add_new_menu = [
             {
-                name: 'Add new project',
+                name: 'Add new Project or Idea',
                 link: '/add-project'
             },
             {
-                name: 'Ask new question',
+                name: 'Post a new Problem',
                 link: '/add-question'
             }
         ];
         this.notifications_menu = [
             {
-                name: 'Sign up for SIH 2017',
+                name: 'Mohit Sharma liked you project',
                 link: '/sih2017'
             }
         ];
         this.trophy_menu = [
             {
-                name: 'Noobie',
+                name: 'Newbie',
                 link: '/noobielink'
             }
         ];

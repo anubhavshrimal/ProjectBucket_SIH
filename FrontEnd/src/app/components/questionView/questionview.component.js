@@ -34,6 +34,7 @@ var QuestionViewComponent = (function () {
         this.route.params
             .switchMap(function (params) { return _this.questionsService.getQuestionById(params['id']); })
             .subscribe(function (question) {
+            console.log(question);
             _this.question = question;
             if (_this.question.answers) {
                 _.orderBy(_this.question.answers, ['upvotes.length'], ['desc']);
@@ -42,8 +43,9 @@ var QuestionViewComponent = (function () {
     };
     QuestionViewComponent.prototype.insertAnswer = function () {
         var _this = this;
-        this.questionsService.insertAnswer(this.answer, this.question.id)
+        this.questionsService.insertAnswer(this.answer, this.question.id, this.question.username)
             .then(function (answer) {
+            console.log(answer);
             if (answer.answer != 'error' && answer.username) {
                 _this.answer = "";
                 _this.question.answers.push(answer);
@@ -58,6 +60,7 @@ var QuestionViewComponent = (function () {
         var _this = this;
         this.questionsService.deleteAnswer(username, this.question.id)
             .then(function (message) {
+            console.log(message);
             if (message == 'success') {
                 _.remove(_this.question.answers, function (c) {
                     return c.username == username;
@@ -66,6 +69,22 @@ var QuestionViewComponent = (function () {
             else {
                 _this.openSnackBar("Answer couldn't be deleted", "Try Again!");
             }
+        });
+    };
+    QuestionViewComponent.prototype.upvote = function () {
+        var _this = this;
+        this.questionsService.upvote(this.question.id, "pulkit")
+            .then(function (res) {
+            _this.question.upvotes = res.upvotes;
+            _this.question.downvotes = res.downvotes;
+        });
+    };
+    QuestionViewComponent.prototype.downvote = function () {
+        var _this = this;
+        this.questionsService.downvote(this.question.id, "pulkit")
+            .then(function (res) {
+            _this.question.upvotes = res.upvotes;
+            _this.question.downvotes = res.downvotes;
         });
     };
     QuestionViewComponent.prototype.upvoteAnswer = function (answer) {

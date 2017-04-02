@@ -43,8 +43,8 @@ var QuestionsService = (function () {
             .then(function (res) { return res.json(); })
             .catch(this.handleError);
     };
-    QuestionsService.prototype.insertAnswer = function (answer, questionId) {
-        var insertAnswerUrl = backendUrl_service_1.BackendUrlService.url + '/questions/' + questionId + '/answer';
+    QuestionsService.prototype.insertAnswer = function (answer, questionId, username) {
+        var insertAnswerUrl = backendUrl_service_1.BackendUrlService.url + '/questions/' + questionId + '/answer/' + username;
         return this.http
             .post(insertAnswerUrl, JSON.stringify({ "answer": answer }), { headers: this.headers })
             .toPromise()
@@ -52,9 +52,9 @@ var QuestionsService = (function () {
             .catch(this.handleError);
     };
     QuestionsService.prototype.deleteAnswer = function (username, questionId) {
-        var deleteAnswerUrl = backendUrl_service_1.BackendUrlService.url + '/questions/' + questionId + '/answer/delete';
+        var deleteAnswerUrl = backendUrl_service_1.BackendUrlService.url + '/questions/' + questionId + '/' + username + '/deleteans';
         return this.http
-            .post(deleteAnswerUrl, JSON.stringify({ 'username': username }), { headers: this.headers })
+            .post(deleteAnswerUrl, JSON.stringify({}), { headers: this.headers })
             .toPromise()
             .then(function (res) { return res.json().message; })
             .catch(this.handleError);
@@ -67,7 +67,7 @@ var QuestionsService = (function () {
             .catch(this.handleError);
     };
     QuestionsService.prototype.upvote = function (questionId, username) {
-        var upvoteUrl = '/questions/' + questionId + '/upvote/' + username;
+        var upvoteUrl = backendUrl_service_1.BackendUrlService.url + '/questions/' + questionId + '/upvote/' + username;
         return this.http
             .put(upvoteUrl, JSON.stringify({}), { headers: this.headers })
             .toPromise()
@@ -75,7 +75,7 @@ var QuestionsService = (function () {
             .catch(this.handleError);
     };
     QuestionsService.prototype.downvote = function (questionId, username) {
-        var downvote = '/questions/' + questionId + '/downvote/' + username;
+        var downvote = backendUrl_service_1.BackendUrlService.url + '/questions/' + questionId + '/downvote/' + username;
         return this.http
             .put(downvote, JSON.stringify({}), { headers: this.headers })
             .toPromise()

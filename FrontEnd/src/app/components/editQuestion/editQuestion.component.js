@@ -12,73 +12,57 @@ var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 require('rxjs/add/operator/switchMap');
 var material_1 = require('@angular/material');
-var licenses_service_1 = require('../../services/licenses/licenses.service');
 var questions_service_1 = require('../../services/questions/questions.service');
 var _ = require("lodash");
 var EditQuestionComponent = (function () {
-    function EditQuestionComponent(licensesService, questionsService, route, router, snackBar) {
-        this.licensesService = licensesService;
+    function EditQuestionComponent(questionsService, route, router, snackBar) {
         this.questionsService = questionsService;
         this.route = route;
         this.router = router;
         this.snackBar = snackBar;
-        this.project = {};
-        this.readmeChecked = false;
+        this.question = {};
     }
     EditQuestionComponent.prototype.ngOnInit = function () {
-        // this.getProject();
+        this.getQuestion();
     };
     EditQuestionComponent.prototype.addTag = function () {
         if (this.tag.length != 0) {
             this.tag = this.tag.toLowerCase();
-            for (var i in this.project.tags) {
-                if (this.project.tags[i] === this.tag)
+            for (var i in this.question.tags) {
+                if (this.question.tags[i] === this.tag)
                     return;
             }
-            this.project.tags.push(this.tag);
+            this.question.tags.push(this.tag);
             this.tag = "";
         }
     };
     EditQuestionComponent.prototype.removeTag = function (tag) {
-        _.remove(this.project.tags, function (n) {
+        _.remove(this.question.tags, function (n) {
             return n === tag;
         });
     };
-    EditQuestionComponent.prototype.initialiseReadme = function () {
-        if (this.readmeChecked = !this.readmeChecked) {
-            this.project.readme = "# " + this.project.title;
-        }
-        else {
-            this.project.readme = "";
-        }
-    };
-    EditQuestionComponent.prototype.updateProject = function () {
+    EditQuestionComponent.prototype.updateQuestion = function () {
         var _this = this;
-        this.questionsService.update(this.project)
+        this.questionsService.update(this.question)
             .then(function (message) {
             console.log(message);
             if (message == "success") {
-                _this.router.navigate(["/projects", _this.project.id, _this.project.url_title]);
+                _this.router.navigate(["/questions", _this.question.id, _this.question.question_url]);
             }
             else {
                 _this.openSnackBar("There was some error", "Try Again!!");
             }
         });
     };
-    // getProject(): void {
-    //     this.route.params
-    //         .switchMap((params: Params) => this.questionsService.getProjectById(params['id']))
-    //         .subscribe(project => {
-    //             console.log(project)
-    //             this.project = project;
-    //             if (this.project.readme) {
-    //                 this.readmeChecked = true;
-    //             }
-    //             if (this.project.comments) {
-    //                 _.reverse(this.project.comments)
-    //             }
-    //         });
-    // }
+    EditQuestionComponent.prototype.getQuestion = function () {
+        var _this = this;
+        this.route.params
+            .switchMap(function (params) { return _this.questionsService.getQuestionById(params['id']); })
+            .subscribe(function (question) {
+            console.log(question);
+            _this.question = question;
+        });
+    };
     EditQuestionComponent.prototype.openSnackBar = function (message, action) {
         this.snackBar.open(message, action, {
             duration: 2000,
@@ -91,7 +75,7 @@ var EditQuestionComponent = (function () {
             moduleId: module.id,
             providers: [questions_service_1.QuestionsService]
         }), 
-        __metadata('design:paramtypes', [licenses_service_1.LicensesService, questions_service_1.QuestionsService, router_1.ActivatedRoute, router_1.Router, material_1.MdSnackBar])
+        __metadata('design:paramtypes', [questions_service_1.QuestionsService, router_1.ActivatedRoute, router_1.Router, material_1.MdSnackBar])
     ], EditQuestionComponent);
     return EditQuestionComponent;
 }());

@@ -17,22 +17,23 @@
                         <md-grid-tile *ngFor="let question of questions | tabsFilter:tab.tabLabel" [colspan]="1" [rowspan]="1">
                             <md-card class="example-que-card border">
                                 <md-card-header>
-                                    <div md-card-avatar></div>
-                                    <img md-card-avatar class="avatars" src="app/assets/male_user.png">
-                                    <md-card-title>{{question.title}}</md-card-title>
-                                    <md-card-subtitle>by <a href="">{{question.username}}</a></md-card-subtitle>
+                                    <div md-card-avatar (click)="gotoUserProfile(question.username)">
+                                        <img md-card-avatar class="avatars" src="app/assets/male_user.png">
+                                    </div>
+                                    <md-card-title (click)="gotoQuestion(question.id, question.url_title)">{{question.title}}</md-card-title>
+                                    <md-card-subtitle>by <a routerLink="/user-profile/{{question.username}}">{{question.username}}</a></md-card-subtitle>
                                     <div class="one-fourth column">
                                         <button md-button mdTooltip="more options" [md-menu-trigger-for]="more"><md-icon class="fa fa-caret-down"></md-icon></button>
                                     </div>
                                 </md-card-header>
-                                <md-card-content>
+                                <md-card-content (click)="gotoQuestion(question.id, question.url_title)">
                                     <p>
                                         {{question.description}}
                                     </p>
                                 </md-card-content>
                                 <md-card-actions>
                                     <div class="columns centered">
-                                        <!--<div class="one-third column">
+                                        <div class="one-third column">
                                             <button md-button class="full-width" mdTooltip="Upvote"><md-icon class="fa fa-thumbs-o-up"></md-icon>{{question.upvotes.length}}</button>
                                         </div>
                                         <div class="one-third column">
@@ -40,7 +41,7 @@
                                         </div>
                                         <div class="one-third column">
                                             <button md-button class="full-width" mdTooltip="Add to favourites"><md-icon class="fa fa-bookmark-o"></md-icon></button>
-                                        </div>-->
+                                        </div>
                                     </div>
                                 </md-card-actions>
                             </md-card>

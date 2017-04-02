@@ -18,7 +18,7 @@ export class Question {
     downvotes?: Array<string>;
     featured_points?: number;
     url?: string;
-    url_title?: string;
+    question_url?: string;
     answers?: Array<Answer>;
     images?: Array<string>;
     department?: string;

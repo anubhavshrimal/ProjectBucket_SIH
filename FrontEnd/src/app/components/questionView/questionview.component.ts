@@ -39,6 +39,7 @@ export class QuestionViewComponent implements OnInit {
     this.route.params
         .switchMap((params: Params) => this.questionsService.getQuestionById(params['id']))
         .subscribe(question => {
+          console.log(question)
           this.question = question;
           if(this.question.answers) {
             _.orderBy(this.question.answers, ['upvotes.length'], ['desc']);
@@ -47,8 +48,9 @@ export class QuestionViewComponent implements OnInit {
   }
 
   insertAnswer(): void {
-    this.questionsService.insertAnswer(this.answer, this.question.id)
+    this.questionsService.insertAnswer(this.answer, this.question.id, this.question.username)
       .then(answer => {
+        console.log(answer)
         if(answer.answer != 'error' && answer.username) {
           this.answer = "";
           this.question.answers.push(answer);
@@ -63,6 +65,7 @@ export class QuestionViewComponent implements OnInit {
   deleteAnswer(username: string): void {
     this.questionsService.deleteAnswer(username, this.question.id)
       .then(message => {
+        console.log(message)
         if(message == 'success'){
           _.remove(this.question.answers, function(c){
             return c.username == username;
@@ -72,6 +75,22 @@ export class QuestionViewComponent implements OnInit {
           this.openSnackBar("Answer couldn't be deleted", "Try Again!");
         }
       });
+  }
+
+  upvote(): void {
+    this.questionsService.upvote(this.question.id, "pulkit")
+        .then(res => {
+                this.question.upvotes = res.upvotes
+                this.question.downvotes = res.downvotes
+            });
+  }
+
+  downvote(): void {
+    this.questionsService.downvote(this.question.id, "pulkit")
+        .then(res => {
+                this.question.upvotes = res.upvotes
+                this.question.downvotes = res.downvotes
+            });
   }
 
   upvoteAnswer(answer: Answer) {
