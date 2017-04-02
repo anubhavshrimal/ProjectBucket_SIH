@@ -29,13 +29,13 @@ var NavbarComponent = (function () {
         ];
         this.notifications_menu = [
             {
-                name: 'Sign up for SIH 2017',
+                name: 'Mohit Sharma liked you project',
                 link: '/sih2017'
             }
         ];
         this.trophy_menu = [
             {
-                name: 'Noobie',
+                name: 'Newbie',
                 link: '/noobielink'
             }
         ];

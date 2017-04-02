@@ -15,7 +15,7 @@
     <!--Forum, Users, Projects link-->
     <div>
         <button md-button routerLink="/forum" mdTooltip="Q & A Forum">Forum</button>
-        <button md-button routerLink="/top-users" mdTooltip="Top rated users">Users</button>
+        <!--<button md-button routerLink="/top-users" mdTooltip="Top rated users">Users</button>-->
         <button md-button routerLink="/projects-feed" mdTooltip="Projects feed">Projects</button>
     </div>
 
@@ -32,7 +32,7 @@
     <!--profile avatar of the user and user rating-->
     <!--TODO: make links dynamic-->
     <a md-button (click)="gotoUserProfile()" mdTooltip="View profile and more">
-        <img class="avatar avatar-small" style="background-color: white;" src="{{user.thumbnail}}" width="32" height="32">
+        <img class="avatar avatar-small" style="background-color: white;" src="{{user.profile_url}}" width="32" height="32">
         <span class="counter">{{user.rating}}</span>
     </a>
 

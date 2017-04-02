@@ -71,7 +71,7 @@ var ProjectViewComponent = (function () {
     };
     ProjectViewComponent.prototype.upvote = function () {
         var _this = this;
-        this.projectsService.upvote(this.project.id)
+        this.projectsService.upvote(this.project.id, "pulkit")
             .then(function (res) {
             _this.project.upvotes = res.upvotes;
             _this.project.downvotes = res.downvotes;
@@ -79,7 +79,7 @@ var ProjectViewComponent = (function () {
     };
     ProjectViewComponent.prototype.downvote = function () {
         var _this = this;
-        this.projectsService.downvote(this.project.id)
+        this.projectsService.downvote(this.project.id, "pulkit")
             .then(function (res) {
             _this.project.upvotes = res.upvotes;
             _this.project.downvotes = res.downvotes;

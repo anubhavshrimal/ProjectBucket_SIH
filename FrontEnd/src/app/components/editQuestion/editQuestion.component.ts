@@ -3,9 +3,8 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 import { MdSnackBar } from '@angular/material';
 
-import { LicensesService } from '../../services/licenses/licenses.service';
 import { QuestionsService } from '../../services/questions/questions.service';
-import { Project } from '../../classTemplates/project/project'
+import { Question } from '../../classTemplates/question/question';
 import * as _ from "lodash";
 
 @Component({
@@ -15,79 +14,60 @@ import * as _ from "lodash";
     providers: [QuestionsService]
 })
 export class EditQuestionComponent implements OnInit {
-    licenses: Object[];
     tag: string;
-    project: Project;
-    readmeChecked: Boolean;
+    question: Question;
 
     ngOnInit(): void {
-        // this.getProject();
+        this.getQuestion();
     }
 
     constructor(
-        private licensesService: LicensesService,
         private questionsService: QuestionsService,
         private route: ActivatedRoute,
         private router: Router,
         private snackBar: MdSnackBar
     ) {
-        this.project = {};
-        this.readmeChecked = false;
+        this.question = {};
     }
 
     addTag(): void {
         if (this.tag.length != 0) {
             this.tag = this.tag.toLowerCase();
-            for (let i in this.project.tags) {
-                if (this.project.tags[i] === this.tag)
+            for (let i in this.question.tags) {
+                if (this.question.tags[i] === this.tag)
                     return
             }
-            this.project.tags.push(this.tag);
+            this.question.tags.push(this.tag);
             this.tag = "";
         }
     }
 
     removeTag(tag: string): void {
-        _.remove(this.project.tags, function (n) {
+        _.remove(this.question.tags, function (n) {
             return n === tag;
         });
     }
 
-    initialiseReadme() {
-        if (this.readmeChecked = !this.readmeChecked) {
-            this.project.readme = "# " + this.project.title;
-        }
-        else{
-            this.project.readme = "";
-        }
-    }
-
-    updateProject(): void {
-        this.questionsService.update(this.project)
+    updateQuestion(): void {
+        this.questionsService.update(this.question)
             .then(message => {
                 console.log(message);
                 if (message == "success") {
-                    this.router.navigate([`/projects`, this.project.id, this.project.url_title])
+                    this.router.navigate([`/questions`, this.question.id, this.question.question_url])
                 } else {
                     this.openSnackBar("There was some error", "Try Again!!");
                 }
             })
     }
 
-    // getProject(): void {
-    //     this.route.params
-    //         .switchMap((params: Params) => this.questionsService.getProjectById(params['id']))
-    //         .subscribe(project => {
-    //             console.log(project)
-    //             this.project = project;
-    //             if (this.project.readme) {
-    //                 this.readmeChecked = true;
-    //             }
-    //             if (this.project.comments) {
-    //                 _.reverse(this.project.comments)
-    //             }
-    //         });
-    // }
+    getQuestion(): void {
+        this.route.params
+            .switchMap((params: Params) => this.questionsService.getQuestionById(params['id']))
+            .subscribe(question => {
+                console.log(question)
+                this.question = question;
+            });
+    }
 
     openSnackBar(message: string, action: string) {
         this.snackBar.open(message, action, {

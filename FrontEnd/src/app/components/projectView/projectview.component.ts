@@ -75,7 +75,7 @@ export class ProjectViewComponent implements OnInit {
   }
 
   upvote(): void {
-    this.projectsService.upvote(this.project.id)
+    this.projectsService.upvote(this.project.id, "pulkit")
         .then(res => {
                 this.project.upvotes = res.upvotes
                 this.project.downvotes = res.downvotes
@@ -83,7 +83,7 @@ export class ProjectViewComponent implements OnInit {
   }
 
   downvote(): void {
-    this.projectsService.downvote(this.project.id)
+    this.projectsService.downvote(this.project.id, "pulkit")
         .then(res => {
                 this.project.upvotes = res.upvotes
                 this.project.downvotes = res.downvotes

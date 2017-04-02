@@ -1,4 +1,4 @@
-<div class="container" *ngIf="!question && !question.title">
+<div class="container" *ngIf="!question || !question.title">
     <div class="columns centered">
         <div class="one-fifth column centered text-center">
             <md-spinner></md-spinner>
@@ -14,7 +14,7 @@
                     <h1>{{question.title}}</h1>
                 </div>
                 <div class="one-fifth column">
-                    <a md-raised-button md-icon-button class="bg-blue" routerLink="/questions/update/{{question.id}}/{{question.url_title}}">
+                    <a md-raised-button md-icon-button class="bg-blue" routerLink="/questions/update/{{question.id}}/{{question.question_url}}">
                         <md-icon class="fa fa-pencil fa-2x text-white"></md-icon>
                     </a>
                     <button md-raised-button md-icon-button class="bg-red"><md-icon class="fa fa-trash fa-2x text-white"></md-icon></button>
@@ -83,13 +83,6 @@
                         </div>
                         <md-card-title><a routerLink="/user-profile/{{answer.username}}">{{answer.username}}</a></md-card-title>
                         <md-card-subtitle>{{answer.date | date:'medium'}}</md-card-subtitle>
-                        <md-card-actions align="end">
-                            <div class="columns">
-                                <div class="column">
-                                    <button md-raised-button class="bg-red" mdTooltip="Delete" (click)="deleteAnswer(comment)"><md-icon class="fa fa-trash text-white"></md-icon></button>
-                                </div>
-                            </div>
-                        </md-card-actions>
                     </md-card-header>
                     <md-card-content>
                         <p>
@@ -105,7 +98,7 @@
                                 <button md-raised-button class="full-width" mdTooltip="Downvote" (click)="downvote(answer)"><md-icon class="fa fa-thumbs-o-down"></md-icon>{{answer.downvotes.length}}</button>
                             </div>
                             <div class="one-third column">
-                                <button md-raised-button class="full-width" mdTooltip="Bookmark"><md-icon class="fa fa-bookmark-o"></md-icon></button>
+                                <button md-raised-button class="bg-red" mdTooltip="Delete" (click)="deleteAnswer(answer.username)"><md-icon class="fa fa-trash text-white"></md-icon></button>
                             </div>
                         </div>
                     </md-card-actions>

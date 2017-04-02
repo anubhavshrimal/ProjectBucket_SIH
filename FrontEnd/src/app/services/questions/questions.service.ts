@@ -45,8 +45,8 @@ export class QuestionsService {
             .catch(this.handleError);
     }
 
-    insertAnswer(answer: string, questionId: string): Promise<Answer> {
-        const insertAnswerUrl = BackendUrlService.url + '/questions/'+questionId+'/answer';
+    insertAnswer(answer: string, questionId: string, username: string): Promise<Answer> {
+        const insertAnswerUrl = BackendUrlService.url + '/questions/'+questionId+'/answer/'+username;
         return this.http
             .post(insertAnswerUrl, JSON.stringify({"answer": answer}), {headers: this.headers})
             .toPromise()
@@ -55,10 +55,10 @@ export class QuestionsService {
     }
 
     deleteAnswer(username: string, questionId: string): Promise<string> {
-        const deleteAnswerUrl = BackendUrlService.url + '/questions/'+questionId+'/answer/delete';
+        const deleteAnswerUrl = BackendUrlService.url + '/questions/'+questionId+'/'+username+'/deleteans';
 
         return this.http
-            .post(deleteAnswerUrl, JSON.stringify({'username': username}), {headers: this.headers})
+            .post(deleteAnswerUrl, JSON.stringify({}), {headers: this.headers})
             .toPromise()
             .then(res => res.json().message)
             .catch(this.handleError);
@@ -73,7 +73,7 @@ export class QuestionsService {
     }
 
     upvote(questionId: string, username: string): Promise<Info> {
-        const upvoteUrl = '/questions/' + questionId + '/upvote/'+username;
+        const upvoteUrl = BackendUrlService.url + '/questions/' + questionId + '/upvote/'+username;
 
         return this.http
             .put(upvoteUrl, JSON.stringify({}), {headers: this.headers})
@@ -83,7 +83,7 @@ export class QuestionsService {
     }
 
     downvote(questionId: string, username: string): Promise<Info> {
-        const downvote = '/questions/' + questionId + '/downvote/'+username;
+        const downvote = BackendUrlService.url + '/questions/' + questionId + '/downvote/'+username;
 
         return this.http
             .put(downvote, JSON.stringify({}), {headers: this.headers})
