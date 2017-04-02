@@ -13,6 +13,7 @@ import { SigninComponent } from './components/signin/signin.component';
 import { QuestionViewComponent } from './components/questionView/questionview.component';
 import { InstituteHomePageComponent } from './components/institute/homePage/homePage.component';
 import { AdminPanelComponent} from './components/adminPanel/adminPanel.component';
+import { EditQuestionComponent } from './components/editQuestion/editQuestion.component';
 import { LoggedInGuard } from './logged-in.guard';
 
 const routes: Routes = [
@@ -73,7 +74,7 @@ const routes: Routes = [
   },
   {
     path: 'questions/update/:id/:title',
-    component: EditProjectComponent
+    component: EditQuestionComponent
   }
 ];
 

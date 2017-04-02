@@ -1,11 +1,11 @@
-<div class="container" *ngIf="!question && !question.title">
+<div class="container" *ngIf="!question && !question.question">
     <div class="columns centered">
         <div class="one-fifth column centered text-center">
             <md-spinner></md-spinner>
         </div>
     </div>
 </div>
-<div class="container" *ngIf="question && question.title">
+<div class="container" *ngIf="question && question.question">
     <div class="columns centered">
         <div class="four-fifths column centered">
             <div class="columns">

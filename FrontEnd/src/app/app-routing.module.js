@@ -22,6 +22,7 @@ var signin_component_1 = require('./components/signin/signin.component');
 var questionview_component_1 = require('./components/questionView/questionview.component');
 var homePage_component_1 = require('./components/institute/homePage/homePage.component');
 var adminPanel_component_1 = require('./components/adminPanel/adminPanel.component');
+var editQuestion_component_1 = require('./components/editQuestion/editQuestion.component');
 var logged_in_guard_1 = require('./logged-in.guard');
 var routes = [
     {
@@ -81,7 +82,7 @@ var routes = [
     },
     {
         path: 'questions/update/:id/:title',
-        component: editProject_component_1.EditProjectComponent
+        component: editQuestion_component_1.EditQuestionComponent
     }
 ];
 var AppRoutingModule = (function () {
