@@ -10,34 +10,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
+var _ = require('lodash');
 var questions_service_1 = require('../../../services/questions/questions.service');
 var InstituteHomePageComponent = (function () {
     function InstituteHomePageComponent(questionsService, router) {
         this.questionsService = questionsService;
         this.router = router;
-        this.checkboxes = { 1: true };
         this.labelList = [
-            {
-                id: 1,
-                name: 'All'
-            },
-            {
-                id: 2,
-                name: 'Dept. of CS'
-            },
-            {
-                id: 3,
-                name: 'Dept. of EC'
-            },
-            {
-                id: 4,
-                name: 'Dept. of EE'
-            },
-            {
-                id: 5,
-                name: 'Dept. of Civil'
-            },
+            'All', 'Dept. of CS', 'Dept. of EC', 'Dept. of EE', 'Dept. of Civil'
         ];
+        this.checkboxes = { 'All': true };
         this.questions = [
             {
                 id: "dfdhfvkdvksdb324235233",
@@ -83,6 +65,27 @@ var InstituteHomePageComponent = (function () {
     }
     InstituteHomePageComponent.prototype.ngOnInit = function () {
         // this.getForumFeed();
+        this.quesGroup = _.groupBy(this.questions, 'department');
+        this.filter(this.checkboxes);
+        this.checkboxes = {};
+    };
+    InstituteHomePageComponent.prototype.filter = function (checkboxes) {
+        var filteredQue = [];
+        var quesGroup = this.quesGroup;
+        var questions = this.questions;
+        var keys = _.keys(checkboxes);
+        _.forEach(keys, function (k) {
+            if (k == 'All' && checkboxes[k]) {
+                filteredQue = questions;
+                return false;
+            }
+            if (checkboxes[k]) {
+                if (quesGroup[k])
+                    filteredQue = _.concat(filteredQue, quesGroup[k]);
+            }
+        });
+        console.log(filteredQue);
+        this.filteredQue = filteredQue;
     };
     InstituteHomePageComponent.prototype.gotoQuestion = function (id, url_title) {
         this.router.navigate(["/questions", id, url_title]);

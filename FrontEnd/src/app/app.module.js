@@ -36,7 +36,6 @@ var cookiesService_service_1 = require('./services/cookie/cookiesService.service
 var app_routing_module_1 = require('./app-routing.module');
 var backendUrl_service_1 = require('./services/backendUrl.service');
 var tabsFilter_pipe_1 = require('./pipes/tabsFilter.pipe');
-var checkbox_pipe_1 = require('./pipes/checkbox.pipe');
 var angular2_datatable_1 = require("angular2-datatable");
 var AppModule = (function () {
     function AppModule() {
@@ -70,8 +69,7 @@ var AppModule = (function () {
                 editQuestion_component_1.EditQuestionComponent,
                 adminPanel_component_1.AdminPanelComponent,
                 adminNavbar_component_1.AdminNavbarComponent,
-                homePage_component_1.InstituteHomePageComponent,
-                checkbox_pipe_1.CheckboxFilterPipe
+                homePage_component_1.InstituteHomePageComponent
             ],
             bootstrap: [app_component_1.AppComponent],
             providers: [backendUrl_service_1.BackendUrlService,
