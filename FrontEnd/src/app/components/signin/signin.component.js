@@ -10,9 +10,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var signin_service_1 = require('../../services/signin/signin.service');
+var router_1 = require('@angular/router');
+var cookiesService_service_1 = require('../../services/cookie/cookiesService.service');
 var SigninComponent = (function () {
-    function SigninComponent(signinService) {
+    function SigninComponent(signinService, router, cookiesService) {
         this.signinService = signinService;
+        this.router = router;
+        this.cookiesService = cookiesService;
         this.licenses = [
             {
                 name: "None",
@@ -25,15 +29,28 @@ var SigninComponent = (function () {
         ];
         this.signup1 = true;
     }
-    SigninComponent.prototype.signUp = function (fullName, mailid, password) {
+    SigninComponent.prototype.signUp = function (userName, mailid, password) {
+        var _this = this;
         this.signup1 = false;
         this.signup2 = true;
-        console.log(fullName, mailid, password);
-        return this.signup1;
+        console.log(userName, mailid, password);
+        this.signinService.signup(userName, mailid, password).then(function (data) {
+            return _this.signup1;
+        });
     };
     SigninComponent.prototype.login = function (userName, password) {
-        console.log(userName, password);
-        this.signinService.login(userName, password).then(function (data) { return console.log(data); });
+        var _this = this;
+        this.signinService.login(userName, password).then(function (data) {
+            console.log(data);
+            if (data.username) {
+                _this.userName = data.username;
+                _this.isLoggedin = data.is_valid;
+                _this.sessionid = data.session_id;
+                _this.router.navigate(['/projects-feed']);
+                _this.cookiesService.setSessionId(_this.sessionid);
+                console.log(_this.sessionid);
+            }
+        });
     };
     SigninComponent = __decorate([
         core_1.Component({
@@ -42,7 +59,7 @@ var SigninComponent = (function () {
             moduleId: module.id,
             providers: [signin_service_1.SigninService]
         }), 
-        __metadata('design:paramtypes', [signin_service_1.SigninService])
+        __metadata('design:paramtypes', [signin_service_1.SigninService, router_1.Router, cookiesService_service_1.CookiesService])
     ], SigninComponent);
     return SigninComponent;
 }());

@@ -1,0 +1,69 @@
+<div class="container" *ngIf="!questions || questions.length < 1">
+    <div class="columns centered">
+        <div class="one-fifth column centered text-center">
+            <md-spinner></md-spinner>
+        </div>
+    </div>
+</div>
+<div class="container" *ngIf="questions && questions.length >= 1">
+    <div class="columns centered">
+        <h2>Recommended Problems:</h2>
+        <p class="Subhead-description">These are the problems that our algorithms found relevant for your institute on the basis of your research department and region.</p>
+        <hr>
+        <div class="one-fifth column">
+            <div class="columns"><b>Filter by departments:</b></div>
+            <div class="checkbox" *ngFor="let label of labelList">
+                <div>
+                    <label>
+                        <input type="checkbox" value="{{label}}" (change)="checkboxes[$event.target.getAttribute('value')]=$event.target.checked; filter(checkboxes)">
+                            {{ label }}
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="two-thirds column">
+            <md-grid-list cols="1" rowHeight="200px" *ngIf="filteredQue.length >= 1">
+                <md-grid-tile *ngFor="let question of filteredQue" [colspan]="1" [rowspan]="1">
+                    <md-card class="example-que-card border">
+                        <md-card-header>
+                            <div md-card-avatar></div>
+                            <img md-card-avatar class="avatars" src="app/assets/male_user.png">
+                            <md-card-title>{{question.title}}</md-card-title>
+                            <md-card-subtitle>by <a href="">{{question.username}}</a></md-card-subtitle>
+                            <div class="one-fourth column">
+                                <button md-button mdTooltip="more options" [md-menu-trigger-for]="more"><md-icon class="fa fa-caret-down"></md-icon></button>
+                            </div>
+                        </md-card-header>
+                        <md-card-content>
+                            <p>
+                                {{question.description}}
+                            </p>
+                        </md-card-content>
+                        <md-card-actions>
+                            <div class="columns centered">
+                                <div class="one-third column">
+                                    <button md-button class="full-width" mdTooltip="Upvote"><md-icon class="fa fa-thumbs-o-up"></md-icon>{{question.upvotes.length}}</button>
+                                </div>
+                                <div class="one-third column">
+                                    <button md-button class="full-width" mdTooltip="Downvote"><md-icon class="fa fa-thumbs-o-down"></md-icon>{{question.downvotes.length}}</button>
+                                </div>
+                                <div class="one-third column">
+                                    <button md-button class="full-width" mdTooltip="Add to favourites"><md-icon class="fa fa-bookmark-o"></md-icon></button>
+                                </div>
+                            </div>
+                        </md-card-actions>
+                    </md-card>
+                </md-grid-tile>
+            </md-grid-list>
+            <div class="blankslate" *ngIf="!filteredQue || filteredQue.length < 1">
+                <span class="fa fa-file-code-o fa-4x blankslate-icon"></span>
+                <h3>There are no recommended questions for this department</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<md-menu #more="mdMenu">
+    <button md-menu-item routerLink="items.link">Show fewer questions like this</button>
+    <button md-menu-item routerLink="items.link">Report</button>
+</md-menu>

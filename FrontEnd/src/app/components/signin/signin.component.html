@@ -9,7 +9,7 @@
                         <div class="columns centered">
                             <div class="four-fifths column">
                                 <md-input-container class="full-width">
-                                    <input mdInput [(ngModel)]="userName" name="username" placeholder="User Name">
+                                    <input mdInput required [(ngModel)]="userName" name="username" placeholder="User Name">
                                 </md-input-container>
                             </div>
                         </div>
@@ -63,7 +63,7 @@
 
                         <div class="columns centered">
                             <div class="one-half column centered">
-                                <button class="btn btn-primary" type="button" (click)="signUp(fullName, mailid, pass )">Next</button>
+                                <button class="btn btn-primary" type="button" (click)="signUp(fullName, mailid, password )">Next</button>
                             </div>
                         </div>
                     </form>
@@ -71,8 +71,21 @@
 
                     <div class="centered" *ngIf="signup2">
                         <br>
-                        <h3>Please check your email for confirmation link.</h3>
+                        <md-card class="example-card border">
+                            <md-card-header>
+                                <h2>Congrats!!</h2>
+                            </md-card-header>
+                                Check your mail ID to proceed
+                            <md-card-content>
+                                <h3></h3>
+                            </md-card-content>
+                        </md-card>
                     </div>
+                    <div class="centered" *ngIf="signup2Error">
+                        <br>
+                        <h3>User already exist!!</h3>
+                    </div>
+
                 </md-tab>
             </md-tab-group>
         </div>

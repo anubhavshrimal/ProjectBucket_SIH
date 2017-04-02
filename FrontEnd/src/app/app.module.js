@@ -12,6 +12,7 @@ var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var forms_1 = require('@angular/forms');
 var material_1 = require('@angular/material');
+var angular2_markdown_1 = require('angular2-markdown');
 var navbar_component_1 = require('./components/navbar/navbar.component');
 var addProject_component_1 = require('./components/addProject/addProject.component');
 var footer_component_1 = require('./components/footer/footer.component');
@@ -20,11 +21,24 @@ var projectsFeed_component_1 = require('./components/projectsFeed/projectsFeed.c
 var userProfile_component_1 = require('./components/userProfile/userProfile.component ');
 var signin_component_1 = require('./components/signin/signin.component');
 var signup_component_1 = require('./components/signup/signup.component');
+var editProfile_component_1 = require('./components/editProfile/editProfile.component');
 var forum_component_1 = require('./components/forum/forum.component');
 var projectview_component_1 = require('./components/projectView/projectview.component');
+var editProject_component_1 = require('./components/editProject/editProject.component');
+var questionview_component_1 = require('./components/questionView/questionview.component');
+var editQuestion_component_1 = require('./components/editQuestion/editQuestion.component');
+var adminPanel_component_1 = require('./components/adminPanel/adminPanel.component');
+var adminNavbar_component_1 = require('./components/adminPanel/adminNavbar/adminNavbar.component');
+var homePage_component_1 = require('./components/institute/homePage/homePage.component');
+var instituteNavbar_component_1 = require('./components/institute/navbar/instituteNavbar.component');
+var instituteProfile_component_1 = require('./components/institute/instituteProfile/instituteProfile.component');
 var app_component_1 = require('./app.component');
+var cookies_service_1 = require('angular2-cookie/services/cookies.service');
+var cookiesService_service_1 = require('./services/cookie/cookiesService.service');
 var app_routing_module_1 = require('./app-routing.module');
 var backendUrl_service_1 = require('./services/backendUrl.service');
+var tabsFilter_pipe_1 = require('./pipes/tabsFilter.pipe');
+var angular2_datatable_1 = require("angular2-datatable");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -34,7 +48,9 @@ var AppModule = (function () {
                 platform_browser_1.BrowserModule,
                 material_1.MaterialModule,
                 forms_1.FormsModule,
-                app_routing_module_1.AppRoutingModule
+                app_routing_module_1.AppRoutingModule,
+                angular2_markdown_1.MarkdownModule.forRoot(),
+                angular2_datatable_1.DataTableModule
             ],
             declarations: [
                 app_component_1.AppComponent,
@@ -45,12 +61,25 @@ var AppModule = (function () {
                 projectsFeed_component_1.ProjectsFeedComponent,
                 signin_component_1.SigninComponent,
                 signup_component_1.SignupComponent,
+                editProfile_component_1.EditProfileComponent,
                 userProfile_component_1.UserProfileComponent,
                 forum_component_1.ForumComponent,
-                projectview_component_1.ProjectViewComponent
+                projectview_component_1.ProjectViewComponent,
+                editProject_component_1.EditProjectComponent,
+                tabsFilter_pipe_1.TabsFilterPipe,
+                questionview_component_1.QuestionViewComponent,
+                editQuestion_component_1.EditQuestionComponent,
+                adminPanel_component_1.AdminPanelComponent,
+                adminNavbar_component_1.AdminNavbarComponent,
+                homePage_component_1.InstituteHomePageComponent,
+                instituteNavbar_component_1.InstituteNavbarComponent,
+                instituteProfile_component_1.InstituteProfileComponent
             ],
             bootstrap: [app_component_1.AppComponent],
-            providers: [backendUrl_service_1.BackendUrlService]
+            providers: [backendUrl_service_1.BackendUrlService,
+                cookies_service_1.CookieService,
+                cookiesService_service_1.CookiesService
+            ]
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);

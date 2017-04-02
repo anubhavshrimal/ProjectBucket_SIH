@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import {MdSnackBar} from '@angular/material';
 
 import { LicensesService } from '../../services/licenses/licenses.service';
 import { ProjectsService } from '../../services/projects/projects.service';
-import  { Project } from '../../classTemplates/project/project'
+import  { Project } from '../../classTemplates/project/project';
+import  { Response } from '../../classTemplates/assertionResponse/response';
 import * as _ from "lodash";
 
 @Component({
@@ -26,7 +29,9 @@ export class AddProjectComponent implements OnInit {
 
   constructor(
     private licensesService: LicensesService,
-    private projectsService: ProjectsService
+    private projectsService: ProjectsService,
+    private router: Router,
+    private snackBar: MdSnackBar
     ) {
     this.project = {};
     this.project.tags = [];
@@ -63,7 +68,20 @@ export class AddProjectComponent implements OnInit {
   }
 
   addProject(): void {
-    this.projectsService.create(this.project)
-      .then(project => console.log(project))
+    this.projectsService.create(this.project, "pulkit")
+      .then(project => {
+          if(project.upsertedId){
+            this.router.navigate([`/projects`, project.upsertedId, project.message]);
+          }
+          else {
+            this.openSnackBar("Project couldn't be added!", "Try Again!");
+          }
+      })
+  }
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000,
+    });
   }
 }

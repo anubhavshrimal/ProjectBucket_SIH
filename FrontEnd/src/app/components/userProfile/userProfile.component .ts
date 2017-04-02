@@ -1,18 +1,30 @@
-import { Component } from '@angular/core';
-import * as _ from "lodash";
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params }   from '@angular/router';
+import { User } from '../../classTemplates/user/user';
+import { UserProfileService } from '../../services/userProfile/userProfile.service';
+import { MdSnackBar } from '@angular/material';
+import { QuestionsService } from '../../services/questions/questions.service';
+import  { Question, Answer } from '../../classTemplates/question/question';
+import 'rxjs/add/operator/switchMap';
 
 @Component({
     selector: 'user-profile',
     templateUrl: './userProfile.component.html',
-    moduleId: module.id
+    moduleId: module.id,
+    providers: [UserProfileService, QuestionsService]
 })
-export class UserProfileComponent  {
+export class UserProfileComponent implements OnInit {
+
     licenses: Array<Object>;
     interests: Array<string>;
-    interest: string;
-    loggedin : boolean;
-    user : Object;
-    constructor() {
+    public user : User;
+    projects = [
+        {cols: 2, rows: 1},
+        {cols: 2, rows: 1},
+        {cols: 2, rows: 1},
+        {cols: 2, rows: 1},
+    ];
+    constructor(private userProfileService: UserProfileService,     private route: ActivatedRoute) {
         this.licenses = [
             {
                 name: "None",
@@ -23,35 +35,33 @@ export class UserProfileComponent  {
                 text: "MIT open source to all"
             }
         ];
-        this.interests = [];
-        this.loggedin = true;
-        this.user = {
-            'rating': 245,
-            'thumbnail': '',
-            'profile': '',
-            'bio':'i\'m Mohit, I\'m the gratest, I\'m the best, I\'m Artistxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxx xxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxx',
-
-        }
+        this.user = {};
     }
+    ngOnInit(): void {
+        this.route.params
+            .switchMap((params: Params) => this.userProfileService.userProfile(params['username']))
+            .subscribe(user => {
+                console.log("1");
+                console.log(user);
+                this.user=user;
+                console.log(user.favourite_tag);
+            });
 
-    addInterests (): void {
-        if(this.interest.length != 0){
-            for(let i in this.interests){
-                if(this.interests[i] === this.interest)
-                    return
-            }
-            this.interests.push(this.interest);
-            this.interest = "";
-        }
-    }
+        this.route.params
+            .switchMap((params: Params) => this.userProfileService.getQuestions(params['username']))
+            .subscribe(user => {
+                console.log("2");
+                console.log(user);
+            });
+        this.route.params
+            .switchMap((params: Params) => this.userProfileService.getProjects(params['username']))
+            .subscribe(user => {
+                console.log("3");
+                console.log(user);
+            });
 
-    removeInterests (interest: string): void {
-        _.remove(this.interests, function(n) {
-            return n === interest;
-        });
     }
-    login(){
-        this.loggedin = true;
-        return this.loggedin;
+    getProjects(){
+        console.log("mohit");
     }
 }

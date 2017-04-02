@@ -3,11 +3,10 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'my-app',
   template: `
-  <div *ngIf="!loggedIn">
-    <signin></signin>
-  </div>
-  <div [hidden]="!loggedIn">
-    <navbar></navbar>
+
+  <div>
+    <navbar *ngIf="userHonor=='c'"></navbar>
+    <institute-navbar *ngIf="userHonor=='i'"></institute-navbar>
     <router-outlet></router-outlet>
     <footer></footer>
   </div>
@@ -16,8 +15,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent  {
   loggedIn: Boolean;
-
+  userHonor: string;
   constructor() {
-    this.loggedIn = true;
+    this.userHonor = "c";
   }
 }

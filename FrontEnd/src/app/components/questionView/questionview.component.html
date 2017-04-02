@@ -1,0 +1,109 @@
+<div class="container" *ngIf="!question || !question.question">
+    <div class="columns centered">
+        <div class="one-fifth column centered text-center">
+            <md-spinner></md-spinner>
+        </div>
+    </div>
+</div>
+<div class="container" *ngIf="question && question.question">
+    <div class="columns centered">
+        <div class="four-fifths column centered">
+            <div class="columns">
+                <br>
+                <div class="four-fifths column">
+                    <h1>{{question.question}}</h1>
+                </div>
+                <div class="one-fifth column">
+                    <a md-raised-button md-icon-button class="bg-blue" routerLink="/questions/update/{{question.id}}/{{question.question_url}}">
+                        <md-icon class="fa fa-pencil fa-2x text-white"></md-icon>
+                    </a>
+                    <button md-raised-button md-icon-button class="bg-red"><md-icon class="fa fa-trash fa-2x text-white"></md-icon></button>
+                </div>
+            </div>
+            <div class="columns">
+                <div class="three-fourths column">
+                    <p class="Subhead-description">
+                        by <a routerLink="/user-profile/{{question.username}}">{{question.username}}</a>
+                    </p>
+                </div>
+            </div>
+            <hr>
+            <div class="columns centered">
+                <div class="column">
+                    <md-chip-list>
+                        <md-chip *ngFor="let tag of question.tags">
+                            {{tag}}
+                        </md-chip>
+                    </md-chip-list>
+                </div>
+            </div>
+            <br>
+            <div class="columns centered border bg-blue-light">
+                <div class="column">
+                    <div><b>Problem:</b></div>
+                </div>
+            </div>
+            <div class="blankslate" *ngIf="!question.description">
+                <span class="fa fa-file-code-o fa-4x blankslate-icon"></span>
+                <h3>There is no Problem desctiption</h3>
+            </div>
+            <div *ngIf="question.description">
+                <div class="border">
+                    <div class="columns centered bg-gray-light">
+                        <div class="four-fifths column centered">
+                            <markdown [data]="question.description"></markdown>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="columns">
+                <div class="one-third column">
+                    <button md-raised-button class="full-width" mdTooltip="Upvote" (click)="upvote()"><md-icon class="fa fa-thumbs-o-up"></md-icon>{{question.upvotes.length}}</button>
+                </div>
+                <div class="one-third column">
+                    <button md-raised-button class="full-width" mdTooltip="Downvote" (click)="downvote()"><md-icon class="fa fa-thumbs-o-down"></md-icon>{{question.downvotes.length}}</button>
+                </div>
+                <div class="one-third column">
+                    <button md-raised-button class="full-width" mdTooltip="Bookmark"><md-icon class="fa fa-bookmark-o"></md-icon></button>
+                </div>
+            </div>
+            <br>
+            <md-input-container class="full-width">
+                <textarea mdInput class="border border-bottom-0" placeholder="Enter your answer:" name="answer" [(ngModel)]="answer" style="height: 50px; resize: none"></textarea>
+            </md-input-container>
+            <button md-raised-button class="state state-open" [disabled]="!answer" (click)="insertAnswer()">Add answer</button>
+            <br>
+            <div *ngIf="question.answers.length > 0">
+                <strong>Answers:</strong>
+
+                <md-card class="example-comment-card border" *ngFor="let answer of question.answers">
+                    <md-card-header>
+                        <div md-card-avatar>
+                            <img md-card-avatar class="avatars" src="app/assets/male_user.png">
+                        </div>
+                        <md-card-title><a routerLink="/user-profile/{{answer.username}}">{{answer.username}}</a></md-card-title>
+                        <md-card-subtitle>{{answer.date | date:'medium'}}</md-card-subtitle>
+                    </md-card-header>
+                    <md-card-content>
+                        <p>
+                            {{answer.answer}}
+                        </p>
+                    </md-card-content>
+                    <md-card-actions align="end">
+                        <div class="columns">
+                            <div class="one-third column">
+                                <button md-raised-button class="full-width" mdTooltip="Upvote" (click)="upvoteAnswer(answer)"><md-icon class="fa fa-thumbs-o-up"></md-icon>{{answer.upvotes.length}}</button>
+                            </div>
+                            <div class="one-third column">
+                                <button md-raised-button class="full-width" mdTooltip="Downvote" (click)="downvote(answer)"><md-icon class="fa fa-thumbs-o-down"></md-icon>{{answer.downvotes.length}}</button>
+                            </div>
+                            <div class="one-third column">
+                                <button md-raised-button class="bg-red" mdTooltip="Delete" (click)="deleteAnswer(answer.username)"><md-icon class="fa fa-trash text-white"></md-icon></button>
+                            </div>
+                        </div>
+                    </md-card-actions>
+                </md-card>
+            </div>
+        </div>
+    </div>
+</div>

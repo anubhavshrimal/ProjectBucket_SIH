@@ -1,4 +1,6 @@
 import {Component} from '@angular/core';
+import { Router } from '@angular/router';
+import { User } from '../../classTemplates/user/user';
 
 @Component({
     moduleId: module.id,
@@ -10,36 +12,35 @@ export class NavbarComponent {
     notifications_menu: Array<Object>;
     trophy_menu: Array<Object>;
     extras_menu: Array<Object>;
-    user: Object;
+    user: User;
 
-    constructor() {
+    constructor(private router: Router) {
         this.user = {
             'rating': 245,
-            'thumbnail': 'app/assets/male_user.png',
-            'profile': '/user-profile'
+            'profile_url': 'app/assets/male_user.png',
         }
         
         this.add_new_menu = [
             {
-                name: 'Add new project',
+                name: 'Add new Project or Idea',
                 link: '/add-project'
             },
             {
-                name: 'Ask new question',
+                name: 'Post a new Problem',
                 link: '/add-question'
             }
         ]
 
         this.notifications_menu = [
             {
-                name: 'Sign up for SIH 2017',
+                name: 'Mohit Sharma liked you project',
                 link: '/sih2017'
             }
         ]
 
         this.trophy_menu = [
             {
-                name: 'Noobie',
+                name: 'Newbie',
                 link: '/noobielink'
             }
         ]
@@ -60,5 +61,8 @@ export class NavbarComponent {
         ]
     }
 
-
+    gotoUserProfile(): void {
+        this.user.username = 'hsharma'
+        this.router.navigate(['/user-profile', this.user.username]);
+    }
 }

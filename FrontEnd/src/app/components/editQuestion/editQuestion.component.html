@@ -1,0 +1,71 @@
+<div class="container" *ngIf="!question || !question.question">
+    <div class="columns centered">
+        <div class="one-fifth column centered text-center">
+            <md-spinner></md-spinner>
+        </div>
+    </div>
+</div>
+<div class="container" *ngIf="question && question.question">
+    <div class="columns">
+        <div class="four-fifths column centered">
+            <h2>Edit Problem:</h2>
+            <p class="Subhead-description">Make new changes to your problem statement.</p>
+            <hr>
+
+            <form>
+                <div class="columns">
+                    <div class="one-half column">
+                        <md-input-container class="full-width">
+                            <input mdInput placeholder="Problem title:" name="question" [(ngModel)]="question.question">
+                        </md-input-container>
+                    </div>
+                </div>
+
+                <div class="columns">
+                    <div class="one-half column">
+                        <md-input-container class="full-width">
+                            <input mdInput [(ngModel)]="tag" (keyup.enter)="addTag()" placeholder="Keywords:" name="tag">
+                            <md-hint align="start">Hit enter! to add keywords related to your problem. Example roadways.</md-hint>
+                        </md-input-container>
+                    </div>
+                </div>
+
+                <div class="columns">
+                    <div class="column">
+                        <md-chip-list>
+                            <md-chip *ngFor="let tag of question.tags">
+                                {{tag}}
+                                <a class="fa fa-times" (click)="removeTag(tag)"></a>
+                            </md-chip>
+                        </md-chip-list>
+                    </div>
+                </div>
+
+                <div class="columns">
+                    <div class="four-fifths column">
+                        <md-input-container class="full-width">
+                            <textarea mdInput class="border border-bottom-0" placeholder="Problem details:" name="description" [(ngModel)]="question.description"
+                                style="height: 300px; resize: none"></textarea>
+                        </md-input-container>
+                    </div>
+                </div>
+                <hr>
+                <br>
+                <div class="columns">
+                    <div class="one-half column text-center">
+                        <md-icon class="fa fa-file-image-o fa-3x"></md-icon>
+                        <br>
+                        <button md-raised-button color='primary' type="file">Upload Images</button>
+                        <p class="note">Upload images or screenshorts related to your problem. (Optional)</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="columns">
+                    <div class="one-half column centered text-center">
+                        <button class="btn btn-primary" type="button" (click)="updateQuestion()">Update Problem</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -16,19 +16,68 @@ var ProjectsService = (function () {
     function ProjectsService(http) {
         this.http = http;
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-        this.createUrl = backendUrl_service_1.BackendUrlService.url + '/projects/insert';
+        this.projectsFeedUrl = backendUrl_service_1.BackendUrlService.url + '/homepage/projects-feed/pulkit';
     }
-    ProjectsService.prototype.create = function (project) {
+    ProjectsService.prototype.create = function (project, username) {
+        var createUrl = backendUrl_service_1.BackendUrlService.url + '/projects/insert/' + username;
         return this.http
-            .post(this.createUrl, JSON.stringify(project), { headers: this.headers })
+            .post(createUrl, JSON.stringify(project), { headers: this.headers })
             .toPromise()
             .then(function (res) { return res.json(); })
+            .catch(this.handleError);
+    };
+    ProjectsService.prototype.update = function (project, username) {
+        project.username = username;
+        var updateUrl = backendUrl_service_1.BackendUrlService.url + '/projects/' + project.id;
+        return this.http
+            .put(updateUrl, JSON.stringify(project), { headers: this.headers })
+            .toPromise()
+            .then(function (res) { return res.json().message; })
             .catch(this.handleError);
     };
     ProjectsService.prototype.getProjectById = function (id) {
         var getUrl = backendUrl_service_1.BackendUrlService.url + '/projects/' + id;
         return this.http
             .get(getUrl)
+            .toPromise()
+            .then(function (res) { return res.json(); })
+            .catch(this.handleError);
+    };
+    ProjectsService.prototype.insertComment = function (comment, projectId) {
+        var insertCommentUrl = backendUrl_service_1.BackendUrlService.url + '/projects/' + projectId + '/comment';
+        return this.http
+            .post(insertCommentUrl, JSON.stringify({ "comment": comment }), { headers: this.headers })
+            .toPromise()
+            .then(function (res) { return res.json(); })
+            .catch(this.handleError);
+    };
+    ProjectsService.prototype.deleteComment = function (comment, projectId) {
+        var deleteCommentUrl = backendUrl_service_1.BackendUrlService.url + '/projects/' + projectId + '/comment/delete';
+        return this.http
+            .post(deleteCommentUrl, JSON.stringify(comment), { headers: this.headers })
+            .toPromise()
+            .then(function (res) { return res.json(); })
+            .catch(this.handleError);
+    };
+    ProjectsService.prototype.getProjectsFeed = function () {
+        return this.http
+            .get(this.projectsFeedUrl)
+            .toPromise()
+            .then(function (res) { return res.json(); })
+            .catch(this.handleError);
+    };
+    ProjectsService.prototype.upvote = function (projectId, username) {
+        var upvoteUrl = backendUrl_service_1.BackendUrlService.url + '/projects/' + projectId + '/upvote/' + username;
+        return this.http
+            .put(upvoteUrl, JSON.stringify({}), { headers: this.headers })
+            .toPromise()
+            .then(function (res) { return res.json(); })
+            .catch(this.handleError);
+    };
+    ProjectsService.prototype.downvote = function (projectId, username) {
+        var downvote = backendUrl_service_1.BackendUrlService.url + '/projects/' + projectId + '/downvote/' + username;
+        return this.http
+            .put(downvote, JSON.stringify({}), { headers: this.headers })
             .toPromise()
             .then(function (res) { return res.json(); })
             .catch(this.handleError);

@@ -1,3 +1,6 @@
+a{
+    color: inherit;
+}
 .Subhead-description {
     color: #586069;
  }
@@ -23,6 +26,10 @@
   width: 700px;
 }
 
+.example-comment-card {
+  width: 100%;
+}
+
 .avatars {
   width: 40px;
   border-radius: 50%;
@@ -36,4 +43,8 @@
     border-radius: 50%;
     width: 200px;
     height: 200px;
+}
+
+.sidebar{
+    height: 99vh;
 }

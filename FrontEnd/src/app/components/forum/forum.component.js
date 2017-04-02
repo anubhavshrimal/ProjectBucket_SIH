@@ -9,21 +9,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
+var questions_service_1 = require('../../services/questions/questions.service');
 var ForumComponent = (function () {
-    function ForumComponent() {
-        this.questions = [
-            { cols: 2, rows: 1 },
-            { cols: 2, rows: 1 },
-            { cols: 2, rows: 1 },
-            { cols: 2, rows: 1 },
-        ];
+    function ForumComponent(questionsService, router) {
+        this.questionsService = questionsService;
+        this.router = router;
+        this.questions = [];
         this.tabs = [
             {
                 tabLabel: 'Interesting',
                 tabIcon: 'fa fa-heart'
             },
             {
-                tabLabel: 'Hot',
+                tabLabel: 'Trending',
                 tabIcon: 'fa fa-fire'
             },
             {
@@ -32,6 +31,37 @@ var ForumComponent = (function () {
             }
         ];
     }
+    ForumComponent.prototype.ngOnInit = function () {
+        this.getForumFeed();
+    };
+    ForumComponent.prototype.gotoQuestion = function (id, url_title) {
+        this.router.navigate(["/questions", id, url_title]);
+    };
+    ForumComponent.prototype.gotoUserProfile = function (username) {
+        this.router.navigate(["/user-profile", username]);
+    };
+    ForumComponent.prototype.getForumFeed = function () {
+        var _this = this;
+        this.questionsService.getForumFeed()
+            .then(function (forumFeed) {
+            console.log(forumFeed);
+            _this.questions = forumFeed;
+        });
+    };
+    ForumComponent.prototype.upvote = function (project) {
+        this.questionsService.upvote(project.id, "pulkit")
+            .then(function (res) {
+            project.upvotes = res.upvotes;
+            project.downvotes = res.downvotes;
+        });
+    };
+    ForumComponent.prototype.downvote = function (project) {
+        this.questionsService.downvote(project.id, "pulkit")
+            .then(function (res) {
+            project.upvotes = res.upvotes;
+            project.downvotes = res.downvotes;
+        });
+    };
     ForumComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
@@ -39,9 +69,10 @@ var ForumComponent = (function () {
             templateUrl: './forum.component.html',
             styles: [
                 "a {\n            color: teal; \n            text-decoration:none\n        }"
-            ]
+            ],
+            providers: [questions_service_1.QuestionsService]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [questions_service_1.QuestionsService, router_1.Router])
     ], ForumComponent);
     return ForumComponent;
 }());

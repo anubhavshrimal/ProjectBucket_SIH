@@ -9,9 +9,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var _ = require("lodash");
+var router_1 = require('@angular/router');
+var userProfile_service_1 = require('../../services/userProfile/userProfile.service');
+var questions_service_1 = require('../../services/questions/questions.service');
+require('rxjs/add/operator/switchMap');
 var UserProfileComponent = (function () {
-    function UserProfileComponent() {
+    function UserProfileComponent(userProfileService, route) {
+        this.userProfileService = userProfileService;
+        this.route = route;
+        this.projects = [
+            { cols: 2, rows: 1 },
+            { cols: 2, rows: 1 },
+            { cols: 2, rows: 1 },
+            { cols: 2, rows: 1 },
+        ];
         this.licenses = [
             {
                 name: "None",
@@ -22,41 +33,42 @@ var UserProfileComponent = (function () {
                 text: "MIT open source to all"
             }
         ];
-        this.interests = [];
-        this.loggedin = true;
-        this.user = {
-            'rating': 245,
-            'thumbnail': '',
-            'profile': '',
-            'bio': 'i\'m Mohit, I\'m the gratest, I\'m the best, I\'m Artistxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxx xxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxx',
-        };
+        this.user = {};
     }
-    UserProfileComponent.prototype.addInterests = function () {
-        if (this.interest.length != 0) {
-            for (var i in this.interests) {
-                if (this.interests[i] === this.interest)
-                    return;
-            }
-            this.interests.push(this.interest);
-            this.interest = "";
-        }
-    };
-    UserProfileComponent.prototype.removeInterests = function (interest) {
-        _.remove(this.interests, function (n) {
-            return n === interest;
+    UserProfileComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.route.params
+            .switchMap(function (params) { return _this.userProfileService.userProfile(params['username']); })
+            .subscribe(function (user) {
+            console.log("1");
+            console.log(user);
+            _this.user = user;
+            console.log(user.favourite_tag);
+        });
+        this.route.params
+            .switchMap(function (params) { return _this.userProfileService.getQuestions(params['username']); })
+            .subscribe(function (user) {
+            console.log("2");
+            console.log(user);
+        });
+        this.route.params
+            .switchMap(function (params) { return _this.userProfileService.getProjects(params['username']); })
+            .subscribe(function (user) {
+            console.log("3");
+            console.log(user);
         });
     };
-    UserProfileComponent.prototype.login = function () {
-        this.loggedin = true;
-        return this.loggedin;
+    UserProfileComponent.prototype.getProjects = function () {
+        console.log("mohit");
     };
     UserProfileComponent = __decorate([
         core_1.Component({
             selector: 'user-profile',
             templateUrl: './userProfile.component.html',
-            moduleId: module.id
+            moduleId: module.id,
+            providers: [userProfile_service_1.UserProfileService, questions_service_1.QuestionsService]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [userProfile_service_1.UserProfileService, router_1.ActivatedRoute])
     ], UserProfileComponent);
     return UserProfileComponent;
 }());

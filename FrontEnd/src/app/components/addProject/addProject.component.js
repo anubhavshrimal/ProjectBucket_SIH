@@ -9,13 +9,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
+var material_1 = require('@angular/material');
 var licenses_service_1 = require('../../services/licenses/licenses.service');
 var projects_service_1 = require('../../services/projects/projects.service');
 var _ = require("lodash");
 var AddProjectComponent = (function () {
-    function AddProjectComponent(licensesService, projectsService) {
+    function AddProjectComponent(licensesService, projectsService, router, snackBar) {
         this.licensesService = licensesService;
         this.projectsService = projectsService;
+        this.router = router;
+        this.snackBar = snackBar;
         this.project = {};
         this.project.tags = [];
         this.project._private = "no";
@@ -54,8 +58,21 @@ var AddProjectComponent = (function () {
         console.log(this.readmeChecked);
     };
     AddProjectComponent.prototype.addProject = function () {
-        this.projectsService.create(this.project)
-            .then(function (project) { return console.log(project); });
+        var _this = this;
+        this.projectsService.create(this.project, "pulkit")
+            .then(function (project) {
+            if (project.upsertedId) {
+                _this.router.navigate(["/projects", project.upsertedId, project.message]);
+            }
+            else {
+                _this.openSnackBar("Project couldn't be added!", "Try Again!");
+            }
+        });
+    };
+    AddProjectComponent.prototype.openSnackBar = function (message, action) {
+        this.snackBar.open(message, action, {
+            duration: 2000,
+        });
     };
     AddProjectComponent = __decorate([
         core_1.Component({
@@ -64,7 +81,7 @@ var AddProjectComponent = (function () {
             moduleId: module.id,
             providers: [licenses_service_1.LicensesService, projects_service_1.ProjectsService]
         }), 
-        __metadata('design:paramtypes', [licenses_service_1.LicensesService, projects_service_1.ProjectsService])
+        __metadata('design:paramtypes', [licenses_service_1.LicensesService, projects_service_1.ProjectsService, router_1.Router, material_1.MdSnackBar])
     ], AddProjectComponent);
     return AddProjectComponent;
 }());

@@ -1,19 +1,19 @@
-export class Info {
-    upvotes?: Array<string>;
-    downvotes?:  Array<string>;
-    viewby?:  Array<string>;
-};
-
 export class Comment {
     username?: string;
     comment?: string;
-    date?: Date;
+    date?: number;
 };
+
+export class Info {
+    upvotes?: Array<string>;
+    downvotes?:  Array<string>;
+}
 
 export class Project {
     username?: string;
+    id?: string;
     title?: string;
-    date?: Date;
+    date?: number;
     description?: string;
     project_url?: string;
     tags?: Array<string>;
@@ -24,6 +24,11 @@ export class Project {
     video_url?: Array<string>;
     zip_file?: Array<string>;
     images?: Array<string>;
-    info?: Info;
+    upvotes?: Array<string>;
+    downvotes?:  Array<string>;
     comments?: Array<Comment>;
+    project_link?: string;
+    url_title?: string;
+    state?: string;
+    city?: string;
 }
