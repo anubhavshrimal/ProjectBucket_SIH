@@ -70,6 +70,10 @@ const routes: Routes = [
   {
     path: 'admin-panel',
     component: AdminPanelComponent
+  },
+  {
+    path: 'questions/update/:id/:title',
+    component: EditProjectComponent
   }
 ];
 

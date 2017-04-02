@@ -78,6 +78,10 @@ var routes = [
     {
         path: 'admin-panel',
         component: adminPanel_component_1.AdminPanelComponent
+    },
+    {
+        path: 'questions/update/:id/:title',
+        component: editProject_component_1.EditProjectComponent
     }
 ];
 var AppRoutingModule = (function () {
