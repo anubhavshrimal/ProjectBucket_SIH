@@ -3,6 +3,7 @@ import { Headers, Http } from '@angular/http';
 import { BackendUrlService } from '../backendUrl.service';
 import { User } from '../../classTemplates/user/user';
 import { Question } from '../../classTemplates/question/question';
+import { Project } from '../../classTemplates/project/project';
 import {CookiesService} from '../cookie/cookiesService.service'
 import 'rxjs/add/operator/toPromise';
 import {promise} from "selenium-webdriver";
@@ -32,7 +33,7 @@ export class UserProfileService {
             .then(res => res.json() as User)
             .catch(this.handleError);
     }
-    getProjects(username: string):Promise<Question>{
+    getProjects(username: string):Promise<Project>{
     this.url = BackendUrlService.url + '/projects/user/'+username;
     return this.http
         .get(this.url, {headers: this.headers})

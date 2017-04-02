@@ -50,14 +50,12 @@ var UserProfileComponent = (function () {
             .subscribe(function (user) {
             console.log("2");
             console.log(user);
-            _this.user = user;
         });
         this.route.params
             .switchMap(function (params) { return _this.userProfileService.getProjects(params['username']); })
             .subscribe(function (user) {
             console.log("3");
             console.log(user);
-            _this.user = user;
         });
     };
     UserProfileComponent.prototype.getProjects = function () {

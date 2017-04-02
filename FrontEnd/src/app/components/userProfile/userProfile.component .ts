@@ -52,14 +52,12 @@ export class UserProfileComponent implements OnInit {
             .subscribe(user => {
                 console.log("2");
                 console.log(user);
-                this.user=user;
             });
         this.route.params
             .switchMap((params: Params) => this.userProfileService.getProjects(params['username']))
             .subscribe(user => {
                 console.log("3");
                 console.log(user);
-                this.user=user;
             });
 
     }
