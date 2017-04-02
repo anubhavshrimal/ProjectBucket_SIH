@@ -33,6 +33,7 @@ var UserProfileComponent = (function () {
                 text: "MIT open source to all"
             }
         ];
+        this.user = {};
         /*this.user.name="";
         this.user.bio = "";
         this.user.favourite_tags = "";
@@ -57,6 +58,7 @@ var UserProfileComponent = (function () {
             .switchMap(function (params) { return _this.userProfileService.userProfile(params['username']); })
             .subscribe(function (user) {
             console.log(user);
+            _this.user = user;
         });
     };
     UserProfileComponent = __decorate([

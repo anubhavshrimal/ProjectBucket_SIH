@@ -10,7 +10,7 @@ import { AddProjectComponent } from './components/addProject/addProject.componen
 import { FooterComponent } from './components/footer/footer.component';
 import { AddQuestionComponent } from './components/addQuestion/addQuestion.component';
 import { ProjectsFeedComponent } from './components/projectsFeed/projectsFeed.component';
-import {UserProfileComponent } from './components/userProfile/userProfile.component ';
+import {UserProfileComponent} from './components/userProfile/userProfile.component ';
 import { SigninComponent } from './components/signin/signin.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { EditProfileComponent } from './components/editProfile/editProfile.component';
