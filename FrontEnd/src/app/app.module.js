@@ -31,6 +31,7 @@ var adminPanel_component_1 = require('./components/adminPanel/adminPanel.compone
 var adminNavbar_component_1 = require('./components/adminPanel/adminNavbar/adminNavbar.component');
 var homePage_component_1 = require('./components/institute/homePage/homePage.component');
 var instituteNavbar_component_1 = require('./components/institute/navbar/instituteNavbar.component');
+var instituteProfile_component_1 = require('./components/institute/instituteProfile/instituteProfile.component');
 var app_component_1 = require('./app.component');
 var cookies_service_1 = require('angular2-cookie/services/cookies.service');
 var cookiesService_service_1 = require('./services/cookie/cookiesService.service');
@@ -71,7 +72,8 @@ var AppModule = (function () {
                 adminPanel_component_1.AdminPanelComponent,
                 adminNavbar_component_1.AdminNavbarComponent,
                 homePage_component_1.InstituteHomePageComponent,
-                instituteNavbar_component_1.InstituteNavbarComponent
+                instituteNavbar_component_1.InstituteNavbarComponent,
+                instituteProfile_component_1.InstituteProfileComponent
             ],
             bootstrap: [app_component_1.AppComponent],
             providers: [backendUrl_service_1.BackendUrlService,

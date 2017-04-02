@@ -23,6 +23,8 @@ import { AdminPanelComponent } from './components/adminPanel/adminPanel.componen
 import { AdminNavbarComponent} from './components/adminPanel/adminNavbar/adminNavbar.component';
 import { InstituteHomePageComponent } from './components/institute/homePage/homePage.component';
 import { InstituteNavbarComponent } from './components/institute/navbar/instituteNavbar.component';
+import { InstituteProfileComponent} from './components/institute/instituteProfile/instituteProfile.component';
+
 import { AppComponent }  from './app.component';
 
 import { CookieService } from 'angular2-cookie/services/cookies.service';
@@ -63,7 +65,8 @@ import { DataTableModule } from "angular2-datatable";
       AdminPanelComponent,
       AdminNavbarComponent,
       InstituteHomePageComponent,
-      InstituteNavbarComponent
+      InstituteNavbarComponent,
+      InstituteProfileComponent
     ],
   bootstrap:    [ AppComponent ],
   providers: [ BackendUrlService,

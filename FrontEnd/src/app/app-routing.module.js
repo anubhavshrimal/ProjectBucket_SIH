@@ -21,6 +21,7 @@ var projectview_component_1 = require('./components/projectView/projectview.comp
 var signin_component_1 = require('./components/signin/signin.component');
 var questionview_component_1 = require('./components/questionView/questionview.component');
 var homePage_component_1 = require('./components/institute/homePage/homePage.component');
+var instituteProfile_component_1 = require('./components/institute/instituteProfile/instituteProfile.component');
 var adminPanel_component_1 = require('./components/adminPanel/adminPanel.component');
 var editQuestion_component_1 = require('./components/editQuestion/editQuestion.component');
 var logged_in_guard_1 = require('./logged-in.guard');
@@ -83,6 +84,10 @@ var routes = [
     {
         path: 'questions/update/:id/:title',
         component: editQuestion_component_1.EditQuestionComponent
+    },
+    {
+        path: 'institute-profile/:name',
+        component: instituteProfile_component_1.InstituteProfileComponent
     }
 ];
 var AppRoutingModule = (function () {

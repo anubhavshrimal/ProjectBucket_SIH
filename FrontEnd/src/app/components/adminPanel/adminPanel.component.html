@@ -22,25 +22,25 @@
                     <thead>
                     <tr>
                         <th style="width: 30%">
-                            <mfDefaultSorter by="university">University</mfDefaultSorter>
+                            <mfDefaultSorter by="university_name">University</mfDefaultSorter>
                         </th>
                         <th style="width: 40%">
-                            <mfDefaultSorter by="Institute">College</mfDefaultSorter>
+                            <mfDefaultSorter by="college_name">College</mfDefaultSorter>
                         </th>
                         <th style="width: 20%">
                             <mfDefaultSorter by="rating">College Rating</mfDefaultSorter>
                         </th>
                         <th style="width: 20%">
-                            <mfDefaultSorter by="solutions">No. of solutions</mfDefaultSorter>
+                            <mfDefaultSorter by="question_s">No. of solutions</mfDefaultSorter>
                         </th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr *ngFor="let item of mf.data">
-                        <td class="text-center">{{item.university}}</td>
-                        <td class="text-center">{{item.Institute}}</td>
+                        <td class="text-center">{{item.university_name}}</td>
+                        <td class="text-center">{{item.college_name}}</td>
                         <td class="text-center">{{item.rating}}</td>
-                        <td class="text-center">{{item.solutions}}</td>
+                        <td class="text-center">{{item.question_s}}</td>
                     </tr>
                     </tbody>
                    <!-- <tfoot>
