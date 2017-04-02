@@ -21,7 +21,7 @@ export class User {
     rating?: number;
 	contributing?: Array<string>;
     contact_information?: ContactInfo;
-    favourite_tags?: Array<string>;
+    favourite_tag?: Array<string>;
     following?: Array<string>;
     followers?: Array<string>;
     question_ask?: Array<string>;

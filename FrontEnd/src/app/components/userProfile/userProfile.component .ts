@@ -36,30 +36,31 @@ export class UserProfileComponent implements OnInit {
             }
         ];
         this.user = {};
-        /*this.user.name="";
-        this.user.bio = "";
-        this.user.favourite_tags = "";
-        this.user.followers = "";
-        this.user.following = "";
-        this.user.rating = "";
-        this.user.username = "";
-        this.user.password = "";
-        this.user.gender = "";
-        this.user.date = "";
-        this.user.category = "";
-        this.user.institute = "";
-        this.user.contributing = "";
-        this.user.contact_information = "";
-        this.user.question_answer = "";
-        this.user.question_ask = "";*/
     }
     ngOnInit(): void {
-        console.log("ddddddddddddddddd");
         this.route.params
             .switchMap((params: Params) => this.userProfileService.userProfile(params['username']))
             .subscribe(user => {
                 console.log(user);
                 this.user=user;
+                console.log(user.favourite_tag);
             });
+
+        this.route.params
+            .switchMap((params: Params) => this.userProfileService.getQuestions(params['username']))
+            .subscribe(user => {
+                console.log(user);
+                this.user=user;
+            });
+        this.route.params
+            .switchMap((params: Params) => this.userProfileService.getProjects(params['username']))
+            .subscribe(user => {
+                console.log(user);
+                this.user=user;
+            });
+
+    }
+    getProjects(){
+        console.log("mohit");
     }
 }

@@ -2,8 +2,10 @@ import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import { BackendUrlService } from '../backendUrl.service';
 import { User } from '../../classTemplates/user/user';
+import { Question } from '../../classTemplates/question/question';
 import {CookiesService} from '../cookie/cookiesService.service'
 import 'rxjs/add/operator/toPromise';
+import {promise} from "selenium-webdriver";
 
 @Injectable()
 export class UserProfileService {
@@ -22,8 +24,16 @@ export class UserProfileService {
             .then(res => res.json() as User)
             .catch(this.handleError);
     }
+    getQuestions(username: string):Promise<Question>{
+        this.url = BackendUrlService.url + '/user/profile/'+username;
+        return this.http
+            .get(this.url, {headers: this.headers})
+            .toPromise()
+            .then(res => res.json() as User)
+            .catch(this.handleError);
+    }
     private handleError(error: any): Promise<any> {
         console.error('An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);
     }
-}
+}``
