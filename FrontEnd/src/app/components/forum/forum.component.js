@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
+var _ = require('lodash');
 var questions_service_1 = require('../../services/questions/questions.service');
 var ForumComponent = (function () {
     function ForumComponent(questionsService, router) {
@@ -35,6 +36,8 @@ var ForumComponent = (function () {
         this.getForumFeed();
     };
     ForumComponent.prototype.gotoQuestion = function (id, url_title) {
+        url_title = _.replace(url_title, ' ', '-');
+        console.log(id, url_title);
         this.router.navigate(["/questions", id, url_title]);
     };
     ForumComponent.prototype.gotoUserProfile = function (username) {

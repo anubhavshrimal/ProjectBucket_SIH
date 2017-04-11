@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import * as _ from 'lodash';
 
 import { QuestionsService } from '../../services/questions/questions.service';
 import { Question } from '../../classTemplates/question/question';
@@ -46,6 +47,8 @@ export class ForumComponent implements OnInit {
     }
 
     gotoQuestion(id: string, url_title: string): void {
+        url_title = _.replace(url_title, ' ', '-');
+        console.log(id,url_title)
         this.router.navigate([`/questions`, id, url_title]);
     }
 
