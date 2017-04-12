@@ -12,8 +12,7 @@ var core_1 = require('@angular/core');
 var BackendUrlService = (function () {
     function BackendUrlService() {
     }
-    // public static url = 'http://codeist.mi43ujva9v.us-west-2.elasticbeanstalk.com/webapi';
-    BackendUrlService.url = 'http://192.168.137.1:9080/Codeist/webapi';
+    BackendUrlService.url = 'http://codeist.mi43ujva9v.us-west-2.elasticbeanstalk.com/webapi';
     BackendUrlService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])
