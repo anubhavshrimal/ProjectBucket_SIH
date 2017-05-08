@@ -21,9 +21,11 @@ import { SigninComponent } from './components/signin/signin.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { AdminNavbarComponent } from './components/admin-panel/admin-navbar/admin-navbar.component';
-import { HomePageComponent } from './components/institute/home-page/home-page.component';
 import { InstituteProfileComponent } from './components/institute/institute-profile/institute-profile.component';
 import { InstituteNavbarComponent } from './components/institute/institute-navbar/institute-navbar.component';
+import { CheckboxPipe } from './pipes/checkbox.pipe';
+import { TabsFilterPipe } from './pipes/tabs-filter.pipe';
+import { InstituteHomePageComponent } from './components/institute/institute-home-page/institute-home-page.component';
 
 @NgModule({
   declarations: [
@@ -45,9 +47,11 @@ import { InstituteNavbarComponent } from './components/institute/institute-navba
     SignupComponent,
     UserProfileComponent,
     AdminNavbarComponent,
-    HomePageComponent,
     InstituteProfileComponent,
-    InstituteNavbarComponent
+    InstituteNavbarComponent,
+    CheckboxPipe,
+    TabsFilterPipe,
+    InstituteHomePageComponent
   ],
   imports: [
     BrowserModule,
