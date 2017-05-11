@@ -1,0 +1,50 @@
+a{
+    color: inherit;
+}
+.Subhead-description {
+    color: #586069;
+ }
+
+ .full-width {
+  width: 100%;
+}
+
+.note {
+  color: #586069;
+  font-size: 75%;
+}
+
+.fill-remaining-space {
+  flex: 1 1 auto;
+}
+
+.example-card {
+  width: 400px;
+}
+
+.example-que-card {
+  width: 700px;
+}
+
+.example-comment-card {
+  width: 100%;
+}
+
+.avatars {
+  width: 40px;
+  border-radius: 50%;
+}
+
+.Anchored:hover{
+    cursor: pointer;
+}
+
+.ProfilePicture{
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+}
+
+.sidebar{
+    height: 99vh;
+}
