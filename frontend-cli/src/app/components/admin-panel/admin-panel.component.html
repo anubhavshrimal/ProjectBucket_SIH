@@ -1,3 +1,131 @@
-<p>
-  admin-panel works!
-</p>
+<md-toolbar color="accent">
+    <h2 class="text-center centered">Welcome Admin</h2>
+</md-toolbar>
+<div class="container full-width">
+    <div class="columns full-width">
+        <div class="one-fifth column full-width">
+            <md-card style="border-left: none">
+            <div class="sidebar" #sidebar>
+                <br>
+                <button md-button class="full-width" (click)="toggel()">Top Colleges</button>
+                <button md-button class="full-width" (click)="addInstitute()">Add Institute</button>
+            </div>
+            </md-card>
+        </div>
+        <div class="four-fifths column" *ngIf="topuser">
+            <md-card>
+                <md-card-header>
+                    <h2 class="text-center">Top User</h2>
+                </md-card-header>
+                <hr>
+                <table  [mfData]="data" #mf="mfDataTable" [mfRowsOnPage]="50">
+                    <thead>
+                    <tr>
+                        <th style="width: 30%">
+                            <mfDefaultSorter by="university_name">University</mfDefaultSorter>
+                        </th>
+                        <th style="width: 40%">
+                            <mfDefaultSorter by="college_name">College</mfDefaultSorter>
+                        </th>
+                        <th style="width: 20%">
+                            <mfDefaultSorter by="rating">College Rating</mfDefaultSorter>
+                        </th>
+                        <th style="width: 20%">
+                            <mfDefaultSorter by="question_s">No. of solutions</mfDefaultSorter>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let item of mf.data">
+                        <td class="text-center">{{item.university_name}}</td>
+                        <td class="text-center">{{item.college_name}}</td>
+                        <td class="text-center">{{item.rating}}</td>
+                        <td class="text-center">{{item.question_s}}</td>
+                    </tr>
+                    </tbody>
+                   <!-- <tfoot>
+                    <tr>
+                        <td colspan="4">
+                            <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+                        </td>
+                    </tr>
+                    </tfoot>-->
+                </table>
+            </md-card>
+        </div>
+
+        <div class="four-fifths column" *ngIf="register">
+            <br>
+            <div class="columns centered">
+                <div class="four-fifths column">
+                    <md-input-container class="full-width">
+                        <input mdInput [(ngModel)]="username" name="username" placeholder="User Name">
+                    </md-input-container>
+                </div>
+            </div>
+            <div class="columns centered">
+                <div class="four-fifths column">
+                    <md-input-container class="full-width">
+                        <input mdInput [(ngModel)]="password" type="password" name="password" placeholder="Password">
+                    </md-input-container>
+                </div>
+            </div>
+            <div class="columns centered">
+                <div class="four-fifths column">
+                    <md-input-container class="full-width">
+                        <input mdInput [(ngModel)]="university" name="university" placeholder="University">
+                    </md-input-container>
+                </div>
+            </div>
+            <div class="columns centered">
+                <div class="four-fifths column">
+                    <md-input-container class="full-width">
+                        <input mdInput [(ngModel)]="college" name="college" placeholder="College">
+                    </md-input-container>
+                </div>
+            </div>
+            <div class="columns centered">
+                <div class="four-fifths column">
+                    <md-input-container class="full-width">
+                        <input mdInput [(ngModel)]="state" name="state" placeholder="State">
+                    </md-input-container>
+                </div>
+            </div>
+            <div class="columns centered">
+                <div class="four-fifths column">
+                    <md-input-container class="full-width">
+                        <input mdInput [(ngModel)]="city" name="city" placeholder="City">
+                    </md-input-container>
+                </div>
+            </div>
+            <div class="columns centered">
+                <div class="four-fifths column">
+                    <md-input-container class="full-width">
+                        <input mdInput [(ngModel)]="emailid" name="emailid" placeholder="email Id">
+                    </md-input-container>
+                </div>
+            </div>
+            <div class="columns centered">
+                <div class="four-fifths column">
+                    <md-input-container class="full-width">
+                        <input mdInput [(ngModel)]="mobile" name="mobile" placeholder="Mobile">
+                    </md-input-container>
+                </div>
+            </div>
+            <div class="columns centered">
+                <div class="four-fifths column">
+                    <md-input-container class="full-width">
+                        <input mdInput [(ngModel)]="address" name="address" placeholder="Address">
+                    </md-input-container>
+                </div>
+            </div>
+
+
+            <div class="columns centered">
+                <div class="one-half column centered">
+                    <button class="btn btn-primary" type="button" (click)="addInstitute(username, password, university, college, state, city, email, mobile, address)">Add Institute</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
