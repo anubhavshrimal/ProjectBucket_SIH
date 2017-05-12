@@ -1,3 +1,138 @@
-<p>
-  add-project works!
-</p>
+<div class="container">
+    <div class="columns">
+        <div class="four-fifths column centered">
+        <h2>Add a new project or idea</h2>
+            <p class="Subhead-description">It will contain all the files of your project or idea such as zip file, screenshorts and README.md</p>
+        <hr>
+
+        <form>
+            <div class="columns">
+                <div class="one-half column">
+                    <md-input-container class="full-width">
+                        <input mdInput placeholder="Project name:" name="title" [(ngModel)]="project.title">
+                        <md-hint align="start">Project name should be unique</md-hint>
+                    </md-input-container>
+                </div>
+            </div>
+            
+            <div class="columns">
+                <div class="one-half column">
+                    <md-input-container class="full-width">
+                        <input mdInput [(ngModel)]="tag" (keyup.enter)="addTag()" placeholder="Keywords:" name="tag">
+                        <md-hint align="start">Hit enter! to add keywords related to your project. Example java, mysql.</md-hint>
+                    </md-input-container>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <md-chip-list>
+                        <md-chip *ngFor="let tag of project.tags">
+                            {{tag}}
+                            <a class="fa fa-times" (click)="removeTag(tag)"></a>
+                        </md-chip>
+                    </md-chip-list>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="one-half column">
+                    <md-input-container class="full-width">
+                        <input mdInput placeholder="City:" name="city" [(ngModel)]="project.city">
+                        <md-hint align="start">Mention city where your project is being used or can be used.</md-hint>
+                    </md-input-container>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="one-half column">
+                    <md-input-container class="full-width">
+                        <input mdInput placeholder="State:" name="state" [(ngModel)]="project.state">
+                        <md-hint align="start">Mention state where your project is being used or can be used.</md-hint>
+                    </md-input-container>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="four-fifths column">
+                    <md-input-container class="full-width">
+                        <input mdInput placeholder="Description:" name="description" [(ngModel)]="project.description">
+                        <md-hint align="start">Add one or two lines about your awesome project idea</md-hint>
+                    </md-input-container>
+                </div>
+            </div>
+            <hr>
+
+            <div class="columns">
+                <div class="one-half column">
+                    <md-radio-group [(ngModel)]="project._private" name="_private">
+                        <md-radio-button value="no">
+                            <md-icon class="fa fa-unlock fa-2x" aria-hidden="true"></md-icon>
+                            <label>Public</label>
+                            <p class="note">Anyone can see this project. You choose who can contribute.</p>
+                        </md-radio-button>
+                        <br>
+                        <md-radio-button value="yes">
+                            <md-icon class="fa fa-lock fa-2x" aria-hidden="true"></md-icon>
+                            <label>Private</label>
+                            <p class="note">You choose who can see and contribute to this project.</p>
+                        </md-radio-button>
+                    </md-radio-group>
+                </div>
+            </div>
+            <hr>
+
+            <div class="columns">
+                <div class="one-half column">
+                    <md-checkbox (change)="initialiseReadme()">
+                        <label>Initialise the project with a README file</label>
+                    </md-checkbox>
+                    <p class="note mx-5">Enter details of your project in this file</p>
+                </div>
+                <div class="one-half column">
+                    <label>Add a license:</label>
+                    <md-select name="license" class="full-width" [(ngModel)]="project.license">
+                        <md-option *ngFor="let license of licenses" [value]="license">
+                        {{license}}
+                        </md-option>
+                    </md-select>  
+                    <p class="note">Confused which one to choose? <a href="https://choosealicense.com/" target="blank">click here!</a></p>
+                </div>
+            </div>
+            <hr>
+            
+            <div class="columns">
+                <div class="one-half column text-center">
+                    <md-input-container class="full-width">
+                        <input mdInput placeholder="Project link:" name="project_link" [(ngModel)]="project.project_link">
+                        <md-hint align="start">
+                            Add a link related to your project. Example Github or Google Drive. (Optional)
+                        </md-hint>
+                    </md-input-container>
+                </div>
+            </div>
+            <br>
+            <div class="columns">
+                <div class="one-half column text-center">
+                    <md-icon class="fa fa-file-archive-o fa-3x"></md-icon>
+                    <br>
+                    <button md-raised-button color='primary' type="file">Upload Zip file</button>
+                    <p class="note">Upload your project files in zip format. (Optional)</p>
+                </div>
+                <div class="one-half column text-center">
+                    <md-icon class="fa fa-file-image-o fa-3x"></md-icon>
+                    <br>
+                    <button md-raised-button color='primary' type="file">Upload Images</button>
+                    <p class="note">Upload images or screenshorts of your project or idea. (Optional)</p>
+                </div>
+            </div>
+            <hr>
+            <div class="columns">
+                <div class="one-half column centered text-center">
+                    <button class="btn btn-primary" type="button" (click)="addProject()">Create Project</button>
+                </div>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>

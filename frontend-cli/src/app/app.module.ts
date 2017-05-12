@@ -31,7 +31,6 @@ import { SigninComponent } from './components/signin/signin.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
-import { CheckboxPipe } from './pipes/checkbox.pipe';
 import { TabsFilterPipe } from './pipes/tabs-filter.pipe';
 import { BackendUrlService } from './services/backend-url.service';
 
@@ -59,7 +58,6 @@ import { AppRoutingModule } from './app-routing.module';
     AdminNavbarComponent,
     InstituteProfileComponent,
     InstituteNavbarComponent,
-    CheckboxPipe,
     TabsFilterPipe,
     InstituteHomePageComponent
   ],
