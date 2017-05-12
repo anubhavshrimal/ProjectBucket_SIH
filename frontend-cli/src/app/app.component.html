@@ -1,3 +1,6 @@
-<h1>
-  {{title}}
-</h1>
+<div>
+  <navbar *ngIf="userHonor=='c'"></navbar>
+  <institute-navbar *ngIf="userHonor=='i'"></institute-navbar>
+  <router-outlet></router-outlet>
+  <footer></footer>
+</div>

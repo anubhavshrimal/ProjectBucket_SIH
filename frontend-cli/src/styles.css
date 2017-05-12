@@ -1,3 +1,12 @@
+@import '~https://fonts.googleapis.com/icon?family=Material+Icons';
+@import '~https://fonts.googleapis.com/icon?family=Roboto';
+@import '~font-awesome/css/font-awesome.min.css';
+@import '~primer-css/build/build.css';
+
+body {
+ font-family: Roboto;
+ }
+
 a{
     color: inherit;
 }
