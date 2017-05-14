@@ -23,8 +23,9 @@ export class User {
     contact_information?: ContactInfo;
     favourite_tag?: Array<string>;
     following?: Array<string>;
-    followers?: Array<string>;
+    follower?: Array<string>;
     question_ask?: Array<string>;
     question_answer?: Array<string>;
     profile_url?: string;
+    project_id?: Array<string>;
 }

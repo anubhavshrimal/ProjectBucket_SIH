@@ -11,7 +11,7 @@ import 'rxjs/add/operator/switchMap';
     selector: 'institute-profile',
     templateUrl: './instituteProfile.component.html',
     moduleId: module.id,
-    providers: [InstituteProfileComponent, InstituteProfileService]
+    providers: [InstituteProfileService]
 })
 export class InstituteProfileComponent implements OnInit {
 

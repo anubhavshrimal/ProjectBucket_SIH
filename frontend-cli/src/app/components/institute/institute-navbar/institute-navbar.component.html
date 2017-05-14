@@ -1,3 +1,68 @@
-<p>
-  institute-navbar works!
-</p>
+<md-toolbar color="accent">
+    <span class="fill-remaining-space"></span>
+
+    <!--TODO: Project Logo comes here-->
+    <button md-button routerLink="/" mdTooltip="Home">
+        <img class="avatars" src="app/assets/project_bucket_logo.png">
+    </button>
+
+    <!--search  bar-->
+    <md-input-container floatPlaceholder="never" style="width: 25%">
+        <input mdInput placeholder="Search Projects, Users, Tags...">
+    </md-input-container>
+    <button md-icon-button mdTooltip="Search"><md-icon>search</md-icon></button>
+
+    <!--Forum, Users, Projects link-->
+    <div>
+        <button md-button routerLink="/home" mdTooltip="Recommended Problems">Problems</button>
+        <!--<button md-button routerLink="/top-users" mdTooltip="Top rated users">Users</button>-->
+        <!--<button md-button routerLink="/projects-feed" mdTooltip="Projects feed">Projects</button>-->
+    </div>
+
+    <!--fill out the empty space to right align remaining data-->
+    <span class="fill-remaining-space"></span>
+
+    <!--add new project or question dropdown-->
+    <button md-icon-button [md-menu-trigger-for]="addnewmenu" mdTooltip="Add new..">
+        <md-icon class="fa fa-plus" aria-hidden="true">
+            <md-icon class="fa fa-caret-down" aria-hidden="true"></md-icon>
+        </md-icon>
+    </button>
+
+    <!--profile avatar of the institute and institute rating-->
+    <!--TODO: make links dynamic-->
+    <a md-button (click)="gotoInstituteProfile()" mdTooltip="View profile and more">
+        <img class="avatar avatar-small" style="background-color: white;" src="{{institute.profile_url}}" width="32" height="32">
+        <span class="counter">{{institute.rating}}</span>
+    </a>
+
+    <!--notifications, trophy dropdown and main settings drop down-->
+    <button md-icon-button [md-menu-trigger-for]="notificationsmenu" mdTooltip="Notifications">
+        <md-icon class="fa fa-bell" aria-hidden="true"></md-icon>
+    </button>
+    <button md-icon-button [md-menu-trigger-for]="trophymenu" mdTooltip="Achievements">
+        <md-icon class="fa fa-trophy" aria-hidden="true"></md-icon>
+    </button>
+    <button md-icon-button [md-menu-trigger-for]="extras" mdTooltip="More">
+        <md-icon class="fa fa-caret-down" aria-hidden="true"></md-icon>
+    </button>
+    <span class="fill-remaining-space"></span>
+
+</md-toolbar>
+
+<!--dropdown menus for add new, notifications, trophy button and down arrow-->
+<md-menu #addnewmenu="mdMenu">
+    <button md-menu-item *ngFor='let items of add_new_menu' routerLink="{{items.link}}">{{items.name}}</button>
+</md-menu>
+
+<md-menu #notificationsmenu="mdMenu">
+    <button md-menu-item *ngFor='let items of notifications_menu' routerLink="{{items.link}}">{{items.name}}</button>
+</md-menu>
+
+<md-menu #trophymenu="mdMenu">
+    <button md-menu-item *ngFor='let items of trophy_menu' routerLink="{{items.link}}">{{items.name}}</button>
+</md-menu>
+
+<md-menu #extras="mdMenu">
+    <button md-menu-item *ngFor='let items of extras_menu' routerLink="{{items.link}}">{{items.name}}</button>
+</md-menu>

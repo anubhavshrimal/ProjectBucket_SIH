@@ -1,3 +1,93 @@
-<p>
-  signin works!
-</p>
+<br>
+<div class="container">
+  <div class="columns">
+    <div class="one-half column centered">
+      <md-tab-group>
+        <md-tab label="Log in">
+          <form>
+            <br>
+            <div class="columns centered">
+              <div class="four-fifths column">
+                <md-input-container class="full-width">
+                  <input mdInput required [(ngModel)]="userName" name="username" placeholder="User Name">
+                </md-input-container>
+              </div>
+            </div>
+            <div class="columns centered">
+              <div class="four-fifths column">
+                <md-input-container class="full-width">
+                  <input mdInput [(ngModel)]="password" name="password" placeholder="Password" type="password">
+                </md-input-container>
+              </div>
+            </div>
+            <div class="columns centered">
+              <div class="one-half column">
+                <md-checkbox>
+                  <label>Remember Me</label>
+                </md-checkbox>
+              </div>
+            </div>
+            <div class="columns centered">
+              <div class="one-half column centered">
+                <button class="btn btn-primary" type="button" (click)="login(userName,password)">Login</button>
+              </div>
+            </div>
+          </form>
+        </md-tab>
+
+
+        <md-tab label="Sign up">
+          <form class="centered" *ngIf="signup1">
+            <br>
+            <div class="columns centered">
+              <div class="four-fifths column ">
+                <md-input-container class="full-width">
+                  <input mdInput [(ngModel)]="fullName" name="fullName" placeholder="Full Name">
+                </md-input-container>
+              </div>
+            </div>
+            <div class="columns centered">
+              <div class="four-fifths column ">
+                <md-input-container class="full-width">
+                  <input mdInput [(ngModel)]="mailid" name="mailid" placeholder="Mail ID">
+                </md-input-container>
+              </div>
+            </div>
+            <div class="columns centered">
+              <div class="four-fifths column">
+                <md-input-container class="full-width">
+                  <input mdInput [(ngModel)]="password" name="password" placeholder="Password" type="password">
+                </md-input-container>
+              </div>
+            </div>
+
+            <div class="columns centered">
+              <div class="one-half column centered">
+                <button class="btn btn-primary" type="button" (click)="signUp(fullName, mailid, password )">Next</button>
+              </div>
+            </div>
+          </form>
+
+
+          <div class="centered" *ngIf="signup2">
+            <br>
+            <md-card class="example-card border">
+              <md-card-header>
+                <h2>Congrats!!</h2>
+              </md-card-header>
+              Check your mail ID to proceed
+              <md-card-content>
+                <h3></h3>
+              </md-card-content>
+            </md-card>
+          </div>
+          <div class="centered" *ngIf="signup2Error">
+            <br>
+            <h3>User already exist!!</h3>
+          </div>
+
+        </md-tab>
+      </md-tab-group>
+    </div>
+  </div>
+</div>
