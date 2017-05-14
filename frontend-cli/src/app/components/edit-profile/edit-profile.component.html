@@ -12,33 +12,33 @@
         </div>
 
         <div class="two-thirds column">
-            <form class="centered" >
+            <form class="centered">
                 <br>
                 <div class="columns centered">
                     <div class="four-fifths column ">
                         <md-input-container class="full-width">
-                            <input mdInput [(ngModel)]="fullName" name="fullName" placeholder="Full Name">
+                            <input mdInput [(ngModel)]="user.name" name="name" placeholder="Full Name">
                         </md-input-container>
                     </div>
                 </div>
                 <div class="columns centered">
                     <div class="four-fifths column ">
                         <md-input-container class="full-width">
-                            <input mdInput [(ngModel)]="mailid" name="mailid" placeholder="Mail ID">
+                            <input mdInput [(ngModel)]="user.contact_information.email_id" name="email_id" placeholder="Mail ID" email>
                         </md-input-container>
                     </div>
                 </div>
                 <div class="columns centered">
                     <div class="four-fifths column">
                         <md-input-container class="full-width">
-                            <input mdInput [(ngModel)]="password" name="password" placeholder="Password" type="password">
+                            <input mdInput [(ngModel)]="user.password" name="password" placeholder="Password" type="password">
                         </md-input-container>
                     </div>
                 </div>
                 <div class="columns centered">
                     <div class="four-fifths column ">
                         <md-input-container class="full-width">
-                            <input mdInput [(ngModel)]="userName" name="userName" placeholder="User Name">
+                            <input mdInput [(ngModel)]="user.username" name="username" placeholder="User Name">
                             <md-hint align="start">User name must be unique</md-hint>
                         </md-input-container>
                     </div>
@@ -63,9 +63,9 @@
                 <br>
                 <div class="columns centered">
                     <div class="four-fifths column ">
-                        <md-select [(ngModel)]="category" (change)="category1()" name="category" placeholder="Category">
-                            <md-option *ngFor="let category of categories" [value]="category">
-                                {{ category}}
+                        <md-select [(ngModel)]="user.category" (change)="category1()" name="category" placeholder="Category">
+                            <md-option *ngFor="let category of categories" [value]="user.category">
+                                {{category}}
                             </md-option>
                         </md-select>
                     </div>
@@ -81,24 +81,24 @@
                 <div class="columns centered">
                     <div class="four-fifths column">
                         <md-input-container class="full-width">
-                            <input mdInput [(ngModel)]="mobileNo" name="mobileNo" placeholder="Mobile">
+                            <input mdInput [(ngModel)]="user.contact_information.phone_no" name="phone_no" placeholder="Mobile Number">
                         </md-input-container>
                     </div>
                 </div>
                 <div class="columns centered">
                     <div class="two-thirds column">
                         <md-input-container class="full-width">
-                            <input mdInput [(ngModel)]="interest" (keyup.enter)="addInterests()" placeholder="Interests" name="interest">
-                            <md-hint align="start">Add the topics you are interested in. Ex. android, angular.js</md-hint>
+                            <input mdInput [(ngModel)]="interest" (keyup.enter)="addInterest()" placeholder="Interests" name="interest">
+                            <md-hint align="start">Hit enter! to add the topics you are interested in. Ex. android, angular.js</md-hint>
                         </md-input-container>
                     </div>
                 </div>
-                <div class="centered columns">
+                <div class="columns centered">
                     <div class="column">
                         <md-chip-list>
-                            <md-chip *ngFor="let interest of interests">
+                            <md-chip *ngFor="let interest of user.favourite_tag">
                                 {{interest}}
-                                <a class="fa fa-times" (click)="removeInterests(interest)"></a>
+                                <a class="fa fa-times" (click)="removeInterest(interest)"></a>
                             </md-chip>
                         </md-chip-list>
                     </div>
@@ -106,28 +106,28 @@
                 <div class="columns centered">
                     <div class="four-fifths column">
                         <md-input-container class="full-width">
-                            <input mdInput [(ngModel)]="country" name="country" placeholder="Country">
+                            <input mdInput [(ngModel)]="user.contact_information.country" name="country" placeholder="Country">
                         </md-input-container>
                     </div>
                 </div>
                 <div class="columns centered">
                     <div class="four-fifths column">
                         <md-input-container class="full-width">
-                            <input mdInput [(ngModel)]="state" name="state" placeholder="State">
+                            <input mdInput [(ngModel)]="user.contact_information.state" name="state" placeholder="State">
                         </md-input-container>
                     </div>
                 </div>
                 <div class="columns centered">
                     <div class="four-fifths column">
                         <md-input-container class="full-width">
-                            <input mdInput [(ngModel)]="city" name="city" placeholder="City">
+                            <input mdInput [(ngModel)]="user.contact_information.city" name="city" placeholder="City">
                         </md-input-container>
                     </div>
                 </div>
                 <div class="columns centered">
                     <div class="four-fifths column">
                         <md-input-container class="full-width">
-                            <input mdInput [(ngModel)]="bio" name="bio" placeholder="Bio">
+                            <input mdInput [(ngModel)]="user.bio" name="bio" placeholder="Bio">
                         </md-input-container>
                     </div>
                 </div>

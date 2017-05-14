@@ -10,7 +10,6 @@ export class Answer {
 export class Question {
     id?: string;
     username?: string;
-    title?: string;
     description?: string;
     tags?: Array<string>;
     date?: number;
@@ -24,4 +23,5 @@ export class Question {
     department?: string;
     state?: string;
     city?: string;
+    question?: string;
 }

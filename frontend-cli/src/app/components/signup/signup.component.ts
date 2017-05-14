@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SignupService } from '../../services/signup/signup.service';
+import { User } from '../../classTemplates/user/user';
 import * as _ from "lodash";
 
 @Component({
@@ -19,6 +20,7 @@ export class SignupComponent {
   category: string;
   label: string;
   categorySelected: boolean;
+  user: User;
 
   constructor(private signupService: SignupService) {
     this.licenses = [
@@ -68,8 +70,8 @@ export class SignupComponent {
     }
     this.categorySelected = true;
   }
-  signUp(username: string, category: string, label: string, mobileNo: string, interest: string, country: string, state: string, city: string, bio: string) {
-    console.log(username, category, label, mobileNo, this.interests, country, state, city, bio);
-    this.signupService.signup().then(data => console.log(data));
+  signUp() {
+    console.log(this.user);
+    this.signupService.signup(this.user).then(data => console.log(data));
   }
 }

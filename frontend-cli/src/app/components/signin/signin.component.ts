@@ -18,6 +18,8 @@ export class SigninComponent {
     userName : string;
     isLoggedin: string;
     sessionid: string;
+    password: string;
+    signup2Error: boolean;
 
     constructor(private signinService : SigninService, private router: Router, private cookiesService: CookiesService) {
         this.licenses = [
@@ -38,7 +40,7 @@ export class SigninComponent {
         this.signup2 = true;
         console.log(userName, mailid, password);
         this.signinService.signup(userName, mailid, password).then(data=>{
-
+            this.signup2Error = false;
             return this.signup1;
         })
 

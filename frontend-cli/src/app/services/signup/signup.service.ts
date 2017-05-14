@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import { BackendUrlService } from '../backend-url.service';
+import { User } from '../../classTemplates/user/user';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
@@ -11,9 +12,9 @@ export class SignupService {
     constructor(private http: Http){
 
     }
-    signup(/*arguements*/): Promise<Object[]> {
+    signup(user: User): Promise<Object[]> {
         return this.http
-            .post(this.url,JSON.stringify({/*JSON Data*/}),{headers: this.headers})
+            .post(this.url,JSON.stringify({user}),{headers: this.headers})
             .toPromise()
             .then(res => res.json()[0])
             .catch(this.handleError);
