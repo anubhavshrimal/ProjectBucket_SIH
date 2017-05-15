@@ -95,7 +95,7 @@
                 <button md-raised-button class="full-width" mdTooltip="Upvote" (click)="upvoteAnswer(answer)"><md-icon class="fa fa-thumbs-o-up"></md-icon>{{answer.upvotes.length}}</button>
               </div>
               <div class="one-third column">
-                <button md-raised-button class="full-width" mdTooltip="Downvote" (click)="downvote(answer)"><md-icon class="fa fa-thumbs-o-down"></md-icon>{{answer.downvotes.length}}</button>
+                <button md-raised-button class="full-width" mdTooltip="Downvote" (click)="downvoteAnswer(answer)"><md-icon class="fa fa-thumbs-o-down"></md-icon>{{answer.downvotes.length}}</button>
               </div>
               <div class="one-third column">
                 <button md-raised-button class="bg-red" mdTooltip="Delete" (click)="deleteAnswer(answer.username)"><md-icon class="fa fa-trash text-white"></md-icon></button>

@@ -28,9 +28,9 @@
                     <span><a (click)="openContibutors()" *ngIf="project.contributors">Contributed by: {{project.contributors.length}}</a></span>
                 </div>
                 <div class="one-fourth column">
-                    <button md-raised-button class="state state-merged text-white" type="file">
-                        <md-icon class="fa fa-download"></md-icon>Download Zip file
-                    </button>
+                    <button md-raised-button class="state state-merged" type="file">
+                    <md-icon class="fa fa-download"></md-icon>Download Zip file
+                </button>
                 </div>
             </div>
             <hr>
@@ -45,7 +45,7 @@
                 </div>
             </div>
             <br>
-            <md-grid-list cols="2" rowHeight="200px">
+            <md-grid-list cols="2" rowHeight="200px" *ngIf="project.images.length">
                 <md-grid-tile *ngFor="let image of project.images" [colspan]="1" [rowspan]="1">
                     <div class="border text-center" style="width: 400px; height: 200px">
                         <img src="{{image}}" width="300px" height="200px">
@@ -102,7 +102,7 @@
                 <md-card class="example-comment-card border" *ngFor="let comment of project.comments">
                     <md-card-header>
                         <div md-card-avatar>
-                            <img md-card-avatar class="avatars" src="app/assets/male_user.png">
+                            <img md-card-avatar class="avatars" src="assets/male_user.png">
                         </div>
                         <md-card-title><a routerLink="/user-profile/{{comment.username}}">{{comment.username}}</a></md-card-title>
                         <md-card-subtitle>{{comment.date | date:'medium'}}</md-card-subtitle>

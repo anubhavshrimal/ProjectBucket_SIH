@@ -25,7 +25,7 @@ export class QuestionsService {
             .catch(this.handleError);
     }
 
-    update(question: Question): Promise<string> {
+    update(question: Question): Promise<Object> {
         question.username = "pulkit";
         const updateUrl = BackendUrlService.url + '/questions/'+question.id+'/updatequestion';
         return this.http

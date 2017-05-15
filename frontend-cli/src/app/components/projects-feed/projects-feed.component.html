@@ -18,7 +18,7 @@
               <md-card class="example-card border">
                 <md-card-header>
                   <div md-card-avatar (click)="gotoUserProfile(project.username)">
-                    <img md-card-avatar class="avatars" src="app/assets/male_user.png">
+                    <img md-card-avatar class="avatars" src="assets/male_user.png">
                   </div>
                   <md-card-title (click)="gotoProject(project.id, project.url_title)">{{project.title}}</md-card-title>
                   <md-card-subtitle>by <a routerLink="/user-profile/{{project.username}}">{{project.username}}</a></md-card-subtitle>
@@ -26,7 +26,7 @@
                     <button md-button mdTooltip="more options" [md-menu-trigger-for]="more"><md-icon class="fa fa-caret-down"></md-icon></button>
                   </div>
                 </md-card-header>
-                <img md-card-image (click)="gotoProject(project.id, project.url_title)" src="app/assets/project_bucket_hq_logo.jpg" width="280px"
+                <img md-card-image (click)="gotoProject(project.id, project.url_title)" src="assets/project_bucket_hq_logo.jpg" width="280px"
                   height="280px">
                 <md-card-content (click)="gotoProject(project.id, project.title)">
                   <p>
