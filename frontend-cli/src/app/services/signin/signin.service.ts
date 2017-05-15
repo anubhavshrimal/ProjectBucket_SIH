@@ -11,7 +11,7 @@ export class SigninService {
     isLoggedIn: boolean = false;
     redirectUrl: string;
     constructor(private http: Http){
-        this.isLoggedIn = !!localStorage.getItem('auth_token');
+        this.isLoggedIn = !localStorage.getItem('auth_token');
     }
     login(userName: string, password: string): Promise<User> {
         return this.http
