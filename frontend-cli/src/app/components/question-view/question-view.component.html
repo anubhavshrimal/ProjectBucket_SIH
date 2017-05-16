@@ -79,7 +79,7 @@
         <md-card class="example-comment-card border" *ngFor="let answer of question.answers">
           <md-card-header>
             <div md-card-avatar>
-              <img md-card-avatar class="avatars" src="app/assets/male_user.png">
+              <img md-card-avatar class="avatars" src="assets/male_user.png">
             </div>
             <md-card-title><a routerLink="/user-profile/{{answer.username}}">{{answer.username}}</a></md-card-title>
             <md-card-subtitle>{{answer.date | date:'medium'}}</md-card-subtitle>

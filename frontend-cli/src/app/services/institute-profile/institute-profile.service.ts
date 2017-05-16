@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import { BackendUrlService } from '../backend-url.service';
+import { SessionService } from '../session.service';
 import { User } from '../../classTemplates/user/user';
 import { Question } from '../../classTemplates/question/question';
 import { Project } from '../../classTemplates/project/project';
-import {CookiesService} from '../cookie/cookie.service';
 import 'rxjs/add/operator/toPromise';
 import {promise} from "selenium-webdriver";
 
@@ -13,11 +13,9 @@ export class InstituteProfileService {
     private url : string;
     private headers = new Headers({'Content-Type': 'application/json'});
 
-    constructor(private http: Http, private cookiesService: CookiesService){
-        this.headers.append('auth_token', this.cookiesService.getSessionId());
-        console.log(this.headers);
-    }
+    constructor(private http: Http, private sessionService: SessionService){}
     instituteProfile(username:string): Promise<User> {
+        this.headers.append('sess', this.sessionService.getSession()); 
         this.url = BackendUrlService.url + '/adminpanel/'+username;
         return this.http
             .get(this.url, {headers: this.headers})
@@ -26,6 +24,7 @@ export class InstituteProfileService {
             .catch(this.handleError);
     }
     getQuestions(username: string):Promise<Question>{
+        this.headers.append('sess', this.sessionService.getSession()); 
         this.url = BackendUrlService.url + '/institute'+username;
         return this.http
             .get(this.url, {headers: this.headers})
@@ -34,6 +33,7 @@ export class InstituteProfileService {
             .catch(this.handleError);
     }
     getProjects(username: string):Promise<Project>{
+        this.headers.append('sess', this.sessionService.getSession()); 
         this.url = BackendUrlService.url + '/projects/user/'+username;
         return this.http
             .get(this.url, {headers: this.headers})

@@ -15,14 +15,13 @@ import { QuestionViewComponent } from './components/question-view/question-view.
 import { InstituteHomePageComponent } from './components/institute/institute-home-page/institute-home-page.component';
 import { InstituteProfileComponent } from './components/institute/institute-profile/institute-profile.component';
 import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
-import { LoggedInGuard } from './logged-in.guard';
+
 
 const routes: Routes = [
   {
     path: '',
     redirectTo: '/login',
-    pathMatch: 'full',
-    canActivate: [LoggedInGuard]
+    pathMatch: 'full'
   },
   {
     path: 'home',

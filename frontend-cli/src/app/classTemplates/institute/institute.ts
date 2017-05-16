@@ -23,4 +23,5 @@ export class Institute {
     // ];
     // "question_asked"?: [];
     "rating"?: number;
+    "loggedin"?: boolean;
 }
