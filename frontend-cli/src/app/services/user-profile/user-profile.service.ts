@@ -4,7 +4,6 @@ import { BackendUrlService } from '../backend-url.service';
 import { User } from '../../classTemplates/user/user';
 import { Question } from '../../classTemplates/question/question';
 import { Project } from '../../classTemplates/project/project';
-import {CookiesService} from '../cookie/cookie.service'
 import 'rxjs/add/operator/toPromise';
 import {promise} from "selenium-webdriver";
 
@@ -13,9 +12,7 @@ export class UserProfileService {
     private url : string;
     private headers = new Headers({'Content-Type': 'application/json'});
 
-    constructor(private http: Http, private cookiesService: CookiesService){
-        this.headers.append('auth_token', this.cookiesService.getSessionId());
-        console.log(this.headers);
+    constructor(private http: Http){
     }
     userProfile(username:string): Promise<User> {
     this.url = BackendUrlService.url + '/user/profile/'+username;

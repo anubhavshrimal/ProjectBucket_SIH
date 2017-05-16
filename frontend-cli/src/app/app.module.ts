@@ -33,8 +33,6 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 
 import { TabsFilterPipe } from './pipes/tabs-filter.pipe';
 import { BackendUrlService } from './services/backend-url.service';
-import { CookieService } from 'angular2-cookie/services/cookies.service';
-import { CookiesService } from './services/cookie/cookie.service';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -74,9 +72,7 @@ import { AppRoutingModule } from './app-routing.module';
     AppRoutingModule
   ],
   providers: [
-    BackendUrlService,
-    CookieService,
-    CookiesService],
+    BackendUrlService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
