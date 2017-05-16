@@ -11,12 +11,12 @@ import { SessionService } from '../session.service';
 @Injectable()
 export class ProjectsService {
     private headers = new Headers({'Content-Type': 'application/json'});
-    private projectsFeedUrl = BackendUrlService.url + '/homepage/projects-feed/pulkit';
+    private projectsFeedUrl = BackendUrlService.url + '/homepage/projects-feed';
     constructor(private http: Http, private sessionService: SessionService) {}
 
-    create(project: Project, username: string): Promise<Response> {
+    create(project: Project): Promise<Response> {
         this.headers.append('sess', this.sessionService.getSession()); 
-        const createUrl = BackendUrlService.url + '/projects/insert/'+username;
+        const createUrl = BackendUrlService.url + '/projects/insert';
         return this.http
             .post(createUrl, JSON.stringify(project), {headers: this.headers})
             .toPromise()
@@ -24,14 +24,13 @@ export class ProjectsService {
             .catch(this.handleError);
     }
 
-    update(project: Project, username: string): Promise<string> {
+    update(project: Project): Promise<Response> {
         this.headers.append('sess', this.sessionService.getSession()); 
-        project.username = username;
         const updateUrl = BackendUrlService.url + '/projects/'+project.id;
         return this.http
             .put(updateUrl, JSON.stringify(project), {headers: this.headers})
             .toPromise()
-            .then(res => res.json().message)
+            .then(res => res.json() as Response)
             .catch(this.handleError);
     }
 
@@ -67,18 +66,18 @@ export class ProjectsService {
             .catch(this.handleError);
     }
 
-    getProjectsFeed(): Promise<Array<Project>> {
+    getProjectsFeed() {
         this.headers.append('sess', this.sessionService.getSession()); 
         return this.http
             .get(this.projectsFeedUrl)
             .toPromise()
-            .then(res => res.json() as Array<Project>)
+            .then(res => res.json())
             .catch(this.handleError);
     }
 
-    upvote(projectId: string, username: string): Promise<Info> {
+    upvote(projectId: string): Promise<Info> {
         this.headers.append('sess', this.sessionService.getSession()); 
-        const upvoteUrl = BackendUrlService.url + '/projects/' + projectId + '/upvote/'+username;
+        const upvoteUrl = BackendUrlService.url + '/projects/' + projectId + '/upvote';
         return this.http
             .put(upvoteUrl, JSON.stringify({}), {headers: this.headers})
             .toPromise()
@@ -86,9 +85,9 @@ export class ProjectsService {
             .catch(this.handleError);
     }
 
-    downvote(projectId: string, username: string): Promise<Info> {
+    downvote(projectId: string): Promise<Info> {
         this.headers.append('sess', this.sessionService.getSession()); 
-        const downvote =  BackendUrlService.url + '/projects/' + projectId + '/downvote/'+username;
+        const downvote =  BackendUrlService.url + '/projects/' + projectId + '/downvote';
 
         return this.http
             .put(downvote, JSON.stringify({}), {headers: this.headers})

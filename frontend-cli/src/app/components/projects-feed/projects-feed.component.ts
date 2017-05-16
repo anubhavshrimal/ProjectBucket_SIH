@@ -5,17 +5,17 @@ import { ProjectsService } from '../../services/projects/projects.service';
 import { Project } from '../../classTemplates/project/project'
 
 @Component({
-  selector: 'projects-feed',
-  templateUrl: './projects-feed.component.html',
-  styles: [
+    selector: 'projects-feed',
+    templateUrl: './projects-feed.component.html',
+    styles: [
         `a {
             color: teal; 
             text-decoration:none
         }`
     ],
-  providers: [ ProjectsService ]
+    providers: [ProjectsService]
 })
-export class ProjectsFeedComponent implements OnInit{
+export class ProjectsFeedComponent implements OnInit {
     tabs: Array<Object>;
     projects: Array<Project>;
 
@@ -26,7 +26,7 @@ export class ProjectsFeedComponent implements OnInit{
     constructor(
         private projectsService: ProjectsService,
         private router: Router
-        ) {
+    ) {
         this.projects = [];
         this.tabs = [
             {
@@ -56,23 +56,38 @@ export class ProjectsFeedComponent implements OnInit{
         this.projectsService.getProjectsFeed()
             .then(projectsFeed => {
                 console.log(projectsFeed)
-                this.projects = projectsFeed
+                if (projectsFeed.loggedin) {
+                    this.projects = projectsFeed.data;
+                }
+                else {
+                    this.router.navigate([`/login`]);
+                }
             })
     }
 
     upvote(project: Project): void {
-        this.projectsService.upvote(project.id, "hsharma")
+        this.projectsService.upvote(project.id)
             .then(res => {
-                project.upvotes = res.upvotes
-                project.downvotes = res.downvotes
+                if (res.loggedin) {
+                    project.upvotes = res.upvotes
+                    project.downvotes = res.downvotes
+                }
+                else {
+                    this.router.navigate([`/login`]);
+                }
             });
     }
 
     downvote(project: Project): void {
-        this.projectsService.downvote(project.id, "hsharma")
+        this.projectsService.downvote(project.id)
             .then(res => {
-                project.upvotes = res.upvotes
-                project.downvotes = res.downvotes
+                if (res.loggedin) {
+                    project.upvotes = res.upvotes
+                    project.downvotes = res.downvotes
+                }
+                else {
+                    this.router.navigate([`/login`]);
+                }
             });
     }
 }

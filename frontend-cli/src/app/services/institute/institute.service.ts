@@ -12,26 +12,26 @@ import  { Response } from '../../classTemplates/assertionResponse/response';
 @Injectable()
 export class InstituteQuestionsService {
     private headers = new Headers({'Content-Type': 'application/json'});
-    private forumUrl = BackendUrlService.url + '/institute/question/mit';
-    private departmentsUrl = BackendUrlService.url + '/institute/mit/departments';
+    private forumUrl = BackendUrlService.url + '/institute/question';
+    private departmentsUrl = BackendUrlService.url + '/institute/departments';
 
     constructor(private http: Http, private sessionService: SessionService) {}
 
-    getForumFeed(): Promise<Array<Question>> {
+    getForumFeed() {
         this.headers.append('sess', this.sessionService.getSession()); 
         return this.http
             .get(this.forumUrl)
             .toPromise()
-            .then(res => res.json() as Array<Question>)
+            .then(res => res.json())
             .catch(this.handleError);
     }
 
-    getDepartments(): Promise<Array<string>> {
+    getDepartments() {
         this.headers.append('sess', this.sessionService.getSession()); 
         return this.http
             .get(this.departmentsUrl)
             .toPromise()
-            .then(res => res.json().departments as Array<string>)
+            .then(res => res.json().departments)
             .catch(this.handleError);
     }
     

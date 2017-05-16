@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {MdSnackBar} from '@angular/material';
+import { MdSnackBar } from '@angular/material';
 
 import { LicensesService } from '../../services/licenses/licenses.service';
 import { ProjectsService } from '../../services/projects/projects.service';
-import  { Project } from '../../classTemplates/project/project';
-import  { Response } from '../../classTemplates/assertionResponse/response';
+import { Project } from '../../classTemplates/project/project';
+import { Response } from '../../classTemplates/assertionResponse/response';
 import * as _ from "lodash";
 
 @Component({
@@ -15,12 +15,12 @@ import * as _ from "lodash";
   providers: [LicensesService, ProjectsService]
 })
 export class AddProjectComponent implements OnInit {
-licenses: Object[];
+  licenses: Object[];
   tag: string;
   project: Project;
   readmeChecked: Boolean;
 
-  ngOnInit() : void {
+  ngOnInit(): void {
     this.licensesService.getLicensesTitles().then(licenses => {
       this.licenses = licenses;
       this.project.license = String(this.licenses[0]);
@@ -32,7 +32,7 @@ licenses: Object[];
     private projectsService: ProjectsService,
     private router: Router,
     private snackBar: MdSnackBar
-    ) {
+  ) {
     this.project = {};
     this.project.tags = [];
     this.project._private = "no";
@@ -42,11 +42,11 @@ licenses: Object[];
     this.readmeChecked = false;
   }
 
-  addTag (): void {
-    if(this.tag.length != 0){
+  addTag(): void {
+    if (this.tag.length != 0) {
       this.tag = this.tag.toLowerCase();
-      for(let i in this.project.tags){
-        if(this.project.tags[i] === this.tag)
+      for (let i in this.project.tags) {
+        if (this.project.tags[i] === this.tag)
           return
       }
       this.project.tags.push(this.tag);
@@ -54,8 +54,8 @@ licenses: Object[];
     }
   }
 
-  removeTag (tag: string): void {
-    _.remove(this.project.tags, function(n) {
+  removeTag(tag: string): void {
+    _.remove(this.project.tags, function (n) {
       return n === tag;
     });
   }
@@ -68,14 +68,19 @@ licenses: Object[];
   }
 
   addProject(): void {
-    this.projectsService.create(this.project, "pulkit")
-      .then(project => {
-          if(project.upsertedId){
-            this.router.navigate([`/projects`, project.upsertedId, project.message]);
+    this.projectsService.create(this.project)
+      .then(response => {
+        if (response.loggedin) {
+          if (response.upsertedId) {
+            this.router.navigate([`/projects`, response.upsertedId, response.message]);
           }
           else {
             this.openSnackBar("Project couldn't be added!", "Try Again!");
           }
+        }
+        else{
+          this.router.navigate([`/login`]);
+        }
       })
   }
 
