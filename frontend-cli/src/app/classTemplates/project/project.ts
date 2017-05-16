@@ -31,4 +31,5 @@ export class Project {
     url_title?: string;
     state?: string;
     city?: string;
+    loggedin?: boolean;
 }

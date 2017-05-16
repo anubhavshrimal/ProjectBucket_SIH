@@ -6,14 +6,16 @@ import 'rxjs/add/operator/toPromise';
 import { Project, Comment, Info } from '../../classTemplates/project/project';
 import  { Response } from '../../classTemplates/assertionResponse/response';
 import { BackendUrlService } from '../backend-url.service';
+import { SessionService } from '../session.service';
 
 @Injectable()
 export class ProjectsService {
     private headers = new Headers({'Content-Type': 'application/json'});
     private projectsFeedUrl = BackendUrlService.url + '/homepage/projects-feed/pulkit';
-    constructor(private http: Http) {}
+    constructor(private http: Http, private sessionService: SessionService) {}
 
     create(project: Project, username: string): Promise<Response> {
+        this.headers.append('sess', this.sessionService.getSession()); 
         const createUrl = BackendUrlService.url + '/projects/insert/'+username;
         return this.http
             .post(createUrl, JSON.stringify(project), {headers: this.headers})
@@ -23,6 +25,7 @@ export class ProjectsService {
     }
 
     update(project: Project, username: string): Promise<string> {
+        this.headers.append('sess', this.sessionService.getSession()); 
         project.username = username;
         const updateUrl = BackendUrlService.url + '/projects/'+project.id;
         return this.http
@@ -33,6 +36,7 @@ export class ProjectsService {
     }
 
     getProjectById(id: string): Promise<Project> {
+        this.headers.append('sess', this.sessionService.getSession()); 
         const getUrl = BackendUrlService.url + '/projects/'+id;
 
         return this.http
@@ -43,6 +47,7 @@ export class ProjectsService {
     }
 
     insertComment(comment: string, projectId: string): Promise<Comment> {
+        this.headers.append('sess', this.sessionService.getSession()); 
         const insertCommentUrl = BackendUrlService.url + '/projects/'+projectId+'/comment';
         return this.http
             .post(insertCommentUrl, JSON.stringify({"comment": comment}), {headers: this.headers})
@@ -52,6 +57,7 @@ export class ProjectsService {
     }
 
     deleteComment(comment: Comment, projectId: string): Promise<Comment> {
+        this.headers.append('sess', this.sessionService.getSession()); 
         const deleteCommentUrl = BackendUrlService.url + '/projects/'+projectId+'/comment/delete';
 
         return this.http
@@ -62,6 +68,7 @@ export class ProjectsService {
     }
 
     getProjectsFeed(): Promise<Array<Project>> {
+        this.headers.append('sess', this.sessionService.getSession()); 
         return this.http
             .get(this.projectsFeedUrl)
             .toPromise()
@@ -70,6 +77,7 @@ export class ProjectsService {
     }
 
     upvote(projectId: string, username: string): Promise<Info> {
+        this.headers.append('sess', this.sessionService.getSession()); 
         const upvoteUrl = BackendUrlService.url + '/projects/' + projectId + '/upvote/'+username;
         return this.http
             .put(upvoteUrl, JSON.stringify({}), {headers: this.headers})
@@ -79,6 +87,7 @@ export class ProjectsService {
     }
 
     downvote(projectId: string, username: string): Promise<Info> {
+        this.headers.append('sess', this.sessionService.getSession()); 
         const downvote =  BackendUrlService.url + '/projects/' + projectId + '/downvote/'+username;
 
         return this.http

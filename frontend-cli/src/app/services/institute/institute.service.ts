@@ -6,6 +6,7 @@ import 'rxjs/add/operator/toPromise';
 import { Question, Answer } from '../../classTemplates/question/question';
 import { Info } from '../../classTemplates/project/project';
 import { BackendUrlService } from '../backend-url.service';
+import { SessionService } from '../session.service';
 import  { Response } from '../../classTemplates/assertionResponse/response';
 
 @Injectable()
@@ -14,11 +15,10 @@ export class InstituteQuestionsService {
     private forumUrl = BackendUrlService.url + '/institute/question/mit';
     private departmentsUrl = BackendUrlService.url + '/institute/mit/departments';
 
-    constructor(
-        private http: Http,
-        ) {}
+    constructor(private http: Http, private sessionService: SessionService) {}
 
     getForumFeed(): Promise<Array<Question>> {
+        this.headers.append('sess', this.sessionService.getSession()); 
         return this.http
             .get(this.forumUrl)
             .toPromise()
@@ -27,6 +27,7 @@ export class InstituteQuestionsService {
     }
 
     getDepartments(): Promise<Array<string>> {
+        this.headers.append('sess', this.sessionService.getSession()); 
         return this.http
             .get(this.departmentsUrl)
             .toPromise()

@@ -24,4 +24,5 @@ export class Question {
     state?: string;
     city?: string;
     question?: string;
+    loggedin?: boolean;
 }

@@ -1,27 +1,31 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import { BackendUrlService } from '../backend-url.service';
+import { SessionService } from '../session.service';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class AdminPanelService {
-    private url = BackendUrlService.url + '/adminpanel/name';
+    private url = BackendUrlService.url + '/adminpanel';
     private headers = new Headers({'Content-Type': 'application/json'});
-    constructor(private http: Http){
-    }
+    constructor(private http: Http, private sessionService: SessionService){}
+
+    // TODO: Correct add institutes frontend
     addInstitute(login:string, password: string, university: string, college: string, state: string, city: string, email: string, mobile: string, address: string): Promise<Object> {
-        // this.url = BackendUrlService.url + '/adminpanel/';
+        this.headers.append('sess', this.sessionService.getSession()); 
+        const createUrl = this.url + '/insert';
         return this.http
-            .post(this.url,JSON.stringify({login:login, password: password, university: university, college: college, state: status, city: city, email: email, mobile: mobile, address: address}),{headers: this.headers})
+            .post(createUrl,JSON.stringify({login:login, password: password, university: university, college: college, state: status, city: city, email: email, mobile: mobile, address: address}),{headers: this.headers})
             .toPromise()
             .then(res => res.json())
 
             .catch(this.handleError);
     }
     getInstitutes(){
-        this.url = BackendUrlService.url + '/adminpanel/name';
+        this.headers.append('sess', this.sessionService.getSession()); 
+        const getUrl = this.url + '/institutes';
         return this.http
-            .get(this.url, {headers: this.headers})
+            .get(getUrl, {headers: this.headers})
             .toPromise()
             .then(res => res.json())
 

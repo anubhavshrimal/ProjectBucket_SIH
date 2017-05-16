@@ -28,4 +28,5 @@ export class User {
     question_answer?: Array<string>;
     profile_url?: string;
     project_id?: Array<string>;
+    loggedin?: boolean;
 }
