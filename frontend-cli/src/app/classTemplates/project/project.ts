@@ -7,6 +7,7 @@ export class Comment {
 export class Info {
     upvotes?: Array<string>;
     downvotes?:  Array<string>;
+    loggedin?: boolean;
 }
 
 export class Project {
