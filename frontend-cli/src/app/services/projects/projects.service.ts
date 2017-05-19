@@ -39,7 +39,7 @@ export class ProjectsService {
         const getUrl = BackendUrlService.url + '/projects/'+id;
 
         return this.http
-            .get(getUrl)
+            .get(getUrl, {headers: this.headers})
             .toPromise()
             .then(res => res.json() as Project)
             .catch(this.handleError);
@@ -68,8 +68,9 @@ export class ProjectsService {
 
     getProjectsFeed() {
         this.headers.append('sess', this.sessionService.getSession()); 
+        console.log(this.headers);
         return this.http
-            .get(this.projectsFeedUrl)
+            .get(this.projectsFeedUrl, {headers: this.headers})
             .toPromise()
             .then(res => res.json())
             .catch(this.handleError);

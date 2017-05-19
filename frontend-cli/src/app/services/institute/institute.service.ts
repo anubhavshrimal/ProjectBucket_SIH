@@ -20,7 +20,7 @@ export class InstituteQuestionsService {
     getForumFeed() {
         this.headers.append('sess', this.sessionService.getSession()); 
         return this.http
-            .get(this.forumUrl)
+            .get(this.forumUrl, {headers: this.headers})
             .toPromise()
             .then(res => res.json())
             .catch(this.handleError);
@@ -29,7 +29,7 @@ export class InstituteQuestionsService {
     getDepartments() {
         this.headers.append('sess', this.sessionService.getSession()); 
         return this.http
-            .get(this.departmentsUrl)
+            .get(this.departmentsUrl, {headers: this.headers})
             .toPromise()
             .then(res => res.json().departments)
             .catch(this.handleError);

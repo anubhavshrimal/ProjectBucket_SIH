@@ -40,7 +40,7 @@ export class QuestionsService {
         const getUrl = BackendUrlService.url + '/questions/'+id;
 
         return this.http
-            .get(getUrl)
+            .get(getUrl, {headers: this.headers})
             .toPromise()
             .then(res => res.json() as Question)
             .catch(this.handleError);
@@ -70,7 +70,7 @@ export class QuestionsService {
     getForumFeed() {
         this.headers.append('sess', this.sessionService.getSession()); 
         return this.http
-            .get(this.forumUrl)
+            .get(this.forumUrl, {headers: this.headers})
             .toPromise()
             .then(res => res.json())
             .catch(this.handleError);
