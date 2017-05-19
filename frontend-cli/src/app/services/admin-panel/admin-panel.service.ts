@@ -12,7 +12,7 @@ export class AdminPanelService {
 
     // TODO: Correct add institutes frontend
     addInstitute(login:string, password: string, university: string, college: string, state: string, city: string, email: string, mobile: string, address: string): Promise<Object> {
-        this.headers.append('sess', this.sessionService.getSession()); 
+        this.headers.set('sess', this.sessionService.getSession()); 
         const createUrl = this.url + '/insert';
         return this.http
             .post(createUrl,JSON.stringify({login:login, password: password, university: university, college: college, state: status, city: city, email: email, mobile: mobile, address: address}),{headers: this.headers})
@@ -22,7 +22,7 @@ export class AdminPanelService {
             .catch(this.handleError);
     }
     getInstitutes(){
-        this.headers.append('sess', this.sessionService.getSession()); 
+        this.headers.set('sess', this.sessionService.getSession()); 
         const getUrl = this.url + '/institutes';
         return this.http
             .get(getUrl, {headers: this.headers})

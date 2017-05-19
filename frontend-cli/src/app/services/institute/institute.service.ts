@@ -18,7 +18,7 @@ export class InstituteQuestionsService {
     constructor(private http: Http, private sessionService: SessionService) {}
 
     getForumFeed() {
-        this.headers.append('sess', this.sessionService.getSession()); 
+        this.headers.set('sess', this.sessionService.getSession()); 
         return this.http
             .get(this.forumUrl, {headers: this.headers})
             .toPromise()
@@ -27,7 +27,7 @@ export class InstituteQuestionsService {
     }
 
     getDepartments() {
-        this.headers.append('sess', this.sessionService.getSession()); 
+        this.headers.set('sess', this.sessionService.getSession()); 
         return this.http
             .get(this.departmentsUrl, {headers: this.headers})
             .toPromise()

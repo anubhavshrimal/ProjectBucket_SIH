@@ -16,7 +16,7 @@ export class QuestionsService {
     constructor(private http: Http, private sessionService: SessionService) {}
 
     create(question: Question): Promise<Response> {
-        this.headers.append('sess', this.sessionService.getSession()); 
+        this.headers.set('sess', this.sessionService.getSession()); 
         const createUrl = BackendUrlService.url + '/questions/insert';
         return this.http
             .post(createUrl, JSON.stringify(question), {headers: this.headers})
@@ -26,7 +26,7 @@ export class QuestionsService {
     }
 
     update(question: Question): Promise<Response> {
-        this.headers.append('sess', this.sessionService.getSession()); 
+        this.headers.set('sess', this.sessionService.getSession()); 
         const updateUrl = BackendUrlService.url + '/questions/'+question.id+'/updatequestion';
         return this.http
             .post(updateUrl, JSON.stringify(question), {headers: this.headers})
@@ -36,7 +36,7 @@ export class QuestionsService {
     }
 
     getQuestionById(id: string): Promise<Question> {
-        this.headers.append('sess', this.sessionService.getSession()); 
+        this.headers.set('sess', this.sessionService.getSession()); 
         const getUrl = BackendUrlService.url + '/questions/'+id;
 
         return this.http
@@ -47,7 +47,7 @@ export class QuestionsService {
     }
 
     insertAnswer(answer: string, questionId: string, username: string): Promise<Answer> {
-        this.headers.append('sess', this.sessionService.getSession()); 
+        this.headers.set('sess', this.sessionService.getSession()); 
         const insertAnswerUrl = BackendUrlService.url + '/questions/'+questionId+'/answer';
         return this.http
             .post(insertAnswerUrl, JSON.stringify({"answer": answer}), {headers: this.headers})
@@ -57,7 +57,7 @@ export class QuestionsService {
     }
 
     deleteAnswer(username: string, questionId: string): Promise<Response> {
-        this.headers.append('sess', this.sessionService.getSession()); 
+        this.headers.set('sess', this.sessionService.getSession()); 
         const deleteAnswerUrl = BackendUrlService.url + '/questions/'+questionId+'/'+username+'/deleteans';
 
         return this.http
@@ -68,7 +68,7 @@ export class QuestionsService {
     }
 
     getForumFeed() {
-        this.headers.append('sess', this.sessionService.getSession()); 
+        this.headers.set('sess', this.sessionService.getSession()); 
         return this.http
             .get(this.forumUrl, {headers: this.headers})
             .toPromise()
@@ -77,7 +77,7 @@ export class QuestionsService {
     }
 
     upvote(questionId: string): Promise<Info> {
-        this.headers.append('sess', this.sessionService.getSession()); 
+        this.headers.set('sess', this.sessionService.getSession()); 
         const upvoteUrl = BackendUrlService.url + '/questions/' + questionId + '/upvote';
 
         return this.http
@@ -88,7 +88,7 @@ export class QuestionsService {
     }
 
     downvote(questionId: string): Promise<Info> {
-        this.headers.append('sess', this.sessionService.getSession()); 
+        this.headers.set('sess', this.sessionService.getSession()); 
         const downvote = BackendUrlService.url + '/questions/' + questionId + '/downvote';
 
         return this.http
@@ -99,7 +99,7 @@ export class QuestionsService {
     }
 
     upvoteAnswer(questionId: string, username: string): Promise<Info> {
-        this.headers.append('sess', this.sessionService.getSession()); 
+        this.headers.set('sess', this.sessionService.getSession()); 
         const upvoteUrl = BackendUrlService.url + '/questions/' + questionId + '/' + username + '/upvote';
 
         return this.http
@@ -110,7 +110,7 @@ export class QuestionsService {
     }
 
     downvoteAnswer(questionId: string, username: string): Promise<Info> {
-        this.headers.append('sess', this.sessionService.getSession()); 
+        this.headers.set('sess', this.sessionService.getSession()); 
         const downvote = BackendUrlService.url + '/questions/' + questionId + '/' + username + '/downvote';
 
         return this.http

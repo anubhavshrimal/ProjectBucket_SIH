@@ -15,7 +15,7 @@ export class InstituteProfileService {
 
     constructor(private http: Http, private sessionService: SessionService){}
     instituteProfile(username:string): Promise<User> {
-        this.headers.append('sess', this.sessionService.getSession()); 
+        this.headers.set('sess', this.sessionService.getSession()); 
         this.url = BackendUrlService.url + '/adminpanel/'+username;
         return this.http
             .get(this.url, {headers: this.headers})
@@ -24,7 +24,7 @@ export class InstituteProfileService {
             .catch(this.handleError);
     }
     getQuestions(username: string):Promise<Question>{
-        this.headers.append('sess', this.sessionService.getSession()); 
+        this.headers.set('sess', this.sessionService.getSession()); 
         this.url = BackendUrlService.url + '/institute'+username;
         return this.http
             .get(this.url, {headers: this.headers})
@@ -33,7 +33,7 @@ export class InstituteProfileService {
             .catch(this.handleError);
     }
     getProjects(username: string):Promise<Project>{
-        this.headers.append('sess', this.sessionService.getSession()); 
+        this.headers.set('sess', this.sessionService.getSession()); 
         this.url = BackendUrlService.url + '/projects/user/'+username;
         return this.http
             .get(this.url, {headers: this.headers})

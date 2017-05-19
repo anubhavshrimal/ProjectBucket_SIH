@@ -15,7 +15,7 @@ export class ProjectsService {
     constructor(private http: Http, private sessionService: SessionService) {}
 
     create(project: Project): Promise<Response> {
-        this.headers.append('sess', this.sessionService.getSession()); 
+        this.headers.set('sess', this.sessionService.getSession()); 
         const createUrl = BackendUrlService.url + '/projects/insert';
         return this.http
             .post(createUrl, JSON.stringify(project), {headers: this.headers})
@@ -25,7 +25,7 @@ export class ProjectsService {
     }
 
     update(project: Project): Promise<Response> {
-        this.headers.append('sess', this.sessionService.getSession()); 
+        this.headers.set('sess', this.sessionService.getSession()); 
         const updateUrl = BackendUrlService.url + '/projects/'+project.id;
         return this.http
             .put(updateUrl, JSON.stringify(project), {headers: this.headers})
@@ -35,7 +35,7 @@ export class ProjectsService {
     }
 
     getProjectById(id: string): Promise<Project> {
-        this.headers.append('sess', this.sessionService.getSession()); 
+        this.headers.set('sess', this.sessionService.getSession()); 
         const getUrl = BackendUrlService.url + '/projects/'+id;
 
         return this.http
@@ -46,7 +46,7 @@ export class ProjectsService {
     }
 
     insertComment(comment: string, projectId: string): Promise<Comment> {
-        this.headers.append('sess', this.sessionService.getSession()); 
+        this.headers.set('sess', this.sessionService.getSession()); 
         const insertCommentUrl = BackendUrlService.url + '/projects/'+projectId+'/comment';
         return this.http
             .post(insertCommentUrl, JSON.stringify({"comment": comment}), {headers: this.headers})
@@ -56,7 +56,7 @@ export class ProjectsService {
     }
 
     deleteComment(comment: Comment, projectId: string): Promise<Comment> {
-        this.headers.append('sess', this.sessionService.getSession()); 
+        this.headers.set('sess', this.sessionService.getSession()); 
         const deleteCommentUrl = BackendUrlService.url + '/projects/'+projectId+'/comment/delete';
 
         return this.http
@@ -67,7 +67,7 @@ export class ProjectsService {
     }
 
     getProjectsFeed() {
-        this.headers.append('sess', this.sessionService.getSession()); 
+        this.headers.set('sess', this.sessionService.getSession()); 
         console.log(this.headers);
         return this.http
             .get(this.projectsFeedUrl, {headers: this.headers})
@@ -77,7 +77,7 @@ export class ProjectsService {
     }
 
     upvote(projectId: string): Promise<Info> {
-        this.headers.append('sess', this.sessionService.getSession()); 
+        this.headers.set('sess', this.sessionService.getSession()); 
         const upvoteUrl = BackendUrlService.url + '/projects/' + projectId + '/upvote';
         return this.http
             .put(upvoteUrl, JSON.stringify({}), {headers: this.headers})
@@ -87,7 +87,7 @@ export class ProjectsService {
     }
 
     downvote(projectId: string): Promise<Info> {
-        this.headers.append('sess', this.sessionService.getSession()); 
+        this.headers.set('sess', this.sessionService.getSession()); 
         const downvote =  BackendUrlService.url + '/projects/' + projectId + '/downvote';
 
         return this.http

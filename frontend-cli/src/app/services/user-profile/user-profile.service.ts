@@ -11,12 +11,12 @@ import { promise } from "selenium-webdriver";
 @Injectable()
 export class UserProfileService {
     private url: string;
-    private headers = new Headers({ 'Content-Type': 'application/json' });
+    private headers = new Headers({ 'Content-Type': 'application/json'});
 
     constructor(private http: Http, private sessionService: SessionService) { }
 
     userProfile(username: string): Promise<User> {
-        this.headers.append('sess', this.sessionService.getSession());
+        this.headers.set('sess', this.sessionService.getSession());
         this.url = BackendUrlService.url + '/user/profile/' + username;
         return this.http
             .get(this.url, { headers: this.headers })
@@ -26,7 +26,7 @@ export class UserProfileService {
     }
     
     getQuestions(username: string): Promise<Question> {
-        this.headers.append('sess', this.sessionService.getSession()); 
+        this.headers.set('sess', this.sessionService.getSession()); 
         this.url = BackendUrlService.url + '/questions/allquestions/' + username;
         return this.http
             .get(this.url, { headers: this.headers })
@@ -36,7 +36,7 @@ export class UserProfileService {
     }
 
     getProjects(username: string): Promise<Project> {
-        this.headers.append('sess', this.sessionService.getSession()); 
+        this.headers.set('sess', this.sessionService.getSession()); 
         this.url = BackendUrlService.url + '/projects/user/' + username;
         return this.http
             .get(this.url, { headers: this.headers })

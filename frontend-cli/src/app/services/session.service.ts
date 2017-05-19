@@ -5,12 +5,15 @@ export class SessionService {
 
   constructor() { }
 
-  setSession(sess: string): void{
+  setSession(sess: string): void {
     localStorage.setItem('sess', sess);
   }
 
-  getSession(): string{
+  getSession(): string {
     return localStorage.getItem('sess');
   }
 
+  logoutSession(): void {
+    localStorage.removeItem('sess');
+  }
 }

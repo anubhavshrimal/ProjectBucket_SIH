@@ -20,7 +20,7 @@ import { AdminPanelComponent } from './components/admin-panel/admin-panel.compon
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/login',
+    redirectTo: '/projects-feed',
     pathMatch: 'full'
   },
   {
