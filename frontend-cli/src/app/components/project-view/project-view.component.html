@@ -28,7 +28,7 @@
                     <span><a (click)="openContibutors()" *ngIf="project.contributors">Contributed by: {{project.contributors.length}}</a></span>
                 </div>
                 <div class="one-fourth column">
-                    <button md-raised-button class="state state-merged" type="file">
+                    <button md-raised-button class="bg-purple text-white" type="file">
                     <md-icon class="fa fa-download"></md-icon>Download Zip file
                 </button>
                 </div>
@@ -94,7 +94,7 @@
             <md-input-container class="full-width">
                 <textarea mdInput class="border border-bottom-0" placeholder="Enter your comment:" name="comment" [(ngModel)]="comment" style="height: 50px; resize: none"></textarea>
             </md-input-container>
-            <button md-raised-button class="state state-open" [disabled]="!comment" (click)="insertComment()">Add comment</button>
+            <button md-raised-button class="bg-green text-white" [disabled]="!comment" (click)="insertComment()">Add comment</button>
             <br>
             <div *ngIf="project.comments.length > 0">
                 <strong>Comments:</strong>

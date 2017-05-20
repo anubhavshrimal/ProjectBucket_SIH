@@ -58,17 +58,12 @@ export class InstituteHomePageComponent implements OnInit {
     }
 
     getDepartments(): void {
-        this.instituteQuestionsService.getDepartments()
+       this.instituteQuestionsService.getDepartments()
             .then(departments => {
                 console.log(departments)
-                if (departments.loggedin) {
-                    let labelList = this.labelList;
-                    this.labelList = _.concat(labelList, departments.data);
-                    this.getForumFeed();
-                }
-                else {
-                    this.router.navigate([`/login`]);
-                }
+                let labelList = this.labelList;
+                this.labelList = _.concat(labelList, departments);
+                this.getForumFeed();
             })
     }
 
@@ -81,44 +76,39 @@ export class InstituteHomePageComponent implements OnInit {
     }
 
     getForumFeed(): void {
-        this.instituteQuestionsService.getForumFeed()
+         this.instituteQuestionsService.getForumFeed()
             .then(forumFeed => {
                 console.log(forumFeed)
-                if (forumFeed.loggedin) {
-                    this.questions = forumFeed.data;
-                    this.quesGroup = _.groupBy(this.questions, 'department[0]')
-                    this.filter(this.checkboxes);
-                    this.checkboxes = {};
-                }
-                else {
-                    this.router.navigate([`/login`]);
-                }
+                this.questions = forumFeed
+                this.quesGroup = _.groupBy(this.questions, 'department[0]')
+                this.filter(this.checkboxes);
+                this.checkboxes = {};
             })
     }
 
     upvote(project: Question): void {
         this.questionsService.upvote(project.id)
             .then(res => {
-                if (res.loggedin) {
+                // if (res.loggedin) {
                     project.upvotes = res.upvotes
                     project.downvotes = res.downvotes
-                }
-                else {
-                    this.router.navigate([`/login`]);
-                }
+                // }
+                // else {
+                //     this.router.navigate([`/login`]);
+                // }
             });
     }
 
     downvote(project: Question): void {
         this.questionsService.downvote(project.id)
             .then(res => {
-                if (res.loggedin) {
+                // if (res.loggedin) {
                     project.upvotes = res.upvotes
                     project.downvotes = res.downvotes
-                }
-                else {
-                    this.router.navigate([`/login`]);
-                }
+                // }
+                // else {
+                //     this.router.navigate([`/login`]);
+                // }
             });
     }
 }

@@ -71,6 +71,7 @@ export class AddProjectComponent implements OnInit {
     this.projectsService.create(this.project)
       .then(response => {
         if (response.loggedin) {
+          console.log(response)
           if (response.upsertedId) {
             this.router.navigate([`/projects`, response.upsertedId, response.message]);
           }

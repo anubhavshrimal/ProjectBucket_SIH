@@ -4,6 +4,7 @@ import { BackendUrlService } from '../backend-url.service';
 import 'rxjs/add/operator/toPromise';
 import { User } from "../../classTemplates/user/user";
 import { Response } from '../../classTemplates/assertionResponse/response';
+import { SessionService } from '../../services/session.service';
 
 @Injectable()
 export class SignoutService {
@@ -11,7 +12,7 @@ export class SignoutService {
     private headers = new Headers({ 'Content-Type': 'application/json' });
     isLoggedIn: boolean = false;
     redirectUrl: string;
-    constructor(private http: Http) {
+    constructor(private http: Http, private sessionService: SessionService) {
         this.isLoggedIn = !!localStorage.getItem('auth_token');
     }
     login(userName: string, password: string): Promise<User> {
@@ -24,6 +25,7 @@ export class SignoutService {
 
     logout(): Promise<Response> {
         const logoutUrl = BackendUrlService.url + '/user/logout';
+        this.headers.set('sess', this.sessionService.getSession());
         return this.http
             .get(logoutUrl, { headers: this.headers })
             .toPromise()

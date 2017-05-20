@@ -21,12 +21,12 @@ export class AdminPanelComponent implements OnInit {
     }
     ngOnInit(): void {
         this.adminPanel.getInstitutes().then(data => {
-            if (data.loggedin) {
+            // if (data.loggedin) {
                 this.data = data;
-            }
-            else {
-                this.router.navigate([`/login`]);
-            }
+            // }
+            // else {
+            //     this.router.navigate([`/login`]);
+            // }
         });
     }
     toggel() {

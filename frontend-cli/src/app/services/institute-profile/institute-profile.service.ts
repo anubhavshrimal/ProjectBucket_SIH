@@ -25,11 +25,11 @@ export class InstituteProfileService {
     }
     getQuestions(username: string):Promise<Question>{
         this.headers.set('sess', this.sessionService.getSession()); 
-        this.url = BackendUrlService.url + '/institute'+username;
+        this.url = BackendUrlService.url + '/institute/'+username;
         return this.http
             .get(this.url, {headers: this.headers})
             .toPromise()
-            .then(res => res.json() as User)
+            .then(res => res.json() as Question)
             .catch(this.handleError);
     }
     getProjects(username: string):Promise<Project>{
@@ -38,7 +38,7 @@ export class InstituteProfileService {
         return this.http
             .get(this.url, {headers: this.headers})
             .toPromise()
-            .then(res => res.json() as User)
+            .then(res => res.json() as Project)
             .catch(this.handleError);
     }
     private handleError(error: any): Promise<any> {

@@ -12,8 +12,8 @@ import  { Response } from '../../classTemplates/assertionResponse/response';
 @Injectable()
 export class InstituteQuestionsService {
     private headers = new Headers({'Content-Type': 'application/json'});
-    private forumUrl = BackendUrlService.url + '/institute/question';
-    private departmentsUrl = BackendUrlService.url + '/institute/departments';
+    private forumUrl = BackendUrlService.url + '/institute/question/mit';
+    private departmentsUrl = BackendUrlService.url + '/institute/mit/departments';
 
     constructor(private http: Http, private sessionService: SessionService) {}
 
