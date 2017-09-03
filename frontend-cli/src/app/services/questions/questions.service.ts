@@ -12,12 +12,12 @@ import  { Response } from '../../classTemplates/assertionResponse/response';
 @Injectable()
 export class QuestionsService {
     private headers = new Headers({'Content-Type': 'application/json'});
-    private forumUrl = BackendUrlService.url + '/homepage/forum/pulkit';
+    private forumUrl = BackendUrlService.url + '/homepage/forum';
     constructor(private http: Http, private sessionService: SessionService) {}
 
-    create(question: Question, username: string): Promise<Response> {
-        this.headers.append('sess', this.sessionService.getSession()); 
-        const createUrl = BackendUrlService.url + '/questions/insert/'+username;
+    create(question: Question): Promise<Response> {
+        this.headers.set('sess', this.sessionService.getSession()); 
+        const createUrl = BackendUrlService.url + '/questions/insert';
         return this.http
             .post(createUrl, JSON.stringify(question), {headers: this.headers})
             .toPromise()
@@ -25,31 +25,30 @@ export class QuestionsService {
             .catch(this.handleError);
     }
 
-    update(question: Question): Promise<Object> {
-        this.headers.append('sess', this.sessionService.getSession()); 
-        question.username = "pulkit";
+    update(question: Question): Promise<Response> {
+        this.headers.set('sess', this.sessionService.getSession()); 
         const updateUrl = BackendUrlService.url + '/questions/'+question.id+'/updatequestion';
         return this.http
             .post(updateUrl, JSON.stringify(question), {headers: this.headers})
             .toPromise()
-            .then(res => res.json().message)
+            .then(res => res.json() as Response)
             .catch(this.handleError);
     }
 
     getQuestionById(id: string): Promise<Question> {
-        this.headers.append('sess', this.sessionService.getSession()); 
+        this.headers.set('sess', this.sessionService.getSession()); 
         const getUrl = BackendUrlService.url + '/questions/'+id;
 
         return this.http
-            .get(getUrl)
+            .get(getUrl, {headers: this.headers})
             .toPromise()
             .then(res => res.json() as Question)
             .catch(this.handleError);
     }
 
     insertAnswer(answer: string, questionId: string, username: string): Promise<Answer> {
-        this.headers.append('sess', this.sessionService.getSession()); 
-        const insertAnswerUrl = BackendUrlService.url + '/questions/'+questionId+'/answer/'+username;
+        this.headers.set('sess', this.sessionService.getSession()); 
+        const insertAnswerUrl = BackendUrlService.url + '/questions/'+questionId+'/answer';
         return this.http
             .post(insertAnswerUrl, JSON.stringify({"answer": answer}), {headers: this.headers})
             .toPromise()
@@ -57,29 +56,29 @@ export class QuestionsService {
             .catch(this.handleError);
     }
 
-    deleteAnswer(username: string, questionId: string): Promise<string> {
-        this.headers.append('sess', this.sessionService.getSession()); 
+    deleteAnswer(username: string, questionId: string): Promise<Response> {
+        this.headers.set('sess', this.sessionService.getSession()); 
         const deleteAnswerUrl = BackendUrlService.url + '/questions/'+questionId+'/'+username+'/deleteans';
 
         return this.http
             .post(deleteAnswerUrl, JSON.stringify({}), {headers: this.headers})
             .toPromise()
-            .then(res => res.json().message)
+            .then(res => res.json() as Response)
             .catch(this.handleError);
     }
 
-    getForumFeed(): Promise<Array<Question>> {
-        this.headers.append('sess', this.sessionService.getSession()); 
+    getForumFeed() {
+        this.headers.set('sess', this.sessionService.getSession()); 
         return this.http
-            .get(this.forumUrl)
+            .get(this.forumUrl, {headers: this.headers})
             .toPromise()
-            .then(res => res.json() as Array<Question>)
+            .then(res => res.json())
             .catch(this.handleError);
     }
 
-    upvote(questionId: string, username: string): Promise<Info> {
-        this.headers.append('sess', this.sessionService.getSession()); 
-        const upvoteUrl = BackendUrlService.url + '/questions/' + questionId + '/upvote/'+username;
+    upvote(questionId: string): Promise<Info> {
+        this.headers.set('sess', this.sessionService.getSession()); 
+        const upvoteUrl = BackendUrlService.url + '/questions/' + questionId + '/upvote';
 
         return this.http
             .put(upvoteUrl, JSON.stringify({}), {headers: this.headers})
@@ -88,9 +87,9 @@ export class QuestionsService {
             .catch(this.handleError);
     }
 
-    downvote(questionId: string, username: string): Promise<Info> {
-        this.headers.append('sess', this.sessionService.getSession()); 
-        const downvote = BackendUrlService.url + '/questions/' + questionId + '/downvote/'+username;
+    downvote(questionId: string): Promise<Info> {
+        this.headers.set('sess', this.sessionService.getSession()); 
+        const downvote = BackendUrlService.url + '/questions/' + questionId + '/downvote';
 
         return this.http
             .put(downvote, JSON.stringify({}), {headers: this.headers})
@@ -100,8 +99,8 @@ export class QuestionsService {
     }
 
     upvoteAnswer(questionId: string, username: string): Promise<Info> {
-        this.headers.append('sess', this.sessionService.getSession()); 
-        const upvoteUrl = BackendUrlService.url + '/questions/' + questionId + '/' + username + '/pulkit/upvote';
+        this.headers.set('sess', this.sessionService.getSession()); 
+        const upvoteUrl = BackendUrlService.url + '/questions/' + questionId + '/' + username + '/upvote';
 
         return this.http
             .put(upvoteUrl, JSON.stringify({}), {headers: this.headers})
@@ -111,8 +110,8 @@ export class QuestionsService {
     }
 
     downvoteAnswer(questionId: string, username: string): Promise<Info> {
-        this.headers.append('sess', this.sessionService.getSession()); 
-        const downvote = BackendUrlService.url + '/questions/' + questionId + '/' + username + '/pulkit/downvote';
+        this.headers.set('sess', this.sessionService.getSession()); 
+        const downvote = BackendUrlService.url + '/questions/' + questionId + '/' + username + '/downvote';
 
         return this.http
             .put(downvote, JSON.stringify({}), {headers: this.headers})

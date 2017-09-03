@@ -8,10 +8,10 @@ import { Question } from '../../classTemplates/question/question';
 import * as _ from "lodash";
 
 @Component({
-  selector: 'add-question',
-  templateUrl: './add-question.component.html',
-  styleUrls: ['./add-question.component.css'],
-  providers: [QuestionsService]
+    selector: 'add-question',
+    templateUrl: './add-question.component.html',
+    styleUrls: ['./add-question.component.css'],
+    providers: [QuestionsService]
 })
 export class AddQuestionComponent {
     question: Question;
@@ -29,14 +29,19 @@ export class AddQuestionComponent {
     }
 
     addQuestion(): void {
-        this.questionsService.create(this.question, "pulkit")
-            .then(question => {
-                if (question.upsertedId) {
-                    this.router.navigate([`/questions`, question.upsertedId, question.message]);
-                    console.log('added question')
+        this.questionsService.create(this.question)
+            .then(response => {
+                if (response.loggedin) {
+                    if (response.upsertedId) {
+                        this.router.navigate([`/questions`, response.upsertedId, response.message]);
+                        console.log('added question')
+                    }
+                    else {
+                        this.openSnackBar("Question couldn't be added!", "Try Again!");
+                    }
                 }
-                else {
-                    this.openSnackBar("Question couldn't be added!", "Try Again!");
+                else{
+                    this.router.navigate([`/login`]);
                 }
             })
     }

@@ -5,6 +5,7 @@ export class Answer {
     upvotes?: Array<string>;
     downvotes?: Array<string>;
     featured_points?: number;
+    loggedin?: boolean;
 }
 
 export class Question {

@@ -10,10 +10,10 @@ import * as _ from "lodash";
 
 
 @Component({
-  selector: 'edit-project',
-  templateUrl: './edit-project.component.html',
-  styles: [],
-  providers: [LicensesService, ProjectsService]
+    selector: 'edit-project',
+    templateUrl: './edit-project.component.html',
+    styles: [],
+    providers: [LicensesService, ProjectsService]
 })
 export class EditProjectComponent implements OnInit {
     licenses: Object[];
@@ -62,19 +62,24 @@ export class EditProjectComponent implements OnInit {
         if (this.readmeChecked = !this.readmeChecked) {
             this.project.readme = "# " + this.project.title;
         }
-        else{
+        else {
             this.project.readme = "";
         }
     }
 
     updateProject(): void {
-        this.projectsService.update(this.project, "hsharma")
-            .then(message => {
-                console.log(message);
-                if (message == "success") {
-                    this.router.navigate([`/projects`, this.project.id, this.project.url_title])
-                } else {
-                    this.openSnackBar("There was some error", "Try Again!!");
+        this.projectsService.update(this.project)
+            .then(response => {
+                console.log(response.message);
+                if (response.loggedin) {
+                    if (response.message == "success") {
+                        this.router.navigate([`/projects`, this.project.id, this.project.url_title])
+                    } else {
+                        this.openSnackBar("There was some error", "Try Again!!");
+                    }
+                }
+                else {
+                    this.router.navigate([`/login`]);
                 }
             })
     }
@@ -84,12 +89,16 @@ export class EditProjectComponent implements OnInit {
             .switchMap((params: Params) => this.projectsService.getProjectById(params['id']))
             .subscribe(project => {
                 console.log(project)
-                this.project = project;
-                if (this.project.readme) {
-                    this.readmeChecked = true;
-                }
-                if (this.project.comments) {
-                    _.reverse(this.project.comments)
+                if (project.loggedin) {
+                    this.project = project;
+                    if (this.project.readme) {
+                        this.readmeChecked = true;
+                    }
+                    if (this.project.comments) {
+                        _.reverse(this.project.comments)
+                    }
+                } else {
+                    this.router.navigate([`/login`]);
                 }
             });
     }

@@ -71,7 +71,7 @@
       <md-input-container class="full-width">
         <textarea mdInput class="border border-bottom-0" placeholder="Enter your answer:" name="answer" [(ngModel)]="answer" style="height: 50px; resize: none"></textarea>
       </md-input-container>
-      <button md-raised-button class="state state-open" [disabled]="!answer" (click)="insertAnswer()">Add answer</button>
+      <button md-raised-button class="bg-green text-white" [disabled]="!answer" (click)="insertAnswer()">Add answer</button>
       <br>
       <div *ngIf="question.answers.length > 0">
         <strong>Answers:</strong>

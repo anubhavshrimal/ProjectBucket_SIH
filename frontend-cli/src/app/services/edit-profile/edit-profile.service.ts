@@ -12,7 +12,7 @@ export class EditProfileService {
     constructor(private http: Http, private sessionService: SessionService){}
 
     updateProfile(/*userName: string, password: string*/): Promise<Object[]> {
-        this.headers.append('sess', this.sessionService.getSession()); 
+        this.headers.set('sess', this.sessionService.getSession()); 
         return this.http
             .put(this.url,JSON.stringify({/*username: userName, password: password*/}),{headers: this.headers})
             .toPromise()

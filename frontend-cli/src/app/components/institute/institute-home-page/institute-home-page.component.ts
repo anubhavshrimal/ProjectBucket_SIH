@@ -7,15 +7,15 @@ import { QuestionsService } from '../../../services/questions/questions.service'
 import { Question } from '../../../classTemplates/question/question';
 
 @Component({
-  selector: 'app-institute-home-page',
-  templateUrl: './institute-home-page.component.html',
-  styles: [
+    selector: 'app-institute-home-page',
+    templateUrl: './institute-home-page.component.html',
+    styles: [
         `a {
             color: teal; 
             text-decoration:none
         }`
     ],
-  providers: [QuestionsService, InstituteQuestionsService]
+    providers: [QuestionsService, InstituteQuestionsService]
 })
 export class InstituteHomePageComponent implements OnInit {
     tabs: Array<Object>;
@@ -36,48 +36,6 @@ export class InstituteHomePageComponent implements OnInit {
     ) {
         this.labelList = ['All'];
         this.checkboxes = { 'All': true };
-        this.questions = [
-            // {
-            //     id: "dfdhfvkdvksdb324235233",
-            //     username: "anubhav",
-            //     title: "How to solve water scarcity problems in jaipur",
-            //     description: "We have huge scarcity of water in jaipur",
-            //     tags: ["Array<string>"],
-            //     date: 23423423423423,
-            //     department: "Dept. of CS",
-            //     upvotes: ["anubhav", "pulkit"],
-            //     downvotes: ["anubhav", "pulkit"],
-            //     url: "string",
-            //     url_title: "string",
-            //     answers: [{
-            //         username: "anubhav",
-            //         answer: "hello tesitng ans",
-            //         date: 23423423423423,
-            //         upvotes: ["anubhav", "pulkit"],
-            //         downvotes: ["anubhav", "pulkit"]
-            //     }],
-            // },
-            // {
-            //     id: "dfdhfvkdvksdb324235233",
-            //     username: "anubhav",
-            //     title: "How to solve water scarcity problems in jaipur",
-            //     description: "We have huge scarcity of water in jaipur",
-            //     tags: ["Array<string>"],
-            //     date: 23423423423423,
-            //     department: "Dept. of EC",
-            //     upvotes: ["anubhav", "pulkit"],
-            //     downvotes: ["anubhav", "pulkit"],
-            //     url: "string",
-            //     url_title: "string",
-            //     answers: [{
-            //         username: "anubhav",
-            //         answer: "hello tesitng ans",
-            //         date: 23423423423423,
-            //         upvotes: ["anubhav", "pulkit"],
-            //         downvotes: ["anubhav", "pulkit"]
-            //     }],
-            // }
-        ];
     }
 
     filter(checkboxes: Object) {
@@ -100,7 +58,7 @@ export class InstituteHomePageComponent implements OnInit {
     }
 
     getDepartments(): void {
-        this.instituteQuestionsService.getDepartments()
+       this.instituteQuestionsService.getDepartments()
             .then(departments => {
                 console.log(departments)
                 let labelList = this.labelList;
@@ -118,7 +76,7 @@ export class InstituteHomePageComponent implements OnInit {
     }
 
     getForumFeed(): void {
-        this.instituteQuestionsService.getForumFeed()
+         this.instituteQuestionsService.getForumFeed()
             .then(forumFeed => {
                 console.log(forumFeed)
                 this.questions = forumFeed
@@ -129,18 +87,28 @@ export class InstituteHomePageComponent implements OnInit {
     }
 
     upvote(project: Question): void {
-        this.questionsService.upvote(project.id, "mit")
+        this.questionsService.upvote(project.id)
             .then(res => {
-                project.upvotes = res.upvotes
-                project.downvotes = res.downvotes
+                // if (res.loggedin) {
+                    project.upvotes = res.upvotes
+                    project.downvotes = res.downvotes
+                // }
+                // else {
+                //     this.router.navigate([`/login`]);
+                // }
             });
     }
 
     downvote(project: Question): void {
-        this.questionsService.downvote(project.id, "mit")
+        this.questionsService.downvote(project.id)
             .then(res => {
-                project.upvotes = res.upvotes
-                project.downvotes = res.downvotes
+                // if (res.loggedin) {
+                    project.upvotes = res.upvotes
+                    project.downvotes = res.downvotes
+                // }
+                // else {
+                //     this.router.navigate([`/login`]);
+                // }
             });
     }
 }

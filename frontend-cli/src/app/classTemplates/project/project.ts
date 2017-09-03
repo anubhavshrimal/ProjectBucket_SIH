@@ -2,6 +2,7 @@ export class Comment {
     username?: string;
     comment?: string;
     date?: number;
+    loggedin?: boolean;
 };
 
 export class Info {

@@ -6,15 +6,15 @@ import { QuestionsService } from '../../services/questions/questions.service';
 import { Question } from '../../classTemplates/question/question';
 
 @Component({
-  selector: 'forum',
-  templateUrl: './forum.component.html',
-  styles: [
+    selector: 'forum',
+    templateUrl: './forum.component.html',
+    styles: [
         `a {
             color: teal; 
             text-decoration:none
         }`
     ],
-  providers: [ QuestionsService ]
+    providers: [QuestionsService]
 })
 export class ForumComponent implements OnInit {
     tabs: Array<Object>;
@@ -27,7 +27,7 @@ export class ForumComponent implements OnInit {
     constructor(
         private questionsService: QuestionsService,
         private router: Router
-        ) {
+    ) {
         this.questions = [];
         this.tabs = [
             {
@@ -47,7 +47,7 @@ export class ForumComponent implements OnInit {
 
     gotoQuestion(id: string, url_title: string): void {
         url_title = _.replace(url_title, ' ', '-');
-        console.log(id,url_title)
+        console.log(id, url_title)
         this.router.navigate([`/questions`, id, url_title]);
     }
 
@@ -59,23 +59,38 @@ export class ForumComponent implements OnInit {
         this.questionsService.getForumFeed()
             .then(forumFeed => {
                 console.log(forumFeed)
-                this.questions = forumFeed
+                if (forumFeed.loggedin) {
+                    this.questions = forumFeed.data;
+                }
+                else {
+                    this.router.navigate([`/login`]);
+                }
             })
     }
 
     upvote(project: Question): void {
-        this.questionsService.upvote(project.id, "pulkit")
+        this.questionsService.upvote(project.id)
             .then(res => {
-                project.upvotes = res.upvotes
-                project.downvotes = res.downvotes
+                if (res.loggedin) {
+                    project.upvotes = res.upvotes
+                    project.downvotes = res.downvotes
+                }
+                else {
+                    this.router.navigate([`/login`]);
+                }
             });
     }
 
     downvote(project: Question): void {
-        this.questionsService.downvote(project.id, "pulkit")
+        this.questionsService.downvote(project.id)
             .then(res => {
-                project.upvotes = res.upvotes
-                project.downvotes = res.downvotes
+                if (res.loggedin) {
+                    project.upvotes = res.upvotes
+                    project.downvotes = res.downvotes
+                }
+                else {
+                    this.router.navigate([`/login`]);
+                }
             });
     }
 }

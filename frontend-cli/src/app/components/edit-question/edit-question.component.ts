@@ -8,10 +8,10 @@ import { Question } from '../../classTemplates/question/question';
 import * as _ from "lodash";
 
 @Component({
-  selector: 'edit-question',
-  templateUrl: './edit-question.component.html',
-  styles: [],
-  providers: [QuestionsService]
+    selector: 'edit-question',
+    templateUrl: './edit-question.component.html',
+    styles: [],
+    providers: [QuestionsService]
 })
 export class EditQuestionComponent implements OnInit {
     tag: string;
@@ -50,12 +50,17 @@ export class EditQuestionComponent implements OnInit {
 
     updateQuestion(): void {
         this.questionsService.update(this.question)
-            .then(message => {
-                console.log(message);
-                if (message == "success") {
-                    this.router.navigate([`/questions`, this.question.id, this.question.question_url])
-                } else {
-                    this.openSnackBar("There was some error", "Try Again!!");
+            .then(res => {
+                console.log(res);
+                if (res.loggedin) {
+                    if (res.message == "success") {
+                        this.router.navigate([`/questions`, this.question.id, this.question.question_url])
+                    } else {
+                        this.openSnackBar("There was some error", "Try Again!!");
+                    }
+                }
+                else {
+                    this.router.navigate([`/login`]);
                 }
             })
     }
@@ -65,7 +70,12 @@ export class EditQuestionComponent implements OnInit {
             .switchMap((params: Params) => this.questionsService.getQuestionById(params['id']))
             .subscribe(question => {
                 console.log(question)
-                this.question = question;
+                if (question.loggedin) {
+                    this.question = question;
+                }
+                else {
+                    this.router.navigate([`/login`]);
+                }
             });
     }
 

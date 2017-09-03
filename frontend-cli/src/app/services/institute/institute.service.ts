@@ -17,21 +17,21 @@ export class InstituteQuestionsService {
 
     constructor(private http: Http, private sessionService: SessionService) {}
 
-    getForumFeed(): Promise<Array<Question>> {
-        this.headers.append('sess', this.sessionService.getSession()); 
+    getForumFeed() {
+        this.headers.set('sess', this.sessionService.getSession()); 
         return this.http
-            .get(this.forumUrl)
+            .get(this.forumUrl, {headers: this.headers})
             .toPromise()
-            .then(res => res.json() as Array<Question>)
+            .then(res => res.json())
             .catch(this.handleError);
     }
 
-    getDepartments(): Promise<Array<string>> {
-        this.headers.append('sess', this.sessionService.getSession()); 
+    getDepartments() {
+        this.headers.set('sess', this.sessionService.getSession()); 
         return this.http
-            .get(this.departmentsUrl)
+            .get(this.departmentsUrl, {headers: this.headers})
             .toPromise()
-            .then(res => res.json().departments as Array<string>)
+            .then(res => res.json().departments)
             .catch(this.handleError);
     }
     

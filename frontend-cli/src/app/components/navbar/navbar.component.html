@@ -65,4 +65,5 @@
 
 <md-menu #extras="mdMenu">
     <button md-menu-item *ngFor='let items of extras_menu' routerLink="{{items.link}}">{{items.name}}</button>
+    <button md-menu-item (click)="logout()">Logout</button>
 </md-menu>
